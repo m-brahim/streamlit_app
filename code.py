@@ -1,18 +1,13 @@
-import streamlit as st
 import folium
+import streamlit as st
 
-# Titre de l'application
-st.title("Visualisation de point avec Folium dans Streamlit")
+from streamlit_folium import st_folium
 
-# Coordonnées du point à afficher
-latitude = 39.949610
-longitude = -75.150282
+# center on Liberty Bell, add marker
+m = folium.Map(location=[39.949610, -75.150282], zoom_start=16)
+folium.Marker(
+    [39.949610, -75.150282], popup="Liberty Bell", tooltip="Liberty Bell"
+).add_to(m)
 
-# Création de la carte Folium
-m = folium.Map(location=[latitude, longitude], zoom_start=16)
-
-# Ajout d'un marqueur sur la carte
-folium.Marker([latitude, longitude], popup="Votre point").add_to(m)
-
-# Affichage de la carte dans Streamlit
-st.write(m)
+# call to render Folium map in Streamlit
+st_data = st_folium(m, width=725)
