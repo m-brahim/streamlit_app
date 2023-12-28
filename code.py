@@ -17,5 +17,3 @@ conn = snowflake.connector.connect(
     warehouse=warehouse,
     database=database
 )
-
-
