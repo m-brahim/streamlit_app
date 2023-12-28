@@ -1,13 +1,21 @@
-import folium
 import streamlit as st
+import snowflake.connector
+import pandas as pd
 
-from streamlit_folium import st_folium
+# Remplacez ces valeurs par vos propres informations de connexion
+username = "BMEGDOUD@SYNERGY.FR"
+password = "Azert2609*"
+account = "synergy.eu-west-1.snowflakecomputing.com"
+database = "DEMODB"
+warehouse = "SYNERGY"
 
-# center on Liberty Bell, add marker
-m = folium.Map(location=[39.949610, -75.150282], zoom_start=16)
-folium.Marker(
-    [39.949610, -75.150282], popup="Liberty Bell", tooltip="Liberty Bell"
-).add_to(m)
+# Établir la connexion à Snowflake
+conn = snowflake.connector.connect(
+    user=username,
+    password=password,
+    account=account,
+    warehouse=warehouse,
+    database=database
+)
 
-# call to render Folium map in Streamlit
-st_data = st_folium(m, width=725)
+
