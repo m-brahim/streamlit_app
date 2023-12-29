@@ -1,6 +1,5 @@
-import folium
 import streamlit as st
-
+import folium
 from streamlit_folium import st_folium
 
 # center on Liberty Bell, add marker
