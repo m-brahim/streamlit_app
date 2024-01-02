@@ -27,7 +27,6 @@ with col2:
     # Afficher le graphique en barres avec les noms des magasins au-dessus des barres
     chart = st.bar_chart(df.set_index("Nom"), use_container_width=True, height=400)
 
-    # Personnaliser l'axe des abscisses et ajouter les noms des magasins au-dessus des barres
+    # Ajouter les noms des magasins au-dessus des barres
     for i, (label, value) in enumerate(zip(df["Nom"], df["Nombre de magasins en France"])):
-        chart.bar_chart.data[i].name = label  # Ajouter le nom au-dessus de chaque barre
-        chart.bar_chart.data[i].x = [f"{label}\n{value}"]  # Utiliser des étiquettes personnalisées
+        st.text(f"{label}\n{value}")
