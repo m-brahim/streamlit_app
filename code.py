@@ -3,9 +3,9 @@ import pandas as pd
 
 # Données
 data = {
-    "Entreprise": ["Aldi", "Intermarché", "Auchan"],
-    "Nombre de magasins": [1300, 1800, 707],
-    "CA 2022": [27000000000, 14500000000, 33000000000],
+    "Entreprise": ["Aldi", "Auchan", "Lidl"],
+    "Nombre de magasins": [1300, 707, 1800],
+    "CA 2022": [27000000000, 33000000000, 14500000000],
 }
 
 df = pd.DataFrame(data)
