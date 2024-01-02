@@ -46,9 +46,3 @@ col2.metric("Nombre de Magasins", filtered_data["Nombre de magasins"].values[0])
 ca_milliards = filtered_data['CA 2022'].values[0] / 1e9
 ca_str = f"{ca_milliards:.2f} Mds €"
 col3.metric("CA 2022", ca_str)
-
-# Afficher d'autres informations sous forme de texte
-st.subheader(f"Informations sur {selected_commerce}")
-st.text(f"{selected_commerce} a {filtered_data['Nombre de magasins'].values[0]} magasins.")
-st.text(f"Le chiffre d'affaires pour 2022 est de {ca_str}.")
-
