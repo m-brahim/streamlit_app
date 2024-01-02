@@ -29,6 +29,4 @@ with col1:
 
 with col2:
     st.header("Graphique en barres")
-
-    # Afficher le graphique en barres avec les noms des magasins au-dessus des barres
-    chart = st.bar_chart(filtered_df.set_index("Enseignes"), use_container_width=True, height=400)
+    st.write(f"{selected_commerce} a {filtered_df['Nombre de magasins en France'].values[0]} magasins.")
