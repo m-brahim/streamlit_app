@@ -31,4 +31,4 @@ with col2:
     st.header("Graphique en barres")
 
     # Afficher le graphique en barres avec les noms des magasins au-dessus des barres
-    chart = st.bar_chart(filtered_df.set_index("Nom"), use_container_width=True, height=400)
+    chart = st.bar_chart(filtered_df.set_index("Enseignes"), use_container_width=True, height=400)
