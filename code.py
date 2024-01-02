@@ -3,7 +3,7 @@ import pandas as pd
 
 # Données
 data = {
-    "Entreprise": ["Aldi", "Intermarché", "Carrefour"],
+    "Entreprise": ["Aldi", "Intermarché", "Lidl"],
     "Nombre de magasins": [1300, 1800, 253],
     "CA 2022": [27000000000, 14500000000, 42000000000],
 }
