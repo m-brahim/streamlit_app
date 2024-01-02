@@ -37,7 +37,7 @@ metric_size = (100, 60)
 col1, col2, col3 = st.columns(3)
 
 # Métrique 1 - Entreprise avec logo
-col1.image(logo_path, width=metric_size[0], caption=selected_commerce, use_container_width=False)
+col1.image(logo_path, width=metric_size[0], use_container_width=False)
 col1.header("Enseigne")
 
 # Métrique 2 - Nombre de Magasins
