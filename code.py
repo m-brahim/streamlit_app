@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.title("Tableau de bords Streamlit")
+st.title("Tableau de bords Streamlit - Suivi des ventes")
 
 # Données
 data = {
@@ -25,13 +25,9 @@ with col2:
     st.header("Graphique en barres")
 
     # Afficher le graphique en barres avec les noms des magasins au-dessus des barres
-    chart = st.bar_chart(df.set_index("Nom"), use_container_width=True)
+    chart = st.bar_chart(df.set_index("Nom"), use_container_width=True, height=400)
 
-    # Personnaliser l'axe des abscisses
-    chart.set_axis_labels("Nombre de magasins par enseigne", "Nombre de magasins")
-    chart.set_axis_types("ordinal", "linear")
-    chart.set_title("Nombre de magasins par enseigne")
-
-    # Ajouter les noms des magasins au-dessus de chaque barre
-    for i, label in enumerate(df["Nom"]):
-        st.text(label)
+    # Personnaliser l'axe des abscisses et ajouter les noms des magasins au-dessus des barres
+    for i, (label, value) in enumerate(zip(df["Nom"], df["Nombre de magasins en France"])):
+        chart.bar_chart.data[i].name = label  # Ajouter le nom au-dessus de chaque barre
+        chart.bar_chart.data[i].x = [f"{label}\n{value}"]  # Utiliser des étiquettes personnalisées
