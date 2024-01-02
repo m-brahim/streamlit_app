@@ -11,7 +11,7 @@ data = {
 df = pd.DataFrame(data)
 
 # En-tête de la page
-st.title("Tableau de bords Streamlit - Suivi des commerces")
+st.title("Tableau de bords Streamlit")
 
 # Sélection du commerce
 selected_commerce = st.sidebar.selectbox("Sélectionnez un commerce", df["Entreprise"])
