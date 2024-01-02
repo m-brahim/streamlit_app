@@ -33,7 +33,7 @@ logo_path = logo_paths.get(selected_commerce, "Chemin par défaut si le logo n'e
 col1, col2, col3 = st.columns(3)
 
 # Métrique 1 - Entreprise avec logo
-col1.metric("Enseigne")
+col1.metric("Entreprise")
 col1.image(logo_path, width=100)
 
 # Métrique 2 - Nombre de Magasins
