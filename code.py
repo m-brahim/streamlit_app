@@ -10,6 +10,13 @@ data = {
 
 df = pd.DataFrame(data)
 
+# Dictionnaire de correspondance entre le commerce et le chemin du logo
+logo_paths = {
+    "Aldi": ".logo/Aldi_logo.png",
+    "Intermarché": ".logo/Intermarche_logo.png",
+    "Carrefour": ".logo/Lidl_logo.png",
+}
+
 # En-tête de la page
 st.title("Tableau de bords Streamlit")
 
@@ -19,20 +26,22 @@ selected_commerce = st.sidebar.selectbox("Sélectionnez un commerce", df["Entrep
 # Filtrer les données en fonction du commerce sélectionné
 filtered_data = df[df["Entreprise"] == selected_commerce]
 
-# Convertir le chiffre d'affaires en milliards d'euros avec deux chiffres
-ca_milliards = filtered_data['CA 2022'].values[0] / 1e9
-ca_str = f"{ca_milliards:.2f} Mds €"
+# Récupérer le chemin du logo en fonction du commerce sélectionné
+logo_path = logo_paths.get(selected_commerce, "Chemin par défaut si le logo n'est pas trouvé")
 
 # Afficher les métriques dans trois colonnes
 col1, col2, col3 = st.columns(3)
 
-# Métrique 1 - Entreprise
-col1.metric("Entreprise", selected_commerce)
+# Métrique 1 - Entreprise avec logo
+col1.image(logo_path, width=100, caption=selected_commerce, use_container_width=False)
 
 # Métrique 2 - Nombre de Magasins
 col2.metric("Nombre de Magasins", filtered_data["Nombre de magasins"].values[0])
 
 # Métrique 3 - CA 2022
+# Convertir le chiffre d'affaires en milliards d'euros avec deux chiffres
+ca_milliards = filtered_data['CA 2022'].values[0] / 1e9
+ca_str = f"{ca_milliards:.2f} Mds €"
 col3.metric("CA 2022", ca_str)
 
 # Afficher d'autres informations sous forme de texte
