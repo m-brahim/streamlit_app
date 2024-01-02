@@ -14,7 +14,7 @@ df = pd.DataFrame(data)
 logo_paths = {
     "Aldi": "Aldi_logo.png",
     "Intermarché": "Intermarche_logo.png",
-    "Carrefour": "Lidl_logo.png",
+    "Lidl": "Lidl_logo.png",
 }
 
 # En-tête de la page
