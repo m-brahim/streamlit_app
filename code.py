@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.title("Tableau de bords Streamlit - Suivi des ventes")
+st.title("Tableau de bords Streamlit")
 
 # Données
 data = {
@@ -12,10 +12,10 @@ data = {
 df = pd.DataFrame(data)
 
 # Sidebar pour la sélection du commerce
-selected_commerce = st.sidebar.selectbox("Sélectionnez un commerce", df["Nom"])
+selected_commerce = st.sidebar.selectbox("Sélectionnez un commerce", df["Enseignes"])
 
 # Filtrer les données en fonction du commerce sélectionné
-filtered_df = df[df["Nom"] == selected_commerce]
+filtered_df = df[df["Enseignes"] == selected_commerce]
 
 # Diviser la page en 2 colonnes
 col1, col2 = st.columns(2)
