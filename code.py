@@ -12,9 +12,9 @@ df = pd.DataFrame(data)
 
 # Dictionnaire de correspondance entre le commerce et le chemin du logo
 logo_paths = {
-    "Aldi": "https://github.com/m-brahim/streamlit_app/blob/65c6285b6652a3294fb2e395de2a2d31e4bacae7/.logo/Aldi_logo.png",
-    "Intermarché": "https://github.com/m-brahim/streamlit_app/blob/65c6285b6652a3294fb2e395de2a2d31e4bacae7/.logo/Intermarche_logo.png",
-    "Carrefour": "https://github.com/m-brahim/streamlit_app/blob/36be0bf7d0730efdd5ddbe320c5f9eeccfd79fd2/.logo/Lidl_logo.png",
+    "Aldi": "https://raw.githubusercontent.com/m-brahim/streamlit_app/65c6285b6652a3294fb2e395de2a2d31e4bacae7/.logo/Aldi_logo.png",
+    "Intermarché": "https://raw.githubusercontent.com/m-brahim/streamlit_app/65c6285b6652a3294fb2e395de2a2d31e4bacae7/.logo/Intermarche_logo.png",
+    "Carrefour": "https://raw.githubusercontent.com/m-brahim/streamlit_app/36be0bf7d0730efdd5ddbe320c5f9eeccfd79fd2/.logo/Lidl_logo.png",
 }
 
 # En-tête de la page
