@@ -1,10 +1,14 @@
 import streamlit as st
 import pandas as pd
 
+
+st.title("Tableau de bords Streamlit - Suivi des ventes 
+
 # Données
 data = {
-    "Enseigne": ["Carrefour", "Auchan", "Leclerc"],
-    "Nombre de Magasins": [253, 136, 585]
+    "Nom": ["Carrefour", "Auchan", "Leclerc"],
+    "Nombre de magasins en France": [253, 136, 585],
+    
 }
 
 df = pd.DataFrame(data)
