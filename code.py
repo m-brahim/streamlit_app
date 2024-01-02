@@ -3,9 +3,9 @@ import pandas as pd
 
 # Données
 data = {
-    "Entreprise": ["Aldi", "Intermarché", "Lidl"],
-    "Nombre de magasins": [1300, 1800, 253],
-    "CA 2022": [27000000000, 14500000000, 42000000000],
+    "Entreprise": ["Aldi", "Intermarché", "Auchan"],
+    "Nombre de magasins": [1300, 1800, 707],
+    "CA 2022": [27000000000, 14500000000, 33000000000],
 }
 
 df = pd.DataFrame(data)
@@ -13,7 +13,7 @@ df = pd.DataFrame(data)
 # Dictionnaire de correspondance entre le commerce et le chemin du logo
 logo_paths = {
     "Aldi": "Aldi_logo.png",
-    "Intermarché": "Intermarche_logo.png",
+    "Auchan": "Auchan_Logo.png",
     "Lidl": "Lidl_logo.png",
 }
 
