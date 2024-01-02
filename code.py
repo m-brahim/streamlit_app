@@ -1,32 +1,31 @@
 import streamlit as st
 import pandas as pd
 
-st.title("Tableau de bords Streamlit")
-
 # Données
 data = {
-    "Enseignes": ["Carrefour", "Auchan", "Leclerc"],
+    "Nom": ["Carrefour", "Auchan", "Leclerc"],
     "Nombre de magasins en France": [253, 136, 585],
+    "Chiffre d'affaires (en millions d'euros)": [35000, 21000, 32000],
 }
 
 df = pd.DataFrame(data)
 
-# Sidebar pour la sélection du commerce
-selected_commerce = st.sidebar.selectbox("Sélectionnez un commerce", df["Enseignes"])
+# En-tête de la page
+st.title("Tableau de bords Streamlit - Suivi des commerces")
+
+# Sélection du commerce
+selected_commerce = st.sidebar.selectbox("Sélectionnez un commerce", df["Nom"])
 
 # Filtrer les données en fonction du commerce sélectionné
-filtered_df = df[df["Enseignes"] == selected_commerce]
+filtered_data = df[df["Nom"] == selected_commerce]
 
-# Diviser la page en 2 colonnes
-col1, col2 = st.columns(2)
+# Afficher le nombre de magasins comme une métrique
+st.metric("Nombre de Magasins", filtered_data["Nombre de magasins en France"].values[0])
 
-# Contenu de chaque colonne
-with col1:
-    st.header("Données sur les commerces")
+# Afficher le chiffre d'affaires comme une métrique
+st.metric("Chiffre d'Affaires (en millions d'euros)", filtered_data["Chiffre d'affaires (en millions d'euros)"].values[0])
 
-    # Afficher le tableau de données sans le nombre de magasins
-    st.write(filtered_df[["Enseignes"]])
-
-with col2:
-    st.header("Graphique en barres")
-    st.write(f"{selected_commerce} a {filtered_df['Nombre de magasins en France'].values[0]} magasins.")
+# Afficher d'autres informations sous forme de texte
+st.subheader(f"Informations sur {selected_commerce}")
+st.text(f"{selected_commerce} a {filtered_data['Nombre de magasins en France'].values[0]} magasins en France.")
+st.text(f"Le chiffre d'affaires est de {filtered_data['Chiffre d'affaires (en millions d'euros)'].values[0]} millions d'euros.")
