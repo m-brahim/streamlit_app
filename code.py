@@ -19,6 +19,10 @@ selected_commerce = st.sidebar.selectbox("Sélectionnez un commerce", df["Entrep
 # Filtrer les données en fonction du commerce sélectionné
 filtered_data = df[df["Entreprise"] == selected_commerce]
 
+# Convertir le chiffre d'affaires en milliards d'euros avec deux chiffres
+ca_milliards = filtered_data['CA 2022'].values[0] / 1e9
+ca_str = f"{ca_milliards:.2f} Mds €"
+
 # Afficher les métriques dans trois colonnes
 col1, col2, col3 = st.columns(3)
 
@@ -29,9 +33,9 @@ col1.metric("Entreprise", selected_commerce)
 col2.metric("Nombre de Magasins", filtered_data["Nombre de magasins"].values[0])
 
 # Métrique 3 - CA 2022
-col3.metric("CA 2022", f"{filtered_data['CA 2022'].values[0]:,} euros")
+col3.metric("CA 2022", ca_str)
 
 # Afficher d'autres informations sous forme de texte
 st.subheader(f"Informations sur {selected_commerce}")
 st.text(f"{selected_commerce} a {filtered_data['Nombre de magasins'].values[0]} magasins.")
-st.text(f"Le chiffre d'affaires pour 2022 est de {filtered_data['CA 2022'].values[0]:,} euros.")
+st.text(f"Le chiffre d'affaires pour 2022 est de {ca_str}.")
