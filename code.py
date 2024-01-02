@@ -13,7 +13,7 @@ df = pd.DataFrame(data)
 # Dictionnaire de correspondance entre le commerce et le chemin du logo
 logo_paths = {
     "Aldi": "Aldi_logo.png",
-    "Auchan": "Auchan_Logo.png",
+    "Auchan": "Auchan_logo.jpg",
     "Lidl": "Lidl_logo.png",
 }
 
