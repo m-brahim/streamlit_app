@@ -1,5 +1,4 @@
 import streamlit as st
-import matplotlib.pyplot as plt
 import pandas as pd
 
 # Données
@@ -23,11 +22,5 @@ with col1:
 with col2:
     st.header("Graphique en barres")
 
-    # Créer le graphique en barres avec Matplotlib
-    fig, ax = plt.subplots()
-    ax.bar(df["Enseigne"], df["Nombre de Magasins"])
-    ax.set_ylabel("Nombre de Magasins")
-    ax.set_title("Nombre de Magasins par Enseigne")
-
-    # Afficher le graphique dans Streamlit
-    st.pyplot(fig)
+    # Afficher le graphique en barres
+    st.bar_chart(df.set_index("Enseigne"))
