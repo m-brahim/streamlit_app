@@ -30,11 +30,13 @@ filtered_data = df[df["Entreprise"] == selected_commerce]
 # Récupérer le chemin du logo en fonction du commerce sélectionné
 logo_path = logo_paths.get(selected_commerce, "Chemin par défaut si le logo n'est pas trouvé")
 
+st.header("")
+
 # Afficher les métriques dans trois colonnes
 col1, col2, col3 = st.columns(3)
 
 # Métrique 1 - Entreprise avec logo
-col1.image(logo_path, width=70)
+col1.image(logo_path, width=100)
 
 # Métrique 2 - Nombre de Magasins
 col2.metric("Nombre de Magasins", filtered_data["Nombre de magasins"].values[0])
