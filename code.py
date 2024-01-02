@@ -1,15 +1,33 @@
 import streamlit as st
+import matplotlib.pyplot as plt
 import pandas as pd
 
-commerces = ["Auchan", "Carrefour", "Leclerc", "Lidl", "Aldi"]
+# Données
+data = {
+    "Enseigne": ["Carrefour", "Auchan", "Leclerc"],
+    "Nombre de Magasins": [253, 136, 585]
+}
 
-# Diviser la page en 4 colonnes
-col1, col2, col3, col4 = st.columns(4)
+df = pd.DataFrame(data)
+
+# Diviser la page en 2 colonnes
+col1, col2 = st.columns(2)
 
 # Contenu de chaque colonne
 with col1:
-    st.header("Liste des commerces")
-    
-    # Utilisez st.markdown pour afficher la liste en Markdown
-    markdown_liste_commerces = "\n".join(f"- {commerce}" for commerce in commerces)
-    st.markdown(markdown_liste_commerces)
+    st.header("Données sur les magasins")
+
+    # Afficher le tableau de données
+    st.write(df)
+
+with col2:
+    st.header("Graphique en barres")
+
+    # Créer le graphique en barres avec Matplotlib
+    fig, ax = plt.subplots()
+    ax.bar(df["Enseigne"], df["Nombre de Magasins"])
+    ax.set_ylabel("Nombre de Magasins")
+    ax.set_title("Nombre de Magasins par Enseigne")
+
+    # Afficher le graphique dans Streamlit
+    st.pyplot(fig)
