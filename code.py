@@ -9,5 +9,4 @@ col1, col2, col3, col4 = st.columns(4)
 # Contenu de chaque colonne
 with col1:
     st.header("Liste des commerces")
-    for i in commerces:
-        st.write(commerces)
+    st.write(commerces)
