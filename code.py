@@ -24,5 +24,14 @@ with col1:
 with col2:
     st.header("Graphique en barres")
 
-    # Afficher le graphique en barres avec le "Nom" comme étiquettes d'axe et le nombre de magasins comme valeurs
-    st.bar_chart(df.set_index("Nom"), use_container_width=True)
+    # Afficher le graphique en barres avec les noms des magasins au-dessus des barres
+    chart = st.bar_chart(df.set_index("Nom"), use_container_width=True)
+
+    # Personnaliser l'axe des abscisses
+    chart.set_axis_labels("Nombre de magasins par enseigne", "Nombre de magasins")
+    chart.set_axis_types("ordinal", "linear")
+    chart.set_title("Nombre de magasins par enseigne")
+
+    # Ajouter les noms des magasins au-dessus de chaque barre
+    for i, label in enumerate(df["Nom"]):
+        st.text(label)
