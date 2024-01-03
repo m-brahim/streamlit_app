@@ -20,7 +20,7 @@ with col_dropdown:
     selected_country = st.selectbox("Sélectionnez un pays", df['Pays/Région'].unique())
 
 
-
+st.subheader("Indicateurs")
 
 
 
