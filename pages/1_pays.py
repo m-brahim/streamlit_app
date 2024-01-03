@@ -32,4 +32,4 @@ filtered_data['Ventes'] = filtered_data['Ventes'].str.replace('€', '').str.rep
 ca_by_country = filtered_data['Ventes'].sum()
 
 # Afficher le chiffre d'affaires en tant que métrique
-st.metric(label="CA par Pays", value=ca_by_country)
+st.metric(label="CA par Pays", value=int(ca_by_country), format="€")
