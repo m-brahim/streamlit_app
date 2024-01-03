@@ -29,4 +29,4 @@ filtered_data = df[df['Pays/Région'] == selected_country]
 ca_by_country = filtered_data['Ventes'].sum()
 
 # Afficher le chiffre d'affaires en tant que métrique
-st.metric(label="CA par Pays", value=f"{ca_by_country:.2f} €")
+st.metric(label="CA par Pays", value=float(ca_by_country), format="€")
