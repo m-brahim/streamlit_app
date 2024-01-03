@@ -19,14 +19,3 @@ with col_title:
 with col_dropdown:
     selected_country = st.selectbox("Sélectionnez un pays", df['Pays/Région'].unique())
 
-# Ajouter le deuxième titre "Indicateurs" en dessous du premier
-st.subheader("Indicateurs")
-
-# Filtrer les données en fonction du pays sélectionné
-filtered_data = df[df['Pays/Région'] == selected_country]
-
-# Calculer le chiffre d'affaires (CA)
-ca_by_country = filtered_data['Ventes'].sum()
-
-# Afficher le chiffre d'affaires en tant que métrique
-st.metric(label="CA par Pays", value=f"{ca_by_country:.2f} €")
