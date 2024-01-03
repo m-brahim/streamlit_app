@@ -25,9 +25,11 @@ st.subheader("Indicateurs")
 # Filtrer les données en fonction du pays sélectionné
 filtered_data = df[df['Pays/Région'] == selected_country]
 
+# Nettoyer la colonne "Ventes"
+filtered_data['Ventes'] = filtered_data['Ventes'].str.replace('€', '').str.replace('\u202f', '').str.replace(',', '').astype(float)
+
 # Calculer le chiffre d'affaires (CA)
 ca_by_country = filtered_data['Ventes'].sum()
 
-# Afficher le chiffre d'affaires en tant que texte
-st.metric(label="CA par Pays", value=float(ca_by_country))
-st.text("€")  # Ajouter le symbole de l'euro en dessous
+# Afficher le chiffre d'affaires en tant que métrique
+st.metric(label="CA par Pays", value=ca_by_country)
