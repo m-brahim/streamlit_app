@@ -19,6 +19,9 @@ with col_title:
 with col_dropdown:
     selected_country = st.selectbox("Sélectionnez un pays", df['Pays/Région'].unique())
 
+# Ajouter le deuxième titre "Indicateurs" en dessous du premier
+st.subheader("Indicateurs")
+
 # Fonction pour calculer le chiffre d'affaires et afficher la métrique
 def display_metrics(selected_country):
     # Filtrer les données en fonction du pays sélectionné
@@ -27,8 +30,8 @@ def display_metrics(selected_country):
     # Calculer le chiffre d'affaires (CA)
     ca_by_country = filtered_data['Ventes'].sum()
 
-    # Afficher le chiffre d'affaires en tant que métrique
-    st.metric(label="CA par Pays", value=f"{ca_by_country:.2f} €")
+    # Afficher le chiffre d'affaires en tant que métrique dans la barre latérale
+    st.sidebar.metric(label="CA par Pays", value=f"{ca_by_country:.2f} €")
 
 # Appeler la fonction avec le pays sélectionné
 display_metrics(selected_country)
