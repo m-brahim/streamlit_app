@@ -1,6 +1,10 @@
 import streamlit as st
 import pandas as pd
 
+url = "Exemple - Hypermarché_Achats.csv"
+
+df = pd.read_csv(url, delimiter=";")
+
 # Titre de la page
 st.set_page_config("Suivi géographique des ventes", page_icon="", layout="wide")
 
