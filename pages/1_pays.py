@@ -19,7 +19,3 @@ with col_title:
 with col_dropdown:
     selected_country = st.selectbox("Sélectionnez un pays", df['Pays/Région'].unique())
 
-# Ajouter le deuxième titre "Indicateurs" en dessous du premier
-st.subheader("Indicateurs")
-
-st.subheader("aeaze")
