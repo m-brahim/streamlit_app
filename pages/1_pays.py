@@ -53,6 +53,7 @@ col_ville.metric(label=f"Ville avec la plus grande vente ({selected_country})", 
 col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", value=num_orders)
 
 st.header("")
+st.header("")
 
 col_title2, col_dropdown2 = st.columns([3, 1])  # Ajustez les proportions en conséquence
 
