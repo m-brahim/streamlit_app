@@ -54,6 +54,8 @@ col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", va
 
 st.header("")
 
+col_title2, col_dropdown2 = st.columns([3, 1])  # Ajustez les proportions en conséquence
+
 with col_title2:
     st.subheader("Visualisation")
 
