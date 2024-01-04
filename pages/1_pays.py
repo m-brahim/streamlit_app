@@ -67,6 +67,17 @@ with col_pie :
     # Créer le graphique en secteur avec Plotly Express
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie', title=f"Quantités vendues par catégorie")
     st.plotly_chart(fig, use_container_width=True)
-
+    
+with col_map:
+    # Créer la carte du monde avec Plotly Express
+    fig_map = px.choropleth(
+        filtered_data,
+        locations="Région",
+        color="Quantité",
+        locationmode="country names",
+        color_continuous_scale="Viridis",
+        title=f"Quantités vendues par région - {selected_country}"
+    )
+    st.plotly_chart(fig_map, use_container_width=True)
 
 
