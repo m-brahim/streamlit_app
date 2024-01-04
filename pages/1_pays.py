@@ -26,7 +26,7 @@ with col_dropdown:
 st.header("")
 
 # Ajouter le 2ème titre
-st.subheader("Indicateurs")
+st.title("Indicateurs")
 
 st.header("")
 st.header("")
@@ -59,7 +59,7 @@ st.header("")
 st.header("")
 
 # Visualisation
-st.subheader("Visualisation")
+st.title("Visualisation")
 
 col_space, col_pie, col_space = st.columns([1, 3, 1])
 
