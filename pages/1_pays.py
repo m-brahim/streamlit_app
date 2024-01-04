@@ -33,4 +33,5 @@ revenue_by_country = df.groupby('Pays/Région')['Ventes'].sum()
 
 # Afficher le chiffre d'affaires pour le pays sélectionné
 country_revenue = revenue_by_country.get(selected_country, 0)
-st.metric(label=f"Chiffre d'affaires pour {selected_country}", value=f"{country_revenue:.2f} €")
+formatted_revenue = f"{int(country_revenue)} €" if country_revenue else "N/A"
+st.metric(label=f"Chiffre d'affaires pour {selected_country}", value=formatted_revenue)
