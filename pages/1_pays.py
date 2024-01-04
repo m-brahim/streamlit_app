@@ -22,6 +22,8 @@ with col_dropdown:
 # Ajouter le deuxième titre "Indicateurs" en dessous du premier
 st.subheader("Indicateurs")
 
+st.header("")
+
 # Supprimer les caractères non numériques de la colonne 'Ventes'
 df['Ventes'] = df['Ventes'].str.replace(r'[^\d.]', '', regex=True)
 
