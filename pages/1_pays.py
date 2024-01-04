@@ -13,8 +13,6 @@ df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 # configuration de la page
 st.set_page_config(
     page_title="Suivi géographique des ventes",
-    page_header="Indicateurs",
-    page_header="Visualisation",
     page_icon="",
     layout="wide"
 )
@@ -23,7 +21,7 @@ st.set_page_config(
 col_title, col_dropdown = st.columns([3, 1])  # Ajustez les proportions en conséquence
 
 with col_title:
-    st.subheader("Suivi géographique des ventes")
+    st.title("Suivi géographique des ventes")
 
 # Liste déroulante à côté du titre
 with col_dropdown:
@@ -67,20 +65,17 @@ st.title("Visualisation")
 
 col_space, col_pie, col_space = st.columns([1, 3, 1])
 
-with col_pie :
+with col_pie:
     st.subheader("Quantités vendues par catégorie")
     # Calculer les quantités vendues par catégorie pour le pays sélectionné
     quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
     # Créer le graphique en secteur avec Plotly Express
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
-    
 
 col_space2, col_map, col_space2 = st.columns([1, 3, 1])
 
-with col_map : 
+with col_map:
     st.subheader("Carte du monde")
     m = folium.Map(location=[0, 0], zoom_start=1.5)
-    st_folium(m, width=725, height = 500)
-
-
+    st_folium(m, width=725, height=500)
