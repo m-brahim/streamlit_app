@@ -6,7 +6,7 @@ url = "Exemple - Hypermarché_Achats.csv"
 df = pd.read_csv(url, delimiter=";")
 
 # Nettoyer la colonne 'Ventes' en supprimant les caractères non numériques
-df['Ventes'] = df['Ventes'].str.replace('[-?\d+]', '', regex=True)
+df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
 
 # Convertir la colonne 'Ventes' en entiers
 df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
