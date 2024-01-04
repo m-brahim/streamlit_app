@@ -61,7 +61,7 @@ st.header("")
 # Visualisation
 st.subheader("Visualisation")
 
-col_pie, col_map = st.columns([2, 3])
+col_pie, col_map = st.columns([1, 3])
 
 with col_pie :
     # Calculer les quantités vendues par catégorie pour le pays sélectionné
@@ -72,9 +72,6 @@ with col_pie :
     
 with col_map:
     m = folium.Map(location=[0, 0], zoom_start=2)
-#    folium.Marker(
-#    [39.949610, -75.150282], popup="Liberty Bell", tooltip="Liberty Bell"
-#    ).add_to(m)
 
     st_data = st_folium(m, width=725)
 
