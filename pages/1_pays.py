@@ -61,7 +61,7 @@ st.header("")
 # Visualisation
 st.subheader("Visualisation")
 
-col_pie, col_map = st.columns([1, 3])
+col_pie, col_map = st.columns([3, 3])
 
 with col_pie :
     # Calculer les quantités vendues par catégorie pour le pays sélectionné
@@ -73,7 +73,7 @@ with col_pie :
 with col_map:
     m = folium.Map(location=[0, 0], zoom_start=2)
 
-    st_data = st_folium(m, width=725)
+    st_data = st_folium(m, width=500)
 
 
 
