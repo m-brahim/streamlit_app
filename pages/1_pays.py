@@ -62,5 +62,5 @@ st.subheader("Quantités vendues par catégorie")
 quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
 
 # Créer le graphique en secteur avec Plotly Express
-fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie', title=f"Quantités vendues par catégorie - {selected_country}")
+fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
 st.plotly_chart(fig, use_container_width=True)
