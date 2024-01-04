@@ -73,7 +73,7 @@ with col_pie :
 with col_map:
     m = folium.Map(location=[0, 0], zoom_start=2)
 
-    st_data = st_folium(m, width=500)
+    st_data = st_folium(m, width=200)
 
 
 
