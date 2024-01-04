@@ -41,26 +41,31 @@ max_city = filtered_data.loc[filtered_data['Ventes'].idxmax(), 'Ville']
 num_orders = filtered_data.groupby('ID commande').size().sum()
 
 # Créer trois colonnes pour aligner les widgets côte à côte
-#col_ca, col_ville, col_orders = st.columns(3)
+col_ca, col_ville, col_orders = st.columns(3)
 
 # Afficher le chiffre d'affaires dans la première colonne
-st.metric(label=f"Chiffre d'affaires pour {selected_country}", value=f"{int(country_revenue)} €")
+col_ca.metric(label=f"Chiffre d'affaires pour {selected_country}", value=f"{int(country_revenue)} €")
 
 # Afficher la ville avec la plus grande vente dans la deuxième colonne
-st.metric(label=f"Ville avec la plus grande vente ({selected_country})", value=max_city)
+col_ville.metric(label=f"Ville avec la plus grande vente ({selected_country})", value=max_city)
 
 # Afficher le nombre total de commandes dans la troisième colonne
-st.metric(label=f"Nombre total de commandes pour {selected_country}", value=num_orders)
+col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", value=num_orders)
 
 st.header("")
 st.header("")
 
 # Visualisation
-st.subheader("Quantités vendues par catégorie")
+st.subheader("Visualisation")
 
-# Calculer les quantités vendues par catégorie pour le pays sélectionné
-quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
+col_pie, col_map = st.columns([2, 2])
 
-# Créer le graphique en secteur avec Plotly Express
-fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
-st.plotly_chart(fig, use_container_width=True)
+with col_pie :
+    # Calculer les quantités vendues par catégorie pour le pays sélectionné
+    quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
+    # Créer le graphique en secteur avec Plotly Express
+    fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie', title=f"Quantités vendues par catégorie")
+    st.plotly_chart(fig, use_container_width=True)
+
+
+
