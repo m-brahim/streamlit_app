@@ -71,9 +71,9 @@ with col_pie :
     st.plotly_chart(fig, use_container_width=True)
     
 with col_map:
-    m = folium.Map(location=[0, 0], zoom_start=2)
+    m = folium.Map(location=[0, 0], zoom_start=0)
 
-    st_data = st_folium(m, width=700, height=500)
+    st_data = st_folium(m, width=700, height=300)
 
 
 
