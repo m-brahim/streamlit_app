@@ -30,10 +30,12 @@ df['Ventes'] = df['Ventes'].str.replace(r'[^\d.]', '', regex=True)
 # Convertir la colonne 'Ventes' en nombres (floats)
 df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce')
 
-# Calculer le chiffre d'affaires par pays
-revenue_by_country = df.groupby('Pays/Région')['Ventes'].sum()
+# Filtrer les données pour le pays sélectionné
+filtered_data = df[df['Pays/Région'] == selected_country]
+
+# Calculer le chiffre d'affaires pour le pays sélectionné
+country_revenue = filtered_data['Ventes'].sum()
 
 # Afficher le chiffre d'affaires pour le pays sélectionné
-country_revenue = revenue_by_country.get(selected_country, 0)
 formatted_revenue = f"{int(country_revenue)} €" if country_revenue else "N/A"
 st.metric(label=f"Chiffre d'affaires pour {selected_country}", value=formatted_revenue)
