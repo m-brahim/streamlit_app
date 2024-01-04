@@ -62,7 +62,7 @@ st.subheader("Visualisation")
 col_space, col_pie, col_space = st.columns([1, 2, 1])
 
 with col_pie :
-    st.caption("Quantités vendues par catégorie")
+    st.subheader("Quantités vendues par catégorie")
     # Calculer les quantités vendues par catégorie pour le pays sélectionné
     quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
     # Créer le graphique en secteur avec Plotly Express
@@ -73,6 +73,6 @@ with col_pie :
 col_space2, col_map, col_space2 = st.columns([1, 2, 1])
 
 with col_map : 
-    st.scaption("Carte du monde")
+    st.subheader("Carte du monde")
     m = folium.Map(location=[0, 0], zoom_start=1.5)
     st_folium(m, width=725, height = 500)
