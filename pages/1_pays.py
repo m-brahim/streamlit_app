@@ -39,3 +39,12 @@ country_revenue = filtered_data['Ventes'].sum()
 # Afficher le chiffre d'affaires pour le pays sélectionné
 formatted_revenue = f"{int(country_revenue)} €" if country_revenue else "N/A"
 st.metric(label=f"Chiffre d'affaires pour {selected_country}", value=formatted_revenue)
+
+# Trouver la ville avec la vente maximale pour le pays sélectionné
+max_city = filtered_data.loc[filtered_data['Ventes'].idxmax(), 'Ville']
+
+# Afficher la ville avec la vente maximale
+st.metric(label=f"Ville avec la plus grande vente ({selected_country})", value=max_city)
+
+
+
