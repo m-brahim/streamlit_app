@@ -23,7 +23,7 @@ with col_dropdown:
 
 st.header("")
 
-# Ajouter le deuxième titre "Indicateurs" en dessous du premier
+# Ajouter le 2ème titre
 st.subheader("Indicateurs")
 
 st.header("")
@@ -51,3 +51,9 @@ col_ville.metric(label=f"Ville avec la plus grande vente ({selected_country})", 
 
 # Afficher le nombre total de commandes dans la troisième colonne
 col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", value=num_orders)
+
+st.header("")
+
+# Ajouter le 3ème titre 
+st.subheader("Visualisation")
+
