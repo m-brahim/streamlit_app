@@ -22,8 +22,11 @@ with col_dropdown:
 # Ajouter le deuxième titre "Indicateurs" en dessous du premier
 st.subheader("Indicateurs")
 
+# Supprimer les caractères non numériques de la colonne 'Ventes'
+df['Ventes'] = df['Ventes'].str.replace(r'[^\d.]', '', regex=True)
+
 # Convertir la colonne 'Ventes' en nombres (floats)
-df['Ventes'] = df['Ventes'].str.replace('€', '').astype(float)
+df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce')
 
 # Calculer le chiffre d'affaires par pays
 revenue_by_country = df.groupby('Pays/Région')['Ventes'].sum()
