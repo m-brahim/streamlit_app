@@ -41,16 +41,16 @@ max_city = filtered_data.loc[filtered_data['Ventes'].idxmax(), 'Ville']
 num_orders = filtered_data.groupby('ID commande').size().sum()
 
 # Créer trois colonnes pour aligner les widgets côte à côte
-col_ca, col_ville, col_orders = st.columns(3)
+#col_ca, col_ville, col_orders = st.columns(3)
 
 # Afficher le chiffre d'affaires dans la première colonne
-col_ca.metric(label=f"Chiffre d'affaires pour {selected_country}", value=f"{int(country_revenue)} €")
+st.metric(label=f"Chiffre d'affaires pour {selected_country}", value=f"{int(country_revenue)} €")
 
 # Afficher la ville avec la plus grande vente dans la deuxième colonne
-col_ville.metric(label=f"Ville avec la plus grande vente ({selected_country})", value=max_city)
+st.metric(label=f"Ville avec la plus grande vente ({selected_country})", value=max_city)
 
 # Afficher le nombre total de commandes dans la troisième colonne
-col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", value=num_orders)
+st.metric(label=f"Nombre total de commandes pour {selected_country}", value=num_orders)
 
 st.header("")
 st.header("")
