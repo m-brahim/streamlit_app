@@ -24,6 +24,8 @@ with col_dropdown:
 # Ajouter le deuxième titre "Indicateurs" en dessous du premier
 st.subheader("Indicateurs")
 
+st.header("")
+
 # Filtrer les données pour le pays sélectionné
 filtered_data = df[df['Pays/Région'] == selected_country]
 
