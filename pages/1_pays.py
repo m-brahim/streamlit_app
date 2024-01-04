@@ -69,13 +69,14 @@ with col_pie :
     st.plotly_chart(fig, use_container_width=True)
     
 with col_map:
-    # Créer la carte du monde avec Plotly Express
-    fig_map = px.choropleth(
-        filtered_data,
-        locations="Région",
-        color="Quantité",
-        locationmode="country names",
-        color_continuous_scale="Viridis",
-        title=f"Quantités vendues par région - {selected_country}"
-    )
-    st.plotly_chart(fig_map, use_container_width=True)
+    # Créer la carte du monde avec Folium
+    m = folium.Map(location=[0, 0], zoom_start=2)
+    
+    # Ajouter des marqueurs pour chaque région avec des quantités vendues
+    marker_cluster = MarkerCluster().add_to(m)
+    for index, row in filtered_data.iterrows():
+        folium.Marker([row['Latitude'], row['Longitude']], 
+                      popup=f"{row['Région']} - {row['Quantité']} vendus",
+                      icon=None).add_to(marker_cluster)
+
+    st.folium_chart(m, use_container_width=True)
