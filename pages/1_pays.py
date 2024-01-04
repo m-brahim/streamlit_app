@@ -10,11 +10,14 @@ df = pd.read_csv(url, delimiter=";")
 df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
 df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 
-# Titre de la page
-st.set_page_config("Suivi géographique des ventes", page_icon="", layout="wide")
-st.set_page_config("Indicateurs", page_icon="", layout="wide")
-st.set_page_config("Visualisations", page_icon="", layout="wide")
-
+# configuration de la page
+st.set_page_config(
+    page_title="Suivi géographique des ventes",
+    page_header="Indicateurs",
+    page_header="Visualisation",
+    page_icon="",
+    layout="wide"
+)
 
 # Colonne pour le titre à l'extrême droite
 col_title, col_dropdown = st.columns([3, 1])  # Ajustez les proportions en conséquence
