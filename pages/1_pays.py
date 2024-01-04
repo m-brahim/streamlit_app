@@ -60,7 +60,7 @@ with col_title2:
     st.subheader("Visualisation")
 
 # Liste déroulante à côté du titre
-with col_dropdown3:
+with col_dropdown2:
     selected_category = st.selectbox("Sélectionnez une catégorie", df['Catégorie'].unique())
 
 # Filtrer les données par catégorie
