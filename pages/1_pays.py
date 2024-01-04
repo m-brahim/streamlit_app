@@ -24,6 +24,8 @@ with col_dropdown:
 # Ajouter le deuxième titre "Indicateurs" en dessous du premier
 st.subheader("Indicateurs")
 
+st.header("")
+
 # Filtrer les données pour le pays sélectionné
 filtered_data = df[df['Pays/Région'] == selected_country]
 
@@ -40,11 +42,10 @@ num_orders = filtered_data.groupby('ID commande').size().sum()
 col_ca, col_ville, col_orders = st.columns(3)
 
 # Afficher le chiffre d'affaires dans la première colonne
-col_ca.metric(label=f"Chiffre d'affaires pour {selected_country}", value=f"<div style='text-align: center;'>{int(country_revenue)} €</div>", unsafe_allow_html=True)
+col_ca.metric(label=f"Chiffre d'affaires pour {selected_country}", value=f"{int(country_revenue)} €")
 
 # Afficher la ville avec la plus grande vente dans la deuxième colonne
-col_ville.metric(label=f"Ville avec la plus grande vente ({selected_country})", value=f"<div style='text-align: center;'>{max_city}</div>", unsafe_allow_html=True)
+col_ville.metric(label=f"Ville avec la plus grande vente ({selected_country})", value=max_city)
 
 # Afficher le nombre total de commandes dans la troisième colonne
-col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", value=f"<div style='text-align: center;'>{num_orders}</div>", unsafe_allow_html=True)
-
+col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", value=num_orders)
