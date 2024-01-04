@@ -14,7 +14,6 @@ st.set_page_config("Suivi géographique des ventes", page_icon="", layout="wide"
 # Colonne pour le titre à l'extrême droite
 col_title, col_dropdown = st.columns([3, 1])  # Ajustez les proportions en conséquence
 
-# Titre à l'extrême droite
 with col_title:
     st.subheader("Suivi géographique des ventes")
 
@@ -55,18 +54,10 @@ col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", va
 
 st.header("")
 
-# Ajouter le 3ème titre 
-st.subheader("Visualisation")
+with col_title2:
+    st.subheader("Visualisation")
 
-# Liste déroulante pour la sélection de catégorie
-selected_category = st.selectbox("Sélectionnez une catégorie", df['Catégorie'].unique())
+# Liste déroulante à côté du titre
+with col_dropdown3:
+    selected_category = st.selectbox("Sélectionnez une catégorie", df['Catégorie'].unique())
 
-# Filtrer les données par catégorie
-filtered_data_category = df[df['Catégorie'] == selected_category]
-
-# Calculer les quantités vendues par pays pour la catégorie sélectionnée
-quantity_by_country = filtered_data_category.groupby('Pays/Région')['Quantité'].sum().reset_index()
-
-# Créer le graphique en secteur avec Plotly Express
-fig = px.pie(quantity_by_country, values='Quantité', names='Pays/Région', title=f"Quantités vendues par pays - Catégorie: {selected_category}")
-st.plotly_chart(fig, use_container_width=True)
