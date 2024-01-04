@@ -12,6 +12,9 @@ df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 
 # Titre de la page
 st.set_page_config("Suivi géographique des ventes", page_icon="", layout="wide")
+st.set_page_config("Indicateurs", page_icon="", layout="wide")
+st.set_page_config("Visualisations", page_icon="", layout="wide")
+
 
 # Colonne pour le titre à l'extrême droite
 col_title, col_dropdown = st.columns([3, 1])  # Ajustez les proportions en conséquence
@@ -28,7 +31,6 @@ st.header("")
 # Ajouter le 2ème titre
 st.title("Indicateurs")
 
-st.header("")
 st.header("")
 
 # Filtrer les données pour le pays sélectionné
@@ -55,7 +57,6 @@ col_ville.metric(label=f"Ville avec la plus grande vente ({selected_country})", 
 # Afficher le nombre total de commandes dans la troisième colonne
 col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", value=num_orders)
 
-st.header("")
 st.header("")
 
 # Visualisation
