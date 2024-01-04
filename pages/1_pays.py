@@ -74,11 +74,4 @@ with col_map:
     # Créer la carte du monde avec Folium
     m = folium.Map(location=[0, 0], zoom_start=2)
     
-    # Ajouter des marqueurs pour chaque région avec des quantités vendues
-    marker_cluster = MarkerCluster().add_to(m)
-    for index, row in filtered_data.iterrows():
-        folium.Marker([row['Latitude'], row['Longitude']], 
-                      popup=f"{row['Région']} - {row['Quantité']} vendus",
-                      icon=None).add_to(marker_cluster)
-
     st.folium_chart(m, use_container_width=True)
