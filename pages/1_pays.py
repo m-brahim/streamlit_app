@@ -22,15 +22,10 @@ with col_dropdown:
 # Ajouter le deuxième titre "Indicateurs" en dessous du premier
 st.subheader("Indicateurs")
 
-# Filtrer les données en fonction du pays sélectionné
-filtered_data = df[df['Pays/Région'] == selected_country]
+# Calculer le chiffre d'affaires par pays
+revenue_by_country = df.groupby('Pays/Région')['Ventes'].sum()
 
-# Nettoyer la colonne "Ventes"
-filtered_data['Ventes'] = filtered_data['Ventes'].str.replace('€', '').str.replace('\u202f', '').str.replace(',', '').astype(float)
-
-# Calculer le chiffre d'affaires (CA)
-ca_by_country = filtered_data['Ventes'].sum()
-
-# Afficher le chiffre d'affaires en tant que métrique
-st.metric(label="CA par Pays", value=ca_by_country, format="€")
+# Afficher le chiffre d'affaires pour le pays sélectionné
+country_revenue = revenue_by_country.get(selected_country, 0)
+st.metric(label=f"Chiffre d'affaires pour {selected_country}", value=f"{country_revenue} €")
 
