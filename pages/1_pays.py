@@ -27,6 +27,7 @@ st.header("")
 st.subheader("Indicateurs")
 
 st.header("")
+st.header("")
 
 # Filtrer les données pour le pays sélectionné
 filtered_data = df[df['Pays/Région'] == selected_country]
