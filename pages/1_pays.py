@@ -74,4 +74,4 @@ with col_map:
     # Créer la carte du monde avec Folium
     m = folium.Map(location=[0, 0], zoom_start=2)
     
-    st.folium_chart(m, use_container_width=True)
+    st.folium_chart(m)
