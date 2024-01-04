@@ -33,8 +33,8 @@ country_revenue = filtered_data['Ventes'].sum()
 # Trouver la ville avec la vente maximale pour le pays sélectionné
 max_city = filtered_data.loc[filtered_data['Ventes'].idxmax(), 'Ville']
 
-# Calculer le nombre de commandes pour le pays sélectionné
-num_orders = filtered_data['Commandes'].count()
+# Calculer le nombre total de commandes pour le pays sélectionné
+num_orders = filtered_data.groupby('ID commande').size().sum()
 
 # Créer trois colonnes pour aligner les widgets côte à côte
 col_ca, col_ville, col_orders = st.columns(3)
@@ -45,5 +45,5 @@ col_ca.metric(label=f"Chiffre d'affaires pour {selected_country}", value=f"{int(
 # Afficher la ville avec la plus grande vente dans la deuxième colonne
 col_ville.metric(label=f"Ville avec la plus grande vente ({selected_country})", value=max_city)
 
-# Afficher le nombre de commandes dans la troisième colonne
-col_orders.metric(label=f"Nombre de commandes pour {selected_country}", value=num_orders)
+# Afficher le nombre total de commandes dans la troisième colonne
+col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", value=num_orders)
