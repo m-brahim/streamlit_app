@@ -29,7 +29,6 @@ st.header("")
 st.subheader("Indicateurs")
 
 st.header("")
-st.header("")
 
 # Filtrer les données pour le pays sélectionné
 filtered_data = df[df['Pays/Région'] == selected_country]
@@ -55,7 +54,6 @@ col_ville.metric(label=f"Ville avec la plus grande vente ({selected_country})", 
 # Afficher le nombre total de commandes dans la troisième colonne
 col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", value=num_orders)
 
-st.header("")
 st.header("")
 
 # Visualisation
