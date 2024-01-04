@@ -56,7 +56,7 @@ st.header("")
 st.header("")
 
 # Visualisation
-st.subheader("Quantités vendues par catégorie - " + selected_country)
+st.subheader("Quantités vendues par catégorie")
 
 # Calculer les quantités vendues par catégorie pour le pays sélectionné
 quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
