@@ -4,7 +4,12 @@ import pandas as pd
 url = "Exemple - Hypermarché_Achats.csv"
 
 df = pd.read_csv(url, delimiter=";")
-df['Ventes'] = df['Ventes'].str.replace('€', '').astype(int)
+
+# Nettoyer la colonne 'Ventes' en supprimant les caractères non numériques
+df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
+
+# Convertir la colonne 'Ventes' en entiers
+df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 
 # Titre de la page
 st.set_page_config("Suivi géographique des ventes", page_icon="", layout="wide")
