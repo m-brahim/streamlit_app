@@ -77,3 +77,5 @@ with col_map :
     st.subheader("Carte du monde")
     m = folium.Map(location=[0, 0], zoom_start=1.5)
     st_folium(m, width=725, height = 500)
+
+
