@@ -61,7 +61,7 @@ st.subheader("Visualisation")
 
 col_space, col_pie, col_space = st.columns([1, 3, 1])
 
-with col_pie :
+with col_pie:
     st.subheader("Quantités vendues par catégorie")
     # Calculer les quantités vendues par catégorie pour le pays sélectionné
     quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
@@ -72,7 +72,13 @@ with col_pie :
 
 col_space2, col_map, col_space2 = st.columns([1, 3, 1])
 
-with col_map : 
+with col_map:
     st.subheader("Carte du monde")
     m = folium.Map(location=[0, 0], zoom_start=1.5)
-    st_folium(m, width=725, height = 500)
+    st_folium(m, width=725, height=500)
+
+# Ajouter le style CSS pour centrer les titres
+st.markdown(
+    "<style>div.stSubheader{text-align:center;}</style>",
+    unsafe_allow_html=True
+)
