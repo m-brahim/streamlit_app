@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-import folium
-from folium.plugins import MarkerCluster
+import plotly.express as px
 
 url = "Exemple - Hypermarché_Achats.csv"
 
@@ -62,22 +61,21 @@ st.subheader("Visualisation")
 
 col_pie, col_map = st.columns([2, 2])
 
-with col_pie:
+with col_pie :
     # Calculer les quantités vendues par catégorie pour le pays sélectionné
     quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
     # Créer le graphique en secteur avec Plotly Express
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie', title=f"Quantités vendues par catégorie")
     st.plotly_chart(fig, use_container_width=True)
-
-with col_map:
-    # Créer la carte du monde avec Folium
-    m = folium.Map(location=[0, 0], zoom_start=2)
     
-    # Ajouter des marqueurs pour chaque région avec des quantités vendues
-    marker_cluster = MarkerCluster().add_to(m)
-    for index, row in filtered_data.iterrows():
-        folium.Marker([row['Latitude'], row['Longitude']], 
-                      popup=f"{row['Région']} - {row['Quantité']} vendus",
-                      icon=None).add_to(marker_cluster)
-
-    st.folium_chart(m, use_container_width=True)
+with col_map:
+    # Créer la carte du monde avec Plotly Express
+    fig_map = px.choropleth(
+        filtered_data,
+        locations="Région",
+        color="Quantité",
+        locationmode="country names",
+        color_continuous_scale="Viridis",
+        title=f"Quantités vendues par région - {selected_country}"
+    )
+    st.plotly_chart(fig_map, use_container_width=True)
