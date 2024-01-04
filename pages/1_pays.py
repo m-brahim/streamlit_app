@@ -71,7 +71,12 @@ with col_pie :
     st.plotly_chart(fig, use_container_width=True)
     
 with col_map:
-    # Créer la carte du monde avec Folium
-    m = folium.Map(location=[0, 0], zoom_start=2)
-    
-    st.folium_chart(m)
+    m = folium.Map(location=[39.949610, -75.150282], zoom_start=16)
+    folium.Marker(
+    [39.949610, -75.150282], popup="Liberty Bell", tooltip="Liberty Bell"
+    ).add_to(m)
+
+    st_data = st_folium(m, width=725)
+
+
+
