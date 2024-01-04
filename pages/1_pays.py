@@ -61,7 +61,7 @@ st.header("")
 # Visualisation
 st.subheader("Visualisation")
 
-col_pie, col_map = st.columns([3, 3])
+col_space, col_pie, col_space = st.columns([1, 3, 1])
 
 with col_pie :
     # Calculer les quantités vendues par catégorie pour le pays sélectionné
@@ -69,11 +69,7 @@ with col_pie :
     # Créer le graphique en secteur avec Plotly Express
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie', title=f"Quantités vendues par catégorie")
     st.plotly_chart(fig, use_container_width=True)
-    
-with col_map:
-    m = folium.Map(location=[0, 0], zoom_start=0)
 
-    st_data = st_folium(m, width=700, height=300)
 
 
 
