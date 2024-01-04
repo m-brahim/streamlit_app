@@ -64,12 +64,13 @@ st.subheader("Visualisation")
 col_space, col_pie, col_space = st.columns([1, 3, 1])
 
 with col_pie :
-st.subheader("Quantités vendues par catégorie")
+    
     # Calculer les quantités vendues par catégorie pour le pays sélectionné
     quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
     # Créer le graphique en secteur avec Plotly Express
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
+    st.subheader("Quantités vendues par catégorie")
 
 col_space2, col_map, col_space2 = st.columns([1, 3, 1])
 
