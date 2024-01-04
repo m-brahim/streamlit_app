@@ -55,21 +55,12 @@ col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", va
 st.header("")
 st.header("")
 
-col_title2, col_dropdown2 = st.columns([3, 1])  # Ajustez les proportions en conséquence
+# Visualisation
+st.subheader("Quantités vendues par catégorie - " + selected_country)
 
-with col_title2:
-    st.subheader("Visualisation")
-
-# Liste déroulante à côté du titre
-with col_dropdown2:
-    selected_category = st.selectbox("Sélectionnez une catégorie", df['Catégorie'].unique())
-
-# Filtrer les données par catégorie
-filtered_data_category = df[df['Catégorie'] == selected_category]
-
-# Calculer les quantités vendues par pays pour la catégorie sélectionnée
-quantity_by_country = filtered_data_category.groupby('Pays/Région')['Quantité'].sum().reset_index()
+# Calculer les quantités vendues par catégorie pour le pays sélectionné
+quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
 
 # Créer le graphique en secteur avec Plotly Express
-fig = px.pie(quantity_by_country, values='Quantité', names='Pays/Région', title=f"Quantités vendues par pays - Catégorie: {selected_category}")
+fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie', title=f"Quantités vendues par catégorie - {selected_country}")
 st.plotly_chart(fig, use_container_width=True)
