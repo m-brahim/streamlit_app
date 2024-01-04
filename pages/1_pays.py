@@ -54,11 +54,11 @@ col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", va
 
 st.header("")
 
-with col_title2:
+with col_title:
     st.subheader("Visualisation")
 
 # Liste déroulante à côté du titre
-with col_dropdown3:
+with col_dropdown:
     selected_category = st.selectbox("Sélectionnez une catégorie", df['Catégorie'].unique())
 
 # Filtrer les données par catégorie
