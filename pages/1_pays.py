@@ -33,6 +33,11 @@ country_revenue = filtered_data['Ventes'].sum()
 # Trouver la ville avec la vente maximale pour le pays sélectionné
 max_city = filtered_data.loc[filtered_data['Ventes'].idxmax(), 'Ville']
 
-# Afficher le chiffre d'affaires et la ville avec la plus grande vente
-st.metric(label=f"Chiffre d'affaires pour {selected_country}", value=f"{int(country_revenue)} €")
-st.metric(label=f"Ville avec la plus grande vente ({selected_country})", value=max_city)
+# Créer deux colonnes pour aligner les widgets côte à côte
+col_ca, col_ville = st.columns(2)
+
+# Afficher le chiffre d'affaires dans la première colonne
+col_ca.metric(label=f"Chiffre d'affaires pour {selected_country}", value=f"{int(country_revenue)} €")
+
+# Afficher la ville avec la plus grande vente dans la deuxième colonne
+col_ville.metric(label=f"Ville avec la plus grande vente ({selected_country})", value=max_city)
