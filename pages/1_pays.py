@@ -4,6 +4,7 @@ import pandas as pd
 url = "Exemple - Hypermarché_Achats.csv"
 
 df = pd.read_csv(url, delimiter=";")
+df['Ventes'] = df['Ventes'].str.replace('€', '').astype(int)
 
 # Titre de la page
 st.set_page_config("Suivi géographique des ventes", page_icon="", layout="wide")
@@ -23,12 +24,6 @@ with col_dropdown:
 st.subheader("Indicateurs")
 
 st.header("")
-
-# Supprimer les caractères non numériques de la colonne 'Ventes'
-df['Ventes'] = df['Ventes'].str.replace(r'[^\d.]', '', regex=True)
-
-# Convertir la colonne 'Ventes' en nombres (floats)
-df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce')
 
 # Filtrer les données pour le pays sélectionné
 filtered_data = df[df['Pays/Région'] == selected_country]
