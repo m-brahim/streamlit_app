@@ -1,6 +1,10 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import folium
+from streamlit_folium import st_folium
+from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderTimedOut
 
 url = "Exemple - Hypermarché_Achats.csv"
 
@@ -47,6 +51,11 @@ diff_clients = num_clients - df[df['Année'] == selected_comparison_year].drop_d
 diff_orders = num_orders - len(df[df['Année'] == selected_comparison_year]['ID commande'])
 diff_ca = ca_by_year - df[df['Année'] == selected_comparison_year]['Ventes'].sum()
 
+# Convertir les différences en types de données acceptés
+diff_clients = int(diff_clients)
+diff_orders = int(diff_orders)
+diff_ca = int(diff_ca)
+
 # Nombre de clients
 col_clients.metric(label="Nombre de clients", value=num_clients, delta=diff_clients)
 
@@ -63,33 +72,23 @@ st.subheader("Visualisations")
 st.subheader("")
 
 # Créer 2 colonnes pour aligner les widgets côte à côte
-col_v1, col_v2, col_v3 = st.columns([2, 1, 2])
+col_v1, col_v2, col_v3 = st.columns([2,1,2])
+
 
 with col_v1:
     # Agréger le nombre de clients par mois pour l'année sélectionnée
-    monthly_clients_selected_year = df[df['Année'] == selected_year].drop_duplicates('ID client').groupby('Mois')['ID client'].count().reset_index()
-
-    # Agréger le nombre de clients par mois pour l'année de comparaison
-    monthly_clients_comparison_year = df[df['Année'] == selected_comparison_year].drop_duplicates('ID client').groupby('Mois')['ID client'].count().reset_index()
+    monthly_clients = df[df['Année'] == selected_year].drop_duplicates('ID client').groupby('Mois')['ID client'].count().reset_index()
 
     # Utiliser la variable num_clients avec drop_duplicates pour construire le graphique en ligne
     fig_clients_evolution = px.line(
-        monthly_clients_selected_year,
+        monthly_clients,
         x='Mois',
         y='ID client',
-        title=f"Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
+        title=f"Évolution du nombre de clients en {selected_year}",
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     )
 
-    # Ajouter la deuxième série temporelle pour l'année de comparaison
-    fig_clients_evolution.add_trace(px.line(
-        monthly_clients_comparison_year,
-        x='Mois',
-        y='ID client',
-        labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
-    ).data[0])
-
-    st.plotly_chart(fig_clients_evolution, use_container_width) 
+    st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
 with col_v3:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
