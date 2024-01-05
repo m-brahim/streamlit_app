@@ -15,6 +15,10 @@ df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer') 
 # Ajouter une colonne pour l'année à partir de la colonne de dates de commande
 df['Année'] = pd.to_datetime(df['Date de commande'].str.replace(',', '', regex=False), format='%d/%m/%Y').dt.year
 
+# Convertir les colonnes 'Année' et 'Ventes' en entiers après suppression des virgules
+df['Année'] = df['Année'].astype(int)
+df['Ventes'] = df['Ventes'].astype(int)
+
 # Obtenir les années triées
 sorted_years = sorted(df['Année'].unique())
 
