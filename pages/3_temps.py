@@ -27,3 +27,8 @@ with col_title:
 # Liste déroulante à côté du titre
 with col_dropdown:
     selected_year = st.selectbox("Sélectionnez une année", df['Année'].unique())
+
+st.subheader("Indicateurs")
+
+num_clients = df[df['Année'] == selected_year]['ID client'].nunique()
+st.metric(label="Nombre de clients", value=num_clients)
