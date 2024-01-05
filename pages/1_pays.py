@@ -71,7 +71,17 @@ with col_pie :
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
     
-with col_map : 
-    client_count_by_country = df[df['Pays/Région'] == selected_country].groupby('ID client').size().reset_index(name='Nombre de clients')
-    st.map(client_count_by_country)
-    st.text(f"Nombre de clients par pays ({selected_country}): {len(client_count_by_country)}")
+with col_map:
+    st.subheader("Carte des ventes par ville")
+
+    # Créer une carte Folium centrée sur le pays sélectionné
+    map_center = filtered_data.groupby(['Pays/Région']).size().reset_index().mean()[['Latitude', 'Longitude']]
+    my_map = folium.Map(location=[map_center['Latitude'], map_center['Longitude']], zoom_start=6)
+
+    # Ajouter des marqueurs pour chaque ville avec le chiffre d'affaires comme popup
+    for index, row in filtered_data.iterrows():
+        folium.Marker([row['Pays/Région']], 
+                      popup=f"{row['Ville']} - {row['Ventes']} €").add_to(my_map)
+
+    # Utiliser le wrapper streamlit pour afficher la carte
+    st_folium(my_map, width=800, height=500)
