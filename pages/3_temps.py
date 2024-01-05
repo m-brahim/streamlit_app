@@ -101,12 +101,6 @@ with col_v1:
 
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
-with col_v2:
-    # Ajouter du texte pour indiquer les couleurs
-    st.markdown("**Légende des couleurs**")
-    st.markdown("Année sélectionnée (bleu) : Nombre de clients")
-    st.markdown("Année de comparaison (rouge) : Nombre de clients")
-
 with col_v3:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders_selected_year = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
