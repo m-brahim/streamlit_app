@@ -49,3 +49,17 @@ col_orders.metric(label="Nombre de commandes", value=num_orders)
 # Chiffre d'affaires pour l'année sélectionnée
 ca_by_year = df[df['Année'] == selected_year]['Ventes'].sum()
 col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_by_year)} €")
+
+st.subheader("Visualisations")
+
+# Visualisation de l'évolution du nombre de commandes par mois
+fig_orders_evolution = px.line(
+    df[df['Année'] == selected_year],
+    x='Date de commande',
+    y='ID commande',
+    title=f"Évolution du nombre de commandes en {selected_year}",
+    labels={'ID commande': 'Nombre de commandes', 'Date de commande': 'Mois'}
+)
+
+st.plotly_chart(fig_orders_evolution, use_container_width=True)
+
