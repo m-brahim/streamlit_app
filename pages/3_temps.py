@@ -91,13 +91,13 @@ with col_v1:
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     )
 
-    # Ajouter la deuxième série temporelle pour l'année de comparaison
+    # Ajouter la deuxième série temporelle pour l'année de comparaison avec une légende
     fig_clients_evolution.add_trace(px.line(
         monthly_clients_comparison_year,
         x='Mois',
         y='ID client',
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
-    ).update_traces(line_shape='linear', line=dict(color='red')).data[0])
+    ).update_traces(line_shape='linear', line=dict(color='red'), name=f"{selected_comparison_year}").data[0])
 
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
@@ -117,12 +117,12 @@ with col_v3:
         labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
     )
 
-    # Ajouter la deuxième série temporelle pour l'année de comparaison
+    # Ajouter la deuxième série temporelle pour l'année de comparaison avec une légende
     fig_orders_evolution.add_trace(px.bar(
         monthly_orders_comparison_year,
         x='Mois',
         y='ID commande',
         labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
-    ).update_traces(marker_color='red').data[0])
+    ).update_traces(marker_color='red', name=f"{selected_comparison_year}").data[0])
 
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
