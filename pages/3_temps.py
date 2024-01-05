@@ -45,3 +45,5 @@ col_clients.metric(label="Nombre de clients", value=num_clients)
 selected_year_orders = df[df['Année'] == selected_year]['ID commande'].unique()
 num_orders = len(selected_year_orders)
 col_orders.metric(label="Nombre de commandes", value=num_orders)
+
+st.write("Nombre total d'ID Commandes sans filtre d'année :", len(df['ID commande'].unique()))
