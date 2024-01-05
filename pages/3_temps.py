@@ -6,19 +6,28 @@ from streamlit_folium import st_folium
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut
 
+# Définir la fonction pour extraire les nombres
+def extract_number(chaine):
+    # Utiliser une expression régulière pour extraire le nombre
+    resultats = pd.to_numeric(chaine.str.extract('(-?\d+)', expand=False), errors='coerce')
+    return resultats
+
 url = "Exemple - Hypermarché_Achats.csv"
 
 df = pd.read_csv(url, delimiter=";")
-df['Ventes'] = df['Ventes'].str.replace('[^\d,]', '', regex=True)  # Supprimer tout sauf les chiffres et la virgule
-df['Ventes'] = df['Ventes'].str.replace(',', '.', regex=True)  # Remplacer la virgule par le point pour le format numérique
-df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='float')  # Convertir en nombre à virgule flottante
+
+# Colonnes à convertir en nombres
+col_to_convert_num = ['Profit', 'Prévision des ventes', 'Ventes']
+
+# Appliquer la fonction d'extraction aux colonnes spécifiques
+for colonne in col_to_convert_num:
+    df[colonne] = extract_number(df[colonne])
 
 # Ajouter une colonne pour l'année à partir de la colonne de dates de commande
 df['Année'] = pd.to_datetime(df['Date de commande'].str.replace(',', '', regex=False), format='%d/%m/%Y').dt.year
 
-# Convertir les colonnes 'Année' et 'Ventes' en entiers après suppression des virgules
+# Convertir les colonnes 'Année' en entiers après suppression des virgules
 df['Année'] = df['Année'].astype(int)
-df['Ventes'] = df['Ventes'].astype(int)
 
 # Obtenir les années triées
 sorted_years = sorted(df['Année'].unique())
