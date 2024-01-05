@@ -4,6 +4,7 @@ import plotly.express as px
 import folium
 from streamlit_folium import st_folium
 from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderTimedOut
 
 url = "Exemple - Hypermarché_Achats.csv"
 
@@ -88,14 +89,16 @@ with col_map:
 
         # Ajouter des marqueurs pour chaque ville avec le chiffre d'affaires comme popup
         for index, row in filtered_data.iterrows():
-            # Utiliser Geopy pour obtenir les coordonnées de la ville
-            city_location = geolocator.geocode(row['Ville'])
-            if city_location:
-                folium.Marker([city_location.latitude, city_location.longitude],
-                              popup=f"{row['Ville']} - {row['Ventes']} €").add_to(my_map)
+            try:
+                # Utiliser Geopy pour obtenir les coordonnées de la ville
+                city_location = geolocator.geocode(row['Ville'])
+                if city_location:
+                    folium.Marker([city_location.latitude, city_location.longitude],
+                                  popup=f"{row['Ville']} - {row['Ventes']} €").add_to(my_map)
+            except GeocoderTimedOut:
+                st.warning(f"Timeout lors de la récupération des coordonnées pour la ville : {row['Ville']}")
 
         # Utiliser le wrapper streamlit pour afficher la carte
         st_folium(my_map, width=800, height=500)
     else:
         st.warning(f"Impossible d'obtenir les coordonnées pour le pays : {selected_country}")
-
