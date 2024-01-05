@@ -38,7 +38,7 @@ st.subheader("")
 # Créer trois colonnes pour aligner les widgets côte à côte
 col_clients, col_orders, col_ca = st.columns(3)
 
-num_clients = df[df['Année'] == selected_year]['ID client'].nunique()
+num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
 col_clients.metric(label="Nombre de clients", value=num_clients)
 
 # Nombre de commandes
