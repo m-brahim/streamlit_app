@@ -38,12 +38,10 @@ st.subheader("")
 # Créer trois colonnes pour aligner les widgets côte à côte
 col_clients, col_orders, col_ca = st.columns(3)
 
-num_clients = df[df['Année'] == selected_year]['ID client'].nunique()
+num_clients = df[df['Année'] == selected_year]['ID client'].unique()
 col_clients.metric(label="Nombre de clients", value=num_clients)
 
 # Nombre de commandes
-selected_year_orders = df[df['Année'] == selected_year]['ID commande'].unique()
+selected_year_orders = df[df['Année'] == selected_year]['ID commande']
 num_orders = len(selected_year_orders)
 col_orders.metric(label="Nombre de commandes", value=num_orders)
-
-st.write("Nombre total d'ID Commandes sans filtre d'année :", len(df['ID commande']))
