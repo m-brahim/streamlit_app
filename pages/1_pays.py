@@ -72,6 +72,6 @@ with col_pie :
     st.plotly_chart(fig, use_container_width=True)
     
 with col_map : 
-    st.subheader("Carte du monde")
-    m = folium.Map(location=[0, 0], zoom_start=1.5)
-    st_folium(m, width=725, height = 500)
+    client_count_by_country = df[df['Pays/Région'] == selected_country].groupby('ID client').size().reset_index(name='Nombre de clients')
+    st.map(client_count_by_country)
+    st.text(f"Nombre de clients par pays ({selected_country}): {len(client_count_by_country)}")
