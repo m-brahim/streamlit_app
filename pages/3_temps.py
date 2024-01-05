@@ -62,7 +62,23 @@ st.subheader("")
 # Créer 2 colonnes pour aligner les widgets côte à côte
 col_v1, col_v2, col_v3 = st.columns([2,1,2])
 
+
 with col_v1:
+    # Agréger le nombre de clients par mois pour l'année sélectionnée
+    monthly_clients = df[df['Année'] == selected_year].drop_duplicates('ID client').groupby('Mois')['ID client'].count().reset_index()
+
+    # Utiliser la variable num_clients avec drop_duplicates pour construire le graphique en ligne
+    fig_clients_evolution = px.line(
+        monthly_clients,
+        x='Mois',
+        y='ID client',
+        title=f"Évolution du nombre de clients en {selected_year}",
+        labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
+    )
+
+    st.plotly_chart(fig_clients_evolution, use_container_width=True)
+
+with col_v3:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
@@ -77,20 +93,6 @@ with col_v1:
 
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
-with col_v3:
-    # Agréger le nombre de clients par mois pour l'année sélectionnée
-    monthly_clients = df[df['Année'] == selected_year].drop_duplicates('ID client').groupby('Mois')['ID client'].count().reset_index()
-
-    # Utiliser la variable num_clients avec drop_duplicates pour construire le graphique en ligne
-    fig_clients_evolution = px.line(
-        monthly_clients,
-        x='Mois',
-        y='ID client',
-        title=f"Évolution du nombre de clients en {selected_year}",
-        labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
-    )
-
-    st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
 
 
