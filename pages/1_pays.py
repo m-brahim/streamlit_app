@@ -59,6 +59,8 @@ st.header("")
 # Visualisation
 st.subheader("Visualisation")
 
+st.header("")
+
 col_pie, col_space, col_map = st.columns([2, 1, 2])
 
 with col_pie :
