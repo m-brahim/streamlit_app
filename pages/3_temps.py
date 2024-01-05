@@ -9,11 +9,11 @@ from geopy.exc import GeocoderTimedOut
 url = "Exemple - Hypermarché_Achats.csv"
 
 df = pd.read_csv(url, delimiter=";")
-df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
-df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
+df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)  # Supprimer tout ce qui n'est pas un chiffre
+df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')  # Convertir en entier
 
 # Ajouter une colonne pour l'année à partir de la colonne de dates de commande
-df['Année'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.year
+df['Année'] = pd.to_datetime(df['Date de commande'].str.replace(',', '', regex=False), format='%d/%m/%Y').dt.year
 
 # Obtenir les années triées
 sorted_years = sorted(df['Année'].unique())
@@ -31,7 +31,7 @@ with col_title:
 with col_dropdown:
     selected_year = st.selectbox("Sélectionnez une année", sorted_years)
 
-st.subheader("Indicateurs")
+st.header("Indicateurs")
 
 st.subheader("")
 
@@ -42,19 +42,13 @@ col_clients, col_orders, col_ca = st.columns(3)
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
 col_clients.metric(label="Nombre de clients", value=num_clients)
 
-# Nombre de commandes
+# Nombre de commandes pour l'année sélectionnée
 num_orders = len(df[df['Année'] == selected_year]['ID commande'])
 col_orders.metric(label="Nombre de commandes", value=num_orders)
 
-#CA
+# Chiffre d'affaires pour l'année sélectionnée
 ca_by_year = df[df['Année'] == selected_year]['Ventes'].sum()
 col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_by_year)} €")
 
-total_ca = df['Ventes'].sum()
-st.write(f"Chiffre d'affaires total : {int(total_ca)} €")
-
 # Afficher le DataFrame avec les nouvelles colonnes
 st.write(df[['Date de commande', 'Année', 'Ventes']])
-
-
-
