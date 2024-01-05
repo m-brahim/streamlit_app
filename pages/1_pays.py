@@ -92,8 +92,6 @@ for index, row in df.iterrows():
     except Exception as e:
         print(f"Erreur lors du géocodage de la ville {row['Ville']}: {str(e)}")
 
-
-
 with col_map:
     # Afficher le DataFrame mis à jour avec les coordonnées
     print(df[['Ville', 'Latitude', 'Longitude']])
