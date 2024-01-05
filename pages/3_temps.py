@@ -51,6 +51,11 @@ diff_clients = num_clients - df[df['Année'] == selected_comparison_year].drop_d
 diff_orders = num_orders - len(df[df['Année'] == selected_comparison_year]['ID commande'])
 diff_ca = ca_by_year - df[df['Année'] == selected_comparison_year]['Ventes'].sum()
 
+# Convertir les différences en types de données acceptés
+diff_clients = int(diff_clients)
+diff_orders = int(diff_orders)
+diff_ca = int(diff_ca)
+
 # Nombre de clients
 col_clients.metric(label="Nombre de clients", value=num_clients, delta=diff_clients)
 
