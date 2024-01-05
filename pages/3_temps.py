@@ -99,7 +99,7 @@ with col_v1:
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     ).data[0])
 
-    st.plotly_chart(fig_clients_evolution, use_container_width)
+    st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
 with col_v3:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
