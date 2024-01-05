@@ -74,14 +74,17 @@ with col_pie :
 with col_map:
     st.subheader("Carte des ventes par ville")
 
-    # Créer une carte Folium centrée sur le pays sélectionné
-    map_center = filtered_data.groupby(['Pays/Région']).size().reset_index().mean()[['Latitude', 'Longitude']]
-    my_map = folium.Map(location=[map_center['Latitude'], map_center['Longitude']], zoom_start=6)
+    # Sélectionner le pays pour lequel vous voulez centrer la carte
+    selected_country_data = filtered_data.iloc[0]
+
+    # Utiliser le nom du pays pour centrer la carte
+    my_map = folium.Map(location=[selected_country_data['Latitude'], selected_country_data['Longitude']], zoom_start=6)
 
     # Ajouter des marqueurs pour chaque ville avec le chiffre d'affaires comme popup
     for index, row in filtered_data.iterrows():
-        folium.Marker([row['Pays/Région']], 
+        folium.Marker([row['Latitude'], row['Longitude']], 
                       popup=f"{row['Ville']} - {row['Ventes']} €").add_to(my_map)
 
     # Utiliser le wrapper streamlit pour afficher la carte
     st_folium(my_map, width=800, height=500)
+
