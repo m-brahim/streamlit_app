@@ -15,6 +15,9 @@ df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 # Ajouter une colonne pour l'année à partir de la colonne de dates de commande
 df['Année'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.year
 
+# Obtenir les années triées
+sorted_years = sorted(df['Année'].unique())
+
 # Titre de la page
 st.set_page_config("Suivi temporel des ventes", page_icon="", layout="wide")
 
@@ -24,11 +27,10 @@ col_title, col_dropdown = st.columns([3, 1])  # Ajustez les proportions en cons�
 with col_title:
     st.subheader("Suivi temporel des ventes")
 
+    # Ajouter le premier métrique (nombre de clients)
+    num_clients = df[df['Année'] == selected_year]['ID client'].nunique()
+    st.metric(label="Nombre de clients", value=num_clients)
+
 # Liste déroulante à côté du titre
 with col_dropdown:
-    selected_year = st.selectbox("Sélectionnez une année", df['Année'].unique())
-
-st.subheader("Indicateurs")
-
-num_clients = df[df['Année'] == selected_year]['ID client']
-st.metric(label="Nombre de clients", value=num_clients)
+    selected_year = st.selectbox("Sélectionnez une année", sorted_years)
