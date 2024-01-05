@@ -97,7 +97,7 @@ with col_v1:
         x='Mois',
         y='ID client',
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
-    ).data[0])
+    ).update_traces(line_shape='linear', line=dict(color='red')).data[0])
 
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
