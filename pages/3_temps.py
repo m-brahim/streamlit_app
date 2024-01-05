@@ -31,7 +31,7 @@ with col_title:
 with col_dropdown:
     selected_year = st.selectbox("Sélectionnez une année", sorted_years)
 
-st.header("Indicateurs")
+st.subheader("Indicateurs")
 
 st.subheader("")
 
