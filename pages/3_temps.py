@@ -78,12 +78,12 @@ with col_v1:
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
 with col_v2:
-    # Agréger le nombre de clients par mois pour l'année sélectionnée
-    monthly_clients = df[df['Année'] == selected_year].groupby('Mois')['ID client'].nunique().reset_index()
+    # Agréger le nombre de clients uniques par mois pour l'année sélectionnée
+    monthly_unique_clients = df[df['Année'] == selected_year].groupby('Mois')['ID client'].nunique().reset_index()
 
     # Visualisation de l'évolution du nombre de clients par mois (graphique en ligne)
     fig_clients_evolution = px.line(
-        monthly_clients,
+        monthly_unique_clients,
         x='Mois',
         y='ID client',
         title=f"Évolution du nombre de clients en {selected_year}",
@@ -91,7 +91,6 @@ with col_v2:
     )
 
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
-
 
 
 
