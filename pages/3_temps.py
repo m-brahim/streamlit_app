@@ -6,28 +6,14 @@ from streamlit_folium import st_folium
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut
 
-# Définir la fonction pour extraire les nombres
-def extract_number(chaine):
-    # Utiliser une expression régulière pour extraire le nombre
-    resultats = pd.to_numeric(chaine.str.extract('(-?\d+)', expand=False), errors='coerce')
-    return resultats
-
 url = "Exemple - Hypermarché_Achats.csv"
 
 df = pd.read_csv(url, delimiter=";")
-
-# Colonnes à convertir en nombres
-col_to_convert_num = ['Profit', 'Prévision des ventes', 'Ventes']
-
-# Appliquer la fonction d'extraction aux colonnes spécifiques
-for colonne in col_to_convert_num:
-    df[colonne] = extract_number(df[colonne])
+df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
+df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 
 # Ajouter une colonne pour l'année à partir de la colonne de dates de commande
-df['Année'] = pd.to_datetime(df['Date de commande'].str.replace(',', '', regex=False), format='%d/%m/%Y').dt.year
-
-# Convertir les colonnes 'Année' en entiers après suppression des virgules
-df['Année'] = df['Année'].astype(int)
+df['Année'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.year
 
 # Obtenir les années triées
 sorted_years = sorted(df['Année'].unique())
@@ -63,6 +49,3 @@ col_orders.metric(label="Nombre de commandes", value=num_orders)
 # Chiffre d'affaires pour l'année sélectionnée
 ca_by_year = df[df['Année'] == selected_year]['Ventes'].sum()
 col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_by_year)} €")
-
-# Afficher le DataFrame avec les nouvelles colonnes
-st.write(df[['Date de commande', 'Année', 'Ventes']])
