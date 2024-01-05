@@ -35,7 +35,7 @@ with col_dropdown:
     selected_year = st.selectbox("Sélectionnez une année", sorted_years)
     selected_comparison_year = st.selectbox("Sélectionnez une année de comparaison", sorted_years)
 
-st.subheader("Indicateurs")
+st.subheader("Indicateurs :mag_right:")
 
 st.subheader("")
 
@@ -67,7 +67,7 @@ col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_
 
 st.subheader("")
 
-st.subheader("Visualisations")
+st.subheader("Visualisations :bar_chart: :chart_with_upwards_trend:")
 
 st.subheader("")
 
