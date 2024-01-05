@@ -33,6 +33,7 @@ with col_title:
 # Liste déroulante à côté du titre
 with col_dropdown:
     selected_year = st.selectbox("Sélectionnez une année", sorted_years)
+    selected_comparison_year = st.selectbox("Sélectionnez une année de comparaison", sorted_years)
 
 st.subheader("Indicateurs")
 
@@ -41,17 +42,23 @@ st.subheader("")
 # Créer trois colonnes pour aligner les widgets côte à côte
 col_clients, col_orders, col_ca = st.columns(3)
 
-# Nombre de clients
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
-col_clients.metric(label="Nombre de clients", value=num_clients)
+num_orders = len(df[df['Année'] == selected_year]['ID commande'])
+ca_by_year = df[df['Année'] == selected_year]['Ventes'].sum()
+
+# Calcul des différences pour les indicateurs
+diff_clients = num_clients - df[df['Année'] == selected_comparison_year].drop_duplicates('ID client')['ID client'].count()
+diff_orders = num_orders - len(df[df['Année'] == selected_comparison_year]['ID commande'])
+diff_ca = ca_by_year - df[df['Année'] == selected_comparison_year]['Ventes'].sum()
+
+# Nombre de clients
+col_clients.metric(label="Nombre de clients", value=num_clients, delta=diff_clients)
 
 # Nombre de commandes pour l'année sélectionnée
-num_orders = len(df[df['Année'] == selected_year]['ID commande'])
-col_orders.metric(label="Nombre de commandes", value=num_orders)
+col_orders.metric(label="Nombre de commandes", value=num_orders, delta=diff_orders)
 
 # Chiffre d'affaires pour l'année sélectionnée
-ca_by_year = df[df['Année'] == selected_year]['Ventes'].sum()
-col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_by_year)} €")
+col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_by_year)} €", delta=f"{int(diff_ca)} €")
 
 st.subheader("")
 
