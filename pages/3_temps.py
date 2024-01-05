@@ -80,9 +80,9 @@ with col_v1:
 with col_v2:
     # Visualisation de l'évolution du nombre de clients par mois (graphique en ligne)
     fig_clients_evolution = px.line(
-        df[df['Année'] == selected_year],
+        monthly_orders,
         x='Mois',
-        y='ID client',
+        y=num_clients,  # Utiliser la variable num_clients ici
         title=f"Évolution du nombre de clients en {selected_year}",
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     )
