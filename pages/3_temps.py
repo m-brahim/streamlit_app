@@ -52,3 +52,9 @@ col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_
 
 total_ca = df['Ventes'].sum()
 st.write(f"Chiffre d'affaires total : {int(total_ca)} €")
+
+# Afficher le DataFrame avec les nouvelles colonnes
+st.write(df[['Date de commande', 'Année', 'Ventes']])
+
+
+
