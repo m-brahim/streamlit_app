@@ -22,13 +22,13 @@ df['Mois'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.month_
 sorted_years = sorted(df['Année'].unique())
 
 # Titre de la page
-st.set_page_config("Suivi temporel des ventes", page_icon="", layout="wide")
+st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
 
 # Colonne pour le titre à l'extrême droite
 col_title, col_dropdown = st.columns([3, 1])  # Ajustez les proportions en conséquence
 
 with col_title:
-    st.subheader("Suivi temporel des ventes")
+    st.subheader("Suivi temporel des ventes :hourglass_flowing_sand:")
 
 # Liste déroulante à côté du titre
 with col_dropdown:
