@@ -59,16 +59,41 @@ st.subheader("Visualisations")
 
 st.subheader("")
 
-# Agréger le nombre de commandes par mois pour l'année sélectionnée
-monthly_orders = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
+# Créer 2 colonnes pour aligner les widgets côte à côte
+col_v1, col_v2 = st.columns([2, 2])
 
-# Visualisation de l'évolution du nombre de commandes par mois
-fig_orders_evolution = px.bar(
-    monthly_orders,
-    x='Mois',
-    y='ID commande',
-    title=f"Évolution du nombre de commandes en {selected_year}",
-    labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
-)
+with col_v1:
+    # Agréger le nombre de commandes par mois pour l'année sélectionnée
+    monthly_orders = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
-st.plotly_chart(fig_orders_evolution, use_container_width=True)
+    # Visualisation de l'évolution du nombre de commandes par mois
+    fig_orders_evolution = px.bar(
+        monthly_orders,
+        x='Mois',
+        y='ID commande',
+        title=f"Évolution du nombre de commandes en {selected_year}",
+        labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
+    )
+
+    st.plotly_chart(fig_orders_evolution, use_container_width=True)
+
+with col_v2:
+    # Agréger le nombre de clients par mois pour l'année sélectionnée
+    monthly_clients = df[df['Année'] == selected_year].groupby('Mois')['ID client'].nunique().reset_index()
+
+    # Visualisation de l'évolution du nombre de clients par mois (graphique en ligne)
+    fig_clients_evolution = px.line(
+        monthly_clients,
+        x='Mois',
+        y='ID client',
+        title=f"Évolution du nombre de clients en {selected_year}",
+        labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
+    )
+
+    st.plotly_chart(fig_clients_evolution, use_container_width=True)
+
+
+
+
+
+
