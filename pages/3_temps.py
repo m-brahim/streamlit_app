@@ -31,7 +31,14 @@ with col_title:
 with col_dropdown:
     selected_year = st.selectbox("Sélectionnez une année", sorted_years)
 
-st.subheader("Indicateurs")
+st.header("Indicateurs")
+
+st.subheader("")
+
+# Créer trois colonnes pour aligner les widgets côte à côte
+col_clients, col_orders, col_ca = st.columns(3)
 
 num_clients = df[df['Année'] == selected_year]['ID client'].nunique()
-st.metric(label="Nombre de clients", value=num_clients)
+col_clients.metric(label="Nombre de clients", value=num_clients)
+
+
