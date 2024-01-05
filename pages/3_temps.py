@@ -30,5 +30,5 @@ with col_dropdown:
 
 st.subheader("Indicateurs")
 
-num_clients = df[df['Année'] == selected_year]['ID client'].nunique()
+num_clients = df[df['Année'] == selected_year]['ID client']
 st.metric(label="Nombre de clients", value=num_clients)
