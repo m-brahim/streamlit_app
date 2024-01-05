@@ -9,8 +9,9 @@ from geopy.exc import GeocoderTimedOut
 url = "Exemple - Hypermarché_Achats.csv"
 
 df = pd.read_csv(url, delimiter=";")
-df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)  # Supprimer tout ce qui n'est pas un chiffre
-df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')  # Convertir en entier
+df['Ventes'] = df['Ventes'].str.replace('[^\d,]', '', regex=True)  # Supprimer tout sauf les chiffres et la virgule
+df['Ventes'] = df['Ventes'].str.replace(',', '.', regex=True)  # Remplacer la virgule par le point pour le format numérique
+df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='float')  # Convertir en nombre à virgule flottante
 
 # Ajouter une colonne pour l'année à partir de la colonne de dates de commande
 df['Année'] = pd.to_datetime(df['Date de commande'].str.replace(',', '', regex=False), format='%d/%m/%Y').dt.year
