@@ -28,7 +28,7 @@ with col_title:
     st.subheader("Suivi temporel des ventes")
 
     # Ajouter le premier métrique (nombre de clients)
-    num_clients = df[df['Année'] == selected_year]['ID client'].nunique()
+    num_clients = df[df['Année'] == selected_year]['ID client'].unique()
     st.metric(label="Nombre de clients", value=num_clients)
 
 # Liste déroulante à côté du titre
