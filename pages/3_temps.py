@@ -15,6 +15,9 @@ df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 # Ajouter une colonne pour l'année à partir de la colonne de dates de commande
 df['Année'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.year
 
+# Ajouter une colonne pour le mois à partir de la colonne de dates de commande
+df['Mois'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.month_name()
+
 # Obtenir les années triées
 sorted_years = sorted(df['Année'].unique())
 
@@ -55,16 +58,15 @@ st.subheader("Visualisations")
 st.subheader("Visualisations")
 
 # Agréger le nombre de commandes par mois pour l'année sélectionnée
-monthly_orders = df[df['Année'] == selected_year].groupby(df['Date de commande'])['ID commande'].count().resample('M').sum().reset_index()
-monthly_orders['Date de commande'] = monthly_orders['Date de commande'].dt.strftime('%B %Y')
+monthly_orders = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
 # Visualisation de l'évolution du nombre de commandes par mois
 fig_orders_evolution = px.bar(
     monthly_orders,
-    x='Date de commande',
+    x='Mois',
     y='ID commande',
     title=f"Évolution du nombre de commandes en {selected_year}",
-    labels={'ID commande': 'Nombre de commandes', 'Date de commande': 'Mois'}
+    labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
 )
 
 st.plotly_chart(fig_orders_evolution, use_container_width=True)
