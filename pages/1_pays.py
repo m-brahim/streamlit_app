@@ -72,33 +72,32 @@ with col_pie :
     # Créer le graphique en secteur avec Plotly Express
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
-    
+
+
+# Créer une instance du géocodeur Nominatim
+geolocator = Nominatim(user_agent="my_geocoder")
+
+# Ajouter des colonnes pour les coordonnées latitude et longitude dans le DataFrame
+df['Latitude'] = None
+df['Longitude'] = None
+
+
 with col_map:
-    st.subheader("Carte des ventes par ville")
+    # Itérer sur les lignes du DataFrame pour géocoder chaque ville
+    for index, row in df.iterrows():
+    try:
+        # Utiliser Geopy pour obtenir les coordonnées de la ville
+        location = geolocator.geocode(row['Ville'])
+        if location:
+            df.at[index, 'Latitude'] = location.latitude
+            df.at[index, 'Longitude'] = location.longitude
+    except Exception as e:
+        print(f"Erreur lors du géocodage de la ville {row['Ville']}: {str(e)}")
 
-    # Sélectionner le pays pour lequel vous voulez centrer la carte
-    selected_country = filtered_data.iloc[0]['Pays/Région']
+# Afficher le DataFrame mis à jour avec les coordonnées
+print(df[['Ville', 'Latitude', 'Longitude']])
 
-    # Utiliser Geopy pour obtenir les coordonnées du pays
-    geolocator = Nominatim(user_agent="my_geocoder")
-    location = geolocator.geocode(selected_country)
 
-    if location:
-        # Utiliser les coordonnées du pays pour centrer la carte
-        my_map = folium.Map(location=[location.latitude, location.longitude], zoom_start=6)
 
-        # Ajouter des marqueurs pour chaque ville avec le chiffre d'affaires comme popup
-        for index, row in filtered_data.iterrows():
-            try:
-                # Utiliser Geopy pour obtenir les coordonnées de la ville
-                city_location = geolocator.geocode(row['Ville'])
-                if city_location:
-                    folium.Marker([city_location.latitude, city_location.longitude],
-                                  popup=f"{row['Ville']} - {row['Ventes']} €").add_to(my_map)
-            except GeocoderTimedOut:
-                st.warning(f"Timeout lors de la récupération des coordonnées pour la ville : {row['Ville']}")
 
-        # Utiliser le wrapper streamlit pour afficher la carte
-        st_folium(my_map, width=800, height=500)
-    else:
-        st.warning(f"Impossible d'obtenir les coordonnées pour le pays : {selected_country}")
+
