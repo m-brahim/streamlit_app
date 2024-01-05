@@ -85,17 +85,17 @@ df['Longitude'] = None
 with col_map:
     # Itérer sur les lignes du DataFrame pour géocoder chaque ville
     for index, row in df.iterrows():
-    try:
-        # Utiliser Geopy pour obtenir les coordonnées de la ville
-        location = geolocator.geocode(row['Ville'])
-        if location:
-            df.at[index, 'Latitude'] = location.latitude
-            df.at[index, 'Longitude'] = location.longitude
-    except Exception as e:
-        print(f"Erreur lors du géocodage de la ville {row['Ville']}: {str(e)}")
+        try:
+            # Utiliser Geopy pour obtenir les coordonnées de la ville
+            location = geolocator.geocode(row['Ville'])
+            if location:
+                df.at[index, 'Latitude'] = location.latitude
+                df.at[index, 'Longitude'] = location.longitude
+        except Exception as e:
+            print(f"Erreur lors du géocodage de la ville {row['Ville']}: {str(e)}")
 
-# Afficher le DataFrame mis à jour avec les coordonnées
-print(df[['Ville', 'Latitude', 'Longitude']])
+    # Afficher le DataFrame mis à jour avec les coordonnées
+    print(df[['Ville', 'Latitude', 'Longitude']])
 
 
 
