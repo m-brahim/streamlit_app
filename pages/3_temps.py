@@ -24,10 +24,11 @@ col_title, col_dropdown = st.columns([3, 1])  # Ajustez les proportions en cons�
 with col_title:
     st.subheader("Suivi temporel des ventes")
 
-    # Ajouter le premier métrique (nombre de clients)
-    num_clients = df[df['Année'] == selected_year]['ID client'].nunique()
-    st.metric(label="Nombre de clients", value=num_clients)
-
 # Liste déroulante à côté du titre
 with col_dropdown:
     selected_year = st.selectbox("Sélectionnez une année", df['Année'].unique())
+
+st.subheader("Indicateurs")
+
+num_clients = df[df['Année'] == selected_year]['ID client'].nunique()
+st.metric(label="Nombre de clients", value=num_clients)
