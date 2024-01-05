@@ -53,9 +53,11 @@ col_orders.metric(label="Nombre de commandes", value=num_orders)
 ca_by_year = df[df['Année'] == selected_year]['Ventes'].sum()
 col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_by_year)} €")
 
-st.subheader("Visualisations")
+st.subheader("")
 
 st.subheader("Visualisations")
+
+st.subheader("")
 
 # Agréger le nombre de commandes par mois pour l'année sélectionnée
 monthly_orders = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
