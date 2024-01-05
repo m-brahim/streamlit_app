@@ -91,38 +91,33 @@ with col_v1:
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     )
 
-    # Ajouter la deuxième série temporelle pour l'année de comparaison avec une légende
+    # Ajouter la deuxième série temporelle pour l'année de comparaison
     fig_clients_evolution.add_trace(px.line(
         monthly_clients_comparison_year,
         x='Mois',
         y='ID client',
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
-    ).update_traces(line_shape='linear', line=dict(color='red'), name=f"{selected_comparison_year}").data[0])
+    ).update_traces(line_shape='linear', line=dict(color='red')).data[0])
 
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
+with col_v2:
+    # Ajouter du texte pour indiquer les couleurs
+    st.markdown("**Légende des couleurs**")
+    st.markdown("Année sélectionnée (bleu) : Nombre de clients")
+    st.markdown("Année de comparaison (rouge) : Nombre de clients")
+
 with col_v3:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
-    monthly_orders_selected_year = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
-
-    # Agréger le nombre de commandes par mois pour l'année de comparaison
-    monthly_orders_comparison_year = df[df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
+    monthly_orders = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
     # Visualisation de l'évolution du nombre de commandes par mois
     fig_orders_evolution = px.bar(
-        monthly_orders_selected_year,
+        monthly_orders,
         x='Mois',
         y='ID commande',
-        title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
+        title=f"Évolution du nombre de commandes en {selected_year}",
         labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
     )
-
-    # Ajouter la deuxième série temporelle pour l'année de comparaison avec une légende
-    fig_orders_evolution.add_trace(px.bar(
-        monthly_orders_comparison_year,
-        x='Mois',
-        y='ID commande',
-        labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
-    ).update_traces(marker_color='red', name=f"{selected_comparison_year}").data[0])
 
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
