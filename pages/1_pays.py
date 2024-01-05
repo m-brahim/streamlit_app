@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import folium
 from streamlit_folium import st_folium
+from geopy.geocoders import Nominatim
 
 url = "Exemple - Hypermarché_Achats.csv"
 
@@ -75,16 +76,26 @@ with col_map:
     st.subheader("Carte des ventes par ville")
 
     # Sélectionner le pays pour lequel vous voulez centrer la carte
-    selected_country = filtered_data.iloc[0]
+    selected_country = filtered_data.iloc[0]['Pays/Région']
 
-    # Utiliser les informations de la colonne 'Pays/Région' pour centrer la carte
-    my_map = folium.Map(location=[0, 0], zoom_start=2)  # Vous pouvez ajuster le zoom_start selon vos besoins
+    # Utiliser Geopy pour obtenir les coordonnées du pays
+    geolocator = Nominatim(user_agent="my_geocoder")
+    location = geolocator.geocode(selected_country)
 
-    # Ajouter des marqueurs pour chaque ville avec le chiffre d'affaires comme popup
-    for index, row in filtered_data.iterrows():
-        folium.Marker([0, 0],  # Ajustez les coordonnées en fonction de vos besoins
-                      popup=f"{row['Ville']} - {row['Ventes']} €").add_to(my_map)
+    if location:
+        # Utiliser les coordonnées du pays pour centrer la carte
+        my_map = folium.Map(location=[location.latitude, location.longitude], zoom_start=6)
 
-    # Utiliser le wrapper streamlit pour afficher la carte
-    st_folium(my_map, width=800, height=500)
+        # Ajouter des marqueurs pour chaque ville avec le chiffre d'affaires comme popup
+        for index, row in filtered_data.iterrows():
+            # Utiliser Geopy pour obtenir les coordonnées de la ville
+            city_location = geolocator.geocode(row['Ville'])
+            if city_location:
+                folium.Marker([city_location.latitude, city_location.longitude],
+                              popup=f"{row['Ville']} - {row['Ventes']} €").add_to(my_map)
+
+        # Utiliser le wrapper streamlit pour afficher la carte
+        st_folium(my_map, width=800, height=500)
+    else:
+        st.warning(f"Impossible d'obtenir les coordonnées pour le pays : {selected_country}")
 
