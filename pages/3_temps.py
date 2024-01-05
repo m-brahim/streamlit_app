@@ -42,5 +42,5 @@ num_clients = df[df['Année'] == selected_year]['ID client'].nunique()
 col_clients.metric(label="Nombre de clients", value=num_clients)
 
 # Nombre de commandes
-num_orders = df[df['Année'] == selected_year]['ID commande'].nunique()
+num_orders = df[df['Année'] == selected_year]['ID commande'].unique()
 col_orders.metric(label="Nombre de commandes", value=num_orders)
