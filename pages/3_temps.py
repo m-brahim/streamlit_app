@@ -52,9 +52,11 @@ col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_
 
 st.subheader("Visualisations")
 
+st.subheader("Visualisations")
+
 # Agréger le nombre de commandes par mois pour l'année sélectionnée
-monthly_orders = df[df['Année'] == selected_year].groupby(df['Date de commande'].dt.month)['ID commande'].count().reset_index()
-monthly_orders['Date de commande'] = pd.to_datetime(monthly_orders['Date de commande'], format='%m').dt.strftime('%B')
+monthly_orders = df[df['Année'] == selected_year].groupby(df['Date de commande'])['ID commande'].count().resample('M').sum().reset_index()
+monthly_orders['Date de commande'] = monthly_orders['Date de commande'].dt.strftime('%B %Y')
 
 # Visualisation de l'évolution du nombre de commandes par mois
 fig_orders_evolution = px.bar(
