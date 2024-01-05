@@ -77,12 +77,12 @@ with col_map:
     # Sélectionner le pays pour lequel vous voulez centrer la carte
     selected_country_data = filtered_data.iloc[0]
 
-    # Utiliser le nom du pays pour centrer la carte
-    my_map = folium.Map(location=[selected_country_data['Latitude'], selected_country_data['Longitude']], zoom_start=6)
+    # Utiliser les informations de la colonne 'Pays/Région' pour centrer la carte
+    my_map = folium.Map(location=[0, 0], zoom_start=2)  # Vous pouvez ajuster le zoom_start selon vos besoins
 
     # Ajouter des marqueurs pour chaque ville avec le chiffre d'affaires comme popup
     for index, row in filtered_data.iterrows():
-        folium.Marker([row['Latitude'], row['Longitude']], 
+        folium.Marker([0, 0],  # Ajustez les coordonnées en fonction de vos besoins
                       popup=f"{row['Ville']} - {row['Ventes']} €").add_to(my_map)
 
     # Utiliser le wrapper streamlit pour afficher la carte
