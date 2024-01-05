@@ -15,6 +15,9 @@ df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 # Ajouter une colonne pour l'année à partir de la colonne de dates de commande
 df['Année'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.year
 
+# Obtenir les années triées
+sorted_years = sorted(df['Année'].unique())
+
 # Titre de la page
 st.set_page_config("Suivi temporel des ventes", page_icon="", layout="wide")
 
@@ -26,7 +29,7 @@ with col_title:
 
 # Liste déroulante à côté du titre
 with col_dropdown:
-    selected_year = st.selectbox("Sélectionnez une année", df['Année'].unique())
+    selected_year = st.selectbox("Sélectionnez une année", sorted_years)
 
 st.subheader("Indicateurs")
 
