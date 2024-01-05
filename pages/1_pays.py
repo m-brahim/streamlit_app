@@ -75,7 +75,7 @@ with col_map:
     st.subheader("Carte des ventes par ville")
 
     # Sélectionner le pays pour lequel vous voulez centrer la carte
-    selected_country_data = filtered_data.iloc[0]
+    selected_country = filtered_data.iloc[0]
 
     # Utiliser les informations de la colonne 'Pays/Région' pour centrer la carte
     my_map = folium.Map(location=[0, 0], zoom_start=2)  # Vous pouvez ajuster le zoom_start selon vos besoins
