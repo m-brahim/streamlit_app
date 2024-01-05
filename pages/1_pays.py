@@ -72,12 +72,3 @@ with col_pie :
     # Créer le graphique en secteur avec Plotly Express
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
-
-
-with col_map:
-    
-
-
-
-
-
