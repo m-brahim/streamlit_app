@@ -79,13 +79,13 @@ with col_v1:
 
 with col_v2:
     # Agréger le nombre de clients par mois pour l'année sélectionnée
-    monthly_clients = df[df['Année'] == selected_year].groupby('Mois')['ID client'].nunique().reset_index()
+    monthly_clients = df[df['Année'] == selected_year].drop_duplicates('ID client').groupby('Mois')['ID client'].count().reset_index()
 
-    # Visualisation de l'évolution du nombre de clients par mois (graphique en ligne)
+    # Utiliser la variable num_clients avec drop_duplicates pour construire le graphique en ligne
     fig_clients_evolution = px.line(
         monthly_clients,
         x='Mois',
-        y='ID client',  # Utiliser la colonne 'ID client' ici
+        y='ID client',
         title=f"Évolution du nombre de clients en {selected_year}",
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     )
