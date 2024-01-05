@@ -49,3 +49,6 @@ col_orders.metric(label="Nombre de commandes", value=num_orders)
 #CA
 ca_by_year = df[df['Année'] == selected_year]['Ventes'].sum()
 col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_by_year)} €")
+
+total_ca = df['Ventes'].sum()
+st.write(f"Chiffre d'affaires total : {int(total_ca)} €")
