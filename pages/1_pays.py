@@ -59,7 +59,7 @@ st.header("")
 # Visualisation
 st.subheader("Visualisation")
 
-col_space, col_pie, col_space = st.columns([1, 2, 1])
+col_pie, col_space, col_map = st.columns([2, 1, 2])
 
 with col_pie :
     st.subheader("Quantités vendues par catégorie")
@@ -69,9 +69,6 @@ with col_pie :
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
     
-
-col_space2, col_map, col_space2 = st.columns([1, 2, 1])
-
 with col_map : 
     st.subheader("Carte du monde")
     m = folium.Map(location=[0, 0], zoom_start=1.5)
