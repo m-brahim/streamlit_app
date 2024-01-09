@@ -85,5 +85,5 @@ for _, row in filtered_data.iterrows():
     ).add_to(world_map)
 
 # Afficher la carte dans Streamlit dans une colonne spécifique
-with st.column("Colonne pour la carte"):
-    st_folium(world_map)
+with col_map:
+    st_folium(world_map, width=750, height=500)
