@@ -13,7 +13,7 @@ df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
 df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 
 # Titre de la page
-st.set_page_config("Suivi géographique des ventes", page_icon="", layout="wide")
+st.set_page_config("Suivi géographique des ventes :shopping_trolley:", page_icon="", layout="wide")
 
 # Colonne pour le titre à l'extrême droite
 col_title, col_dropdown = st.columns([3, 1])  # Ajustez les proportions en conséquence
@@ -28,7 +28,7 @@ with col_dropdown:
 st.header("")
 
 # Ajouter le 2ème titre
-st.subheader("Indicateurs")
+st.subheader("Indicateurs :mag_right:")
 
 st.header("")
 
@@ -59,7 +59,7 @@ col_orders.metric(label=f"Nombre total de commandes pour {selected_country}", va
 st.header("")
 
 # Visualisation
-st.subheader("Visualisation")
+st.subheader("Visualisations :bar_chart: :chart_with_upwards_trend:")
 
 st.header("")
 
