@@ -113,19 +113,24 @@ with col_v3:
     # Créer une liste de couleurs pour chaque année
     colors = ['blue', 'red']
 
+    # Créer une liste d'étiquettes pour chaque barre
+    labels = [f'{selected_year}', f'{selected_comparison_year}']
+
     # Visualisation de l'évolution du nombre de commandes par mois
     fig_orders_evolution = px.bar(
         x=monthly_orders_selected_year['Mois'],
         y=[monthly_orders_selected_year['ID commande'], monthly_orders_comparison_year['ID commande']],
         title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
         labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'},
-        color_discrete_sequence=colors
+        color_discrete_sequence=colors,
+        text=labels  # Utiliser les étiquettes spécifiées
     )
 
     # Définir le mode de superposition des barres
     fig_orders_evolution.update_layout(barmode='group')
 
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
+
 
 
 
