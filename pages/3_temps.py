@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import folium
+import markdown
 from streamlit_folium import st_folium
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut
@@ -87,7 +88,7 @@ with col_v1:
         monthly_clients_selected_year,
         x='Mois',
         y='ID client',
-        title=f"Évolution du nombre de clients en :blue{selected_year} et :red{selected_comparison_year}",
+        title=f"Évolution du nombre de clients en {markdown.markdown(selected_year, extensions=['nl2br'])} et {markdown.markdown(selected_comparison_year, extensions=['nl2br'])}",
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     )
 
@@ -114,7 +115,7 @@ with col_v3:
         monthly_orders_selected_year,
         x='Mois',
         y='ID commande',
-        title=f"Évolution du nombre de commandes en :blue{selected_year} et :red{selected_comparison_year}",
+        title=f"Évolution du nombre de commandes en {markdown.markdown(selected_year, extensions=['nl2br'])} et {markdown.markdown(selected_comparison_year, extensions=['nl2br'])}",
         labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
     )
 
