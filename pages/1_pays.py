@@ -3,20 +3,12 @@ import pandas as pd
 import plotly.express as px
 import folium
 from streamlit_folium import st_folium
-from geopy.geocoders import Nominatim
-from geopy.exc import GeocoderTimedOut
 
 url = "Exemple - Hypermarché_Achats.csv"
 
 df = pd.read_csv(url, delimiter=";")
 df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
 df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
-
-# Créer une instance du géocodeur Nominatim
-geolocator = Nominatim(user_agent="geo_locator")
-
-# Ajouter une colonne pour les coordonnées géographiques
-df['Coordonnées'] = df['Pays/Région'].apply(lambda country: geolocator.geocode(country) if geolocator else None)
 
 # Titre de la page
 st.set_page_config("Suivi géographique des ventes :shopping_trolley:", page_icon="", layout="wide")
@@ -78,19 +70,4 @@ with col_pie :
     # Créer le graphique en secteur avec Plotly Express
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
-
-# Filtrer les données où les coordonnées existent
-filtered_data = df[df['Coordonnées'].notnull()]
-
-# Créer une carte avec les coordonnées préalablement géocodées
-with col_map:
-    world_map = folium.Map(location=[0, 0], zoom_start=2)
-
-    for _, row in filtered_data.iterrows():
-        folium.Marker(
-            location=[row['Coordonnées'].latitude, row['Coordonnées'].longitude],
-            popup=f"{row['Pays/Région']}: {row['Ventes']} ventes"
-        ).add_to(world_map)
-
-    st_folium(world_map)
 
