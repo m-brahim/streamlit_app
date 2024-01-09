@@ -73,25 +73,21 @@ with col_pie :
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
 
+# Ajouter une colonne pour les coordonnées géographiques
+df['Coordonnées'] = df['Pays/Région'].apply(lambda country: geolocator.geocode(country) if geolocator else None)
+
+# Filtrer les données où les coordonnées existent
+filtered_data = df[df['Coordonnées'].notnull()]
+
+# Créer une carte avec les coordonnées préalablement géocodées
 with col_map:
-    # Créer une carte du monde avec Folium
     world_map = folium.Map(location=[0, 0], zoom_start=2)
 
-    # Géocoder les coordonnées pour chaque pays
-    geolocator = Nominatim(user_agent="geo_locator")
+    for _, row in filtered_data.iterrows():
+        folium.Marker(
+            location=[row['Coordonnées'].latitude, row['Coordonnées'].longitude],
+            popup=f"{row['Pays/Région']}: {row['Ventes']} ventes"
+        ).add_to(world_map)
 
-    # Ajouter des marqueurs pour chaque pays avec le nombre de ventes
-    for country in df['Pays/Région'].unique():
-        country_data = df[df['Pays/Région'] == country]
-        country_location = geolocator.geocode(country)
-
-        if country_location:
-            folium.Marker(
-                location=[country_location.latitude, country_location.longitude],
-                popup=f"{country}: {country_data['Ventes'].sum()} ventes"
-            ).add_to(world_map)
-
-    # Afficher la carte dans Streamlit
     st_folium(world_map)
-
 
