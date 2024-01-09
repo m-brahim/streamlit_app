@@ -99,6 +99,7 @@ with col_pie:
     colors = ['#2F2E28','#DEAB05', '#DECF05']
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
              color_discrete_sequence=colors)
+    fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
     st.plotly_chart(fig, use_container_width=True)
 
     # Appliquer la personnalisation de la colonne avec du CSS
