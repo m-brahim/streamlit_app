@@ -123,8 +123,7 @@ with col_v3:
     fig_orders_evolution.add_bar(
         x=monthly_orders_comparison_year['Mois'],
         y=monthly_orders_comparison_year['ID commande'],
-        name=f'{selected_comparison_year}',
-        marker_color='red'
+        name=f'{selected_comparison_year}'
     )
 
     # Définir le mode de superposition des barres
