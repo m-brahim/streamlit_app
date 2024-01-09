@@ -63,7 +63,7 @@ st.subheader("Visualisations :bar_chart: :chart_with_upwards_trend:")
 
 st.header("")
 
-col_pie, col_space, col_map = st.columns([2, 1, 2])
+col_pie, col_space, col_map = st.columns([2, 1, 3])
 
 with col_pie :
     st.subheader("Quantités vendues par catégorie")
@@ -79,7 +79,7 @@ with col_map:
     st.subheader("Carte des commandes")
     my_map = folium.Map(location=[filtered_data['Latitude'].iloc[0], filtered_data['Longitude'].iloc[0]], 
                        zoom_start=3,
-                       width=750,
+                       width=250,
                        height=250) 
     
     # Ajoutez une seule marqueur pour représenter le pays
