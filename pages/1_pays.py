@@ -98,8 +98,15 @@ with col_pie(opacity=0.8, padding=0):
     # Créer le graphique en secteur avec Plotly Express et spécifier les couleurs
     colors = ['#FF4040', '#FF8C00', '#FFD700', '#32CD32', '#6495ED', '#8A2BE2', '#FF1493', '#A0522D']
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
-                 color_discrete_sequence=colors)
+             color_discrete_sequence=colors)
     st.plotly_chart(fig, use_container_width=True)
 
-
-
+    # Appliquer la personnalisation de la colonne avec du CSS
+    st.markdown("""
+    <style>
+        .element-container {
+            opacity: 0.8 !important;
+            padding: 0 !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
