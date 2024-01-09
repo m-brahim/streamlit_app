@@ -72,7 +72,7 @@ col_map, col_space, col_pie= st.columns([3, 1, 2])
 clients_by_country = df.drop_duplicates(subset=['ID client', 'Pays/Région']).groupby('Pays/Région')['ID client'].count().reset_index()
 
 # Fusionner les données agrégées avec les données filtrées
-merged_data = pd.merge(filtered_data, clients_by_country, how='left', on='Pays/Région').drop_duplicates(subset=['ID client'])
+merged_data = pd.merge(filtered_data, clients_by_country, how='left', on='Pays/Région')
 
 # Ajoutez une carte Folium avec une taille spécifique
 with col_map:
