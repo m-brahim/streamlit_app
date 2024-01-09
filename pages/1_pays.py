@@ -41,6 +41,9 @@ country_revenue = filtered_data['Ventes'].sum()
 # Trouver la ville avec la vente maximale pour le pays sélectionné
 max_city = filtered_data.loc[filtered_data['Ventes'].idxmax(), 'Ville']
 
+# Calculer le nombre total de clients pour le pays sélectionné
+num_clients = filtered_data['ID client'].nunique()
+
 # Calculer le nombre total de commandes pour le pays sélectionné
 num_orders = filtered_data.groupby('ID commande').size().sum()
 
