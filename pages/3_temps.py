@@ -101,6 +101,10 @@ with col_v1:
 
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
+    fig_clients_evolution.update_traces(name=selected_year, selector=dict(type='scatter', mode='lines'))
+    fig_clients_evolution.update_traces(name=selected_comparison_year, selector=dict(type='scatter', mode='lines'))
+
+
 with col_v3:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders_selected_year = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
@@ -126,3 +130,10 @@ with col_v3:
     ).update_traces(marker_color='red').data[0])
 
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
+
+    fig_orders_evolution.update_traces(name=selected_year, selector=dict(type='bar'))
+    fig_orders_evolution.update_traces(name=selected_comparison_year, selector=dict(type='bar'))
+
+
+
+
