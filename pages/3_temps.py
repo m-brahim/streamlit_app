@@ -116,7 +116,7 @@ with col_v3:
         y=monthly_orders_selected_year['ID commande'],
         title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
         labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'},
-        color_discrete_sequence=['blue'],  # Spécifier la couleur bleue pour l'année courante
+        marker_color='blue'
     )
 
     # Ajouter la deuxième série temporelle pour l'année de comparaison
