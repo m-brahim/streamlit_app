@@ -78,9 +78,9 @@ with col_pie :
 with col_map:
     st.subheader("Carte des commandes")
     my_map = folium.Map(location=[filtered_data['Latitude'].iloc[0], filtered_data['Longitude'].iloc[0]], 
-                       zoom_start=2,
-                       width=500,
-                       height=500) 
+                       zoom_start=3,
+                       width=750,
+                       height=250) 
     
     # Ajoutez une seule marqueur pour représenter le pays
     folium.Marker([filtered_data['Latitude'].iloc[0], filtered_data['Longitude'].iloc[0]], 
