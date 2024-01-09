@@ -115,7 +115,7 @@ with col_v3:
         monthly_orders_selected_year,
         x='Mois',
         y='ID commande',
-        title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
+        title=f"Évolution du nombre de commandes en <span style='color: blue;'>{selected_year}</span> et <span style='color: red;'>{selected_comparison_year}</span>",
         labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
     )
 
