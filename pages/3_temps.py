@@ -99,9 +99,9 @@ with col_v1:
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     ).update_traces(line_shape='linear', line=dict(color='red')).data[0])
 
-    fig_clients_evolution.update_traces(name=selected_year, selector=dict(type='scatter', mode='lines'))
-    fig_clients_evolution.update_traces(name=selected_comparison_year, selector=dict(type='scatter', mode='lines'))
-    
+    fig_clients_evolution.update_traces(name=str(selected_year), selector=dict(type='scatter', mode='lines'))
+    fig_clients_evolution.update_traces(name=str(selected_comparison_year), selector=dict(type='scatter', mode='lines'))
+
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
 
@@ -129,9 +129,9 @@ with col_v3:
         labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
     ).update_traces(marker_color='red').data[0])
 
-    fig_orders_evolution.update_traces(name=selected_year, selector=dict(type='bar'))
-    fig_orders_evolution.update_traces(name=selected_comparison_year, selector=dict(type='bar'))
-    
+    fig_orders_evolution.update_traces(name=str(selected_year), selector=dict(type='bar'))
+    fig_orders_evolution.update_traces(name=str(selected_comparison_year), selector=dict(type='bar'))
+
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
     
