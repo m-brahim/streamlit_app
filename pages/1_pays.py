@@ -76,13 +76,13 @@ merged_data = pd.merge(filtered_data, clients_by_country, how='left', on='Pays/R
 
 # Ajoutez une carte Folium avec une taille spécifique
 with col_map:
-    st.subheader("Carte des commandes")
+    st.subheader("Nombre de clients par pays")
     my_map = folium.Map(location=[merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], zoom_start=5)
     
     # Ajoutez une seule marqueur pour représenter le pays avec le nombre de clients dans l'infobulle
     folium.Marker([merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], 
                   popup=f"Nombre de clients: {num_clients}", 
-                  icon=folium.Icon(color='blue')).add_to(my_map)
+                  icon=folium.Icon(color='red')).add_to(my_map)
     
     # Affichez la carte avec Streamlit Folium
     st_folium(my_map, width=1000, height=400)
