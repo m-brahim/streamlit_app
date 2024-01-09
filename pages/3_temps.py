@@ -88,7 +88,7 @@ with col_v1:
         monthly_clients_selected_year,
         x='Mois',
         y='ID client',
-        title=f"Évolution du nombre de clients en {markdown.markdown(selected_year, extensions=['nl2br'])} et {markdown.markdown(selected_comparison_year, extensions=['nl2br'])}",
+        title=f"Évolution du nombre de clients en {markdown.markdown(str(selected_year), extensions=['nl2br'])} et {markdown.markdown(str(selected_comparison_year), extensions=['nl2br'])}",
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     )
 
@@ -115,7 +115,7 @@ with col_v3:
         monthly_orders_selected_year,
         x='Mois',
         y='ID commande',
-        title=f"Évolution du nombre de commandes en {markdown.markdown(selected_year, extensions=['nl2br'])} et {markdown.markdown(selected_comparison_year, extensions=['nl2br'])}",
+        title=f"Évolution du nombre de commandes en {markdown.markdown(str(selected_year), extensions=['nl2br'])} et {markdown.markdown(str(selected_comparison_year), extensions=['nl2br'])}",
         labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
     )
 
