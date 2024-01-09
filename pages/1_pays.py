@@ -10,6 +10,9 @@ df = pd.read_csv(url, delimiter=";")
 df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
 df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 
+# Filtrer les données où les coordonnées existent
+filtered_data = df[df['Latitude'].notnull() & df['Longitude'].notnull()]
+
 # Titre de la page
 st.set_page_config("Suivi géographique des ventes :shopping_trolley:", page_icon="", layout="wide")
 
@@ -71,3 +74,16 @@ with col_pie :
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
 
+# Créer une carte avec les coordonnées géographiques
+world_map = folium.Map(location=[0, 0], zoom_start=2)
+
+# Ajouter des marqueurs pour chaque pays avec le nombre de ventes
+for _, row in filtered_data.iterrows():
+    folium.Marker(
+        location=[row['Latitude'], row['Longitude']],
+        popup=f"{row['Pays/Région']}: {row['Ventes']} ventes"
+    ).add_to(world_map)
+
+# Afficher la carte dans Streamlit dans une colonne spécifique
+with st.column("Colonne pour la carte"):
+    st_folium(world_map)
