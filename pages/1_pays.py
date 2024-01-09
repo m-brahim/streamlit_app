@@ -91,12 +91,14 @@ with col_map:
     # Affichez la carte avec Streamlit Folium
     st_folium(my_map, width=1000, height=400)
 
-with col_pie :
+with st.column(opacity=0.8, padding=0):
     st.subheader("Quantités vendues par catégorie")
     # Calculer les quantités vendues par catégorie pour le pays sélectionné
     quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
-    # Créer le graphique en secteur avec Plotly Express
-    fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
+    # Créer le graphique en secteur avec Plotly Express et spécifier les couleurs
+    colors = ['#FF4040', '#FF8C00', '#FFD700', '#32CD32', '#6495ED', '#8A2BE2', '#FF1493', '#A0522D']
+    fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
+                 color_discrete_sequence=colors)
     st.plotly_chart(fig, use_container_width=True)
 
 
