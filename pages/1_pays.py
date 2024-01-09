@@ -84,5 +84,5 @@ with col_map:
                   popup=f"Pays: {selected_country}", 
                   icon=folium.Icon(color='blue')).add_to(my_map)
     
-# Affichez la carte avec Streamlit Folium
-st_folium(my_map, width = 500, height = 500)
+    # Affichez la carte avec Streamlit Folium
+    st_folium(my_map, width = 500, height = 500)
