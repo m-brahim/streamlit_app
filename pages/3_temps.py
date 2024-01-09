@@ -114,12 +114,16 @@ with col_v3:
     colors = ['blue', 'red']
 
     # Créer une liste d'étiquettes pour chaque barre
-    labels = [f'{selected_year}', f'{selected_comparison_year}']
+    labels = [f'{selected_year}'] * len(monthly_orders_selected_year['Mois'])
+    labels += [f'{selected_comparison_year}'] * len(monthly_orders_comparison_year['Mois'])
+
+    # Répéter les valeurs de 'y' pour chaque mois
+    y_values = list(monthly_orders_selected_year['ID commande']) + list(monthly_orders_comparison_year['ID commande'])
 
     # Visualisation de l'évolution du nombre de commandes par mois
     fig_orders_evolution = px.bar(
-        x=monthly_orders_selected_year['Mois'],
-        y=[monthly_orders_selected_year['ID commande'], monthly_orders_comparison_year['ID commande']],
+        x=monthly_orders_selected_year['Mois'].append(monthly_orders_comparison_year['Mois']),
+        y=y_values,
         title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
         labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'},
         color_discrete_sequence=colors,
