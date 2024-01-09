@@ -1,8 +1,10 @@
-import streamlit as st
+ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import folium
 from streamlit_folium import st_folium
+from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderTimedOut
 
 url = "Exemple - Hypermarché_Achats.csv"
 
@@ -21,7 +23,7 @@ with col_title:
 
 # Liste déroulante à côté du titre
 with col_dropdown:
-    selected_country = st.selectbox("Sélectionnez un pays", filtered_data['Pays/Région'].unique(), key="unique_key_for_selectbox")
+    selected_country = st.selectbox("Sélectionnez un pays", df['Pays/Région'].unique())
 
 st.header("")
 
@@ -70,25 +72,3 @@ with col_pie :
     # Créer le graphique en secteur avec Plotly Express
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
-
-# Filtrer les données où les coordonnées existent
-filtered_data = df[df['Latitude'].notnull() & df['Longitude'].notnull()]
-
-# Sélectionner un pays spécifique
-selected_country = st.selectbox("Sélectionnez un pays", filtered_data['Pays/Région'].unique())
-
-# Filtrer les données pour le pays sélectionné
-country_data = filtered_data[filtered_data['Pays/Région'] == selected_country]
-
-# Créer une carte avec les coordonnées géographiques du pays sélectionné
-country_map = folium.Map(location=[country_data['Latitude'].mean(), country_data['Longitude'].mean()], zoom_start=6)
-
-# Ajouter un marqueur pour le pays avec la somme des ventes
-folium.Marker(
-    location=[country_data['Latitude'].mean(), country_data['Longitude'].mean()],
-    popup=f"{selected_country}: {country_data['Ventes'].sum()} ventes"
-).add_to(country_map)
-
-# Afficher la carte du pays dans Streamlit
-with col_map:
-    st_folium(country_map)
