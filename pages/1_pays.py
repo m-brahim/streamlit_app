@@ -102,12 +102,4 @@ with col_pie:
     fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
     st.plotly_chart(fig, use_container_width=True)
 
-    # Appliquer la personnalisation de la colonne avec du CSS
-    st.markdown("""
-    <style>
-        .element-container {
-            opacity: 0.8 !important;
-            padding: 0 !important;
-        }
-    </style>
-    """, unsafe_allow_html=True)
+    
