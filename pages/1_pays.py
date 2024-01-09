@@ -100,7 +100,7 @@ with col_pie:
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
              color_discrete_sequence=colors)
     fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
-    fig.update_layout(annotations=[dict(text=f"{p:.1%}", x=0.5, y=0.5, font=dict(size=14, color='black', weight='bold'))
+    fig.update_layout(annotations=[dict(text=f"{p:.1%}", x=0.5, y=0.5, font=dict(size=14, color='black'))
                                for p in fig.data[0].values])
     st.plotly_chart(fig, use_container_width=True)
 
