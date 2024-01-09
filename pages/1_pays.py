@@ -19,7 +19,7 @@ st.set_page_config("Suivi géographique des ventes :shopping_trolley:", page_ico
 col_title, col_dropdown = st.columns([3, 1])  # Ajustez les proportions en conséquence
 
 with col_title:
-    st.subheader("Suivi géographique des ventes")
+    st.subheader("Suivi géographique des ventes :shopping_trolley:")
 
 # Liste déroulante à côté du titre
 with col_dropdown:
