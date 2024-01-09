@@ -72,3 +72,16 @@ with col_pie :
     # Créer le graphique en secteur avec Plotly Express
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
+
+
+with col_map:
+    st.subheader("Carte des commandes")
+    my_map = folium.Map(location=[filtered_data['Latitude'].iloc[0], filtered_data['Longitude'].iloc[0]], zoom_start=5)
+    
+    # Ajoutez une seule marqueur pour représenter le pays
+    folium.Marker([filtered_data['Latitude'].iloc[0], filtered_data['Longitude'].iloc[0]], 
+                  popup=f"Pays: {selected_country}", 
+                  icon=folium.Icon(color='blue')).add_to(my_map)
+    
+    # Affichez la carte avec Streamlit Folium
+    st_folium(my_map)
