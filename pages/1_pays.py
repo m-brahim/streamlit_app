@@ -10,9 +10,6 @@ df = pd.read_csv(url, delimiter=";")
 df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
 df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 
-# Filtrer les données où les coordonnées existent
-filtered_data = df[df['Latitude'].notnull() & df['Longitude'].notnull()]
-
 # Titre de la page
 st.set_page_config("Suivi géographique des ventes :shopping_trolley:", page_icon="", layout="wide")
 
@@ -74,16 +71,24 @@ with col_pie :
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
 
-# Créer une carte avec les coordonnées géographiques
-world_map = folium.Map(location=[0, 0], zoom_start=2)
+# Filtrer les données où les coordonnées existent
+filtered_data = df[df['Latitude'].notnull() & df['Longitude'].notnull()]
 
-# Ajouter des marqueurs pour chaque pays avec le nombre de ventes
-for _, row in filtered_data.iterrows():
-    folium.Marker(
-        location=[row['Latitude'], row['Longitude']],
-        popup=f"{row['Pays/Région']}: {row['Ventes']} ventes"
-    ).add_to(world_map)
+# Sélectionner un pays spécifique
+selected_country = st.selectbox("Sélectionnez un pays", filtered_data['Pays/Région'].unique())
 
-# Afficher la carte dans Streamlit dans une colonne spécifique
+# Filtrer les données pour le pays sélectionné
+country_data = filtered_data[filtered_data['Pays/Région'] == selected_country]
+
+# Créer une carte avec les coordonnées géographiques du pays sélectionné
+country_map = folium.Map(location=[country_data['Latitude'].mean(), country_data['Longitude'].mean()], zoom_start=6)
+
+# Ajouter un marqueur pour le pays avec la somme des ventes
+folium.Marker(
+    location=[country_data['Latitude'].mean(), country_data['Longitude'].mean()],
+    popup=f"{selected_country}: {country_data['Ventes'].sum()} ventes"
+).add_to(country_map)
+
+# Afficher la carte du pays dans Streamlit
 with col_map:
-    st_folium(world_map, width=750, height=500)
+    st_folium(country_map)
