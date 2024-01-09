@@ -96,7 +96,7 @@ with col_pie:
     # Calculer les quantités vendues par catégorie pour le pays sélectionné
     quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
     # Créer le graphique en secteur avec Plotly Express et spécifier les couleurs
-    colors = ['#8B4513','#000000', '#FFFF00']
+    colors = ['#FFC155','#FFFA55', '#FFB266']
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
              color_discrete_sequence=colors)
     st.plotly_chart(fig, use_container_width=True)
