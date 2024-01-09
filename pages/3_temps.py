@@ -110,30 +110,28 @@ with col_v3:
     # Agréger le nombre de commandes par mois pour l'année de comparaison
     monthly_orders_comparison_year = df[df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
 
-    # Créer une liste de couleurs pour chaque année
-    colors = ['blue', 'red']
-
-    # Créer une liste d'étiquettes pour chaque barre
-    labels = [f'{selected_year}'] * len(monthly_orders_selected_year['Mois'])
-    labels += [f'{selected_comparison_year}'] * len(monthly_orders_comparison_year['Mois'])
-
-    # Répéter les valeurs de 'y' pour chaque mois
-    y_values = list(monthly_orders_selected_year['ID commande']) + list(monthly_orders_comparison_year['ID commande'])
-
     # Visualisation de l'évolution du nombre de commandes par mois
     fig_orders_evolution = px.bar(
-        x=monthly_orders_selected_year['Mois'].append(monthly_orders_comparison_year['Mois']),
-        y=y_values,
-        title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-        labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'},
-        color_discrete_sequence=colors,
-        text=labels  # Utiliser les étiquettes spécifiées
+        monthly_orders_selected_year,
+        x='Mois',
+        y='ID commande',
+        title=f"Évolution du nombre de commandes en <span style='color: blue;'>{selected_year}</span> et <span style='color: red;'>{selected_comparison_year}</span>",
+        labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
+    )
+
+    # Ajouter la deuxième série temporelle pour l'année de comparaison
+    fig_orders_evolution.add_bar(
+        x=monthly_orders_comparison_year['Mois'],
+        y=monthly_orders_comparison_year['ID commande'],
+        name=f'{selected_comparison_year}',
+        marker_color='red'
     )
 
     # Définir le mode de superposition des barres
     fig_orders_evolution.update_layout(barmode='group')
 
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
+
 
 
 
