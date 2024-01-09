@@ -12,6 +12,12 @@ df = pd.read_csv(url, delimiter=";")
 df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
 df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 
+# Créer une instance du géocodeur Nominatim
+geolocator = Nominatim(user_agent="geo_locator")
+
+# Ajouter une colonne pour les coordonnées géographiques
+df['Coordonnées'] = df['Pays/Région'].apply(lambda country: geolocator.geocode(country) if geolocator else None)
+
 # Titre de la page
 st.set_page_config("Suivi géographique des ventes :shopping_trolley:", page_icon="", layout="wide")
 
@@ -72,9 +78,6 @@ with col_pie :
     # Créer le graphique en secteur avec Plotly Express
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
-
-# Ajouter une colonne pour les coordonnées géographiques
-df['Coordonnées'] = df['Pays/Région'].apply(lambda country: geolocator.geocode(country) if geolocator else None)
 
 # Filtrer les données où les coordonnées existent
 filtered_data = df[df['Coordonnées'].notnull()]
