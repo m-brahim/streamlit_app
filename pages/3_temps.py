@@ -110,13 +110,13 @@ with col_v3:
     # Agréger le nombre de commandes par mois pour l'année de comparaison
     monthly_orders_comparison_year = df[df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
 
-    # Visualisation de l'évolution du nombre de commandes par mois
-    fig_orders_evolution = px.bar(
-        monthly_orders_selected_year,
-        x='Mois',
-        y='ID commande',
+    # Ajouter la série temporelle pour l'année courante (2022) avec une couleur différente (bleu)
+    fig_orders_evolution.add_bar(
+        x=monthly_orders_selected_year['Mois'],
+        y=monthly_orders_selected_year['ID commande'],
+        name=f'{selected_year}',
+        marker_color='blue'
         title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-        labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
     )
 
     # Ajouter la deuxième série temporelle pour l'année de comparaison
@@ -125,14 +125,6 @@ with col_v3:
         y=monthly_orders_comparison_year['ID commande'],
         name=f'{selected_comparison_year}',
         marker_color='red'
-    )
-
-    # Ajouter la série temporelle pour l'année courante (2022) avec une couleur différente (bleu)
-    fig_orders_evolution.add_bar(
-        x=monthly_orders_selected_year['Mois'],
-        y=monthly_orders_selected_year['ID commande'],
-        name=f'{selected_year}',
-        marker_color='blue'
     )
 
     # Définir le mode de superposition des barres
