@@ -21,7 +21,7 @@ with col_title:
 
 # Liste déroulante à côté du titre
 with col_dropdown:
-    selected_country = st.selectbox("Sélectionnez un pays", df['Pays/Région'].unique())
+    selected_country = st.selectbox("Sélectionnez un pays", filtered_data['Pays/Région'].unique(), key="unique_key_for_selectbox")
 
 st.header("")
 
