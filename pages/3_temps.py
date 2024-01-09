@@ -127,6 +127,14 @@ with col_v3:
         marker_color='red'
     )
 
+    # Ajouter la série temporelle pour l'année courante (2022) avec une couleur différente (bleu)
+    fig_orders_evolution.add_bar(
+        x=monthly_orders_selected_year['Mois'],
+        y=monthly_orders_selected_year['ID commande'],
+        name=f'{selected_year}',
+        marker_color='blue'
+    )
+
     # Définir le mode de superposition des barres
     fig_orders_evolution.update_layout(barmode='group')
 
