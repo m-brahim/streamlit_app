@@ -131,12 +131,3 @@ with col_v3:
 
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
-    # Afficher le meilleur et le pire mois pour les commandes dans des metrics
-    best_month_orders = monthly_orders_selected_year.loc[monthly_orders_selected_year['ID commande'].idxmax()]
-    worst_month_orders = monthly_orders_selected_year.loc[monthly_orders_selected_year['ID commande'].idxmin()]
-
-    # Afficher les metrics avec les couleurs spécifiques
-    st.metric(label=f"Meilleur mois de {selected_year} en termes de commandes", value=f"{best_month_orders['Mois']} avec {best_month_orders['ID commande']} commandes", delta="")
-    st.metric(label=f"Pire mois de {selected_year} en termes de commandes", value=f"{worst_month_orders['Mois']} avec {worst_month_orders['ID commande']} commandes", delta="")
-
-
