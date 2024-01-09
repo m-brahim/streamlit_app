@@ -120,16 +120,18 @@ with col_v3:
     )
 
     # Ajouter la deuxième série temporelle pour l'année de comparaison
-    fig_orders_evolution.add_bar(
-        x=monthly_orders_comparison_year['Mois'],
-        y=monthly_orders_comparison_year['ID commande'],
-        name=f'{selected_comparison_year}'
-    )
+    fig_orders_evolution.add_trace(px.bar(
+        monthly_orders_comparison_year,
+        x='Mois',
+        y='ID commande',
+        labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
+    ).update_traces(marker_color='red').data[0])
 
-    # Définir le mode de superposition des barres
     fig_orders_evolution.update_layout(barmode='group')
 
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
+
+
 
 
 
