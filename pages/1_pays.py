@@ -72,3 +72,26 @@ with col_pie :
     # Créer le graphique en secteur avec Plotly Express
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
     st.plotly_chart(fig, use_container_width=True)
+
+with col_map:
+    # Créer une carte du monde avec Folium
+    world_map = folium.Map(location=[0, 0], zoom_start=2)
+
+    # Géocoder les coordonnées pour chaque pays
+    geolocator = Nominatim(user_agent="geo_locator")
+
+    # Ajouter des marqueurs pour chaque pays avec le nombre de ventes
+    for country in df['Pays/Région'].unique():
+        country_data = df[df['Pays/Région'] == country]
+        country_location = geolocator.geocode(country)
+
+        if country_location:
+            folium.Marker(
+                location=[country_location.latitude, country_location.longitude],
+                popup=f"{country}: {country_data['Ventes'].sum()} ventes"
+            ).add_to(world_map)
+
+    # Afficher la carte dans Streamlit
+    st_folium(world_map)
+
+
