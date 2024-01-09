@@ -85,4 +85,4 @@ with col_map:
                   icon=folium.Icon(color='blue')).add_to(my_map)
     
     # Affichez la carte avec Streamlit Folium
-    st_folium(my_map, width = 500, height = 500)
+    st_folium(my_map, width = 700, height = 500)
