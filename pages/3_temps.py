@@ -110,26 +110,22 @@ with col_v3:
     # Agréger le nombre de commandes par mois pour l'année de comparaison
     monthly_orders_comparison_year = df[df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
 
+    # Créer une liste de couleurs pour chaque année
+    colors = ['blue', 'red']
+
     # Visualisation de l'évolution du nombre de commandes par mois
     fig_orders_evolution = px.bar(
         x=monthly_orders_selected_year['Mois'],
-        y=monthly_orders_selected_year['ID commande'],
+        y=[monthly_orders_selected_year['ID commande'], monthly_orders_comparison_year['ID commande']],
         title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
         labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'},
-        marker_color='blue'
-    )
-
-    # Ajouter la deuxième série temporelle pour l'année de comparaison
-    fig_orders_evolution.add_bar(
-        x=monthly_orders_comparison_year['Mois'],
-        y=monthly_orders_comparison_year['ID commande'],
-        name=f'{selected_comparison_year}',
-        marker_color='red'
+        color_discrete_sequence=colors
     )
 
     # Définir le mode de superposition des barres
     fig_orders_evolution.update_layout(barmode='group')
 
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
+
 
 
