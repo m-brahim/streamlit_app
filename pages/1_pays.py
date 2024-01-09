@@ -65,18 +65,24 @@ st.header("")
 
 col_map, col_space, col_pie= st.columns([3, 1, 2])
 
+# Agréger le nombre de clients par pays
+clients_by_country = df.drop_duplicates(subset=['ID client', 'Pays/Région']).groupby('Pays/Région')['ID client'].count().reset_index()
+
+# Fusionner les données agrégées avec les données filtrées
+merged_data = pd.merge(filtered_data, clients_by_country, how='left', on='Pays/Région').drop_duplicates(subset=['ID client'])
+
 # Ajoutez une carte Folium avec une taille spécifique
 with col_map:
     st.subheader("Carte des commandes")
-    my_map = folium.Map(location=[filtered_data['Latitude'].iloc[0], filtered_data['Longitude'].iloc[0]], zoom_start=5) 
+    my_map = folium.Map(location=[merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], zoom_start=5)
     
-    # Ajoutez une seule marqueur pour représenter le pays
-    folium.Marker([filtered_data['Latitude'].iloc[0], filtered_data['Longitude'].iloc[0]], 
-                  popup=f"Pays: {selected_country}", 
+    # Ajoutez une seule marqueur pour représenter le pays avec le nombre de clients dans l'infobulle
+    folium.Marker([merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], 
+                  popup=f"Pays: {selected_country}<br>Nombre de clients: {num_clients}", 
                   icon=folium.Icon(color='blue')).add_to(my_map)
     
     # Affichez la carte avec Streamlit Folium
-    st_folium(my_map, width = 1000, height = 400)
+    st_folium(my_map, width=1000, height=400)
 
 with col_pie :
     st.subheader("Quantités vendues par catégorie")
