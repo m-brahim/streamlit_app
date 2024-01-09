@@ -91,7 +91,7 @@ with col_map:
     # Affichez la carte avec Streamlit Folium
     st_folium(my_map, width=1000, height=400)
 
-with st.column(opacity=0.8, padding=0):
+with col_pie(opacity=0.8, padding=0):
     st.subheader("Quantités vendues par catégorie")
     # Calculer les quantités vendues par catégorie pour le pays sélectionné
     quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
