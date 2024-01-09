@@ -63,16 +63,7 @@ st.subheader("Visualisations :bar_chart: :chart_with_upwards_trend:")
 
 st.header("")
 
-col_pie, col_space, col_map = st.columns([2, 1, 2])
-
-with col_pie :
-    st.subheader("Quantités vendues par catégorie")
-    # Calculer les quantités vendues par catégorie pour le pays sélectionné
-    quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
-    # Créer le graphique en secteur avec Plotly Express
-    fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
-    st.plotly_chart(fig, use_container_width=True)
-
+col_map, col_space, col_pie= st.columns([2, 1, 3])
 
 # Ajoutez une carte Folium avec une taille spécifique
 with col_map:
@@ -86,3 +77,14 @@ with col_map:
     
 # Affichez la carte avec Streamlit Folium
 st_folium(my_map, width = 1000, height = 400)
+
+with col_pie :
+    st.subheader("Quantités vendues par catégorie")
+    # Calculer les quantités vendues par catégorie pour le pays sélectionné
+    quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
+    # Créer le graphique en secteur avec Plotly Express
+    fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie')
+    st.plotly_chart(fig, use_container_width=True)
+
+
+
