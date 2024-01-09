@@ -88,7 +88,7 @@ with col_v1:
         monthly_clients_selected_year,
         x='Mois',
         y='ID client',
-        title=f"Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
+        title=f"Évolution du nombre de clients en <span style='color: blue;'>{selected_year}</span> et <span style='color: red;'>{selected_comparison_year}</span>",
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     )
 
