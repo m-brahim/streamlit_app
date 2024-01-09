@@ -87,7 +87,7 @@ with col_v1:
         monthly_clients_selected_year,
         x='Mois',
         y='ID client',
-        title=f"Évolution du nombre de clients en \033[94m{selected_year}\033[0m et \033[91m{selected_comparison_year}\033[0m",
+        title=f"Évolution du nombre de clients en :blue{selected_year} et :red{selected_comparison_year}",
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     )
 
@@ -114,7 +114,7 @@ with col_v3:
         monthly_orders_selected_year,
         x='Mois',
         y='ID commande',
-        title=f"Évolution du nombre de commandes en \033[94m{selected_year}\033[0m et \033[91m{selected_comparison_year}\033[0m",
+        title=f"Évolution du nombre de commandes en :blue{selected_year} et :red{selected_comparison_year}",
         labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
     )
 
