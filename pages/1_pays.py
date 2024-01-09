@@ -74,6 +74,10 @@ clients_by_country = df.drop_duplicates(subset=['ID client', 'Pays/Région']).gr
 # Fusionner les données agrégées avec les données filtrées
 merged_data = pd.merge(filtered_data, clients_by_country, how='left', on='Pays/Région')
 
+# Icône personnalisée pour représenter un client (remplacez 'path/vers/votre/icone_client.png' par le chemin de votre propre icône)
+icon_path = 'pages/Kiloutou_logo.jpg'
+client_icon = folium.CustomIcon(icon_image=icon_path, icon_size=(30, 30))
+
 # Ajoutez une carte Folium avec une taille spécifique
 with col_map:
     st.subheader("Nombre de clients par pays")
@@ -82,7 +86,7 @@ with col_map:
     # Ajoutez une seule marqueur pour représenter le pays avec le nombre de clients dans l'infobulle
     folium.Marker([merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], 
                   popup=f"Nombre de clients: {num_clients}", 
-                  icon=folium.Icon(color='red')).add_to(my_map)
+                  icon=client_icon).add_to(my_map)
     
     # Affichez la carte avec Streamlit Folium
     st_folium(my_map, width=1000, height=400)
