@@ -63,7 +63,7 @@ st.subheader("Visualisations :bar_chart: :chart_with_upwards_trend:")
 
 st.header("")
 
-col_pie, col_space, col_map = st.columns([2, 2, 2])
+col_pie, col_space, col_map = st.columns([2, 1, 2])
 
 with col_pie :
     st.subheader("Quantités vendues par catégorie")
@@ -85,4 +85,4 @@ with col_map:
                   icon=folium.Icon(color='blue')).add_to(my_map)
     
     # Affichez la carte avec Streamlit Folium
-    st_folium(my_map, width = 500, height = 400)
+    st_folium(my_map, width = 800, height = 400)
