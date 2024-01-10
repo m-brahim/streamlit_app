@@ -90,30 +90,40 @@ col_v1, col_v2, col_v3 = st.columns([2,1,2])
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-
 
+#graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 with col_v1:
     #agréger le nombre de clients par mois pour l'année sélectionnée
-    monthly_clients_selected_year = df[df['Année'] == selected_year].drop_duplicates('ID client').groupby('Mois')['ID client'].count().reset_index()
+    monthly_clients_selected_year = df[df['Année'] == selected_year].drop_duplicates('ID client').groupby(
+        'Mois')['ID client'].count().reset_index()
 
     #agréger le nombre de clients par mois pour l'année de comparaison
-    monthly_clients_comparison_year = df[df['Année'] == selected_comparison_year].drop_duplicates('ID client').groupby('Mois')['ID client'].count().reset_index()
+    monthly_clients_comparison_year = df[df['Année'] == selected_comparison_year].drop_duplicates(
+        'ID client').groupby('Mois')['ID client'].count().reset_index()
 
     #affiche l'évolution du nombre de clients pour N
-    fig_clients_evolution = px.line(
-        monthly_clients_selected_year,
-        x='Mois',
-        y='ID client',
-        title=f"Évolution du nombre de clients en <span style='color: blue;'>{selected_year}</span> et <span style='color: red;'>{selected_comparison_year}</span>",
-        labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
-    )
+    fig_clients_evolution = go.Figure()
+    fig_clients_evolution.add_trace(go.Scatter(
+        x=monthly_clients_selected_year['Mois'],
+        y=monthly_clients_selected_year['ID client'],
+        mode='lines',
+        name=f"{selected_year}",
+        line=dict(color='blue')
+    ))
 
     #affiche l'évolution du nombre de clients pour N-*
-    fig_clients_evolution.add_trace(px.line(
-        monthly_clients_comparison_year,
-        x='Mois',
-        y='ID client',
-        labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
-    ).update_traces(line_shape='linear', line=dict(color='red')).data[0])
+    fig_clients_evolution.add_trace(go.Scatter(
+        x=monthly_clients_comparison_year['Mois'],
+        y=monthly_clients_comparison_year['ID client'],
+        mode='lines',
+        name=f"{selected_comparison_year}",
+        line=dict(color='red')
+    ))
 
+    #mise en forme
+    fig_clients_evolution.update_layout(title=f"Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
+                                        xaxis=dict(title='Mois'),
+                                        yaxis=dict(title='Nombre de clients'))
+    
     #affichage
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
