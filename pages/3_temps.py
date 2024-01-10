@@ -4,86 +4,99 @@ import plotly.express as px
 import folium
 import markdown
 from streamlit_folium import st_folium
-from geopy.geocoders import Nominatim
-from geopy.exc import GeocoderTimedOut
 
+#collecte des données
 url = "Exemple - Hypermarché_Achats.csv"
 
+#modif sur colonne Ventes
 df = pd.read_csv(url, delimiter=";")
 df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
 df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 
-# Ajouter une colonne pour l'année à partir de la colonne de dates de commande
+#ajout d'une colonne année et une colonne mois qui extrait l'année de la date de commande
 df['Année'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.year
-
-# Ajouter une colonne pour le mois à partir de la colonne de dates de commande
 df['Mois'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.month_name()
 
-# Obtenir les années triées
+#tri dans l'ordre des années
 sorted_years = sorted(df['Année'].unique())
 
-# Titre de la page
+#configuration du titre de la page
 st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
 
-# Colonne pour le titre à l'extrême droite
+#création de colonnes
 col_title, col_dropdown = st.columns([3, 1])  # Ajustez les proportions en conséquence
 
+#une colonne pour le titre & une pour les listes déroulantes
 with col_title:
     st.subheader("Suivi temporel des ventes :hourglass_flowing_sand:")
 
-# Liste déroulante à côté du titre
 with col_dropdown:
     selected_year = st.selectbox("Sélectionnez une année", sorted_years)
     selected_comparison_year = st.selectbox("Sélectionnez une année de comparaison", sorted_years)
 
+
+
+#PARTIE KPI
+
+#titre 
 st.subheader("Indicateurs :mag_right:")
 
+#espacement
 st.subheader("")
 
-# Créer trois colonnes pour aligner les widgets côte à côte
+#création de colonnes identiques
 col_clients, col_orders, col_ca = st.columns(3)
 
+#calculs
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
 num_orders = len(df[df['Année'] == selected_year]['ID commande'])
 ca_by_year = df[df['Année'] == selected_year]['Ventes'].sum()
 
-# Calcul des différences pour les indicateurs
+#calculs des différences pour comparatif entre N et N-*
 diff_clients = num_clients - df[df['Année'] == selected_comparison_year].drop_duplicates('ID client')['ID client'].count()
 diff_orders = num_orders - len(df[df['Année'] == selected_comparison_year]['ID commande'])
 diff_ca = ca_by_year - df[df['Année'] == selected_comparison_year]['Ventes'].sum()
 
-# Convertir les différences en types de données acceptés
+#conversion des données pour conserver uniquement la partie entière
 diff_clients = int(diff_clients)
 diff_orders = int(diff_orders)
 diff_ca = int(diff_ca)
 
-# Nombre de clients
+#affiche le nombre de clients selon l'année
 col_clients.metric(label="Nombre de clients", value=num_clients, delta=diff_clients)
 
-# Nombre de commandes pour l'année sélectionnée
+#affiche le nombre de commandes selon l'année + comparatif avec N-*
 col_orders.metric(label="Nombre de commandes", value=num_orders, delta=diff_orders)
 
-# Chiffre d'affaires pour l'année sélectionnée
+#affiche le chiffre d'affaires selon l'année + comparatif avec N-*
 col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_by_year)} €", delta=f"{int(diff_ca)} €")
 
+#espacement
 st.subheader("")
 
+
+
+#PARTIE VISUALISATION
+
+#titre
 st.subheader("Visualisations :bar_chart: :chart_with_upwards_trend:")
 
+#espacement
 st.subheader("")
 
-# Créer 2 colonnes pour aligner les widgets côte à côte
+#création de colonnes et attribution de dimensions
 col_v1, col_v2, col_v3 = st.columns([2,1,2])
 
+#graphique qui permet d'observer l'évolution du nombre de clients selon N et N-
 
 with col_v1:
-    # Agréger le nombre de clients par mois pour l'année sélectionnée
+    #agréger le nombre de clients par mois pour l'année sélectionnée
     monthly_clients_selected_year = df[df['Année'] == selected_year].drop_duplicates('ID client').groupby('Mois')['ID client'].count().reset_index()
 
-    # Agréger le nombre de clients par mois pour l'année de comparaison
+    #agréger le nombre de clients par mois pour l'année de comparaison
     monthly_clients_comparison_year = df[df['Année'] == selected_comparison_year].drop_duplicates('ID client').groupby('Mois')['ID client'].count().reset_index()
 
-    # Utiliser la variable num_clients avec drop_duplicates pour construire le graphique en ligne
+    #affiche l'évolution du nombre de clients pour N
     fig_clients_evolution = px.line(
         monthly_clients_selected_year,
         x='Mois',
@@ -92,7 +105,7 @@ with col_v1:
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     )
 
-    # Ajouter la deuxième série temporelle pour l'année de comparaison
+    #affiche l'évolution du nombre de clients pour N-*
     fig_clients_evolution.add_trace(px.line(
         monthly_clients_comparison_year,
         x='Mois',
@@ -100,34 +113,43 @@ with col_v1:
         labels={'ID client': 'Nombre de clients', 'Mois': 'Mois'}
     ).update_traces(line_shape='linear', line=dict(color='red')).data[0])
 
+    #affichage
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
-    
+
+
+#graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
+
 with col_v3:
-    # Agréger le nombre de commandes par mois pour l'année sélectionnée
+    #agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders_selected_year = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
-    # Agréger le nombre de commandes par mois pour l'année de comparaison
-    monthly_orders_comparison_year = df[df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
+    #agréger le nombre de commandes par mois pour l'année de comparaison
+    monthly_orders_comparison_year = df[df['Année'] == selected_comparison_year].groupby(
+        'Mois')['ID commande'].count().reset_index()
 
-    # Visualisation de l'évolution du nombre de commandes par mois
-    fig_orders_evolution = px.bar(
-        monthly_orders_selected_year,
-        x='Mois',
-        y='ID commande',
-        title=f"Évolution du nombre de commandes en <span style='color: blue;'>{selected_year}</span> et <span style='color: red;'>{selected_comparison_year}</span>",
-        labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
-    )
+    #affiche l'évolution du nombre de commandes pour N
+    fig_orders_evolution = go.Figure()
+    fig_orders_evolution.add_trace(go.Bar(
+        x=monthly_orders_selected_year['Mois'],
+        y=monthly_orders_selected_year['ID commande'],
+        name=f"{selected_year}",
+        marker=dict(color='blue')
+    ))
 
-    # Ajouter la deuxième série temporelle pour l'année de comparaison
-    fig_orders_evolution.add_trace(px.bar(
-        monthly_orders_comparison_year,
-        x='Mois',
-        y='ID commande',
-        labels={'ID commande': 'Nombre de commandes', 'Mois': 'Mois'}
-    ).update_traces(marker_color='red').data[0])
+    #affiche l'évolution du nombre de commandes pour N-*
+    fig_orders_evolution.add_trace(go.Bar(
+        x=monthly_orders_comparison_year['Mois'],
+        y=monthly_orders_comparison_year['ID commande'],
+        name=f"{selected_comparison_year}",
+        marker=dict(color='red')
+    ))
 
-    fig_orders_evolution.update_layout(barmode='group')
+    #mise en forme
+    fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
+                                      xaxis=dict(title='Mois'),
+                                      yaxis=dict(title='Nombre de commandes'))
 
+    #affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
