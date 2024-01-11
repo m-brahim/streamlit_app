@@ -25,7 +25,7 @@ sorted_years = sorted(df['Année'].unique())
 st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
 
 #création de colonnes
-col_title, col_dropdown = st.columns([3, 1, 1])  # Ajustez les proportions en conséquence
+col_title, col_dropdown, col_dropdown2 = st.columns([3, 1, 1])  # Ajustez les proportions en conséquence
 
 #une colonne pour le titre & une pour les listes déroulantes
 with col_title:
