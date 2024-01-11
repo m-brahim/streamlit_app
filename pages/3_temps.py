@@ -15,7 +15,7 @@ style = """
 <style>
 [class="main st-emotion-cache-uf99v8 ea3mdgi3"]
 {
-background-image : url(https://www.bing.com/images/search?view=detailV2&ccid=CPIEZWkF&id=DE17A234ADB8E4FD04C8AF877004528C5167FBF7&thid=OIP.CPIEZWkFsxy7haLgnSyMrQHaEK&mediaurl=https%3a%2f%2ffiles.123freevectors.com%2fwp-content%2fsolidbackground%2fgallery-blue-free-solidcolor-background.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.08f204656905b31cbb85a2e09d2c8cad%3frik%3d9%252ftnUYxSBHCHrw%26pid%3dImgRaw%26r%3d0&exph=4320&expw=7680&q=nuance+blue+background&simid=607997271851601768&FORM=IRPRST&ck=CEA46475822FD98CCB8DD67E207DFEDE&selectedIndex=61&itb=0&ajaxhist=0&ajaxserp=0);
+background-image : url("https://www.bing.com/images/search?view=detailV2&ccid=CPIEZWkF&id=DE17A234ADB8E4FD04C8AF877004528C5167FBF7&thid=OIP.CPIEZWkFsxy7haLgnSyMrQHaEK&mediaurl=https%3a%2f%2ffiles.123freevectors.com%2fwp-content%2fsolidbackground%2fgallery-blue-free-solidcolor-background.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.08f204656905b31cbb85a2e09d2c8cad%3frik%3d9%252ftnUYxSBHCHrw%26pid%3dImgRaw%26r%3d0&exph=4320&expw=7680&q=nuance+blue+background&simid=607997271851601768&FORM=IRPRST&ck=CEA46475822FD98CCB8DD67E207DFEDE&selectedIndex=61&itb=0&ajaxhist=0&ajaxserp=0");
 background-size : cover;
 }
 </style>
