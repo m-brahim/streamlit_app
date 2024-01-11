@@ -31,7 +31,7 @@ background-size: cover;
 /* barre latérale */
 
 [data-testid="stSidebarContent"]{
-background-color : #74a1eb;
+background-color : #a3c3d7;
 }
 
 /* titres */
