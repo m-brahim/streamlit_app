@@ -58,17 +58,13 @@ margin-bottom : 5px;
 [class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
 border : solid;
 border-color : white;
-padding : 0px 0px 6px 0px;
-margin-left : 5px;
-margin-right : 5px;
+padding : 0px 5px 6px 5px;
 }
 
 [class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
 border : solid;
 border-color : white;
-padding : 0px 0px 6px 0px;
-margin-left : 5px;
-margin-left : 5px;
+padding : 0px 5px 6px 5px;
 }
 
 
