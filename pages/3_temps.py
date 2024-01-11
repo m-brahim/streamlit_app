@@ -147,6 +147,15 @@ with col_v3:
     monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=True)
     monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=True)
 
+    # Affiche l'évolution du nombre de commandes pour N-*
+    fig_orders_evolution.add_trace(go.Bar(
+        x=monthly_orders_comparison_year['ID commande'],
+        y=monthly_orders_comparison_year['Mois'],
+        name=f"{selected_comparison_year}",
+        orientation='h',
+        marker=dict(color='red')
+    ))
+    
     # Affiche l'évolution du nombre de commandes pour N
     fig_orders_evolution.add_trace(go.Bar(
         x=monthly_orders_selected_year['ID commande'],
@@ -156,14 +165,7 @@ with col_v3:
         marker=dict(color='blue')
     ))
 
-    # Affiche l'évolution du nombre de commandes pour N-*
-    fig_orders_evolution.add_trace(go.Bar(
-        x=monthly_orders_comparison_year['ID commande'],
-        y=monthly_orders_comparison_year['Mois'],
-        name=f"{selected_comparison_year}",
-        orientation='h',
-        marker=dict(color='red')
-    ))
+    
 
     # Mise en forme
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
