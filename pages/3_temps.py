@@ -42,7 +42,7 @@ border-color : white;
 }
 
 [class="st-emotion-cache-10trblm e1nzilvr1"]{
-margin: 10px 50px 20px 0;
+text-align : center;
 }
 
 </style>
