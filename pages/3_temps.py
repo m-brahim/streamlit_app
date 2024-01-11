@@ -125,10 +125,10 @@ new_dfs, code = spreadsheet(url)
 #PARTIE KPI
 
 #titre 
-st.header("Indicateurs :mag_right:")
+st.header("Chiffres clés pour l'année courante :mag_right:")
 
 #création de colonnes identiques
-col_sp1, col_clients, col_orders, col_ca, col_sp2 = st.columns([2, 1, 1, 1, 2])
+col_sp1, col_clients, col_orders, col_ca, col_sp2 = st.columns([1, 2, 2, 2, 1])
 
 #calculs
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
@@ -152,7 +152,7 @@ col_clients.metric(label="Nombre de clients", value=num_clients, delta=diff_clie
 col_orders.metric(label="Nombre de commandes", value=num_orders, delta=diff_orders)
 
 #affiche le chiffre d'affaires selon l'année + comparatif avec N-*
-col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_by_year)} €", delta=f"{int(diff_ca)} €")
+col_ca.metric(label=f"Chiffre d'affaires", value=f"{int(ca_by_year)} €", delta=f"{int(diff_ca)} €")
 
 
 
