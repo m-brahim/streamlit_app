@@ -17,7 +17,6 @@ style = """
 [data-testid="stHeader"]{
 background-image: url("https://www.nsbpictures.com/wp-content/uploads/2020/08/COLORFULL-GRADIENTS-6-scaled.jpg");
 background-size: cover;
-opacity : 0.5;
 }
 
 [class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
@@ -155,7 +154,7 @@ st.header("Visualisations :bar_chart: :chart_with_upwards_trend:")
 st.subheader("")
 
 #création de colonnes et attribution de dimensions
-col_v1, col_v2, col_v3 = st.columns([2,1,2])
+col_v1, col_v3 = st.columns([2,1,2])
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
