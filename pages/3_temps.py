@@ -13,6 +13,12 @@ st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_ic
 
 style = """
 <style>
+
+[data-testid="stHeader"]{
+background-image: url("https://th.bing.com/th/id/OIP.9c2dn34dgf4XNAfwfq7dyAHaEK?rs=1&pid=ImgDetMain");
+background-size: cover;
+}
+
 [class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
 background-image: url("https://th.bing.com/th/id/OIP.9c2dn34dgf4XNAfwfq7dyAHaEK?rs=1&pid=ImgDetMain");
 background-size: cover;
