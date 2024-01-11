@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 import folium
 import markdown
 from streamlit_folium import st_folium
+from mitosheet import spreadsheet
 
 #config du titre de la page
 st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
@@ -261,4 +262,14 @@ with col_v3:
 
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
+
+
+
+col_tab1, col_tab2 = st.columns(2)
+
+with col_tab1:
+    new_dfs, code = spreadsheet(url)
+
+
+
 
