@@ -17,8 +17,7 @@ style = """
 /* en tête de la page */
 
 [data-testid="stHeader"]{
-background-image: url("https://images.pexels.com/photos/1146134/pexels-photo-1146134.jpeg?auto=compress&cs=tinysrgb&w=600");
-background-size: cover;
+
 }
 
 /* section principale */
@@ -31,7 +30,7 @@ background-size: cover;
 /* barre latérale */
 
 [data-testid="stSidebarContent"]{
-background-color : #2d15f9;
+
 }
 
 /* titres */
