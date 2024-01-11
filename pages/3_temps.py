@@ -21,19 +21,6 @@ df['Mois'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.month_
 #tri dans l'ordre des années
 sorted_years = sorted(df['Année'].unique())
 
-#configuration du titre de la page
-st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
-
-st.markdown("""
-    <style>
-        body {
-            font-family: 'Goudy Bookletter 1911', sans-serif;
-            font-size: 16px;
-            color: #333;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
 #création de colonnes
 col_title, col_dropdown, col_dropdown2 = st.columns([3, 1, 1])  # Ajustez les proportions en conséquence
 
@@ -100,8 +87,6 @@ st.subheader("")
 #création de colonnes et attribution de dimensions
 col_v1, col_v2, col_v3 = st.columns([2,1,2])
 
-
-
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
 with col_v1:
@@ -139,7 +124,6 @@ with col_v1:
     
     #affichage
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
-
 
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
