@@ -46,14 +46,9 @@ border : solid;
 border-color : white;
 }
 
-[class="st-emotion-cache-10trblm e1nzilvr1"]{
+[data-testid="stMarkdownContainer"]{
 text-align : center;
 }
-
-[class="st-emotion-cache-17c4ue e1i5pmia2"]{
-text-align : center;
-}
-
 
 
 [data-testid="stMetric"]{
