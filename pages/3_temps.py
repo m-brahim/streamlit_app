@@ -6,8 +6,7 @@ import folium
 import markdown
 from streamlit_folium import st_folium
 
-#config du titre de la page
-st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
+
 
 #style de la page
 
