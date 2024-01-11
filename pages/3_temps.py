@@ -54,6 +54,7 @@ text-align : center;
 border : dashed;
 border-color : white;
 background-color : #d9d3eb;
+text-align : center;
 }
 
 
