@@ -125,6 +125,9 @@ with st.sidebar:
     selected_year = st.radio("Sélectionnez N", sorted_years)
     selected_comparison_year = st.radio("Sélectionnez N-*", sorted_years)
 
+st.header("Données utilisées")
+new_dfs, code = spreadsheet(url)
+
 #PARTIE KPI
 
 #titre 
