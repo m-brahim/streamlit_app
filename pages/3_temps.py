@@ -25,14 +25,16 @@ sorted_years = sorted(df['Année'].unique())
 st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
 
 #création de colonnes
-col_title, col_dropdown = st.columns([3, 1])  # Ajustez les proportions en conséquence
+col_title, col_dropdown = st.columns([3, 1, 1])  # Ajustez les proportions en conséquence
 
 #une colonne pour le titre & une pour les listes déroulantes
 with col_title:
     st.subheader("Suivi temporel des ventes :hourglass_flowing_sand:")
-    selected_year = st.selectbox("Sélectionnez une année", sorted_years)
 
 with col_dropdown:
+    selected_year = st.selectbox("Sélectionnez une année", sorted_years)
+
+with col_dropdown2:
     selected_comparison_year = st.selectbox("Sélectionnez une année de comparaison", sorted_years)
 
 
