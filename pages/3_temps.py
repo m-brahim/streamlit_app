@@ -90,17 +90,17 @@ df['Mois'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.month_
 sorted_years = sorted(df['Année'].unique())
 
 #création de colonnes
-col_title, col_dropdown, col_dropdown2 = st.columns([3, 1, 2])  # Ajustez les proportions en conséquence
+col_title, col_dropdown, col_dropdown2 = st.columns([3, 1, 1])  # Ajustez les proportions en conséquence
 
 #une colonne pour le titre & une pour les listes déroulantes
 with col_title:
     st.title("Suivi temporel des ventes :hourglass_flowing_sand:")
 
 with col_dropdown:
-    selected_year = st.selectbox("Sélectionnez une année", sorted_years)
+    selected_year = st.selectbox("Sélectionnez N", sorted_years)
 
 with col_dropdown2:
-    selected_comparison_year = st.selectbox("Sélectionnez une année de comparaison", sorted_years)
+    selected_comparison_year = st.selectbox("Sélectionnez N-*", sorted_years)
 
 st.subheader("")
 
