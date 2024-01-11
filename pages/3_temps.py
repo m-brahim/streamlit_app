@@ -46,11 +46,6 @@ text-align : center;
 margin-top : 10px;
 }
 
-[class="st-emotion-cache-zt5igj e1nzilvr4"]{
-border : solid;
-border-color : white;
-}
-
 </style>
 """
 
