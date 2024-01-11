@@ -135,7 +135,7 @@ with col_dropdown2:
 st.header("Indicateurs :mag_right:")
 
 #création de colonnes identiques
-col_clients, col_orders, col_ca = st.columns(3)
+col_space, col_clients, col_orders, col_ca = st.columns(4)
 
 #calculs
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
