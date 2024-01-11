@@ -36,9 +36,12 @@ border-color : white;
 text-align : center;
 }
 
+[class="st-emotion-cache-eczf16 e1nzilvr3"]{
+position : relative;
+}
+
 [id="e3af3173"]{
 padding : 10px 10px 0px 0px;
-position : relative;
 }
 
 [data-testid="stHorizontalBlock"]{
