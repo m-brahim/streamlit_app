@@ -42,7 +42,7 @@ margin-left : 0px;
 
 [class="st-emotion-cache-1629p8f e1nzilvr2"]{
 border : solid;
-border-color : #658eb3;;
+border-color :  #223444;
 text-align : center;
 }
 
