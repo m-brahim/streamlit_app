@@ -110,8 +110,6 @@ df['Mois'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.month_
 
 #tri dans l'ordre des années
 sorted_years = sorted(df['Année'].unique())
-sorted_years_comparison = sorted_years.copy()
-sorted_years_comparison.remove(max(sorted_years))
 
 #création de colonnes
 col_title, col_2, col_3 = st.columns([3, 1, 1])
@@ -125,6 +123,8 @@ with st.sidebar:
     
     # Utilisation de st.radio() pour créer des boutons radio horizontaux
     selected_year = st.radio("Sélectionnez N", sorted_years)
+    sorted_years_comparison = sorted_years.copy()
+    sorted_years_comparison.remove(max(sorted_years))
     selected_comparison_year = st.radio("Sélectionnez N-*", sorted_years)
 
 st.header("Données utilisées")
