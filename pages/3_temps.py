@@ -62,8 +62,7 @@ text-align : center;
 [data-testid="stMetric"]{
 border : dashed;
 border-color : white;
-background-color : #d9d3eb;
-text-align : center;
+background-color : F6F2FF;
 }
 
 
