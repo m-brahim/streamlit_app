@@ -119,11 +119,11 @@ with col_title:
 
 with col_dropdown:
     st.text("Sélectionnez N")
-    selected_year = st.selectbox(sorted_years)
+    selected_year = st.selectbox(" ",sorted_years)
 
 with col_dropdown2:
     st.text("Sélectionnez N-*")
-    selected_comparison_year = st.selectbox(sorted_years)
+    selected_comparison_year = st.selectbox("  ",sorted_years)
 
 
 
