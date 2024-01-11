@@ -58,6 +58,10 @@ padding : 10px 0px 10px 0px;
 margin-bottom : 5px;
 }
 
+[class="stHeadingContainer"]{
+margin-bottom : 5px;
+}
+
 
 /* listes déroulantes */
 
