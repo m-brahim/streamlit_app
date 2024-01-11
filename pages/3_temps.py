@@ -60,14 +60,20 @@ text-align : center;
 
 
 
+[data-testid="stMetric"]{
+text-align : center;
+}
+
+[data-testid="stMetricLabel"]{
+position : relative;
+}
 
 [data-testid="stMetricValue"]{
 text-align : center;
 }
 
-[data-testid="stMetric"]{
-text-align : center;
-}
+
+
 
 
 </style>
