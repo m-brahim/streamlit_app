@@ -153,7 +153,7 @@ with col_v3:
         y=monthly_orders_comparison_year['Mois'],
         name=f"{selected_comparison_year}",
         orientation='h',
-        marker=dict(color='red')
+        marker=dict(color='yellow')
     ))
     
     # Affiche l'évolution du nombre de commandes pour N
@@ -162,7 +162,7 @@ with col_v3:
         y=monthly_orders_selected_year['Mois'],
         name=f"{selected_year}",
         orientation='h',
-        marker=dict(color='blue')
+        marker=dict(color='black')
     ))
 
     
