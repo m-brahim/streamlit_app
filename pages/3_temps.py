@@ -36,6 +36,12 @@ border : solid;
 border-color : white;
 }
 
+[id="76c358b0"]{
+border : solid;
+border-color : white;
+}
+
+
 [class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
 border : solid;
 border-color : white;
