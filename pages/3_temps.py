@@ -58,13 +58,13 @@ margin-bottom : 5px;
 [class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
 border : solid;
 border-color : white;
-padding : 5px 0px 50px 0px;
+padding : 0px 0px 10px 0px;
 }
 
 [class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
 border : solid;
 border-color : white;
-padding : 5px 0px 5px 0px;
+padding : 0px 0px 10px 0px;
 }
 
 
