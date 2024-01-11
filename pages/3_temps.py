@@ -22,8 +22,8 @@ background: repeating-linear-gradient( 45deg, #71767c, #71767c 5px, #e5e5f7 5px,
 st.markdown(style, unsafe_allow_html = True)
 
 
-
-
+#config du titre de la page
+st.set_page_config("Suivi géographique des ventes :earth_africa:", page_icon="", layout="wide")
 
 #collecte des données
 url = "Exemple - Hypermarché_Achats.csv"
