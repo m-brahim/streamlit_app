@@ -42,7 +42,7 @@ margin-left : 0px;
 
 [class="st-emotion-cache-1629p8f e1nzilvr2"]{
 border : solid;
-border-color : black;
+border-color : #658eb3;;
 text-align : center;
 }
 
@@ -76,7 +76,7 @@ margin-bottom : 10px;
 
 [id="d7ed6071"]{
 font-family: Roboto;
-color : white;
+color : black;
 }
 
 
