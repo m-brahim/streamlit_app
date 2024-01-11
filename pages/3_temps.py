@@ -50,7 +50,7 @@ border-color : white;
 text-align : center;
 }
 
-["p"]{
+["data-testid="stMetricLabel"]{
 text-align : center;
 }
 
