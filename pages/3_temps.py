@@ -30,25 +30,11 @@ background-size: cover;
 
 /* titre 1 : Suivi temporel des ventes */
 
-[id="e3af3173"]{
-border : solid;
-border-color : white;
-text-align : center;
-}
-
-/* liste déroulante 1 */
-
-[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
+[class="st-emotion-cache-ocqkz7 e1f1d6gn5"]{
 border : solid;
 border-color : white;
 }
 
-/* liste déroulante 2 */
-
-[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
-border : solid;
-border-color : white;
-}
 
 /* titre 2 : Indicateurs */
 
