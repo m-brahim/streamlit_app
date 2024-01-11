@@ -29,6 +29,7 @@ background-size: cover;
 [id="e3af3173"]{
 border : solid;
 border-color : white;
+padding: 10px 10px 10px 10px;
 }
 
 [id="2f3f65b5"]{
@@ -53,8 +54,6 @@ border : solid;
 border-color : white;
 padding: 10px 10px 10px 10px;
 }
-
-
 
 
 
