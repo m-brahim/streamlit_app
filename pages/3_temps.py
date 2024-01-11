@@ -27,7 +27,7 @@ st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_ic
 st.markdown("""
     <style>
         body {
-            font-family: 'Arial, sans-serif';
+            font-family: 'Lemon';
             font-size: 16px;
             color: #333;
         }
