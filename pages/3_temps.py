@@ -134,37 +134,45 @@ with col_v1:
 
 fig_orders_evolution = go.Figure()
 
+# Graphique qui permet d'observer l'évolution du nombre de commandes selon N et N-*
 with col_v3:
-    #agréger le nombre de commandes par mois pour l'année sélectionnée
+    # Agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders_selected_year = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
-    #agréger le nombre de commandes par mois pour l'année de comparaison
+    # Agréger le nombre de commandes par mois pour l'année de comparaison
     monthly_orders_comparison_year = df[df['Année'] == selected_comparison_year].groupby(
         'Mois')['ID commande'].count().reset_index()
 
+    # Triez les mois dans l'ordre
+    month_order = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    monthly_orders_selected_year = monthly_orders_selected_year.set_index("Mois").reindex(month_order).reset_index()
+    monthly_orders_comparison_year = monthly_orders_comparison_year.set_index("Mois").reindex(month_order).reset_index()
+
     # Affiche l'évolution du nombre de commandes pour N
     fig_orders_evolution.add_trace(go.Bar(
-    x=monthly_orders_selected_year['ID commande'],
-    y=monthly_orders_selected_year['Mois'],
-    name=f"{selected_year}",
-    orientation='h',  # Définir l'orientation à horizontal
-    marker=dict(color='blue')
+        x=monthly_orders_selected_year['ID commande'],
+        y=monthly_orders_selected_year['Mois'],
+        name=f"{selected_year}",
+        orientation='h',  # Définir l'orientation à horizontal
+        marker=dict(color='blue')
     ))
 
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
-    x=monthly_orders_comparison_year['ID commande'],
-    y=monthly_orders_comparison_year['Mois'],
-    name=f"{selected_comparison_year}",
-    orientation='h',  # Définir l'orientation à horizontal
-    marker=dict(color='red')
+        x=monthly_orders_comparison_year['ID commande'],
+        y=monthly_orders_comparison_year['Mois'],
+        name=f"{selected_comparison_year}",
+        orientation='h',  # Définir l'orientation à horizontal
+        marker=dict(color='red')
     ))
 
-    #mise en forme
+    # Mise en forme
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-                                      xaxis=dict(title='Mois'),
-                                      yaxis=dict(title='Nombre de commandes'))
+                                      xaxis=dict(title='Nombre de commandes'),
+                                      yaxis=dict(title='Mois', categoryorder='array', categoryarray=month_order),  # Triez les mois dans l'ordre
+                                      height=600,  # Ajustez la hauteur du graphique
+                                      width=800)  # Ajustez la largeur du graphique
 
-    #affichage
+    # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
