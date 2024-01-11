@@ -143,10 +143,9 @@ with col_v3:
     monthly_orders_comparison_year = df[df['Année'] == selected_comparison_year].groupby(
         'Mois')['ID commande'].count().reset_index()
 
-    # Triez les mois dans l'ordre
-    month_order = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    monthly_orders_selected_year = monthly_orders_selected_year.set_index("Mois").reindex(month_order).reset_index()
-    monthly_orders_comparison_year = monthly_orders_comparison_year.set_index("Mois").reindex(month_order).reset_index()
+    # Triez les mois dans l'ordre décroissant du nombre de commandes
+    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=False)
+    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=False)
 
     # Affiche l'évolution du nombre de commandes pour N
     fig_orders_evolution.add_trace(go.Bar(
@@ -169,7 +168,7 @@ with col_v3:
     # Mise en forme
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
                                       xaxis=dict(title='Nombre de commandes'),
-                                      yaxis=dict(title='Mois', categoryorder='array', categoryarray=month_order),  # Triez les mois dans l'ordre
+                                      yaxis=dict(title='Mois'),
                                       height=600,  # Ajustez la hauteur du graphique
                                       width=800)  # Ajustez la largeur du graphique
 
