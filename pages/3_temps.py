@@ -30,6 +30,10 @@ background-size: cover;
 
 /* titres */
 
+[class="st-emotion-cache-10trblm e1nzilvr1"]{
+margin-left : 0px;
+}
+
 [class="st-emotion-cache-1629p8f e1nzilvr2"]{
 border : solid;
 border-color : white;
