@@ -17,7 +17,7 @@ style = """
 [data-testid="stHeader"]{
 background-image: url("https://www.nsbpictures.com/wp-content/uploads/2020/08/COLORFULL-GRADIENTS-6-scaled.jpg");
 background-size: cover;
-opacity : 0.9;
+opacity : 0.5;
 }
 
 [class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
