@@ -55,20 +55,20 @@ margin-bottom : 5px;
 
 /* listes déroulantes */
 
-[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
+[class="st-an st-ao st-ap st-aq st-ak st-ar st-am st-as st-at st-au st-av st-aw st-ax st-ay st-az st-b0 st-b1 st-b2 st-b3 st-b4 st-b5 st-b6 st-b7 st-b8 st-b9 st-ba st-bb"]{
 border : solid;
 border-color : white;
-padding : 0px 5px 6px 5px;
+padding : 0px 5px 0px 5px;
 }
 
-[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
-border : solid;
-border-color : white;
-padding : 0px 5px 6px 5px;
-}
+
+
+
 
 [data-testid="stMarkdownContainer"]{
 text-align : center;
+border : solid;
+border-color : white;
 }
 
 
