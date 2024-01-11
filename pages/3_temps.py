@@ -67,6 +67,10 @@ border-color : white;
 padding : 0px 5px 6px 5px;
 }
 
+[data-testid="stWidgetLabel"]{
+text-align : center;
+}
+
 
 /* les metrics */
 
