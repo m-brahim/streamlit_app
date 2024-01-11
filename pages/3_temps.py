@@ -189,7 +189,9 @@ with col_v1:
     #mise en forme
     fig_clients_evolution.update_layout(title=f"Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
                                         xaxis=dict(title='Mois'),
-                                        yaxis=dict(title='Nombre de clients'))
+                                        yaxis=dict(title='Nombre de clients'),
+                                        height=600,
+                                        width=800)
     
     #affichage
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
