@@ -122,10 +122,17 @@ with col_title:
 col_side1, col_side2 = st.columns(2)
 
 with st.sidebar:
-    st.title("Sélection des années")
-    with col_side1 :
+    st.title("Sélection des Années")
+    
+    # Création des colonnes latérales
+    col_side1, col_side2 = st.columns(2)
+
+    # Utilisation de st.radio() dans la première colonne
+    with col_side1:
         selected_year = st.radio("Sélectionnez N", sorted_years)
-    with col_side2 :
+
+    # Utilisation de st.radio() dans la deuxième colonne
+    with col_side2:
         sorted_years_comparison = sorted_years.copy()
         sorted_years_comparison.remove(max(sorted_years))
         selected_comparison_year = st.radio("Sélectionnez N-*", sorted_years_comparison)
