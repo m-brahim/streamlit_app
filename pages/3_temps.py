@@ -26,18 +26,11 @@ st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_ic
 
 st.markdown("""
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
         body {
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: 'Arial, sans-serif';
             font-size: 16px;
             color: #333;
         }
-        h2 {
-            font-family: 'Noto Sans KR', sans-serif;
-            font-size: 24px;
-            color: #000;  /* Change the color as needed */
-        }
-        /* Ajoutez d'autres styles personnalisés au besoin */
     </style>
 """, unsafe_allow_html=True)
 
