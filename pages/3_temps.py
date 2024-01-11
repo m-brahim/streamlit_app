@@ -118,9 +118,6 @@ col_title, col_2, col_3 = st.columns([3, 1, 1])
 with col_title:
     st.title("Suivi temporel des ventes :hourglass_flowing_sand:")
 
-#création de colonnes
-col_side1, col_side2 = st.columns(2)
-
 with st.sidebar:
     st.title("Sélection des Années")
     
