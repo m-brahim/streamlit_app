@@ -54,9 +54,7 @@ border-color : white;
 padding: 10px 10px 10px 10px;
 }
 
-[class="st-emotion-cache-17c4ue e1i5pmia2"]{
-text-align : center;
-}
+
 
 
 
