@@ -17,14 +17,14 @@ style = """
 /* en tête de la page */
 
 [data-testid="stHeader"]{
-background-image: url("https://www.nsbpictures.com/wp-content/uploads/2020/08/COLORFULL-GRADIENTS-6-scaled.jpg");
+background-image: url("https://images.pexels.com/photos/281260/pexels-photo-281260.jpeg?auto=compress&cs=tinysrgb&w=600");
 background-size: cover;
 }
 
 /* section principale */
 
 [class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
-background-image: url("https://www.nsbpictures.com/wp-content/uploads/2020/08/COLORFULL-GRADIENTS-6-scaled.jpg");
+background-image: url("https://images.pexels.com/photos/281260/pexels-photo-281260.jpeg?auto=compress&cs=tinysrgb&w=600");
 background-size: cover;
 }
 
