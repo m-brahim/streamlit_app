@@ -6,6 +6,24 @@ import folium
 import markdown
 from streamlit_folium import st_folium
 
+#style de la page
+
+style = """
+<style>
+[data-testid="block-container"]{
+background-color: #e5e5f7;
+opacity: 0.8;
+background: repeating-linear-gradient( 45deg, #71767c, #71767c 5px, #e5e5f7 5px, #e5e5f7 25px );
+}
+</style>
+"""
+
+st.markdown(style, unsafe_allow_html = True)
+
+
+
+
+
 #collecte des données
 url = "Exemple - Hypermarché_Achats.csv"
 
