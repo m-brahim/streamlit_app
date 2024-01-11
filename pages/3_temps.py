@@ -62,8 +62,6 @@ margin-bottom : 5px;
 
 [data-testid="stMarkdownContainer"]{
 text-align : center;
-border : solid;
-border-color : white;
 }
 
 
