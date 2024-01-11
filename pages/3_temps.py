@@ -83,7 +83,7 @@ with col_dropdown:
 with col_dropdown2:
     selected_comparison_year = st.selectbox("Sélectionnez une année de comparaison", sorted_years)
 
-
+st.subheader("")
 
 #PARTIE KPI
 
