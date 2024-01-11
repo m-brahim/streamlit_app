@@ -65,6 +65,11 @@ text-align : center;
 text-align : center;
 }
 
+[data-testid="stMetricLabel"]{
+text-align : center;
+}
+
+
 </style>
 """
 
