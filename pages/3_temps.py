@@ -17,6 +17,11 @@ style = """
 background-image: url("https://th.bing.com/th/id/OIP.9c2dn34dgf4XNAfwfq7dyAHaEK?rs=1&pid=ImgDetMain");
 background-size: cover;
 }
+
+[data-testid="stHorizontalBlock"]{
+border : solid;
+border-color : white;
+}
 </style>
 """
 
