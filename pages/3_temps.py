@@ -118,11 +118,11 @@ with col_title:
     st.title("Suivi temporel des ventes :hourglass_flowing_sand:")
 
 with col_dropdown:
-    st.text("Sélectionnez N")
+    st.write("Sélectionnez N")
     selected_year = st.selectbox(" ",sorted_years)
 
 with col_dropdown2:
-    st.text("Sélectionnez N-*")
+    st.write("Sélectionnez N-*")
     selected_comparison_year = st.selectbox("  ",sorted_years)
 
 
