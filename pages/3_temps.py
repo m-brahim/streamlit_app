@@ -140,21 +140,22 @@ with col_v3:
     monthly_orders_comparison_year = df[df['Année'] == selected_comparison_year].groupby(
         'Mois')['ID commande'].count().reset_index()
 
-    #affiche l'évolution du nombre de commandes pour N
-    fig_orders_evolution = go.Figure()
+    # Affiche l'évolution du nombre de commandes pour N
     fig_orders_evolution.add_trace(go.Bar(
-        x=monthly_orders_selected_year['Mois'],
-        y=monthly_orders_selected_year['ID commande'],
-        name=f"{selected_year}",
-        marker=dict(color='blue')
+    x=monthly_orders_selected_year['ID commande'],
+    y=monthly_orders_selected_year['Mois'],
+    name=f"{selected_year}",
+    orientation='h',  # Définir l'orientation à horizontal
+    marker=dict(color='blue')
     ))
 
-    #affiche l'évolution du nombre de commandes pour N-*
+    # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
-        x=monthly_orders_comparison_year['Mois'],
-        y=monthly_orders_comparison_year['ID commande'],
-        name=f"{selected_comparison_year}",
-        marker=dict(color='red')
+    x=monthly_orders_comparison_year['ID commande'],
+    y=monthly_orders_comparison_year['Mois'],
+    name=f"{selected_comparison_year}",
+    orientation='h',  # Définir l'orientation à horizontal
+    marker=dict(color='red')
     ))
 
     #mise en forme
