@@ -14,56 +14,70 @@ st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_ic
 style = """
 <style>
 
+/* en tête de la page */
+
 [data-testid="stHeader"]{
 background-image: url("https://www.nsbpictures.com/wp-content/uploads/2020/08/COLORFULL-GRADIENTS-6-scaled.jpg");
 background-size: cover;
 }
+
+/* section principale */
 
 [class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
 background-image: url("https://www.nsbpictures.com/wp-content/uploads/2020/08/COLORFULL-GRADIENTS-6-scaled.jpg");
 background-size: cover;
 }
 
-
+/* titre 1 : Suivi temporel des ventes */
 
 [id="e3af3173"]{
 border : solid;
 border-color : white;
-padding: 10px 10px 10px 10px;
+text-align : center;
 }
+
+/* liste déroulante 1 */
+
+[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
+border : solid;
+border-color : white;
+}
+
+/* liste déroulante 2 */
+
+[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
+border : solid;
+border-color : white;
+}
+
+/* titre 2 : Indicateurs */
 
 [id="2f3f65b5"]{
 border : solid;
 border-color : white;
+text-align : center;
 }
+
+/* les metrics */
+
+[data-testid="stMetric"]{
+}
+
+[data-testid="stMetricValue"]{
+}
+
+
+/* titre 3 : Visualisations */
 
 [id="76c358b0"]{
 border : solid;
 border-color : white;
-}
-
-
-[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
-border : solid;
-border-color : white;
-padding: 10px 10px 10px 10px;
-}
-
-[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
-border : solid;
-border-color : white;
-padding: 10px 10px 10px 10px;
-}
-
-
-
-[data-testid="stMetric"]{
 text-align : center;
 }
 
-[data-testid="stMetricValue"]{
-text-align : center;
-}
+
+
+
 
 
 
