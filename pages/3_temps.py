@@ -50,7 +50,7 @@ border-color : white;
 text-align : center;
 }
 
-["data-testid="stMetricLabel"]{
+[class="st-emotion-cache-17c4ue e1i5pmia2"]{
 text-align : center;
 }
 
