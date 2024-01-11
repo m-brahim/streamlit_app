@@ -119,16 +119,14 @@ with col_title:
     st.title("Suivi temporel des ventes :hourglass_flowing_sand:")
 
 with st.sidebar:
-    st.title("Sélection des Années")
+    st.title("Sélection des années")
     
-    # Création des colonnes latérales
     col_side1, col_side2 = st.columns(2)
 
-    # Utilisation de st.radio() dans la première colonne
     with col_side1:
+        sorted_years.remove(min(sorted_years)
         selected_year = st.radio("Sélectionnez N", sorted_years)
 
-    # Utilisation de st.radio() dans la deuxième colonne
     with col_side2:
         sorted_years_comparison = sorted_years.copy()
         sorted_years_comparison.remove(max(sorted_years))
