@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import folium
 import markdown
 from streamlit_folium import st_folium
-from mitosheet import spreadsheet
+from mitosheet.streamlit.v1 import spreadsheet
 
 #config du titre de la page
 st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
