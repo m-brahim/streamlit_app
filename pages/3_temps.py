@@ -24,7 +24,7 @@ background-size: cover;
 /* section principale */
 
 [class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
-background-image: url("https://img.freepik.com/premium-vector/neumorphism-abstract-poster-with-gradient-white-wave-vector-neumorphic-duotone-background-with-geom_118692-808.jpg?size=626&ext=jpg&ga=GA1.1.1126662488.1704982760&semt=ais");
+background-image: url("https://img.freepik.com/free-vector/gradient-template-background-new-minimalist_483537-4993.jpg?w=1380&t=st=1704982816~exp=1704983416~hmac=3da57da8715e3382969d6868f4b56c8b65d2568ef9b76d3f5222f8373b491cff");
 background-size: cover;
 }
 
