@@ -18,7 +18,7 @@ style = """
 /* en tête de la page */
 
 [data-testid="stHeader"]{
-background-color : #7b98b7;
+background-color : #aac0d5;
 }
 
 /* section principale */
@@ -31,7 +31,7 @@ background-size: cover;
 /* barre latérale */
 
 [data-testid="stSidebarContent"]{
-background-color :  #658eb3;
+background-color :  #7b98b7;
 }
 
 /* titres */
