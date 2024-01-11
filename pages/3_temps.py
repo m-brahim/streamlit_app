@@ -115,17 +115,19 @@ df['Mois'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.month_
 #tri dans l'ordre des années
 sorted_years = sorted(df['Année'].unique())
 
+st.header("Données utilisées")
+
+new_dfs, code = spreadsheet(url)
+
 #création de colonnes
-col_title, col_dropdown, col_dropdown2 = st.columns([3, 1, 1])  # Ajustez les proportions en conséquence
+col_title, col_2, col_3 = st.columns([3, 1, 1])
 
 #une colonne pour le titre & une pour les listes déroulantes
 with col_title:
     st.title("Suivi temporel des ventes :hourglass_flowing_sand:")
 
-with col_dropdown:
+with st.sidebar : 
     selected_year = st.selectbox("Sélectionnez N",sorted_years)
-
-with col_dropdown2:
     selected_comparison_year = st.selectbox("Sélectionnez N-*",sorted_years)
 
 
@@ -264,11 +266,6 @@ with col_v3:
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
 
-
-col_tab1, col_tab2 = st.columns(2)
-
-with col_tab1:
-    new_dfs, code = spreadsheet(url)
 
 
 
