@@ -20,7 +20,7 @@ background-size: cover;
 }
 
 [class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
-background-image: url("https://th.bing.com/th/id/OIP.9c2dn34dgf4XNAfwfq7dyAHaEK?rs=1&pid=ImgDetMain");
+background-image: url("https://www.nsbpictures.com/wp-content/uploads/2020/08/COLORFULL-GRADIENTS-6-scaled.jpg");
 background-size: cover;
 }
 
