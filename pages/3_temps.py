@@ -18,7 +18,7 @@ style = """
 /* en tête de la page */
 
 [data-testid="stHeader"]{
-
+background-color : #aac0d5
 }
 
 /* section principale */
