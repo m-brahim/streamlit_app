@@ -24,7 +24,7 @@ background-size: cover;
 /* section principale */
 
 [class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
-background-image: url("https://images.pexels.com/photos/1323712/pexels-photo-1323712.jpeg?auto=compress&cs=tinysrgb&w=600");
+background-image: url("https://img.freepik.com/premium-vector/neumorphism-abstract-poster-with-gradient-white-wave-vector-neumorphic-duotone-background-with-geom_118692-808.jpg?size=626&ext=jpg&ga=GA1.1.1126662488.1704982760&semt=ais");
 background-size: cover;
 }
 
