@@ -36,6 +36,15 @@ border-color : white;
 text-align : center;
 }
 
+[id="e3af3173"]{
+padding : 0px 0px 0px 0px;
+}
+
+[data-testid="stHorizontalBlock"]{
+margin-bottom : 5px;
+}
+
+
 /* listes déroulantes */
 
 [class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
