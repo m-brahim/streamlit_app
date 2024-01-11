@@ -59,11 +59,7 @@ text-align : center;
 }
 
 
-[data-testid="stMetric"]{
-border : dashed;
-border-color : white;
-background-color : #F6F2FF;
-}
+
 
 [data-testid="stMarkdownContainer"]{
 text-align : center;
