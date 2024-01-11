@@ -75,7 +75,7 @@ margin-bottom : 10px;
 
 
 [id="d7ed6071"]{
-font-family: cursive;
+font-family: Noto Sans Korean;
 }
 
 
