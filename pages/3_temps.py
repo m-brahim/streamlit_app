@@ -101,15 +101,12 @@ with col_dropdown:
 with col_dropdown2:
     selected_comparison_year = st.selectbox("Sélectionnez N-*", sorted_years)
 
-st.subheader("")
+
 
 #PARTIE KPI
 
 #titre 
 st.header("Indicateurs :mag_right:")
-
-#espacement
-st.subheader("")
 
 #création de colonnes identiques
 col_clients, col_orders, col_ca = st.columns(3)
@@ -138,8 +135,6 @@ col_orders.metric(label="Nombre de commandes", value=num_orders, delta=diff_orde
 #affiche le chiffre d'affaires selon l'année + comparatif avec N-*
 col_ca.metric(label=f"Chiffre d'affaires pour {selected_year}", value=f"{int(ca_by_year)} €", delta=f"{int(diff_ca)} €")
 
-#espacement
-st.subheader("")
 
 
 
@@ -148,8 +143,6 @@ st.subheader("")
 #titre
 st.header("Visualisations :bar_chart: :chart_with_upwards_trend:")
 
-#espacement
-st.subheader("")
 
 #création de colonnes et attribution de dimensions
 col_v1, col_v3 = st.columns([2,2])
