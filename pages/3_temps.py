@@ -28,6 +28,12 @@ background-image: url("https://www.nsbpictures.com/wp-content/uploads/2020/08/CO
 background-size: cover;
 }
 
+/* barre latérale */
+
+[data-testid="stSidebarContent"]{
+background-image: url("https://cdn.wallpapersafari.com/49/55/h8HAkP.jpg");
+}
+
 /* titres */
 
 [class="st-emotion-cache-10trblm e1nzilvr1"]{
