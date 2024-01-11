@@ -144,15 +144,15 @@ with col_v3:
         'Mois')['ID commande'].count().reset_index()
 
     # Triez les mois dans l'ordre décroissant du nombre de commandes
-    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=False)
-    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=False)
+    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=True)
+    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=True)
 
     # Affiche l'évolution du nombre de commandes pour N
     fig_orders_evolution.add_trace(go.Bar(
         x=monthly_orders_selected_year['ID commande'],
         y=monthly_orders_selected_year['Mois'],
         name=f"{selected_year}",
-        orientation='h',  # Définir l'orientation à horizontal
+        orientation='h',
         marker=dict(color='blue')
     ))
 
@@ -161,7 +161,7 @@ with col_v3:
         x=monthly_orders_comparison_year['ID commande'],
         y=monthly_orders_comparison_year['Mois'],
         name=f"{selected_comparison_year}",
-        orientation='h',  # Définir l'orientation à horizontal
+        orientation='h',
         marker=dict(color='red')
     ))
 
@@ -169,8 +169,8 @@ with col_v3:
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
                                       xaxis=dict(title='Nombre de commandes'),
                                       yaxis=dict(title='Mois'),
-                                      height=600,  # Ajustez la hauteur du graphique
-                                      width=800)  # Ajustez la largeur du graphique
+                                      height=600,
+                                      width=800)
 
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
