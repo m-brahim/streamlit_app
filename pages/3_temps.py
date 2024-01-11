@@ -22,13 +22,25 @@ background-size: cover;
 [class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
 background-image: url("https://www.nsbpictures.com/wp-content/uploads/2020/08/COLORFULL-GRADIENTS-6-scaled.jpg");
 background-size: cover;
-font : "Fira Sans", sans-serif;
 }
+
+
 
 [class="st-emotion-cache-fplge5 e1f1d6gn3"]{
 border : solid;
 border-color : white;
 }
+
+[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
+border : solid;
+border-color : white;
+}
+
+[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
+border : solid;
+border-color : white;
+}
+
 </style>
 """
 
