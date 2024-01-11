@@ -26,7 +26,7 @@ background-size: cover;
 
 
 
-[class="st-emotion-cache-fplge5 e1f1d6gn3"]{
+[id="e3af3173"]{
 border : solid;
 border-color : white;
 }
@@ -43,7 +43,6 @@ border-color : white;
 
 [class="st-emotion-cache-10trblm e1nzilvr1"]{
 text-align : center;
-margin-top : 10px;
 }
 
 </style>
