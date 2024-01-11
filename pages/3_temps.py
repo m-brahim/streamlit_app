@@ -65,7 +65,7 @@ text-align : center;
 text-align : center;
 }
 
-[data-testid="stMetricLabel"]{
+[class="st-emotion-cache-16idsys e1nzilvr5"]{
 text-align : center;
 }
 
