@@ -67,7 +67,7 @@ border-color : white;
 padding : 0px 5px 6px 5px;
 }
 
-[data-testid="stWidgetLabel"]{
+[data-testid="stMarkdownContainer"]{
 text-align : center;
 }
 
