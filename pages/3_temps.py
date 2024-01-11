@@ -65,18 +65,6 @@ margin-bottom : 10px;
 
 /* listes déroulantes */
 
-[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
-border : solid;
-border-color : black;
-padding : 0px 5px 6px 5px;
-}
-
-[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
-border : solid;
-border-color : black;
-padding : 0px 5px 6px 5px;
-}
-
 /* les metrics */
 
 [data-testid="stMetric"]{
