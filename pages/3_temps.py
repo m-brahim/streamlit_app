@@ -28,12 +28,12 @@ background-image: url("https://www.nsbpictures.com/wp-content/uploads/2020/08/CO
 background-size: cover;
 }
 
-/* titre 1 : Suivi temporel des ventes */
+/* titres */
 
-[id="e3af3173"]{
+[class="st-emotion-cache-1629p8f e1nzilvr2"]{
 border : solid;
 border-color : white;
-text-aligne center;
+text-align : center;
 }
 
 /* listes déroulantes */
@@ -48,13 +48,7 @@ border : solid;
 border-color : white;
 }
 
-/* titre 2 : Indicateurs */
 
-[id="2f3f65b5"]{
-border : solid;
-border-color : white;
-text-align : center;
-}
 
 /* les metrics */
 
@@ -65,13 +59,6 @@ text-align : center;
 }
 
 
-/* titre 3 : Visualisations */
-
-[id="76c358b0"]{
-border : solid;
-border-color : white;
-text-align : center;
-}
 
 
 
