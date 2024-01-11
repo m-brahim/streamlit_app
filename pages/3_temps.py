@@ -55,12 +55,6 @@ margin-bottom : 5px;
 
 /* listes déroulantes */
 
-[class="st-an st-ao st-ap st-aq st-ak st-ar st-am st-as st-at st-au st-av st-aw st-ax st-ay st-az st-b0 st-b1 st-b2 st-b3 st-b4 st-b5 st-b6 st-b7 st-b8 st-b9 st-ba st-bb"]{
-border : solid;
-border-color : white;
-padding : 0px 5px 0px 5px;
-text-align : center ;
-}
 
 
 
