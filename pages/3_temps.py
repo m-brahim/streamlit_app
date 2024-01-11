@@ -17,7 +17,7 @@ style = """
 /* en tête de la page */
 
 [data-testid="stHeader"]{
-background-image: url("https://images.pexels.com/photos/281260/pexels-photo-281260.jpeg?auto=compress&cs=tinysrgb&w=600");
+background-image: url("https://images.pexels.com/photos/1146134/pexels-photo-1146134.jpeg?auto=compress&cs=tinysrgb&w=600");
 background-size: cover;
 }
 
