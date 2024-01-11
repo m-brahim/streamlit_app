@@ -125,7 +125,7 @@ new_dfs, code = spreadsheet(url)
 st.header("Indicateurs :mag_right:")
 
 #création de colonnes identiques
-col_sp1, col_clients, col_orders, col_ca, col_sp2 = st.columns(5)
+col_sp1, col_clients, col_orders, col_ca, col_sp2 = st.columns([2, 1, 1, 1, 2])
 
 #calculs
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
