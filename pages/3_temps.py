@@ -46,7 +46,7 @@ border : solid;
 border-color : white;
 }
 
-[data-testid="stMarkdownContainer"]{
+[class="st-emotion-cache-16idsys e1nzilvr5"]{
 text-align : center;
 }
 
