@@ -27,7 +27,7 @@ st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_ic
 st.markdown("""
     <style>
         body {
-            font-family: 'cursive';
+            font-family: 'Goudy Bookletter 1911', sans-serif;
             font-size: 16px;
             color: #333;
         }
