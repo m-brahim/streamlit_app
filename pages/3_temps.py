@@ -59,7 +59,7 @@ margin-bottom : 5px;
 }
 
 [class="stHeadingContainer"]{
-margin-bottom : 5px;
+margin-bottom : 10px;
 }
 
 
