@@ -115,10 +115,6 @@ df['Mois'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.month_
 #tri dans l'ordre des années
 sorted_years = sorted(df['Année'].unique())
 
-st.header("Données utilisées")
-
-new_dfs, code = spreadsheet(url)
-
 #création de colonnes
 col_title, col_2, col_3 = st.columns([3, 1, 1])
 
@@ -129,6 +125,10 @@ with col_title:
 with st.sidebar : 
     selected_year = st.selectbox("Sélectionnez N",sorted_years)
     selected_comparison_year = st.selectbox("Sélectionnez N-*",sorted_years)
+
+st.header("Données utilisées")
+
+new_dfs, code = spreadsheet(url)
 
 
 
