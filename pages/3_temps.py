@@ -46,7 +46,7 @@ border : solid;
 border-color : white;
 }
 
-[class="st-emotion-cache-16idsys e1nzilvr5"]{
+[class="st-emotion-cache-10trblm e1nzilvr1"]{
 text-align : center;
 }
 
