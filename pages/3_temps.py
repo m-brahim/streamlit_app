@@ -55,15 +55,17 @@ margin-bottom : 5px;
 
 /* listes déroulantes */
 
-
-
-
-
-
-[data-testid="stMarkdownContainer"]{
-text-align : center;
+[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
+border : solid;
+border-color : white;
+padding : 0px 5px 6px 5px;
 }
 
+[class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
+border : solid;
+border-color : white;
+padding : 0px 5px 6px 5px;
+}
 
 /* les metrics */
 
@@ -111,12 +113,10 @@ with col_title:
     st.title("Suivi temporel des ventes :hourglass_flowing_sand:")
 
 with col_dropdown:
-    st.write("Sélectionnez N")
-    selected_year = st.selectbox(" ",sorted_years)
+    selected_year = st.selectbox("Sélectionnez N",sorted_years)
 
 with col_dropdown2:
-    st.write("Sélectionnez N-*")
-    selected_comparison_year = st.selectbox("  ",sorted_years)
+    selected_comparison_year = st.selectbox("Sélectionnez N-*",sorted_years)
 
 
 
