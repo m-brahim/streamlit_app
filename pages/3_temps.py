@@ -24,7 +24,7 @@ background-image: url("https://th.bing.com/th/id/OIP.9c2dn34dgf4XNAfwfq7dyAHaEK?
 background-size: cover;
 }
 
-[data-testid="stHorizontalBlock"]{
+[class="st-emotion-cache-fplge5 e1f1d6gn3"]{
 border : solid;
 border-color : white;
 }
