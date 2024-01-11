@@ -50,6 +50,14 @@ border-color : white;
 text-align : center;
 }
 
+["p"]{
+text-align : center;
+}
+
+["data-testid="stMetricDeltaIcon-Up"]{
+text-align : center;
+}
+
 [data-testid="stMetric"]{
 border : dashed;
 border-color : white;
