@@ -33,7 +33,7 @@ background-size: cover;
 [id="e3af3173"]{
 border : solid;
 border-color : white;
-position : relative;
+text-aligne center;
 }
 
 /* listes déroulantes */
