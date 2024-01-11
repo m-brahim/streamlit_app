@@ -24,6 +24,16 @@ sorted_years = sorted(df['Année'].unique())
 #configuration du titre de la page
 st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
 
+st.markdown("""
+    <style>
+        body {
+            font-family: 'Arial, sans-serif';
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 #création de colonnes
 col_title, col_dropdown, col_dropdown2 = st.columns([3, 1, 1])  # Ajustez les proportions en conséquence
 
