@@ -6,16 +6,16 @@ import folium
 import markdown
 from streamlit_folium import st_folium
 
-
+#config du titre de la page
+st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
 
 #style de la page
 
 style = """
 <style>
-[class="main st-emotion-cache-uf99v8 ea3mdgi3"]
-{
-background-image : url("https://www.123freevectors.com/solidbackgrounds/gallery-blue/");
-background-size : cover;
+[class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
+background-image: url("https://th.bing.com/th/id/R.6a506b4e1606fea6b59e3f12c0479fd6?rik=D%2bgwUpk4TqNNsg&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f8%2f1%2f9%2f495746.jpg&ehk=3S%2fXDmMUywys3kL2pSyPglUs7cwOnJ4YbBCPF3Bz%2fBM%3d&risl=&pid=ImgRaw&r=0");
+background-size: cover;
 }
 </style>
 """
