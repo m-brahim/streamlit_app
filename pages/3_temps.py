@@ -54,9 +54,7 @@ text-align : center;
 text-align : center;
 }
 
-["data-testid="stMetricDeltaIcon-Up"]{
-text-align : center;
-}
+
 
 [data-testid="stMetric"]{
 border : dashed;
