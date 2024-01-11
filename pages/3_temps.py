@@ -53,7 +53,7 @@ text-align : center;
 [data-testid="stMetric"]{
 border : dashed;
 border-color : white;
-background-color : grey;
+background-color : #d9d3eb;
 }
 
 
