@@ -50,6 +50,12 @@ border-color : white;
 text-align : center;
 }
 
+[data-testid="stMetric"]{
+border : dashed;
+border-color : white;
+}
+
+
 </style>
 """
 
