@@ -43,6 +43,7 @@ border-color : white;
 
 [class="st-emotion-cache-10trblm e1nzilvr1"]{
 text-align : center;
+margin-top : 10px;
 }
 
 </style>
