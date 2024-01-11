@@ -41,7 +41,7 @@ margin-left : 0px;
 
 [class="st-emotion-cache-1629p8f e1nzilvr2"]{
 border : solid;
-border-color : white;
+border-color : black;
 text-align : center;
 }
 
@@ -66,13 +66,13 @@ margin-bottom : 10px;
 
 [class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
 border : solid;
-border-color : white;
+border-color : black;
 padding : 0px 5px 6px 5px;
 }
 
 [class="st-emotion-cache-j5r0tf e1f1d6gn3"]{
 border : solid;
-border-color : white;
+border-color : black;
 padding : 0px 5px 6px 5px;
 }
 
