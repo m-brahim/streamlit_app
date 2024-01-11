@@ -132,6 +132,8 @@ with col_v1:
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
+fig_orders_evolution = go.Figure()
+
 with col_v3:
     #agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders_selected_year = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
