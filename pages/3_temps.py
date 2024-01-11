@@ -23,7 +23,7 @@ style = """
 /* section principale */
 
 [class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
-background-image: url("https://img.freepik.com/free-vector/gradient-template-background-new-minimalist_483537-4993.jpg?w=1380&t=st=1704982816~exp=1704983416~hmac=3da57da8715e3382969d6868f4b56c8b65d2568ef9b76d3f5222f8373b491cff");
+background-image: url("https://img.freepik.com/free-photo/abstract-bluish-paint-background-wallpaper_53876-97482.jpg?w=1380&t=st=1704983050~exp=1704983650~hmac=4ee935cabbf6d79ae417ce489e0ac8ebb6cfbf3a0e2805c7513925d5767184cc");
 background-size: cover;
 }
 
