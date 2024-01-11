@@ -30,9 +30,9 @@ col_title, col_dropdown = st.columns([3, 1])  # Ajustez les proportions en cons�
 #une colonne pour le titre & une pour les listes déroulantes
 with col_title:
     st.subheader("Suivi temporel des ventes :hourglass_flowing_sand:")
+    selected_year = st.selectbox("Sélectionnez une année", sorted_years)
 
 with col_dropdown:
-    selected_year = st.selectbox("Sélectionnez une année", sorted_years)
     selected_comparison_year = st.selectbox("Sélectionnez une année de comparaison", sorted_years)
 
 
@@ -153,7 +153,7 @@ with col_v3:
         y=monthly_orders_comparison_year['Mois'],
         name=f"{selected_comparison_year}",
         orientation='h',
-        marker=dict(color='yellow')
+        marker=dict(color='blue')
     ))
     
     # Affiche l'évolution du nombre de commandes pour N
@@ -162,7 +162,7 @@ with col_v3:
         y=monthly_orders_selected_year['Mois'],
         name=f"{selected_year}",
         orientation='h',
-        marker=dict(color='black')
+        marker=dict(color='orange')
     ))
 
     
