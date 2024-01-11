@@ -76,7 +76,7 @@ col_title, col_dropdown, col_dropdown2 = st.columns([3, 1, 1])  # Ajustez les pr
 
 #une colonne pour le titre & une pour les listes déroulantes
 with col_title:
-    st.subheader("Suivi temporel des ventes :hourglass_flowing_sand:")
+    st.title("Suivi temporel des ventes :hourglass_flowing_sand:")
 
 with col_dropdown:
     selected_year = st.selectbox("Sélectionnez une année", sorted_years)
@@ -89,7 +89,7 @@ with col_dropdown2:
 #PARTIE KPI
 
 #titre 
-st.subheader("Indicateurs :mag_right:")
+st.header("Indicateurs :mag_right:")
 
 #espacement
 st.subheader("")
@@ -129,7 +129,7 @@ st.subheader("")
 #PARTIE VISUALISATION
 
 #titre
-st.subheader("Visualisations :bar_chart: :chart_with_upwards_trend:")
+st.header("Visualisations :bar_chart: :chart_with_upwards_trend:")
 
 #espacement
 st.subheader("")
