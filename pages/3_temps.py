@@ -64,10 +64,6 @@ text-align : center;
 text-align : center;
 }
 
-[data-testid="stMetricLabel"]{
-position : relative;
-}
-
 [data-testid="stMetricValue"]{
 text-align : center;
 }
