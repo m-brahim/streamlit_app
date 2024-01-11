@@ -38,6 +38,7 @@ text-align : center;
 
 [id="e3af3173"]{
 padding : 10px 10px 0px 0px;
+position : relative;
 }
 
 [data-testid="stHorizontalBlock"]{
