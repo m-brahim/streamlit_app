@@ -31,7 +31,7 @@ background-size: cover;
 /* barre latérale */
 
 [data-testid="stSidebarContent"]{
-background-image: url("https://www.nsbpictures.com/wp-content/uploads/2020/08/COLORFULL-GRADIENTS-6-scaled.jpg");
+background-color : #74a1eb;
 }
 
 /* titres */
