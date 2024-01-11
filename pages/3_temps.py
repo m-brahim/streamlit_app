@@ -61,7 +61,7 @@ text-align : center;
 
 
 
-[data-testid="stMarkdownContainer"]{
+[data-testid="stMetricValue"]{
 text-align : center;
 }
 
