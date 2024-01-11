@@ -84,7 +84,10 @@ font-family: Roboto;
 color : black;
 }
 
-
+[id="76c358b0"]{
+font-family: Roboto;
+color : black;
+}
 
 
 
