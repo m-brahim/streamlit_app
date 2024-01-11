@@ -9,6 +9,21 @@ from streamlit_folium import st_folium
 #config du titre de la page
 st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
 
+#style de la page
+
+style = """
+<style>
+[class="main st-emotion-cache-uf99v8 ea3mdgi3"]
+{
+background-color: #e5e5f7;
+opacity: 0.8;
+background: repeating-linear-gradient( 45deg, #71767c, #71767c 5px, #e5e5f7 5px, #e5e5f7 25px );
+}
+</style>
+"""
+
+st.markdown(style, unsafe_allow_html = True)
+
 #collecte des données
 url = "Exemple - Hypermarché_Achats.csv"
 
