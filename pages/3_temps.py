@@ -119,7 +119,12 @@ col_title, col_2, col_3 = st.columns([3, 1, 1])
 with col_title:
     st.title("Suivi temporel des ventes :hourglass_flowing_sand:")
 
- with col_side2:
+col_side1, col_side2 = st.columns(2)
+
+    with col_side1:
+        selected_year = st.selectbox("Sélectionnez N", sorted_years)
+        
+    with col_side2:
         # Vérifier si l'année sélectionnée dans la première liste déroulante est également dans la deuxième liste
         if selected_year in sorted_years_2:
             # Supprimer l'année sélectionnée de la deuxième liste déroulante
@@ -127,7 +132,6 @@ with col_title:
         
         # Exclure également l'année suivante à la première sélection dans la deuxième liste déroulante
         selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
-
     
 st.header("Données utilisées")
 new_dfs, code = spreadsheet(url)
