@@ -125,13 +125,15 @@ with st.sidebar:
     col_side1, col_side2 = st.columns(2)
 
     with col_side1:
-        sorted_years.remove(min(sorted_years))
         selected_year = st.selectbox("Sélectionnez N", sorted_years)
         
     with col_side2:
-        sorted_years_comparison = sorted_years_2.copy()
-        sorted_years_comparison.remove(max(sorted_years_2))
-        selected_comparison_year = st.selectbox("Sélectionnez N-*", sorted_years_comparison)
+        # Vérifier si l'année sélectionnée dans la première liste déroulante est également dans la deuxième liste
+        if selected_year in sorted_years_2:
+            # Supprimer l'année sélectionnée de la deuxième liste déroulante
+            sorted_years_2.remove(selected_year)
+        
+        selected_comparison_year = st.selectbox("Sélectionnez N-*", sorted_years_2)
 
     
 st.header("Données utilisées")
