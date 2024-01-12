@@ -151,8 +151,10 @@ with col_h1:
 
 #PARTIE KPI
 
-#titre 
-st.header("Chiffres clés pour l'année courante :mag_right:")
+col_1, col_h2, col_2 = st.columns([1, 3, 1])
+
+with col_h2:
+    st.header("Chiffres clés pour l'année courante :mag_right:")
 
 #création de colonnes identiques
 col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1, 1, 1, 1, 1, 1, 1])
