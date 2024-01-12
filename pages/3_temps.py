@@ -122,16 +122,6 @@ with col_title:
 with st.sidebar:
     st.title("Sélection des années")
     
-    col_side1, col_side2 = st.columns(2)
-
-    with col_side1:
-        sorted_years.remove(min(sorted_years))
-        selected_year = st.radio("Sélectionnez N", sorted_years)
-
-    with col_side2:
-        sorted_years_comparison = sorted_years.copy()
-        sorted_years_comparison.remove(max(sorted_years))
-        selected_comparison_year = st.radio("Sélectionnez N-*", sorted_years_comparison)
 
     
 st.header("Données utilisées")
