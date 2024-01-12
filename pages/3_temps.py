@@ -45,7 +45,7 @@ margin-left : 0px;
 border : solid;
 border-color : #354d64;
 text-align : center;
-margin-bottom : 5px;
+margin-bottom : 20px;
 }
 
 [class="st-emotion-cache-eczf16 e1nzilvr3"]{
@@ -75,7 +75,6 @@ padding : 10px 0px 10px 0px;
 }
 
 [data-testid="stHorizontalBlock"]{
-margin-bottom : 5px;
 }
 
 [class="stHeadingContainer"]{
