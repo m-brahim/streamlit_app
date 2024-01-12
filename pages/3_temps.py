@@ -126,10 +126,10 @@ with st.sidebar:
 
     with col_side1:
         sorted_years.remove(min(sorted_years))
-        sorted_years.remove(max(sorted_years))
         selected_year = st.radio("Sélectionnez N", sorted_years)
         
     with col_side2:
+        sorted_years_comparison = sorted_years_2.copy()
         sorted_years_comparison.remove(max(sorted_years_2))
         selected_comparison_year = st.radio("Sélectionnez N-*", sorted_years_comparison)
 
