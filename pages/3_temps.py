@@ -110,7 +110,7 @@ df['Mois'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.month_
 
 #tri dans l'ordre des années
 sorted_years = sorted(df['Année'].unique())
-sorted
+sorted_years_2 = sorted(df['Année'].unique())
 
 #création de colonnes
 col_title, col_2, col_3 = st.columns([3, 1, 1])
@@ -122,6 +122,16 @@ with col_title:
 with st.sidebar:
     st.title("Sélection des années")
     
+    col_side1, col_side2 = st.columns(2)
+
+    with col_side1:
+        sorted_years.remove(min(sorted_years))
+        sorted_years.remove(max(sorted_years))
+        selected_year = st.radio("Sélectionnez N", sorted_years)
+        
+    with col_side2:
+        sorted_years_comparison.remove(max(sorted_years_2))
+        selected_comparison_year = st.radio("Sélectionnez N-*", sorted_years_comparison)
 
     
 st.header("Données utilisées")
