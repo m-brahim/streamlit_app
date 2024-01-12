@@ -3,6 +3,7 @@ pandas
 plotly
 folium
 streamlit_folium
+streamlit_extras
 geopy
 markdown
 mitosheet
