@@ -94,7 +94,8 @@ margin-bottom : 10px;
 /* graphiques */
 
 [class="g-gtitle"]{
-text-align : center;
+text-anchor : middle;
+font-family : Roboto;
 }
 
 
