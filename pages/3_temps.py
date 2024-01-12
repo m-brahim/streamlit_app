@@ -192,18 +192,18 @@ with col_h3:
 #création de colonnes et attribution de dimensions
 col_v1, col_v2, col_v3 = st.columns([2,2,1])
 
-#graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
+available_months = sorted(df['Mois'].unique())
 
 with col_v1:
-    #agréger le nombre de clients par mois pour l'année sélectionnée
-    monthly_clients_selected_year = df[df['Année'] == selected_year].drop_duplicates('ID client').groupby(
+    # Agréger le nombre de clients par mois pour l'année sélectionnée
+    monthly_clients_selected_year = filtered_df_orders[filtered_df_orders['Année'] == selected_year].drop_duplicates('ID client').groupby(
         'Mois')['ID client'].count().reset_index()
 
-    #agréger le nombre de clients par mois pour l'année de comparaison
-    monthly_clients_comparison_year = df[df['Année'] == selected_comparison_year].drop_duplicates(
+    # Agréger le nombre de clients par mois pour l'année de comparaison
+    monthly_clients_comparison_year = filtered_df_orders[filtered_df_orders['Année'] == selected_comparison_year].drop_duplicates(
         'ID client').groupby('Mois')['ID client'].count().reset_index()
 
-    #affiche l'évolution du nombre de clients pour N
+    # Affiche l'évolution du nombre de clients pour N
     fig_clients_evolution = go.Figure()
     fig_clients_evolution.add_trace(go.Scatter(
         x=monthly_clients_selected_year['Mois'],
@@ -213,7 +213,7 @@ with col_v1:
         line=dict(color='#44566f')
     ))
 
-    #affiche l'évolution du nombre de clients pour N-*
+    # Affiche l'évolution du nombre de clients pour N-*
     fig_clients_evolution.add_trace(go.Scatter(
         x=monthly_clients_comparison_year['Mois'],
         y=monthly_clients_comparison_year['ID client'],
@@ -222,28 +222,23 @@ with col_v1:
         line=dict(color='#4678b9')
     ))
 
-    #mise en forme
+    # Mise en forme
     fig_clients_evolution.update_layout(title=f"                                                                                                     Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
                                         xaxis=dict(title='Mois'),
                                         yaxis=dict(title='Nombre de clients'),
                                         height=600,
                                         width=800)
     
-    #affichage
+    # Affichage
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
-
-
-#graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
-
-fig_orders_evolution = go.Figure()
 
 # Graphique qui permet d'observer l'évolution du nombre de commandes selon N et N-*
 with col_v2:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
-    monthly_orders_selected_year = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
+    monthly_orders_selected_year = filtered_df_orders[filtered_df_orders['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
     # Agréger le nombre de commandes par mois pour l'année de comparaison
-    monthly_orders_comparison_year = df[df['Année'] == selected_comparison_year].groupby(
+    monthly_orders_comparison_year = filtered_df_orders[filtered_df_orders['Année'] == selected_comparison_year].groupby(
         'Mois')['ID commande'].count().reset_index()
 
     # Triez les mois dans l'ordre décroissant du nombre de commandes
@@ -281,11 +276,6 @@ with col_v2:
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
-available_months = sorted(df['Mois'].unique())
-
 with col_v3 :
     selected_months_orders = st.multiselect("Sélectionnez les mois pour le graphique des commandes", available_months, default=available_months)
     filtered_df_orders = df[df['Mois'].isin(selected_months_orders)]
-
-
-
