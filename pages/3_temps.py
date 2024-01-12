@@ -85,7 +85,9 @@ background-color : white;
 margin-bottom : 10px;
 }
 
-
+[h2]{
+background-color : white;
+}
 
 
 
