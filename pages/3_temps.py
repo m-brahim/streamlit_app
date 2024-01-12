@@ -289,7 +289,8 @@ with col_v3:
                                       xaxis=dict(title='Nombre de commandes'),
                                       yaxis=dict(title='Mois'),
                                       height=600,
-                                      width=800)
+                                      width=800
+                                      title_x=0.5)
 
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
