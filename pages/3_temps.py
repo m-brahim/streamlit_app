@@ -281,6 +281,8 @@ with col_v2:
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
+available_months = sorted(df['Mois'].unique())
+
 with col_v3 :
     selected_months_orders = st.multiselect("Sélectionnez les mois pour le graphique des commandes", available_months, default=available_months)
     filtered_df_orders = df[df['Mois'].isin(selected_months_orders)]
