@@ -91,8 +91,11 @@ margin-bottom : 10px;
 [data-testid="stMetricValue"]{
 }
 
+/* graphiques */
 
-
+[class="g-gtitle"]{
+text-align : center;
+}
 
 
 
