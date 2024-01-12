@@ -121,13 +121,22 @@ with col_title:
 
 col_side1, col_side2 = st.columns(2)
 
-with col_side1:
-    selected_year = st.selectbox("Sélectionnez N", sorted_years)
+with st.sidebar:
+    st.title("Sélection des années")
+    
+    col_side1, col_side2 = st.columns(2)
+
+    with col_side1:
+        selected_year = st.selectbox("Sélectionnez N", sorted_years)
         
-with col_side2:
-    if selected_year in sorted_years_2:
-        sorted_years_2.remove(selected_year)
-    selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
+    with col_side2:
+        # Vérifier si l'année sélectionnée dans la première liste déroulante est également dans la deuxième liste
+        if selected_year in sorted_years_2:
+            # Supprimer l'année sélectionnée de la deuxième liste déroulante
+            sorted_years_2.remove(selected_year)
+        
+        # Exclure également l'année suivante à la première sélection dans la deuxième liste déroulante
+        selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
     
 st.header("Données utilisées")
 new_dfs, code = spreadsheet(url)
