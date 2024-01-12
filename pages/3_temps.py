@@ -97,7 +97,7 @@ margin-bottom : 10px;
 
 /* graphiques */
 
-[data-math="N"}{
+[class="gtitle"]{
 font-family : Roboto;
 text-align : center;
 }
