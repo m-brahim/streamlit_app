@@ -138,7 +138,8 @@ with st.sidebar:
 
     st.header("Filtre sur les mois")
     available_months = sorted(df['Mois'].unique())
-    selected_months_orders = st.multiselect("Sélectionnez les mois pour le graphique des commandes", available_months, default=available_months)
+    selected_months_orders = st.multiselect("", available_months, default=available_months)
+    filtered_df_orders = df[df['Mois'].isin(selected_months)]
 
 col_1, col_h1, col_2 = st.columns([1, 3, 1])
 
