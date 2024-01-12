@@ -108,14 +108,14 @@ df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 df['Année'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.year
 df['Mois'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.month_name()
 
-#tri dans l'ordre des années
+# Tri dans l'ordre des années
 sorted_years = sorted(df['Année'].unique())
 sorted_years_2 = sorted(df['Année'].unique())
 
-#création de colonnes
+# Création de colonnes
 col_title, col_2, col_3 = st.columns([3, 1, 1])
 
-#une colonne pour le titre & une pour les listes déroulantes
+# Une colonne pour le titre & une pour les listes déroulantes
 with col_title:
     st.title("Suivi temporel des ventes :hourglass_flowing_sand:")
 
@@ -126,12 +126,12 @@ with st.sidebar:
 
     with col_side1:
         sorted_years.remove(min(sorted_years))
-        selected_year = st.radio("Sélectionnez N", sorted_years)
+        selected_year = st.selectbox("Sélectionnez N", sorted_years)
         
     with col_side2:
         sorted_years_comparison = sorted_years_2.copy()
         sorted_years_comparison.remove(max(sorted_years_2))
-        selected_comparison_year = st.radio("Sélectionnez N-*", sorted_years_comparison)
+        selected_comparison_year = st.selectbox("Sélectionnez N-*", sorted_years_comparison)
 
     
 st.header("Données utilisées")
