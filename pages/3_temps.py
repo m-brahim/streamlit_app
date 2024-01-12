@@ -255,8 +255,8 @@ with col_v3:
         'Mois')['ID commande'].count().reset_index()
 
     # Triez les mois dans l'ordre décroissant du nombre de commandes
-    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', descending=True)
-    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', descending=False)
+    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=True)
+    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=True)
 
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
