@@ -4,6 +4,7 @@ plotly
 folium
 streamlit_folium
 streamlit_extras
+streamlit_option_menu
 geopy
 markdown
 mitosheet
