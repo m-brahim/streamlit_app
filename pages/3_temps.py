@@ -63,11 +63,13 @@ padding : 10px 0px 10px 0px;
 [id="e4f26f4b"]{
 font-family: Roboto;
 color : black;
+padding : 10px 0px 10px 0px;
 }
 
 [id="76c358b0"]{
 font-family: Roboto;
 color : black;
+padding : 10px 0px 10px 0px;
 }
 
 [data-testid="stHorizontalBlock"]{
