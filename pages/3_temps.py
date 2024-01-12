@@ -93,7 +93,7 @@ margin-bottom : 10px;
 
 /* graphiques */
 
-[class="gtitle"]{
+element.style{
 font-family : Roboto;
 }
 
