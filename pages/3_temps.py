@@ -256,7 +256,7 @@ with col_v3:
 
     # Triez les mois dans l'ordre décroissant du nombre de commandes
     monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=True)
-    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=True)
+    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=False)
 
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
@@ -280,7 +280,7 @@ with col_v3:
     fig_orders_evolution.update_layout(legend=dict(traceorder='reversed'))
 
     # Mise en forme
-    fig_orders_evolution.update_layout(barmode='group', title=f"                                                                                 Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
+    fig_orders_evolution.update_layout(barmode='group', title=f"                                                                                                                    Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
                                       xaxis=dict(title='Nombre de commandes'),
                                       yaxis=dict(title='Mois'),
                                       height=600,
