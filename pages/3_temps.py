@@ -95,12 +95,7 @@ margin-bottom : 10px;
 [data-testid="stMetricValue"]{
 }
 
-/* graphiques */
 
-[class="gtitle"]{
-font-family : Roboto;
-text-align : center;
-}
 
 </style>
 """
@@ -285,7 +280,7 @@ with col_v3:
     fig_orders_evolution.update_layout(legend=dict(traceorder='reversed'))
 
     # Mise en forme
-    fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
+    fig_orders_evolution.update_layout(barmode='group', title=f"                                              Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
                                       xaxis=dict(title='Nombre de commandes'),
                                       yaxis=dict(title='Mois'),
                                       height=600,
