@@ -180,6 +180,7 @@ col_orders.metric(label="Nombre de commandes", value=num_orders, delta=diff_orde
 #affiche le chiffre d'affaires selon l'année + comparatif avec N-*
 col_ca.metric(label=f"Chiffre d'affaires", value=f"{int(ca_by_year)} €", delta=f"{int(diff_ca)} €")
 
+style_metric_cards()
 
 
 
