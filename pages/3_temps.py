@@ -93,12 +93,10 @@ margin-bottom : 10px;
 
 /* graphiques */
 
-[class="g-gtitle"]{
+.js-plotly-plot .plotly, .js-plotly-plot .plotly div {
 text-anchor : middle;
 font-family : Roboto;
 }
-
-
 
 </style>
 """
