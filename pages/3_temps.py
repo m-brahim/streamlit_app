@@ -45,6 +45,7 @@ margin-left : 0px;
 border : solid;
 border-color : #354d64;
 text-align : center;
+margin-bottom : 5px;
 }
 
 [class="st-emotion-cache-eczf16 e1nzilvr3"]{
@@ -59,21 +60,18 @@ padding : 10px 0px 10px 0px;
 font-family: Roboto;
 color : black;
 padding : 10px 0px 10px 0px;
-margin-bottom : 5px;
 }
 
 [id="e4f26f4b"]{
 font-family: Roboto;
 color : black;
 padding : 10px 0px 10px 0px;
-margin-bottom : 5px;
 }
 
 [id="76c358b0"]{
 font-family: Roboto;
 color : black;
 padding : 10px 0px 10px 0px;
-margin-bottom : 5px;
 }
 
 [data-testid="stHorizontalBlock"]{
