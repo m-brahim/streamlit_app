@@ -154,7 +154,7 @@ with col_h1:
 st.header("Chiffres clés pour l'année courante :mag_right:")
 
 #création de colonnes identiques
-col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1, 2, 1, 2, 1, 2, 1])
+col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1, 1, 1, 1, 1, 1, 1])
 
 #calculs
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
