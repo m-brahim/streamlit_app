@@ -263,7 +263,7 @@ with col_v3:
         y=monthly_orders_comparison_year['Mois'],
         name=f"{selected_comparison_year}",
         orientation='h',
-        marker=dict(color='#aac0d5')
+        marker=dict(color='#4678b9')
     ))
     
     # Affiche l'évolution du nombre de commandes pour N
@@ -272,7 +272,7 @@ with col_v3:
         y=monthly_orders_selected_year['Mois'],
         name=f"{selected_year}",
         orientation='h',
-        marker=dict(color='#7b98b7')
+        marker=dict(color='#44566f')
     ))
 
     # Inversez l'ordre des traces dans la légende
