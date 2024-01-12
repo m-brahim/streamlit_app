@@ -85,15 +85,7 @@ background-color : white;
 margin-bottom : 10px;
 }
 
-/* listes déroulantes */
 
-/* les metrics */
-
-[data-testid="stMetric"]{
-}
-
-[data-testid="stMetricValue"]{
-}
 
 
 
@@ -198,7 +190,7 @@ with col_h3:
 
 
 #création de colonnes et attribution de dimensions
-col_v1, col_v3 = st.columns([2,2])
+col_v1, col_v2, col_v3 = st.columns([2,2,1])
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
@@ -231,7 +223,7 @@ with col_v1:
     ))
 
     #mise en forme
-    fig_clients_evolution.update_layout(title=f"Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
+    fig_clients_evolution.update_layout(title=f"                                                                                                     Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
                                         xaxis=dict(title='Mois'),
                                         yaxis=dict(title='Nombre de clients'),
                                         height=600,
@@ -246,7 +238,7 @@ with col_v1:
 fig_orders_evolution = go.Figure()
 
 # Graphique qui permet d'observer l'évolution du nombre de commandes selon N et N-*
-with col_v3:
+with col_v2:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders_selected_year = df[df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
@@ -289,8 +281,9 @@ with col_v3:
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
-
-
+with col_v3 :
+    selected_months_orders = st.multiselect("Sélectionnez les mois pour le graphique des commandes", available_months, default=available_months)
+    filtered_df_orders = df[df['Mois'].isin(selected_months_orders)]
 
 
 
