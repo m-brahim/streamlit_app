@@ -217,7 +217,7 @@ with col_v1:
         y=monthly_clients_selected_year['ID client'],
         mode='lines',
         name=f"{selected_year}",
-        line=dict(color='blue')
+        line=dict(color='#44566f')
     ))
 
     #affiche l'évolution du nombre de clients pour N-*
@@ -226,7 +226,7 @@ with col_v1:
         y=monthly_clients_comparison_year['ID client'],
         mode='lines',
         name=f"{selected_comparison_year}",
-        line=dict(color='red')
+        line=dict(color='#4678b9')
     ))
 
     #mise en forme
