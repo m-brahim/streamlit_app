@@ -141,9 +141,12 @@ with st.sidebar:
         
         # Exclure également l'année suivante à la première sélection dans la deuxième liste déroulante
         selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
-    
-st.header("Données utilisées")
-new_dfs, code = spreadsheet(url)
+
+col_1, col_h1, col_2 = st.columns([1, 3, 1])
+
+with col_h1:
+    st.header("Données utilisées")
+    new_dfs, code = spreadsheet(url)
 
 #PARTIE KPI
 
