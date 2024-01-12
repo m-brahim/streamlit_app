@@ -54,6 +54,22 @@ position : relative;
 padding : 10px 0px 10px 0px;
 }
 
+[id="d7ed6071"]{
+font-family: Roboto;
+color : black;
+padding : 10px 0px 10px 0px;
+}
+
+[id="e4f26f4b"]{
+font-family: Roboto;
+color : black;
+}
+
+[id="76c358b0"]{
+font-family: Roboto;
+color : black;
+}
+
 [data-testid="stHorizontalBlock"]{
 margin-bottom : 5px;
 }
@@ -61,7 +77,6 @@ margin-bottom : 5px;
 [class="stHeadingContainer"]{
 margin-bottom : 10px;
 }
-
 
 /* listes déroulantes */
 
@@ -74,20 +89,7 @@ margin-bottom : 10px;
 }
 
 
-[id="d7ed6071"]{
-font-family: Roboto;
-color : black;
-}
 
-[id="e4f26f4b"]{
-font-family: Roboto;
-color : black;
-}
-
-[id="76c358b0"]{
-font-family: Roboto;
-color : black;
-}
 
 
 
