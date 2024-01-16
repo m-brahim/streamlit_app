@@ -72,7 +72,9 @@ col_1, col_h1, col_2 = st.columns([1, 3, 1])
 with col_h1:
     st.header("Données utilisées")
 
-with st.columns([1, 3, 1]) as col_tab:
+col_1, col_tab, col_2 = st.columns([1,3,1])
+
+with col_tab:
     # Charger les données depuis le fichier CSV
     df_table = pd.read_csv(url, delimiter=";")
 
