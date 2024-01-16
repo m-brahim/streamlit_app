@@ -71,9 +71,9 @@ h2 {
 
 /* graphiques */
 
-[class="bartext bartext-outside"]{
-    font-size : 12px;
+[class="bartext bartext-outside"] {
     font-family : Roboto;
+    font-size : 12px;
 }
 
 
