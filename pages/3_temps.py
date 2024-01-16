@@ -188,7 +188,8 @@ with col_v2:
         orientation='h',
         text=monthly_orders_comparison_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#4678b9', size = 12)
+        marker=dict(color='#4678b9'),
+        width=0.6
     ))
 
     # Affiche l'évolution du nombre de commandes pour N
@@ -199,7 +200,8 @@ with col_v2:
         orientation='h',
         text=monthly_orders_selected_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#44566f', size = 12)
+        marker=dict(color='#44566f'),
+        width=0.6
     ))
 
     # Inversez l'ordre des traces dans la légende
