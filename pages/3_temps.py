@@ -210,8 +210,8 @@ with col_v2:
                                       xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15)),  # Ajuster la taille des valeurs des axes X
                                       yaxis=dict(title='Mois', tickfont=dict(size=15)),  # Ajuster la taille des valeurs des axes Y
                                       title_font=dict(size=20),
-                                      height=600,
-                                      width=800)
+                                      height=400,
+                                      width=400)
 
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
