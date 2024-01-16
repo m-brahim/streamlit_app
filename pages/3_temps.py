@@ -78,6 +78,7 @@ with col_h1:
 
 #tableau
 
+# Charger les données depuis le fichier CSV
 df_table = pd.read_csv(url, delimiter=";")
 
 # Sélectionner les colonnes à afficher dans le tableau
@@ -89,15 +90,15 @@ col_space, col_country, col_space, col_category, col_space, col_client, col_spac
 
 # Liste déroulante pour le pays
 with col_country:
-    selected_country = st.selectbox('Sélectionnez le pays', ['Choose an option'] + df_table['Pays/Région'].unique(), index=None)
+    selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None,placeholder="Choisir un pays",)
 
 # Liste déroulante pour la catégorie
 with col_category:
-    selected_category = st.selectbox('Sélectionnez la catégorie', ['Choose an option'] + df_table['Catégorie'].unique(), index=None)
+    selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None,placeholder="Choisir une catégorie",)
 
 # Liste déroulante pour le client
 with col_client:
-    selected_client = st.selectbox('Sélectionnez le client', ['Choose an option'] + df_table['Nom du client'].unique(), index=None)
+    selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None,placeholder="Choisir un client",)
 
 # Appliquer les filtres
 df_filtre = df_table[
@@ -105,9 +106,6 @@ df_filtre = df_table[
     (df_table['Catégorie'] == selected_category) &
     (df_table['Nom du client'] == selected_client)
 ]
-
-# Ajouter une colonne pour indiquer la ligne avec la vente maximale
-df_filtre['Vente maximale'] = df_filtre['Ventes'] == df_filtre['Ventes'].max()
 
 # Créer la figure pour le tableau
 fig_table = go.Figure()
@@ -117,13 +115,13 @@ fig_table.add_trace(go.Table(
     header=dict(values=selected_columns_table,
                 font=dict(size=12, color='white'),
                 fill_color='#264653',
-                align='left',
+                align='center',
                 height=20,
                 line_color='rgba(255,255,255,0.2)'),
     cells=dict(values=[df_filtre[col] for col in selected_columns_table],
                font=dict(size=12),
-               align='left',
-               fill_color=df_filtre['Vente maximale'].map({True: 'lightgreen', False: '#F0F2F6'}),
+               align='center',
+               fill_color='#F0F2F6',
                height=20,
                line_color='rgba(255,255,255,0.2)'),
 ))
@@ -135,6 +133,8 @@ fig_table.update_layout(
 
 # Afficher les listes déroulantes et le tableau
 st.plotly_chart(fig_table, use_container_width=True)
+
+
 
 
 
