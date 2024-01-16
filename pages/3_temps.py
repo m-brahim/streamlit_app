@@ -158,7 +158,7 @@ with col_v1:
                                        yaxis=dict(title='Nombre de clients', tickfont=dict(size=15), title_font=dict(size=18)),
                                        title_font=dict(size=20),
                                        height=500,
-                                       width=500)
+                                       width=700)
     # Affichage
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
@@ -212,8 +212,8 @@ with col_v2:
                                       xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),
                                       yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
                                       title_font=dict(size=20),
-                                       height=500,
-                                       width=500)
+                                      height=500,
+                                      width=700)
     
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
