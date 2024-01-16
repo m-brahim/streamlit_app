@@ -90,15 +90,15 @@ col_space, col_country, col_space, col_category, col_space, col_client, col_spac
 
 # Liste déroulante pour le pays
 with col_country:
-    selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None,placeholder="Choisir un pays",)
+    selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None, placeholder="Choisir un pays",)
 
 # Liste déroulante pour la catégorie
 with col_category:
-    selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None,placeholder="Choisir une catégorie",)
+    selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None, placeholder="Choisir une catégorie",)
 
 # Liste déroulante pour le client
 with col_client:
-    selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None,placeholder="Choisir un client",)
+    selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None, placeholder="Choisir un client",)
 
 # Appliquer les filtres
 df_filtre = df_table[
@@ -107,34 +107,8 @@ df_filtre = df_table[
     (df_table['Nom du client'] == selected_client)
 ]
 
-# Créer la figure pour le tableau
-fig_table = go.Figure()
-
-# Ajouter le tableau auto-table
-fig_table.add_trace(go.Table(
-    header=dict(values=selected_columns_table,
-                font=dict(size=12, color='white'),
-                fill_color='#264653',
-                align='center',
-                height=20,
-                line_color='rgba(255,255,255,0.2)'),
-    cells=dict(values=[df_filtre[col] for col in selected_columns_table],
-               font=dict(size=12),
-               align='center',
-               fill_color='#F0F2F6',
-               height=20,
-               line_color='rgba(255,255,255,0.2)'),
-))
-
-fig_table.update_layout(
-    margin=dict(l=0, r=10, b=10, t=30),
-    height=480
-)
-
-# Afficher les listes déroulantes et le tableau
-st.plotly_chart(fig_table, use_container_width=True)
-
-
+# Afficher le tableau sans contour blanc
+st.table(df_filtre)
 
 
 
