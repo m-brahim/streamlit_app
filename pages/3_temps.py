@@ -85,26 +85,23 @@ with col_tab:
     fig_table = go.Figure(
         data=[go.Table(
             columnorder=list(range(len(selected_columns_table))),
-            columnwidth=[30] + [30] * (len(selected_columns_table) - 1),
+            columnwidth=[50] + [50] * (len(selected_columns_table) - 1),
             header=dict(
                 values=selected_columns_table,
                 font=dict(size=12, color='white'),
                 fill_color='#264653',
                 align='right',
-                height=20
+                height=10
             ),
             cells=dict(
                 values=[df_table[K].tolist() for K in selected_columns_table],
                 font=dict(size=12),
                 align='right',
                 fill_color='#F0F2F6',
-                height=20
+                height=10
             ))
         ]
     )
-
-    fig_table.update_layout(title_text="Exemple - Hypermarché_Achats", title_font_color='#264653', title_x=0.5,
-                            margin=dict(l=0, r=10, b=10, t=30), height=700)
 
     # Afficher le tableau à droite du spreadsheet
     st.plotly_chart(fig_table, use_container_width=True)
