@@ -80,6 +80,16 @@ df_table = pd.read_csv(url, delimiter=";")
 selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
                            'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
 
+selected_country = st.selectbox('Sélectionnez le pays', ['Tous'] + df_table['Pays/Région'].unique().tolist())
+selected_category = st.selectbox('Sélectionnez la catégorie', ['Tous'] + df_table['Catégorie'].unique().tolist())
+selected_client = st.selectbox('Sélectionnez le client', ['Tous'] + df_table['Nom du client'].unique().tolist())
+
+df_filtre = df_table[
+    (df_table['Pays/Région'] == selected_country if selected_country != 'Tous' else True) &
+    (df_table['Catégorie'] == selected_category if selected_category != 'Tous' else True) &
+    (df_table['Nom du client'] == selected_client if selected_client != 'Tous' else True)
+]
+
 fig_table = go.Figure()
 
 fig_table.add_trace(go.Table(
