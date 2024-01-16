@@ -74,35 +74,36 @@ with col_h1:
 
 
 
-df_table = pd.read_csv(url, delimiter=";")
-
+# Sélectionner les colonnes à afficher dans le tableau
 selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
-                               'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
+                           'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
 
+# Créer la figure pour le tableau
 fig_table = go.Figure()
 
+# Ajouter le tableau auto-table
 fig_table.add_trace(go.Table(
     header=dict(values=selected_columns_table,
-    font=dict(size=12, color='white'),
-    fill_color='#264653',
-    align='left',
-    height=20,
-    line_color='rgba(255,255,255,0.2)'),
-    
-cells=dict(values=[df_table[col] for col in selected_columns_table],
-           font=dict(size=12),
-           align='left',
-           fill_color='#F0F2F6',
-           height=20,
-           line_color='rgba(255,255,255,0.2)'),
-    ))
+                font=dict(size=12, color='white'),
+                fill_color='#264653',
+                align='left',
+                height=20,
+                line_color='rgba(255,255,255,0.2)'),
+    cells=dict(values=[df_table[col] for col in selected_columns_table],
+               font=dict(size=12),
+               align='left',
+               fill_color='#F0F2F6',
+               height=20,
+               line_color='rgba(255,255,255,0.2)'),
+))
 
 fig_table.update_layout(
     margin=dict(l=0, r=10, b=10, t=30),
     height=480
-    )
+)
 
-col_tab.plotly_chart(fig_table, use_container_width=True)
+# Afficher le tableau
+st.plotly_chart(fig_table, use_container_width=True)
 
 #PARTIE KPI
 
