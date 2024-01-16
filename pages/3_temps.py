@@ -103,7 +103,7 @@ with col_tab:
         ]
     )
 
-    fig_table.update_layout(title_text="Exemple - Hypermarché_Achats", title_font_color='#264653', title_x=5,
+    fig_table.update_layout(title_text="Exemple - Hypermarché_Achats", title_font_color='#264653', title_x=0.5,
                             margin=dict(l=0, r=10, b=10, t=30), height=700)
 
     # Afficher le tableau à droite du spreadsheet
