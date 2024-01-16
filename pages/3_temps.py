@@ -76,16 +76,13 @@ with col_h1:
 
 
 
-#tableau
-
-# Charger les données depuis le fichier CSV
 df_table = pd.read_csv(url, delimiter=";")
 
-# Sélectionner les colonnes à afficher dans le tableau
+# Sélectionner les colonnes à afficher dans le DataFrame
 selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
                            'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
 
-# Créer des colonnes pour les listes déroulantes et le tableau
+# Créer des colonnes pour les listes déroulantes
 col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1, 2, 1, 2, 1, 2, 1])
 
 # Liste déroulante pour le pays
@@ -109,18 +106,8 @@ df_filtre = df_table[
 
 df_filtre.reset_index(drop=True, inplace=True)
 
-# Afficher le tableau sans contour blanc et sans index
-st.table(df_filtre.style.set_table_styles([{
-    'selector': 'table',
-    'props': [
-        ('border-collapse', 'collapse'),
-        ('background-color', '#F0F2F6'),  # Ajoutez votre couleur de fond
-        ('color', '#264653'),  # Ajoutez votre couleur de texte
-    ]
-}]))
-
-# Afficher le tableau sans contour blanc
-st.table(df_filtre)
+# Afficher le DataFrame Pandas
+st.dataframe(df_filtre[selected_columns_table], index=False)
 
 
 
