@@ -82,11 +82,6 @@ with col_tab:
     selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
                                'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
 
-    # Créer la figure pour le tableau
-    fig_table = go.Figure(
-        make_subplots(rows=1, cols=1, subplot_titles=["Exemple - Hypermarché_Achats"])
-    )
-
     # Ajouter le tableau auto-table
     fig_table.add_trace(go.Table(
         header=dict(values=selected_columns_table,
@@ -100,9 +95,6 @@ with col_tab:
     ))
 
     fig_table.update_layout(
-        title_text="Exemple - Hypermarché_Achats",
-        title_font_color='#264653',
-        title_x=0,
         margin=dict(l=0, r=10, b=10, t=30),
         height=480
     )
