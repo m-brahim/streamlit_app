@@ -25,7 +25,7 @@
     border: solid;
     border-color: #354d64;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 [class="st-emotion-cache-eczf16 e1nzilvr3"] {
@@ -66,6 +66,10 @@
 
 h2 {
     background-color: white;
+}
+
+[class="user-select-none svg-container"]{
+    margin-top : 10px;
 }
 
 
