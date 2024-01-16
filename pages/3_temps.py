@@ -80,14 +80,21 @@ df_table = pd.read_csv(url, delimiter=";")
 selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
                            'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
 
-selected_country = st.selectbox('Sélectionnez le pays', ['Tous'] + df_table['Pays/Région'].unique().tolist())
-selected_category = st.selectbox('Sélectionnez la catégorie', ['Tous'] + df_table['Catégorie'].unique().tolist())
-selected_client = st.selectbox('Sélectionnez le client', ['Tous'] + df_table['Nom du client'].unique().tolist())
+col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1,2,1,2,1,2,1])
+
+with col_country :
+    selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique())
+
+with col_category :
+    selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique())
+
+with col_client:
+    selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique())
 
 df_filtre = df_table[
-    ((df_table['Pays/Région'] == selected_country) | (selected_country == 'Tous')) &
-    ((df_table['Catégorie'] == selected_category) | (selected_category == 'Tous')) &
-    ((df_table['Nom du client'] == selected_client) | (selected_client == 'Tous'))
+    (df_table['Pays/Région'] == selected_country) &
+    (df_table['Catégorie'] == selected_category) &
+    (df_table['Nom du client'] == selected_client)
 ]
 
 fig_table = go.Figure()
