@@ -177,15 +177,9 @@ with col_v2:
     # Agréger le nombre de commandes par mois pour l'année de comparaison
     monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
 
-    # Obtenir l'ordre des mois dans l'année
-    month_order = list(calendar.month_name)[1:]
-
-    # Trier les mois dans l'ordre pour les deux années
-    monthly_orders_selected_year['Mois'] = pd.Categorical(monthly_orders_selected_year['Mois'], categories=month_order, ordered=False)
-    monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=month_order, ordered=False)
-
-    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='Mois')
-    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='Mois')
+    # Trier les mois en fonction du nombre de commandes décroissant pour les deux années
+    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=False)
+    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=False)
 
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
@@ -217,4 +211,3 @@ with col_v2:
 
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
-
