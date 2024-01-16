@@ -134,14 +134,14 @@ fig_table.update_layout(
 # Afficher les listes déroulantes et le tableau
 st.plotly_chart(fig_table, use_container_width=True)
 
-col_space, col_button, col_space = st.columns([2,1,2])
+col_space, col_button, col_space = st.columns([2,2,2])
 
 with col_button :
     reset_button = st.empty()
     if reset_button.button("Réinitialiser les filtres"):
-        selected_country = 'Choisir un pays'
-        selected_category = 'Choisir une catégorie'
-        selected_client = 'Choisir un client'
+        selected_country.index = None,
+        selected_category.index = None,
+        selected_client.index = None,
 
 
 
