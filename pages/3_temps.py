@@ -75,6 +75,13 @@ with col_h1:
 
 #tableau
 
+df_table = pd.read_csv(url, delimiter=";")
+
+# Sélectionner les colonnes à afficher dans le tableau
+selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
+                           'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
+
+# Créer des colonnes pour les listes déroulantes et le tableau
 col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1, 2, 1, 2, 1, 2, 1])
 
 # Liste déroulante pour le pays
