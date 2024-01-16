@@ -83,29 +83,31 @@ with col_tab:
 
     # Créer la figure pour le tableau
     fig_table = go.Figure(
-        data=[go.Table(
-            columnorder=list(range(len(selected_columns_table))),
-            columnwidth=[50] + [50] * (len(selected_columns_table) - 1),
-            header=dict(
-                values=selected_columns_table,
-                font=dict(size=12, color='white'),
-                fill_color='#264653',
-                align='right',
-                height=10
-            ),
-            cells=dict(
-                values=[df_table[K].tolist() for K in selected_columns_table],
-                font=dict(size=12),
-                align='right',
-                fill_color='#F0F2F6',
-                height=10
-            ))
-        ]
+        make_subplots(rows=1, cols=1, subplot_titles=["Exemple - Hypermarché_Achats"])
+    )
+
+    # Ajouter le tableau auto-table
+    fig_table.add_trace(go.Table(
+        header=dict(values=selected_columns_table,
+                    font=dict(size=12, color='white'),
+                    fill_color='#264653',
+                    align='center'),
+        cells=dict(values=[df_table[col] for col in selected_columns_table],
+                   font=dict(size=12),
+                   align='center'),
+        columnwidth=[1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5]
+    ))
+
+    fig_table.update_layout(
+        title_text="Exemple - Hypermarché_Achats",
+        title_font_color='#264653',
+        title_x=0,
+        margin=dict(l=0, r=10, b=10, t=30),
+        height=480
     )
 
     # Afficher le tableau à droite du spreadsheet
     st.plotly_chart(fig_table, use_container_width=True)
-
 
 #PARTIE KPI
 
