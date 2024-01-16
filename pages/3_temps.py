@@ -7,7 +7,6 @@ import markdown
 from streamlit_folium import st_folium
 from streamlit_extras.metric_cards import style_metric_cards
 from mitosheet.streamlit.v1 import spreadsheet
-import calendar
 
 #config du titre de la page
 st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
