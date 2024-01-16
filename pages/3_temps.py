@@ -212,7 +212,6 @@ with col_v2:
                                       xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),
                                       yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
                                       title_font=dict(size=20),
-                                      textposition = 'outside',
                                       height=600,
                                       width=600)
     
