@@ -180,9 +180,6 @@ with col_v2:
     monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=False)
     monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=False)
 
-    # Ajout du texte au-dessus des barres en utilisant texttemplate
-    text_template = "%{text}<br>"
-
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
         x=monthly_orders_comparison_year['ID commande'],
@@ -191,9 +188,7 @@ with col_v2:
         orientation='h',
         text=monthly_orders_comparison_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#4678b9'),
-        texttemplate=text_template,  # Utiliser texttemplate pour formater le texte
-        textfont=dict(size=14)  # Ajuster la taille du texte au-dessus des barres
+        marker=dict(color='#4678b9')
     ))
 
     # Affiche l'évolution du nombre de commandes pour N
@@ -204,9 +199,7 @@ with col_v2:
         orientation='h',
         text=monthly_orders_selected_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#44566f'),
-        texttemplate=text_template,  # Utiliser texttemplate pour formater le texte
-        textfont=dict(size=14)  # Ajuster la taille du texte au-dessus des barres
+        marker=dict(color='#44566f')
     ))
 
     # Inversez l'ordre des traces dans la légende
@@ -219,9 +212,6 @@ with col_v2:
                                       title_font=dict(size=20),
                                       height=400,
                                       width=400)
-
-    # Affichage
-    st.plotly_chart(fig_orders_evolution, use_container_width=True)
     
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
