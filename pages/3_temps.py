@@ -106,47 +106,8 @@ col_orders.metric(label="Nombre de commandes", value=num_orders, delta=diff_orde
 #affiche le chiffre d'affaires selon l'année + comparatif avec N-*
 col_ca.metric(label=f"Chiffre d'affaires", value=f"{int(ca_by_year)} €", delta=f"{int(diff_ca)} €")
 
-#PARTIE VISUALISATION
+style_metric_cards()
 
-# Ajout du tableau à droite du spreadsheet
-# Charger les données depuis le fichier Excel
-df_table = pd.read_csv(url, delimiter=";")
-
-# Sélectionner les colonnes à afficher dans le tableau
-selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
-                           'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
-
-# Créer la figure pour le tableau
-fig_table = go.Figure(
-    data=[go.Table(
-        columnorder=list(range(len(selected_columns_table))),
-        columnwidth=[15] + [20] * (len(selected_columns_table) - 1),
-        header=dict(
-            values=selected_columns_table,
-            font=dict(size=12, color='white'),
-            fill_color='#264653',
-            align='left',
-            height=20
-        ),
-        cells=dict(
-            values=[df_table[K].tolist() for K in selected_columns_table],
-            font=dict(size=12),
-            align='left',
-            fill_color='#F0F2F6',
-            height=20
-        ))
-    ]
-)
-
-fig_table.update_layout(title_text="Exemple - Hypermarché_Achats", title_font_color='#264653', title_x=0,
-                        margin=dict(l=0, r=10, b=10, t=30), height=480)
-
-# Afficher le tableau à droite du spreadsheet
-col_2.plotly_chart(fig_table, use_container_width=True)
-
-
-
-# PARTIE VISUALISATION
 
 
 #PARTIE VISUALISATION
@@ -157,10 +118,12 @@ with col_h3:
     #titre
     st.header("Visualisations :bar_chart: :chart_with_upwards_trend:")
 
+
 #création de colonnes et attribution de dimensions
-col_v1, col_space, col_v2 = st.columns([2, 1, 2])
+col_v1, col_space, col_v2 = st.columns([2,1,2])
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
+
 with col_v1:
     # Agréger le nombre de clients par mois pour l'année sélectionnée
     monthly_clients_selected_year = filtered_df[filtered_df['Année'] == selected_year].drop_duplicates('ID client').groupby(
@@ -199,10 +162,13 @@ with col_v1:
     # Affichage
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
+
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
+
 fig_orders_evolution = go.Figure()
 
 # Graphique qui permet d'observer l'évolution du nombre de commandes selon N et N-*
+
 with col_v2:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders_selected_year = filtered_df[filtered_df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
