@@ -68,6 +68,10 @@ h2 {
     background-color: white;
 }
 
+[data-testid="stTableStyledTable"]{
+    background-color : white;
+}
+
 /* graphiques */
 
 
