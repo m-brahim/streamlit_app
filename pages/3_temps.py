@@ -181,8 +181,8 @@ with col_v2:
     month_order = list(calendar.month_name)[1:]
 
     # Trier les mois dans l'ordre pour les deux années
-    monthly_orders_selected_year['Mois'] = pd.Categorical(monthly_orders_selected_year['Mois'], categories=month_order, ordered=True)
-    monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=month_order, ordered=True)
+    monthly_orders_selected_year['Mois'] = pd.Categorical(monthly_orders_selected_year['Mois'], categories=month_order, ordered=False)
+    monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=month_order, ordered=False)
 
     monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='Mois')
     monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='Mois')
