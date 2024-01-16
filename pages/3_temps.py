@@ -85,9 +85,9 @@ selected_category = st.selectbox('Sélectionnez la catégorie', ['Tous'] + df_ta
 selected_client = st.selectbox('Sélectionnez le client', ['Tous'] + df_table['Nom du client'].unique().tolist())
 
 df_filtre = df_table[
-    (df_table['Pays/Région'] == selected_country if selected_country != 'Tous' else True) &
-    (df_table['Catégorie'] == selected_category if selected_category != 'Tous' else True) &
-    (df_table['Nom du client'] == selected_client if selected_client != 'Tous' else True)
+    ((df_table['Pays/Région'] == selected_country) | (selected_country == 'Tous')) &
+    ((df_table['Catégorie'] == selected_category) | (selected_category == 'Tous')) &
+    ((df_table['Nom du client'] == selected_client) | (selected_client == 'Tous'))
 ]
 
 fig_table = go.Figure()
