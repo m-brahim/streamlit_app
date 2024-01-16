@@ -94,7 +94,8 @@ with col_tab:
         cells=dict(values=[df_table[col] for col in selected_columns_table],
                    font=dict(size=12),
                    align='center'),
-        columnwidth=[1.5] * len(selected_columns_table)
+        columnwidth=[3] * len(selected_columns_table),
+        line_color='white',  # Set line color to match background
     ))
 
     fig_table.update_layout(
