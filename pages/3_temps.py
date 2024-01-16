@@ -11,11 +11,12 @@ from mitosheet.streamlit.v1 import spreadsheet
 #config du titre de la page
 st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
 
-css_code = """
-<link rel="stylesheet" href="pages/style.css">
-"""
+#charger le fichier CSS
+with open("pages/style.css") as f:
+    css_code = f.read()
 
-st.markdown(css_code, unsafe_allow_html = True)
+st.markdown(f"<style>{css_code}</style>", unsafe_allow_html=True)
+
 
 #collecte des données
 url = "Exemple - Hypermarché_Achats.csv"
