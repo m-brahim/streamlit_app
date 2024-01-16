@@ -90,15 +90,15 @@ col_space, col_country, col_space, col_category, col_space, col_client, col_spac
 
 # Liste déroulante pour le pays
 with col_country:
-    selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None)
+    selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None,placeholder="Choisir un pays",)
 
 # Liste déroulante pour la catégorie
 with col_category:
-    selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None)
+    selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None,placeholder="Choisir une catégorie",)
 
 # Liste déroulante pour le client
 with col_client:
-    selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None)
+    selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None,placeholder="Choisir un client",)
 
 # Appliquer les filtres
 df_filtre = df_table[
