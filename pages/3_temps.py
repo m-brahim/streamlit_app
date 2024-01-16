@@ -75,30 +75,31 @@ with col_h1:
 
 #tableau
 
-df_table = pd.read_csv(url, delimiter=";")
+col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1, 2, 1, 2, 1, 2, 1])
 
-selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
-                           'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
-
-col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1,2,1,2,1,2,1])
-
-with col_country :
+# Liste déroulante pour le pays
+with col_country:
     selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique())
 
-with col_category :
+# Liste déroulante pour la catégorie
+with col_category:
     selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique())
 
+# Liste déroulante pour le client
 with col_client:
     selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique())
 
+# Appliquer les filtres
 df_filtre = df_table[
     (df_table['Pays/Région'] == selected_country) &
     (df_table['Catégorie'] == selected_category) &
     (df_table['Nom du client'] == selected_client)
 ]
 
+# Créer la figure pour le tableau
 fig_table = go.Figure()
 
+# Ajouter le tableau auto-table
 fig_table.add_trace(go.Table(
     header=dict(values=selected_columns_table,
                 font=dict(size=12, color='white'),
@@ -106,7 +107,7 @@ fig_table.add_trace(go.Table(
                 align='left',
                 height=20,
                 line_color='rgba(255,255,255,0.2)'),
-    cells=dict(values=[df_table[col] for col in selected_columns_table],
+    cells=dict(values=[df_filtre[col] for col in selected_columns_table],
                font=dict(size=12),
                align='left',
                fill_color='#F0F2F6',
@@ -119,8 +120,8 @@ fig_table.update_layout(
     height=480
 )
 
+# Afficher les listes déroulantes et le tableau
 st.plotly_chart(fig_table, use_container_width=True)
-
 
 
 #PARTIE KPI
