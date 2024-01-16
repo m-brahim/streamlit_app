@@ -107,8 +107,18 @@ df_filtre = df_table[
     (df_table['Nom du client'] == selected_client)
 ]
 
+st.table(df_filtre.style.set_table_styles([{
+    'selector': 'table',
+    'props': [
+        ('border-collapse', 'collapse'),
+        ('background-color', '#F0F2F6'),  # Ajoutez votre couleur de fond
+        ('color', '#264653'),  # Ajoutez votre couleur de texte
+    ]
+}]).hide_index())
+
 # Afficher le tableau sans contour blanc
 st.table(df_filtre)
+
 
 
 
