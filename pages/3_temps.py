@@ -120,7 +120,7 @@ with col_h3:
 
 
 #création de colonnes et attribution de dimensions
-col_v1, col_v2 = st.columns([2,2])
+col_v1, col_space, col_v2 = st.columns([2,2])
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
@@ -157,8 +157,8 @@ with col_v1:
                                        xaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
                                        yaxis=dict(title='Nombre de clients', tickfont=dict(size=15), title_font=dict(size=18)),
                                        title_font=dict(size=20),
-                                       height=600,
-                                       width=600)
+                                       height=500,
+                                       width=500)
     # Affichage
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
