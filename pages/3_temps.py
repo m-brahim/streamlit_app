@@ -188,7 +188,7 @@ with col_v2:
         orientation='h',
         text=monthly_orders_comparison_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#4678b9')
+        marker=dict(color='#4678b9', size = 12)
     ))
 
     # Affiche l'évolution du nombre de commandes pour N
@@ -199,7 +199,7 @@ with col_v2:
         orientation='h',
         text=monthly_orders_selected_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#44566f')
+        marker=dict(color='#44566f', size = 12)
     ))
 
     # Inversez l'ordre des traces dans la légende
@@ -207,8 +207,8 @@ with col_v2:
 
     # Mise en forme
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-                                      xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),  # Ajuster la taille des valeurs des axes X
-                                      yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),  # Ajuster la taille des valeurs des axes Y
+                                      xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),
+                                      yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
                                       title_font=dict(size=20),
                                       height=400,
                                       width=400)
