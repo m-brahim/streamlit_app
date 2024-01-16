@@ -107,6 +107,9 @@ df_filtre = df_table[
     (df_table['Nom du client'] == selected_client)
 ]
 
+df_filtre.reset_index(drop=True, inplace=True)
+
+# Afficher le tableau sans contour blanc et sans index
 st.table(df_filtre.style.set_table_styles([{
     'selector': 'table',
     'props': [
@@ -114,7 +117,7 @@ st.table(df_filtre.style.set_table_styles([{
         ('background-color', '#F0F2F6'),  # Ajoutez votre couleur de fond
         ('color', '#264653'),  # Ajoutez votre couleur de texte
     ]
-}]).hide_index())
+}]))
 
 # Afficher le tableau sans contour blanc
 st.table(df_filtre)
