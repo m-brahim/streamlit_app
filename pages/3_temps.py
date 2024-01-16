@@ -82,6 +82,9 @@ with col_tab:
     selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
                                'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
 
+    # Créer la figure pour le tableau
+    fig_table = go.Figure()
+
     # Ajouter le tableau auto-table
     fig_table.add_trace(go.Table(
         header=dict(values=selected_columns_table,
@@ -91,7 +94,7 @@ with col_tab:
         cells=dict(values=[df_table[col] for col in selected_columns_table],
                    font=dict(size=12),
                    align='center'),
-        columnwidth=[1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5]
+        columnwidth=[1.5] * len(selected_columns_table)
     ))
 
     fig_table.update_layout(
