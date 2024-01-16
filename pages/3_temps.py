@@ -71,10 +71,7 @@ col_1, col_h1, col_2 = st.columns([1, 3, 1])
 with col_h1:
     st.header("Données utilisées")
 
-col_1, col_csv, col_2, col_tab = st.columns([1,2,1,2])
-
-with col_csv :
-        new_dfs, code = spreadsheet(url)
+col_1, col_tab, col_2  = st.columns([1,3,1])
 
 with col_tab:
     # Charger les données depuis le fichier Excel
@@ -258,3 +255,9 @@ with col_v2:
     
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
+
+
+col_1, col_csv, col_2 = st.columns([1,2,1])
+
+with col_csv :
+        new_dfs, code = spreadsheet(url)
