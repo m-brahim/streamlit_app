@@ -7,6 +7,7 @@ import markdown
 from streamlit_folium import st_folium
 from streamlit_extras.metric_cards import style_metric_cards
 from mitosheet.streamlit.v1 import spreadsheet
+import calendar
 
 #config du titre de la page
 st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
@@ -176,9 +177,15 @@ with col_v2:
     # Agréger le nombre de commandes par mois pour l'année de comparaison
     monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
 
-    # Triez les mois dans l'ordre décroissant du nombre de commandes pour les deux années
-    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=False)
-    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=False)
+    # Obtenir l'ordre des mois dans l'année
+    month_order = list(calendar.month_name)[1:]
+
+    # Trier les mois dans l'ordre pour les deux années
+    monthly_orders_selected_year['Mois'] = pd.Categorical(monthly_orders_selected_year['Mois'], categories=month_order, ordered=True)
+    monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=month_order, ordered=True)
+
+    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='Mois')
+    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='Mois')
 
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
@@ -210,3 +217,4 @@ with col_v2:
 
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
+
