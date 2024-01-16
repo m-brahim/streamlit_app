@@ -90,15 +90,15 @@ with col_tab:
                 values=selected_columns_table,
                 font=dict(size=12, color='white'),
                 fill_color='#264653',
-                align='left',
+                align='center',
                 height=20
             ),
             cells=dict(
                 values=[df_table[K].tolist() for K in selected_columns_table],
                 font=dict(size=12),
-                align='left',
+                align='center',
                 fill_color='#F0F2F6',
-                height=20
+                height=50
             ))
         ]
     )
