@@ -177,8 +177,8 @@ with col_v2:
     monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
 
     # Trier les mois en fonction du nombre de commandes décroissant pour les deux années
-    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=False)
-    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=False)
+    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=True)
+    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=True)
 
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
@@ -212,8 +212,8 @@ with col_v2:
                                       xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),
                                       yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
                                       title_font=dict(size=20),
-                                      height=400,
-                                      width=400)
+                                      height=600,
+                                      width=600)
     
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
