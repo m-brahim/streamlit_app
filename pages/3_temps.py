@@ -99,13 +99,6 @@ with col_category:
 with col_client:
     selected_client = st.selectbox('Sélectionnez le client', ['Choose an option'] + df_table['Nom du client'].unique(), index=None)
 
-# Bouton pour réinitialiser les filtres
-reset_button = st.empty()
-if reset_button.button("Réinitialiser les filtres"):
-    selected_country = 'Choose an option'
-    selected_category = 'Choose an option'
-    selected_client = 'Choose an option'
-
 # Appliquer les filtres
 df_filtre = df_table[
     (df_table['Pays/Région'] == selected_country) &
