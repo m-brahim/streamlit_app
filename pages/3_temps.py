@@ -152,7 +152,7 @@ with col_v1:
     ))
 
     #mise en forme
-    fig_clients_evolution.update_layout(title=f"                                                                                                     Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
+    fig_clients_evolution.update_layout(title=f"Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
                                         xaxis=dict(title='Mois'),
                                         yaxis=dict(title='Nombre de clients'),
                                         height=600,
@@ -201,7 +201,7 @@ with col_v2:
     fig_orders_evolution.update_layout(legend=dict(traceorder='reversed'))
 
     # Mise en forme
-    fig_orders_evolution.update_layout(barmode='group', title=f"                                                                                                     Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
+    fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
                                       xaxis=dict(title='Nombre de commandes'),
                                       yaxis=dict(title='Mois'),
                                       height=600,
