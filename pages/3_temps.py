@@ -85,7 +85,7 @@ with col_tab:
     fig_table = go.Figure(
         data=[go.Table(
             columnorder=list(range(len(selected_columns_table))),
-            columnwidth=[15] + [20] * (len(selected_columns_table) - 1),
+            columnwidth=[30] + [30] * (len(selected_columns_table) - 1),
             header=dict(
                 values=selected_columns_table,
                 font=dict(size=12, color='white'),
