@@ -70,7 +70,7 @@ with st.sidebar:
 col_1, col_h1, col_2 = st.columns([1, 3, 1])
 
 with col_h1:
-    st.header("Données utilisées")
+    st.header("Visualisation des données")
 
 
 
@@ -176,13 +176,13 @@ style_metric_cards()
 
 
 
-#PARTIE VISUALISATION
+#PARTIE RESTITUTION
 
 col_1, col_h3, col_2 = st.columns([1, 3, 1])
 
 with col_h3:
     #titre
-    st.header("Visualisations :bar_chart: :chart_with_upwards_trend:")
+    st.header("Restitution des données :bar_chart: :chart_with_upwards_trend:")
 
 
 #création de colonnes et attribution de dimensions
