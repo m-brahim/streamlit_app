@@ -1,0 +1,80 @@
+#style de la page
+
+style = """
+<style>
+
+/* en tête de la page */
+
+[data-testid="stHeader"]{
+background-color : #aac0d5;
+}
+
+/* section principale */
+
+[class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
+background-image: url("https://img.freepik.com/free-photo/abstract-bluish-paint-background-wallpaper_53876-97482.jpg?w=1380&t=st=1704983050~exp=1704983650~hmac=4ee935cabbf6d79ae417ce489e0ac8ebb6cfbf3a0e2805c7513925d5767184cc");
+background-size: cover;
+}
+
+/* barre latérale */
+
+[data-testid="stSidebarContent"]{
+background-color :  #7b98b7;
+}
+
+/* titres */
+
+[class="st-emotion-cache-10trblm e1nzilvr1"]{
+margin-left : 0px;
+}
+
+[class="st-emotion-cache-1629p8f e1nzilvr2"]{
+border : solid;
+border-color : #354d64;
+text-align : center;
+margin-bottom : 20px;
+}
+
+[class="st-emotion-cache-eczf16 e1nzilvr3"]{
+position : relative;
+}
+
+[id="e3af3173"]{
+background-color : white;
+padding : 10px 0px 10px 0px;
+}
+
+[id="d7ed6071"]{
+font-family: Roboto;
+color : black;
+padding : 10px 0px 10px 0px;
+background-color : white;
+}
+
+[id="e4f26f4b"]{
+font-family: Roboto;
+color : black;
+padding : 10px 0px 10px 0px;
+background-color : white;
+}
+
+[id="76c358b0"]{
+font-family: Roboto;
+color : black;
+padding : 10px 0px 10px 0px;
+background-color : white;
+}
+
+[data-testid="stHorizontalBlock"]{
+}
+
+[class="stHeadingContainer"]{
+margin-bottom : 10px;
+}
+
+h2{
+background-color : white;
+}
+
+</style>
+"""
