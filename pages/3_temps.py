@@ -195,7 +195,7 @@ with col_v1:
                                        xaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
                                        yaxis=dict(title='Nombre de clients', tickfont=dict(size=15), title_font=dict(size=18)),
                                        title_font=dict(size=20),
-                                       title_x = 0.2,
+                                       title_x = 0.1,
                                        height=500,
                                        width=700)
     # Affichage
@@ -251,7 +251,7 @@ with col_v2:
                                       xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),
                                       yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
                                       title_font=dict(size=20),
-                                      title_x = 0.2,
+                                      title_x = 0.1,
                                       height=500,
                                       width=700)
     
