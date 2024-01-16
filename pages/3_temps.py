@@ -189,7 +189,7 @@ with col_v2:
         text=monthly_orders_comparison_year['ID commande'],  # Ajout des valeurs au-dessus des barres
         textposition='outside',  # Position du texte (au-dessus des barres)
         marker=dict(color='#4678b9'),
-        textfont=dict(size=14)  # Ajuster la taille du texte au-dessus des barres
+        textfont=dict(size=20)  # Ajuster la taille du texte au-dessus des barres
     ))
 
     # Affiche l'évolution du nombre de commandes pour N
@@ -201,7 +201,7 @@ with col_v2:
         text=monthly_orders_selected_year['ID commande'],  # Ajout des valeurs au-dessus des barres
         textposition='outside',  # Position du texte (au-dessus des barres)
         marker=dict(color='#44566f'),
-        textfont=dict(size=14)  # Ajuster la taille du texte au-dessus des barres
+        textfont=dict(size=20)  # Ajuster la taille du texte au-dessus des barres
     ))
 
     # Inversez l'ordre des traces dans la légende
