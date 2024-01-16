@@ -173,13 +173,11 @@ with col_v2:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders_selected_year = filtered_df[filtered_df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
-    # Triez les mois dans l'ordre décroissant du nombre de commandes pour l'année sélectionnée
-    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=False)
-
     # Agréger le nombre de commandes par mois pour l'année de comparaison
     monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
 
-    # Triez les mois dans l'ordre décroissant du nombre de commandes pour l'année de comparaison
+    # Triez les mois dans l'ordre décroissant du nombre de commandes pour les deux années
+    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=False)
     monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=False)
 
     # Affiche l'évolution du nombre de commandes pour N-*
