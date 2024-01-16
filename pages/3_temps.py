@@ -207,11 +207,11 @@ with col_v2:
 
     # Mise en forme
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-                                      xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15)),  # Ajuster la taille des valeurs des axes X
-                                      yaxis=dict(title='Mois', tickfont=dict(size=15)),  # Ajuster la taille des valeurs des axes Y
+                                      xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),  # Ajuster la taille des valeurs des axes X
+                                      yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),  # Ajuster la taille des valeurs des axes Y
                                       title_font=dict(size=20),
                                       height=400,
                                       width=400)
-
+    
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
