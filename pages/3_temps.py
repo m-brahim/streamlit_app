@@ -70,7 +70,48 @@ col_1, col_h1, col_2 = st.columns([1, 3, 1])
 
 with col_h1:
     st.header("Données utilisées")
-    new_dfs, code = spreadsheet(url)
+
+col_1, col_csv, col_2, col_tab = st.columns([1,2,1,2])
+
+with col_csv :
+        new_dfs, code = spreadsheet(url)
+
+with col_tab:
+    # Charger les données depuis le fichier Excel
+    df_table = pd.read_csv(url, delimiter=";")
+
+    # Sélectionner les colonnes à afficher dans le tableau
+    selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
+                               'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
+
+    # Créer la figure pour le tableau
+    fig_table = go.Figure(
+        data=[go.Table(
+            columnorder=list(range(len(selected_columns_table))),
+            columnwidth=[15] + [20] * (len(selected_columns_table) - 1),
+            header=dict(
+                values=selected_columns_table,
+                font=dict(size=12, color='white'),
+                fill_color='#264653',
+                align='left',
+                height=20
+            ),
+            cells=dict(
+                values=[df_table[K].tolist() for K in selected_columns_table],
+                font=dict(size=12),
+                align='left',
+                fill_color='#F0F2F6',
+                height=20
+            ))
+        ]
+    )
+
+    fig_table.update_layout(title_text="Exemple - Hypermarché_Achats", title_font_color='#264653', title_x=0,
+                            margin=dict(l=0, r=10, b=10, t=30), height=480)
+
+    # Afficher le tableau à droite du spreadsheet
+    st.plotly_chart(fig_table, use_container_width=True)
+
 
 #PARTIE KPI
 
