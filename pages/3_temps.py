@@ -115,12 +115,12 @@ fig_table.add_trace(go.Table(
     header=dict(values=selected_columns_table,
                 font=dict(size=12, color='white'),
                 fill_color='#264653',
-                align='left',
+                align='center',
                 height=20,
                 line_color='rgba(255,255,255,0.2)'),
     cells=dict(values=[df_filtre[col] for col in selected_columns_table],
                font=dict(size=12),
-               align='left',
+               align='center',
                fill_color='#F0F2F6',
                height=20,
                line_color='rgba(255,255,255,0.2)'),
@@ -134,7 +134,14 @@ fig_table.update_layout(
 # Afficher les listes déroulantes et le tableau
 st.plotly_chart(fig_table, use_container_width=True)
 
+col_space, col_button, col_space = st.columns([2,1,2])
 
+with col_button :
+    reset_button = st.empty()
+    if reset_button.button("Réinitialiser les filtres"):
+        selected_country = 'Choisir un pays'
+        selected_category = 'Choisir une catégorie'
+        selected_client = 'Choisir un client'
 
 
 
