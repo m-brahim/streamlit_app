@@ -73,18 +73,15 @@ with col_h1:
     st.header("Données utilisées")
 
 
+#tableau
 
-# Charger les données depuis le fichier CSV
 df_table = pd.read_csv(url, delimiter=";")
 
-# Sélectionner les colonnes à afficher dans le tableau
 selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
                            'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
 
-# Créer la figure pour le tableau
 fig_table = go.Figure()
 
-# Ajouter le tableau auto-table
 fig_table.add_trace(go.Table(
     header=dict(values=selected_columns_table,
                 font=dict(size=12, color='white'),
@@ -105,8 +102,9 @@ fig_table.update_layout(
     height=480
 )
 
-# Afficher le tableau
 st.plotly_chart(fig_table, use_container_width=True)
+
+
 
 #PARTIE KPI
 
