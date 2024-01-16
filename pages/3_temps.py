@@ -90,21 +90,21 @@ with col_tab:
                 values=selected_columns_table,
                 font=dict(size=12, color='white'),
                 fill_color='#264653',
-                align='center',
+                align='right',
                 height=20
             ),
             cells=dict(
                 values=[df_table[K].tolist() for K in selected_columns_table],
                 font=dict(size=12),
-                align='center',
+                align='right',
                 fill_color='#F0F2F6',
-                height=50
+                height=20
             ))
         ]
     )
 
-    fig_table.update_layout(title_text="Exemple - Hypermarché_Achats", title_font_color='#264653', title_x=0,
-                            margin=dict(l=0, r=10, b=10, t=30), height=480)
+    fig_table.update_layout(title_text="Exemple - Hypermarché_Achats", title_font_color='#264653', title_x=5,
+                            margin=dict(l=0, r=10, b=10, t=30), height=700)
 
     # Afficher le tableau à droite du spreadsheet
     st.plotly_chart(fig_table, use_container_width=True)
