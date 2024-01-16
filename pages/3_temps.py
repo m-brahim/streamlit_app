@@ -72,10 +72,8 @@ col_1, col_h1, col_2 = st.columns([1, 3, 1])
 with col_h1:
     st.header("Données utilisées")
 
-col_1, col_tab, col_2  = st.columns([1,3,1])
-
-with col_tab:
-    # Charger les données depuis le fichier Excel
+with st.columns([1, 3, 1]) as col_tab:
+    # Charger les données depuis le fichier CSV
     df_table = pd.read_csv(url, delimiter=";")
 
     # Sélectionner les colonnes à afficher dans le tableau
@@ -90,11 +88,15 @@ with col_tab:
         header=dict(values=selected_columns_table,
                     font=dict(size=12, color='white'),
                     fill_color='#264653',
-                    align='center'),
+                    align='left',
+                    height=20,
+                    line_color='rgba(255,255,255,0.2)'),
         cells=dict(values=[df_table[col] for col in selected_columns_table],
                    font=dict(size=12),
-                   align='center',
-                   line_color='white'),  # Set line color to match background
+                   align='left',
+                   fill_color='#F0F2F6',
+                   height=20,
+                   line_color='rgba(255,255,255,0.2)'),
     ))
 
     fig_table.update_layout(
@@ -103,7 +105,7 @@ with col_tab:
     )
 
     # Afficher le tableau à droite du spreadsheet
-    st.plotly_chart(fig_table, use_container_width=True)
+    col_tab.plotly_chart(fig_table, use_container_width=True)
 
 #PARTIE KPI
 
