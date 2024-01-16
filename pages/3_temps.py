@@ -106,8 +106,8 @@ df_filtre = df_table[
 
 df_filtre.reset_index(drop=True, inplace=True)
 
-# Afficher le DataFrame Pandas
-st.dataframe(df_filtre[selected_columns_table], index=False)
+# Afficher le DataFrame Pandas sans la colonne des index
+st.table(df_filtre[selected_columns_table])
 
 
 
