@@ -186,10 +186,9 @@ with col_v2:
         y=monthly_orders_comparison_year['Mois'],
         name=f"{selected_comparison_year}",
         orientation='h',
-        text=monthly_orders_comparison_year['ID commande'],  # Ajout des valeurs au-dessus des barres
-        textposition='outside',  # Position du texte (au-dessus des barres)
-        marker=dict(color='#4678b9'),
-        textfont=dict(size=20)  # Ajuster la taille du texte au-dessus des barres
+        text=monthly_orders_comparison_year['ID commande'],
+        textposition='outside',
+        marker=dict(color='#4678b9')
     ))
 
     # Affiche l'évolution du nombre de commandes pour N
@@ -198,10 +197,9 @@ with col_v2:
         y=monthly_orders_selected_year['Mois'],
         name=f"{selected_year}",
         orientation='h',
-        text=monthly_orders_selected_year['ID commande'],  # Ajout des valeurs au-dessus des barres
-        textposition='outside',  # Position du texte (au-dessus des barres)
-        marker=dict(color='#44566f'),
-        textfont=dict(size=20)  # Ajuster la taille du texte au-dessus des barres
+        text=monthly_orders_selected_year['ID commande'],
+        textposition='outside',
+        marker=dict(color='#44566f')
     ))
 
     # Inversez l'ordre des traces dans la légende
@@ -209,9 +207,9 @@ with col_v2:
 
     # Mise en forme
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-                                      xaxis=dict(title='Nombre de commandes', tickfont=dict(size=12)),  # Ajuster la taille des valeurs des axes X
-                                      yaxis=dict(title='Mois', tickfont=dict(size=12)),  # Ajuster la taille des valeurs des axes Y
-                                      title_font=dict(size=20),  # Ajuster la taille du titre du graphique
+                                      xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15)),  # Ajuster la taille des valeurs des axes X
+                                      yaxis=dict(title='Mois', tickfont=dict(size=15)),  # Ajuster la taille des valeurs des axes Y
+                                      title_font=dict(size=20),
                                       height=600,
                                       width=800)
 
