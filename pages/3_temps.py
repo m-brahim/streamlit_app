@@ -201,6 +201,29 @@ with col_v1:
     # Affichage
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
+    selected_columns_chart = ['Pays/Région', 'Catégorie', 'Nom du client', 'Ventes']
+
+    # Appliquer les filtres pour le DataFrame du graphique à secteurs
+    df_chart = df_table[
+    (df_table['Pays/Région'] == selected_country) &
+    (df_table['Catégorie'] == selected_category) &
+    (df_table['Nom du client'] == selected_client)
+    ]
+
+    # Création du graphique à secteurs
+    fig_pie_chart = px.sunburst(
+    df_chart,
+    path=['Pays/Région', 'Catégorie', 'Nom du client'],
+    values='Ventes',
+    title=f"Total des ventes pour {selected_client} en {selected_category} par pays",
+    )
+
+    # Mise en forme du graphique
+    fig_pie_chart.update_layout(height=500, width=700)
+
+    # Affichage du graphique à secteurs
+    st.plotly_chart(fig_pie_chart, use_container_width=True)
+
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
