@@ -76,7 +76,7 @@ with col_h1:
 
 
 
-df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
+df_table = pd.read_csv(url, delimiter=";")
 
 # Sélectionner les colonnes à afficher dans le DataFrame
 selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
@@ -103,8 +103,6 @@ df_filtre = df_table[
     (df_table['Catégorie'] == selected_category) &
     (df_table['Nom du client'] == selected_client)
 ]
-
-st.table(df_filtre[selected_columns_table])
 
 table_html = df_filtre[selected_columns_table].to_html(index=False)
 
