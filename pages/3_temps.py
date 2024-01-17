@@ -106,6 +106,9 @@ df_filtre = df_table[
 
 st.table(df_filtre[selected_columns_table])
 
+table_html = df_filtre[selected_columns_table].to_html(index=False)
+
+st.markdown(table_html, unsafe_allow_html=True)
 
 
 #PARTIE KPI
