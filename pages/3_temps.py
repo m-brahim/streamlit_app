@@ -67,19 +67,22 @@ with st.sidebar:
     # Filtrer le DataFrame en fonction des mois sélectionnés
     filtered_df = df[df['Mois'].isin(selected_months)]
 
-col_11, col_h1, col_21 = st.columns([1, 3, 1])
+col_1, col_h1, col_2 = st.columns([1, 3, 1])
 
 with col_h1:
     st.header("Visualisation des données")
 
 
-df_table = pd.read_csv(url, delimiter=";")
 
-# Colonnes à afficher dans le DataFrame
+
+
+df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
+
+# Sélectionner les colonnes à afficher dans le DataFrame
 selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
                            'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
 
-# Colonnes pour les listes déroulantes
+# Créer des colonnes pour les listes déroulantes
 col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1, 2, 1, 2, 1, 2, 1])
 
 # Liste déroulante pour le pays
@@ -101,12 +104,13 @@ df_filtre = df_table[
     (df_table['Nom du client'] == selected_client)
 ]
 
-# Afficher le DataFrame avec le style (masquer l'index)
-st.dataframe(df_filtre[selected_columns_table].set_index(''), unsafe_allow_html=True)
+st.table(df_filtre[selected_columns_table])
+
+
 
 #PARTIE KPI
 
-col_12, col_h2, col_22 = st.columns([1, 3, 1])
+col_1, col_h2, col_2 = st.columns([1, 3, 1])
 
 with col_h2:
     st.header("Chiffres clés pour l'année courante :mag_right:")
@@ -144,7 +148,7 @@ style_metric_cards()
 
 #PARTIE RESTITUTION
 
-col_13, col_h3, col_23 = st.columns([1, 3, 1])
+col_1, col_h3, col_2 = st.columns([1, 3, 1])
 
 with col_h3:
     #titre
