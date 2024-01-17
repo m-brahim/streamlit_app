@@ -113,7 +113,7 @@ st.table(df_filtre[selected_columns_table])
 filtered_data = df[df['Pays/Région'] == selected_country]
 
 # Supprimer les espaces et le symbole € de la colonne 'Ventes'
-filtered_data['Ventes'] = filtered_data['Ventes'].str.replace('[^\d]', '', regex=True)
+filtered_data['Ventes'] = filtered_data['Ventes'].astype(str).str.replace('[^\d]', '', regex=True)
 
 # Convertir la colonne 'Ventes' en entiers
 filtered_data['Ventes'] = pd.to_numeric(filtered_data['Ventes'], errors='coerce', downcast='integer')
