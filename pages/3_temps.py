@@ -50,7 +50,7 @@ with st.sidebar:
     col_side1, col_side2 = st.columns(2)
 
     with col_side1:
-        selected_year = st.selectbox("Sélectionnez N", sorted_years)
+        selected_year = st.selectbox("Sélectionnez N", sorted_years, index=None, placeholder="")
         
     with col_side2:
         # Vérifier si l'année sélectionnée dans la première liste déroulante est également dans la deuxième liste
@@ -59,7 +59,7 @@ with st.sidebar:
             sorted_years_2.remove(selected_year)
         
         # Exclure également l'année suivante à la première sélection dans la deuxième liste déroulante
-        selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
+        selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year], index=None, placeholder="")
 
     st.header("Filtre sur les mois")
     available_months = sorted(df['Mois'].unique())
