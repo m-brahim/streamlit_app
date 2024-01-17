@@ -157,6 +157,10 @@ with col_h3:
     st.header("Restitution des données :bar_chart: :chart_with_upwards_trend:")
 
 
+df = pd.read_csv(url, delimiter=";")
+df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)  # Supprime tous les caractères non numériques
+df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
+
 #création de colonnes et attribution de dimensions
 col_v1, col_space, col_v2 = st.columns([2,1,2])
 
