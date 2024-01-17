@@ -117,3 +117,7 @@ h2 {
     font-weight : bold;
     text-align : center;
 }
+
+[data-testid="stTableStyledTable"]{
+    text-align : center;
+}
