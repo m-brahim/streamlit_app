@@ -116,11 +116,8 @@ df_filtered = df[(df['Pays/Région'] == selected_country) & (df['Année'] == sel
 st.write("Données filtrées :")
 st.write(df_filtered)
 
-# Supprimer les virgules pour les milliers dans la colonne 'Ventes'
-df_filtered['Ventes'] = df_filtered['Ventes'].str.replace(',', '', regex=True)
-
-# Convertir la colonne 'Ventes' en entiers
-df_filtered['Ventes'] = pd.to_numeric(df_filtered['Ventes'], errors='coerce', downcast='integer')
+# Convertir la colonne 'Ventes' en entiers en supprimant les virgules pour les milliers
+df_filtered['Ventes'] = df_filtered['Ventes'].astype(str).str.replace(',', '', regex=True).astype(float)
 
 # Calculer la somme des ventes par catégorie
 sales_by_category = df_filtered.groupby('Catégorie')['Ventes'].sum().reset_index()
@@ -129,7 +126,6 @@ sales_by_category = df_filtered.groupby('Catégorie')['Ventes'].sum().reset_inde
 st.header("Somme des ventes par catégorie :money_with_wings:")
 for index, row in sales_by_category.iterrows():
     st.write(f"{row['Catégorie']} : {int(row['Ventes'])} €")
-
 
 
 #PARTIE KPI
