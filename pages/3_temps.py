@@ -73,9 +73,7 @@ with col_h1:
     st.header("Visualisation des données")
 
 
-
-/* tableau */
-
+#tableau
 df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
 
 # Sélectionner les colonnes à afficher dans le DataFrame
