@@ -109,14 +109,17 @@ st.table(df_filtre[selected_columns_table])
 
 
 
-# Filtrer le DataFrame en fonction du pays sélectionné
-df_country_filtered = df_table[df_table['Pays/Région'] == selected_country]
+# Filtrage des données pour le pays sélectionné
+filtered_data = df[df['Pays/Région'] == selected_country]
 
-# Remplacer les virgules par des points dans la colonne 'Ventes' et convertir en type numérique
-df_country_filtered['Ventes'] = df_country_filtered['Ventes'].str.replace(',', '.').astype(float)
+# Supprimer les espaces et le symbole € de la colonne 'Ventes'
+filtered_data['Ventes'] = filtered_data['Ventes'].str.replace('[^\d]', '', regex=True)
+
+# Convertir la colonne 'Ventes' en entiers
+filtered_data['Ventes'] = pd.to_numeric(filtered_data['Ventes'], errors='coerce', downcast='integer')
 
 # Calculer la somme des ventes par catégorie
-sales_by_category = df_country_filtered.groupby('Catégorie')['Ventes'].sum().reset_index()
+sales_by_category = filtered_data.groupby('Catégorie')['Ventes'].sum().reset_index()
 
 # Afficher la somme des ventes par catégorie sous forme de texte
 st.header("Somme des ventes par catégorie :money_with_wings:")
