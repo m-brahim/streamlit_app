@@ -68,6 +68,14 @@ with st.sidebar:
     # Filtrer le DataFrame en fonction des mois sélectionnés
     filtered_df = df[df['Mois'].isin(selected_months)]
 
+    st.header("Paramètres des graphiques")
+    graph_width = st.slider("Largeur des graphiques", min_value=300, max_value=1200, value=700)
+    graph_height = st.slider("Hauteur des graphiques", min_value=300, max_value=1200, value=500)
+
+
+
+
+
 col_1, col_h1, col_2 = st.columns([1, 3, 1])
 
 with col_h1:
@@ -256,6 +264,12 @@ with col_v2:
     
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
+
+
+# Utilisez les valeurs de largeur et de hauteur dans la mise en forme des graphiques
+fig_clients_evolution.update_layout(height=graph_height, width=graph_width)
+fig_orders_evolution.update_layout(height=graph_height, width=graph_width)
+
 
 
 col_1, col_csv, col_2 = st.columns([1,2,1])
