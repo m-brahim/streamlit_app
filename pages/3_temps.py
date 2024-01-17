@@ -101,10 +101,11 @@ df_filtre = df_table[
     (df_table['Nom du client'] == selected_client)
 ]
 
-df_filtre = df_filtre[selected_columns_table].reset_index(drop=True)
+# Appliquer le style pour masquer l'index
+styler = df_filtre.style.hide_index()
 
-st.table(df_filtre)
-
+# Afficher le DataFrame avec le style
+st.write(styler.to_html(), unsafe_allow_html=True)
 
 #PARTIE KPI
 
