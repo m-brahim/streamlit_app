@@ -78,9 +78,6 @@ with col_h1:
 
 df_table = pd.read_csv(url, delimiter=";")
 
-style = df_table.style.hide_index()
-st.write(styler.to_html(), unsafe_allow_html=True)
-
 # Sélectionner les colonnes à afficher dans le DataFrame
 selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
                            'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
@@ -107,7 +104,7 @@ df_filtre = df_table[
     (df_table['Nom du client'] == selected_client)
 ]
 
-st.table(df_filtre[selected_columns_table])
+st.table(df_filtre[selected_columns_table], hide_index=True)
 
 
 
