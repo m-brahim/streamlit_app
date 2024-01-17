@@ -104,19 +104,7 @@ df_filtre = df_table[
     (df_table['Nom du client'] == selected_client)
 ]
 
-table_html = df_filtre[selected_columns_table].to_html(index=False)
-
-st.markdown(table_html, unsafe_allow_html=True)
-
-st.markdown(f"""
-    <style>
-        .my-custom-table-class {{
-            width: 2050px;
-            margin: auto;
-        }}
-    </style>
-    {table_html}
-""", unsafe_allow_html=True)
+st.table(df_filtre[selected_columns_table]
 
 
 
