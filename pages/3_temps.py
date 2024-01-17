@@ -104,7 +104,9 @@ df_filtre = df_table[
     (df_table['Nom du client'] == selected_client)
 ]
 
-st.table(df_filtre[selected_columns_table])
+df_filtre.reset_index(drop=True, inplace=True)
+
+st.table(df_filtre[selected_columns_table].drop(columns=['index']))
 
 
 
