@@ -84,7 +84,20 @@ with col_h1:
 
 
 
+# Créer des colonnes pour les listes déroulantes
+col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1, 2, 1, 2, 1, 2, 1])
 
+# Liste déroulante pour le pays
+with col_country:
+    selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None, placeholder="Choisir un pays",)
+
+# Liste déroulante pour la catégorie
+with col_category:
+    selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None, placeholder="Choisir une catégorie",)
+
+# Liste déroulante pour le client
+with col_client:
+    selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None, placeholder="Choisir un client",)
 
 # Définir une variable pour vérifier si les listes déroulantes ont été sélectionnées
 selection_effectuee = False
@@ -108,21 +121,6 @@ if selection_effectuee:
     # Sélectionner les colonnes à afficher dans le DataFrame
     selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
                                'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
-
-    # Créer des colonnes pour les listes déroulantes
-    col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1, 2, 1, 2, 1, 2, 1])
-
-    # Liste déroulante pour le pays
-    with col_country:
-        selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None, placeholder="Choisir un pays",)
-
-    # Liste déroulante pour la catégorie
-    with col_category:
-        selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None, placeholder="Choisir une catégorie",)
-
-    # Liste déroulante pour le client
-    with col_client:
-        selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None, placeholder="Choisir un client",)
 
     # Appliquer les filtres
     df_filtre = df_table[
