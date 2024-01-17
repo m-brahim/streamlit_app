@@ -165,6 +165,19 @@ style_metric_cards()
 
 #PARTIE RESTITUTION
 
+# Définir une variable pour vérifier si les listes déroulantes ont été sélectionnées
+selection_effectuee2 = False
+
+# Condition pour vérifier si les éléments nécessaires sont sélectionnés
+if selected_year is not None and selected_comparison_year is not None :
+    selection_effectuee2 = True
+
+# Condition pour afficher le tableau uniquement si la sélection a été effectuée
+if selection_effectuee2:
+    st.plotly_chart(fig_clients_evolution, use_container_width=True)
+    st.plotly_chart(fig_orders_evolution, use_container_width=True)
+
+
 col_1, col_h3, col_2 = st.columns([1, 3, 1])
 
 with col_h3:
@@ -215,7 +228,8 @@ with col_v1:
                                        width=graph_width)
     
     # Affichage
-    st.plotly_chart(fig_clients_evolution, use_container_width=True)
+    if selection_effectuee2:
+        st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
@@ -269,7 +283,8 @@ with col_v2:
                                        width=graph_width)
     
     # Affichage
-    st.plotly_chart(fig_orders_evolution, use_container_width=True)
+    if selection_effectuee2:
+        st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
 
 
