@@ -113,3 +113,7 @@ h2 {
 [class^="col_heading level0 col"] {
     text-align: center !important;
 }
+
+tr[class^="st-emotion-cache-gdzsw5"] {
+    text-align: center !important;
+}
