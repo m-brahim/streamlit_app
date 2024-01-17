@@ -11,7 +11,8 @@ from plotly.subplots import make_subplots
 
 
 #config du titre de la page
-st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
+st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide", initial_sidebar_state="expanded", width=graph_width)
+
 
 #charger le fichier CSS
 with open("pages/style.css") as f:
