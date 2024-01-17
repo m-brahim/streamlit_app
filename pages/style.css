@@ -58,73 +58,11 @@ h2 {
 
 /* tableau */
 
-[class="col_heading level0 col0 st-emotion-cache-a51556 e1q9reml1"]{
-    font-weight : bold;
-}
-
-[class="col_heading level0 col1 st-emotion-cache-a51556 e1q9reml1"]{
-    font-weight : bold;
-}
-
-[class="col_heading level0 col2 st-emotion-cache-a51556 e1q9reml1"]{
-    font-weight : bold;
-}
-
-[class="col_heading level0 col3 st-emotion-cache-a51556 e1q9reml1"]{
-    font-weight : bold;
-}
-
-[class="col_heading level0 col4 st-emotion-cache-a51556 e1q9reml1"]{
-    font-weight : bold;
-}
-
-[class="col_heading level0 col5 st-emotion-cache-a51556 e1q9reml1"]{
-    font-weight : bold;
-}
-
-[class="col_heading level0 col6 st-emotion-cache-a51556 e1q9reml1"]{
-    font-weight : bold;
-}
-
-[class="col_heading level0 col7 st-emotion-cache-a51556 e1q9reml1"]{
-    font-weight : bold;
-}
-
-[class="col_heading level0 col8 st-emotion-cache-a51556 e1q9reml1"]{
-    font-weight : bold;
-}
-
-[class="col_heading level0 col9 st-emotion-cache-a51556 e1q9reml1"]{
-    font-weight : bold;
-}
-
-[class="col_heading level0 col10 st-emotion-cache-a51556 e1q9reml1"]{
-    font-weight : bold;
-}
-
-[class="col_heading level0 col11 st-emotion-cache-a51556 e1q9reml1"]{
-    font-weight : bold;
-}
-
-[data-testid="stTableStyledTable"]{
-    text-align : center;
-}
-
 [class^="col_heading level0 col"] {
+    font-weight : bold;
     text-align: center !important;
 }
 
 td[class^="st-emotion-cache-gdzsw5"] {
     text-align: center !important;
-}
-
-
-[data-testid="stMarkdown"]{
-    width:1660;
-}
-
-[class="dataframe"]{
-    background-color : white;
-    position : relative;
-    margin-bottom : 10px;
 }
