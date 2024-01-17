@@ -109,23 +109,22 @@ st.table(df_filtre[selected_columns_table])
 
 
 
-# Filtrage des données pour le pays sélectionné
-filtered_data = df[df['Pays/Région'] == selected_country]
+# Filtrer le DataFrame en fonction des critères sélectionnés
+df_filtered = df[(df['Pays/Région'] == selected_country) & (df['Année'] == selected_year)]
 
 # Supprimer les espaces et le symbole € de la colonne 'Ventes'
-filtered_data['Ventes'] = filtered_data['Ventes'].astype(str).str.replace('[^\d]', '', regex=True)
+df_filtered['Ventes'] = df_filtered['Ventes'].astype(str).str.replace('[^\d]', '', regex=True)
 
 # Convertir la colonne 'Ventes' en entiers
-filtered_data['Ventes'] = pd.to_numeric(filtered_data['Ventes'], errors='coerce', downcast='integer')
+df_filtered['Ventes'] = pd.to_numeric(df_filtered['Ventes'], errors='coerce', downcast='integer')
 
 # Calculer la somme des ventes par catégorie
-sales_by_category = filtered_data.groupby('Catégorie')['Ventes'].sum().reset_index()
+sales_by_category = df_filtered.groupby('Catégorie')['Ventes'].sum().reset_index()
 
 # Afficher la somme des ventes par catégorie sous forme de texte
 st.header("Somme des ventes par catégorie :money_with_wings:")
 for index, row in sales_by_category.iterrows():
     st.write(f"{row['Catégorie']} : {int(row['Ventes'])} €")
-
 
 
 
