@@ -10,8 +10,6 @@ from mitosheet.streamlit.v1 import spreadsheet
 from plotly.subplots import make_subplots
 
 
-#config du titre de la page
-st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide", initial_sidebar_state="expanded", width=graph_width)
 
 
 #charger le fichier CSS
@@ -269,3 +267,13 @@ col_1, col_csv, col_2 = st.columns([1,2,1])
 
 with col_csv :
         new_dfs, code = spreadsheet(url)
+
+
+
+
+
+
+
+#config du titre de la page
+st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide", initial_sidebar_state="expanded", width=graph_width)
+
