@@ -101,7 +101,7 @@ df_filtre = df_table[
     (df_table['Nom du client'] == selected_client)
 ]
 
-st.table(df_filtre[selected_columns_table]
+st.table(df_filtre[selected_columns_table])
 
 
 
