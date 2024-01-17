@@ -107,13 +107,15 @@ df_filtre.reset_index(drop=True, inplace=True)
 st.table(df_filtre[selected_columns_table])
 
 
-st.header("Somme des ventes par catégorie selon le pays sélectionné")
 
-# Calcul de la somme des ventes par catégorie
-sales_by_category = df_filtre.groupby('Catégorie')['Ventes'].sum().reset_index()
 
-# Affichage du tableau
-st.table(sales_by_category)
+df_country_filtered['Ventes'] = df_country_filtered['Ventes'].str.replace(',', '.').astype(float)
+
+# Calculer la somme des ventes par catégorie
+sales_by_category = df_country_filtered.groupby('Catégorie')['Ventes'].sum().reset_index()
+
+# Créer une table pour afficher les résultats
+st.table(sales_by_category.rename(columns={'Catégorie': 'Catégorie', 'Ventes': 'Somme des ventes'}))
 
 
 
