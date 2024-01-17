@@ -203,8 +203,8 @@ with col_v1:
                                        yaxis=dict(title='Nombre de clients', tickfont=dict(size=15), title_font=dict(size=18)),
                                        title_font=dict(size=20),
                                        title_x = 0.1,
-                                       height=500,
-                                       width=700)
+                                       height=graph_height,
+                                       width=graph_width)
     # Affichage
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
@@ -234,8 +234,7 @@ with col_v2:
         orientation='h',
         text=monthly_orders_comparison_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#4678b9'),
-        width=0.5
+        marker=dict(color='#4678b9')
     ))
 
     # Affiche l'évolution du nombre de commandes pour N
@@ -246,8 +245,7 @@ with col_v2:
         orientation='h',
         text=monthly_orders_selected_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#44566f'),
-        width=0.5
+        marker=dict(color='#44566f')
     ))
 
     # Inversez l'ordre des traces dans la légende
@@ -258,17 +256,11 @@ with col_v2:
                                       xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),
                                       yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
                                       title_font=dict(size=20),
-                                      title_x = 0.1,
-                                      height=500,
-                                      width=700)
+                                       height=graph_height,
+                                       width=graph_width)
     
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
-
-
-# Utilisez les valeurs de largeur et de hauteur dans la mise en forme des graphiques
-fig_clients_evolution.update_layout(height=graph_height, width=graph_width)
-fig_orders_evolution.update_layout(height=graph_height, width=graph_width)
 
 
 
