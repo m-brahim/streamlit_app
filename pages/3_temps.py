@@ -75,11 +75,11 @@ with col_h1:
 
 df_table = pd.read_csv(url, delimiter=";")
 
-# Sélectionner les colonnes à afficher dans le DataFrame
+# Colonnes à afficher dans le DataFrame
 selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
                            'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
 
-# Créer des colonnes pour les listes déroulantes
+# Colonnes pour les listes déroulantes
 col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1, 2, 1, 2, 1, 2, 1])
 
 # Liste déroulante pour le pays
@@ -101,11 +101,8 @@ df_filtre = df_table[
     (df_table['Nom du client'] == selected_client)
 ]
 
-# Appliquer le style pour masquer l'index
-styler = df_filtre.style.hide_index()
-
-# Afficher le DataFrame avec le style
-st.write(styler.to_html(), unsafe_allow_html=True)
+# Afficher le DataFrame avec le style (masquer l'index)
+st.dataframe(df_filtre[selected_columns_table].set_index(''), unsafe_allow_html=True)
 
 #PARTIE KPI
 
