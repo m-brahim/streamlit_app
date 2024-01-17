@@ -108,12 +108,19 @@ st.table(df_filtre[selected_columns_table])
 
 
 
+
 # Filtrer le DataFrame en fonction des critères sélectionnés
 df_filtered = df[(df['Pays/Région'] == selected_country) & (df['Année'] == selected_year)]
 
 # Afficher les données filtrées
 st.write("Données filtrées :")
 st.write(df_filtered)
+
+# Supprimer les virgules pour les milliers dans la colonne 'Ventes'
+df_filtered['Ventes'] = df_filtered['Ventes'].str.replace(',', '', regex=True)
+
+# Convertir la colonne 'Ventes' en entiers
+df_filtered['Ventes'] = pd.to_numeric(df_filtered['Ventes'], errors='coerce', downcast='integer')
 
 # Calculer la somme des ventes par catégorie
 sales_by_category = df_filtered.groupby('Catégorie')['Ventes'].sum().reset_index()
