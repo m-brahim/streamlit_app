@@ -109,10 +109,16 @@ st.table(df_filtre[selected_columns_table])
 
 
 
+# Remplacer les virgules par des points dans la colonne 'Ventes' et convertir en type numérique
+df_country_filtered['Ventes'] = df_country_filtered['Ventes'].str.replace(',', '.').astype(float)
+
+# Calculer la somme des ventes par catégorie
+sales_by_category = df_country_filtered.groupby('Catégorie')['Ventes'].sum().reset_index()
+
 # Afficher la somme des ventes par catégorie sous forme de texte
 st.header("Somme des ventes par catégorie :money_with_wings:")
 for index, row in sales_by_category.iterrows():
-    st.write(f"{row['Catégorie']} : {int(row['Ventes'])} €")
+    st.write(f"{row['Catégorie']} : {row['Ventes']} €")
 
 
 
