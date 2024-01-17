@@ -109,13 +109,11 @@ st.table(df_filtre[selected_columns_table])
 
 
 
-df_country_filtered['Ventes'] = df_country_filtered['Ventes'].str.replace(',', '.').astype(float)
+# Afficher la somme des ventes par catégorie sous forme de texte
+st.header("Somme des ventes par catégorie :money_with_wings:")
+for index, row in sales_by_category.iterrows():
+    st.write(f"{row['Catégorie']} : {int(row['Ventes'])} €")
 
-# Calculer la somme des ventes par catégorie
-sales_by_category = df_country_filtered.groupby('Catégorie')['Ventes'].sum().reset_index()
-
-# Créer une table pour afficher les résultats
-st.table(sales_by_category.rename(columns={'Catégorie': 'Catégorie', 'Ventes': 'Somme des ventes'}))
 
 
 
