@@ -8,6 +8,8 @@ from streamlit_folium import st_folium
 from streamlit_extras.metric_cards import style_metric_cards
 from mitosheet.streamlit.v1 import spreadsheet
 from plotly.subplots import make_subplots
+import locale
+
 
 #config du titre de la page
 st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
@@ -116,8 +118,11 @@ df_filtered = df[(df['Pays/Région'] == selected_country) & (df['Année'] == sel
 st.write("Données filtrées :")
 st.write(df_filtered)
 
+# Configuration de la locale pour gérer les virgules comme séparateur de milliers
+locale.setlocale(locale.LC_NUMERIC, '')
+
 # Convertir la colonne 'Ventes' en entiers en supprimant les virgules pour les milliers
-df_filtered['Ventes'] = df_filtered['Ventes'].astype(str).str.replace(',', '', regex=True).astype(float)
+df_filtered['Ventes'] = df_filtered['Ventes'].apply(lambda x: locale.atoi(str(x)))
 
 # Calculer la somme des ventes par catégorie
 sales_by_category = df_filtered.groupby('Catégorie')['Ventes'].sum().reset_index()
