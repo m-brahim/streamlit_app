@@ -101,8 +101,9 @@ df_filtre = df_table[
     (df_table['Nom du client'] == selected_client)
 ]
 
-st.table(df_filtre[selected_columns_table].set_index(drop=True))
+df_filtre = df_filtre[selected_columns_table].reset_index(drop=True)
 
+st.table(df_filtre)
 
 
 #PARTIE KPI
