@@ -155,11 +155,6 @@ with col_h3:
     st.header("Restitution des données :bar_chart: :chart_with_upwards_trend:")
 
 
-df = pd.read_csv(url, delimiter=";")
-df['Ventes'] = df['Ventes'].replace('[^\d.]', '', regex=True)  # Supprime tous les caractères non numériques sauf les points décimaux
-df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='float')  # Utilisation du type float pour gérer les décimaux
-
-
 #création de colonnes et attribution de dimensions
 col_v1, col_space, col_v2 = st.columns([2,1,2])
 
@@ -203,29 +198,6 @@ with col_v1:
                                        width=700)
     # Affichage
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
-
-    selected_columns_chart = ['Pays/Région', 'Catégorie', 'Nom du client', 'Ventes']
-
-    # Appliquer les filtres pour le DataFrame du graphique à secteurs
-    df_chart = df_table[
-    (df_table['Pays/Région'] == selected_country) &
-    (df_table['Catégorie'] == selected_category) &
-    (df_table['Nom du client'] == selected_client)
-    ]
-
-    # Création du graphique à secteurs
-    fig_pie_chart = px.sunburst(
-    df_chart,
-    path=['Pays/Région', 'Catégorie', 'Nom du client'],
-    values='Ventes',
-    title=f"Total des ventes pour {selected_client} en {selected_category} par pays",
-    )
-
-    # Mise en forme du graphique
-    fig_pie_chart.update_layout(height=500, width=700)
-
-    # Affichage du graphique à secteurs
-    st.plotly_chart(fig_pie_chart, use_container_width=True)
 
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
