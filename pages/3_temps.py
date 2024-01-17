@@ -158,9 +158,10 @@ with col_h3:
 
 
 df = pd.read_csv(url, delimiter=";")
-df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)  # Supprime tous les caractères non numériques
-df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
+df['Ventes'] = df['Ventes'].str.replace('[^\d.]', '', regex=True)  # Supprime tous les caractères non numériques sauf les points décimaux
+df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='float')  # Utilisation du type float pour gérer les décimaux
 
+# ... (votre code existant)
 #création de colonnes et attribution de dimensions
 col_v1, col_space, col_v2 = st.columns([2,1,2])
 
