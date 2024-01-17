@@ -117,3 +117,10 @@ h2 {
 td[class^="st-emotion-cache-gdzsw5"] {
     text-align: center !important;
 }
+
+
+[class="dataframe"]{
+    background-color : white;
+    position : relative;
+    margin-bottom : 10px;
+}
