@@ -190,6 +190,8 @@ col_v1, col_space, col_v2 = st.columns([2,1,2])
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
+fig_clients_evolution = go.Figure()
+
 with col_v1:
     # Agréger le nombre de clients par mois pour l'année sélectionnée
     monthly_clients_selected_year = filtered_df[filtered_df['Année'] == selected_year].drop_duplicates('ID client').groupby(
