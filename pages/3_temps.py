@@ -172,130 +172,112 @@ selection_effectuee2 = False
 if selected_year is not None and selected_comparison_year is not None :
     selection_effectuee2 = True
 
-# Condition pour afficher le tableau uniquement si la sélection a été effectuée
-if selection_effectuee2:
-    st.plotly_chart(fig_clients_evolution, use_container_width=True)
-    st.plotly_chart(fig_orders_evolution, use_container_width=True)
-
-
 col_1, col_h3, col_2 = st.columns([1, 3, 1])
 
 with col_h3:
     #titre
     st.header("Restitution des données :bar_chart: :chart_with_upwards_trend:")
 
-
 #création de colonnes et attribution de dimensions
 col_v1, col_space, col_v2 = st.columns([2,1,2])
 
-#graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
-
-fig_clients_evolution = go.Figure()
-
-with col_v1:
-    # Agréger le nombre de clients par mois pour l'année sélectionnée
-    monthly_clients_selected_year = filtered_df[filtered_df['Année'] == selected_year].drop_duplicates('ID client').groupby(
-        'Mois')['ID client'].count().reset_index()
-
-    # Agréger le nombre de clients par mois pour l'année de comparaison
-    monthly_clients_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].drop_duplicates(
-        'ID client').groupby('Mois')['ID client'].count().reset_index()
-
-    # Affiche l'évolution du nombre de clients pour N
+# Vérifier si les listes déroulantes ont été sélectionnées avant de créer les graphiques
+if selection_effectuee2:
+    #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
     fig_clients_evolution = go.Figure()
-    fig_clients_evolution.add_trace(go.Scatter(
-        x=monthly_clients_selected_year['Mois'],
-        y=monthly_clients_selected_year['ID client'],
-        mode='lines',
-        name=f"{selected_year}",
-        line=dict(color='#44566f')
-    ))
 
-    # Affiche l'évolution du nombre de clients pour N-*
-    fig_clients_evolution.add_trace(go.Scatter(
-        x=monthly_clients_comparison_year['Mois'],
-        y=monthly_clients_comparison_year['ID client'],
-        mode='lines',
-        name=f"{selected_comparison_year}",
-        line=dict(color='#4678b9')
-    ))
+    with col_v1:
+        # Agréger le nombre de clients par mois pour l'année sélectionnée
+        monthly_clients_selected_year = filtered_df[filtered_df['Année'] == selected_year].drop_duplicates('ID client').groupby(
+            'Mois')['ID client'].count().reset_index()
 
-    # Mise en forme
-    fig_clients_evolution.update_layout(title=f"Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
-                                       xaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
-                                       yaxis=dict(title='Nombre de clients', tickfont=dict(size=15), title_font=dict(size=18)),
-                                       title_font=dict(size=20),
-                                       title_x = 0.1,
-                                       height=graph_height,
-                                       width=graph_width)
-    
-    # Affichage
-    if selection_effectuee2:
+        # Agréger le nombre de clients par mois pour l'année de comparaison
+        monthly_clients_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].drop_duplicates(
+            'ID client').groupby('Mois')['ID client'].count().reset_index()
+
+        # Affiche l'évolution du nombre de clients pour N
+        fig_clients_evolution.add_trace(go.Scatter(
+            x=monthly_clients_selected_year['Mois'],
+            y=monthly_clients_selected_year['ID client'],
+            mode='lines',
+            name=f"{selected_year}",
+            line=dict(color='#44566f')
+        ))
+
+        # Affiche l'évolution du nombre de clients pour N-*
+        fig_clients_evolution.add_trace(go.Scatter(
+            x=monthly_clients_comparison_year['Mois'],
+            y=monthly_clients_comparison_year['ID client'],
+            mode='lines',
+            name=f"{selected_comparison_year}",
+            line=dict(color='#4678b9')
+        ))
+
+        # Mise en forme
+        fig_clients_evolution.update_layout(title=f"Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
+                                           xaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
+                                           yaxis=dict(title='Nombre de clients', tickfont=dict(size=15), title_font=dict(size=18)),
+                                           title_font=dict(size=20),
+                                           title_x = 0.1,
+                                           height=graph_height,
+                                           width=graph_width)
+
+        # Affichage
         st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
+    #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
+    fig_orders_evolution = go.Figure()
 
-#graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
+    # Graphique qui permet d'observer l'évolution du nombre de commandes selon N et N-*
+    with col_v2:
+        # Agréger le nombre de commandes par mois pour l'année sélectionnée
+        monthly_orders_selected_year = filtered_df[filtered_df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
-fig_orders_evolution = go.Figure()
+        # Agréger le nombre de commandes par mois pour l'année de comparaison
+        monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
 
-# Graphique qui permet d'observer l'évolution du nombre de commandes selon N et N-*
+        # Trier les mois en fonction du nombre de commandes décroissant pour les deux années
+        monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=True)
+        monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=True)
 
-with col_v2:
-    # Agréger le nombre de commandes par mois pour l'année sélectionnée
-    monthly_orders_selected_year = filtered_df[filtered_df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
+        # Affiche l'évolution du nombre de commandes pour N-*
+        fig_orders_evolution.add_trace(go.Bar(
+            x=monthly_orders_comparison_year['ID commande'],
+            y=monthly_orders_comparison_year['Mois'],
+            name=f"{selected_comparison_year}",
+            orientation='h',
+            text=monthly_orders_comparison_year['ID commande'],
+            textposition='outside',
+            marker=dict(color='#4678b9')
+        ))
 
-    # Agréger le nombre de commandes par mois pour l'année de comparaison
-    monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
+        # Affiche l'évolution du nombre de commandes pour N
+        fig_orders_evolution.add_trace(go.Bar(
+            x=monthly_orders_selected_year['ID commande'],
+            y=monthly_orders_selected_year['Mois'],
+            name=f"{selected_year}",
+            orientation='h',
+            text=monthly_orders_selected_year['ID commande'],
+            textposition='outside',
+            marker=dict(color='#44566f')
+        ))
 
-    # Trier les mois en fonction du nombre de commandes décroissant pour les deux années
-    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=True)
-    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=True)
+        # Inversez l'ordre des traces dans la légende
+        fig_orders_evolution.update_layout(legend=dict(traceorder='reversed'))
 
-    # Affiche l'évolution du nombre de commandes pour N-*
-    fig_orders_evolution.add_trace(go.Bar(
-        x=monthly_orders_comparison_year['ID commande'],
-        y=monthly_orders_comparison_year['Mois'],
-        name=f"{selected_comparison_year}",
-        orientation='h',
-        text=monthly_orders_comparison_year['ID commande'],
-        textposition='outside',
-        marker=dict(color='#4678b9')
-    ))
+        # Mise en forme
+        fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
+                                          xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),
+                                          yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
+                                          title_font=dict(size=20),
+                                           height=graph_height,
+                                           width=graph_width)
 
-    # Affiche l'évolution du nombre de commandes pour N
-    fig_orders_evolution.add_trace(go.Bar(
-        x=monthly_orders_selected_year['ID commande'],
-        y=monthly_orders_selected_year['Mois'],
-        name=f"{selected_year}",
-        orientation='h',
-        text=monthly_orders_selected_year['ID commande'],
-        textposition='outside',
-        marker=dict(color='#44566f')
-    ))
-
-    # Inversez l'ordre des traces dans la légende
-    fig_orders_evolution.update_layout(legend=dict(traceorder='reversed'))
-
-    # Mise en forme
-    fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-                                      xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),
-                                      yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
-                                      title_font=dict(size=20),
-                                       height=graph_height,
-                                       width=graph_width)
-    
-    # Affichage
-    if selection_effectuee2:
+        # Affichage
         st.plotly_chart(fig_orders_evolution, use_container_width=True)
-
 
 
 col_1, col_csv, col_2 = st.columns([1,2,1])
 
 with col_csv :
         new_dfs, code = spreadsheet(url)
-
-
-
-
-
