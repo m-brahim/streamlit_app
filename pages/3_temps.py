@@ -207,7 +207,7 @@ with col_v1:
                                        width=graphe_width)
     
     # Affichage
-    st.plotly_chart(fig_clients_evolution, use_container_width=True)
+    st.plotly_chart(fig_clients_evolution, use_container_width=True, style={"width": graph_width})
 
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
