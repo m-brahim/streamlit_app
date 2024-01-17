@@ -110,6 +110,6 @@ h2 {
     text-align : center;
 }
 
-.col0 {
+[class^="col_heading level0 col"] {
     text-align: center !important;
 }
