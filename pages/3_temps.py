@@ -67,13 +67,10 @@ with st.sidebar:
     # Filtrer le DataFrame en fonction des mois sélectionnés
     filtered_df = df[df['Mois'].isin(selected_months)]
 
-col_1, col_h1, col_2 = st.columns([1, 3, 1])
+col_11, col_h1, col_21 = st.columns([1, 3, 1])
 
 with col_h1:
     st.header("Visualisation des données")
-
-
-
 
 
 df_table = pd.read_csv(url, delimiter=";")
@@ -110,7 +107,7 @@ st.table(df_filtre[selected_columns_table]
 
 #PARTIE KPI
 
-col_1, col_h2, col_2 = st.columns([1, 3, 1])
+col_12, col_h2, col_22 = st.columns([1, 3, 1])
 
 with col_h2:
     st.header("Chiffres clés pour l'année courante :mag_right:")
@@ -148,7 +145,7 @@ style_metric_cards()
 
 #PARTIE RESTITUTION
 
-col_1, col_h3, col_2 = st.columns([1, 3, 1])
+col_13, col_h3, col_23 = st.columns([1, 3, 1])
 
 with col_h3:
     #titre
