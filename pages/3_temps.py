@@ -82,38 +82,49 @@ with col_h1:
     st.header("Visualisation des données")
 
 
-#tableau
-df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
+# Condition pour vérifier si les éléments nécessaires sont sélectionnés
+if selected_year is not None and selected_comparison_year is not None and selected_months:
+    # Afficher le tableau seulement si les éléments nécessaires sont sélectionnés
+    col_1, col_h1, col_2 = st.columns([1, 3, 1])
 
-# Sélectionner les colonnes à afficher dans le DataFrame
-selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
-                           'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
+    with col_h1:
+        st.header("Visualisation des données")
 
-# Créer des colonnes pour les listes déroulantes
-col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1, 2, 1, 2, 1, 2, 1])
+    # tableau
+    df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
 
-# Liste déroulante pour le pays
-with col_country:
-    selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None, placeholder="Choisir un pays",)
+    # Sélectionner les colonnes à afficher dans le DataFrame
+    selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région',
+                               'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
 
-# Liste déroulante pour la catégorie
-with col_category:
-    selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None, placeholder="Choisir une catégorie",)
+    # Créer des colonnes pour les listes déroulantes
+    col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1, 2, 1, 2, 1, 2, 1])
 
-# Liste déroulante pour le client
-with col_client:
-    selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None, placeholder="Choisir un client",)
+    # Liste déroulante pour le pays
+    with col_country:
+        selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None,
+                                        placeholder="Choisir un pays", )
 
-# Appliquer les filtres
-df_filtre = df_table[
-    (df_table['Pays/Région'] == selected_country) &
-    (df_table['Catégorie'] == selected_category) &
-    (df_table['Nom du client'] == selected_client)
-]
+    # Liste déroulante pour la catégorie
+    with col_category:
+        selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None,
+                                         placeholder="Choisir une catégorie", )
 
-df_filtre.reset_index(drop=True, inplace=True)
+    # Liste déroulante pour le client
+    with col_client:
+        selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None,
+                                       placeholder="Choisir un client", )
 
-st.table(df_filtre[selected_columns_table])
+    # Appliquer les filtres
+    df_filtre = df_table[
+        (df_table['Pays/Région'] == selected_country) &
+        (df_table['Catégorie'] == selected_category) &
+        (df_table['Nom du client'] == selected_client)
+    ]
+
+    df_filtre.reset_index(drop=True, inplace=True)
+
+    st.table(df_filtre[selected_columns_table])
 
 
 
