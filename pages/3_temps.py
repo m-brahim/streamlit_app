@@ -69,7 +69,7 @@ with st.sidebar:
     filtered_df = df[df['Mois'].isin(selected_months)]
 
     st.header("Paramètres des graphiques")
-    graph_width = st.slider("Largeur des graphiques", min_value=300, max_value=1200, value=700)
+    graphe_width = st.slider("Largeur des graphiques", min_value=300, max_value=1200, value=700)
     graph_height = st.slider("Hauteur des graphiques", min_value=300, max_value=1200, value=500)
 
 
@@ -204,7 +204,8 @@ with col_v1:
                                        title_font=dict(size=20),
                                        title_x = 0.1,
                                        height=graph_height,
-                                       width=graph_width)
+                                       width=graphe_width)
+    
     # Affichage
     st.plotly_chart(fig_clients_evolution, use_container_width=True)
 
@@ -257,7 +258,7 @@ with col_v2:
                                       yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
                                       title_font=dict(size=20),
                                        height=graph_height,
-                                       width=graph_width)
+                                       width=graphe_width)
     
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
