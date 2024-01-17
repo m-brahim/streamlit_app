@@ -108,10 +108,6 @@ st.table(df_filtre[selected_columns_table]
 
 
 
-
-
-
-
 #PARTIE KPI
 
 col_1, col_h2, col_2 = st.columns([1, 3, 1])
