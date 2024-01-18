@@ -106,7 +106,7 @@ with col_h2:
     st.header("2. Analyses temporelles")
 
 #création de colonnes et attribution de dimensions
-col_dd1, cold_dd2, col_sp, col_mlt = st.columns([0.5,0.5,0.5, 1.5])
+col_dd1, col_sp1, cold_dd2, col_sp2, col_mlt = st.columns([0.5,0.5,0.5,0.5,2])
 
 with col_dd1:
     selected_year = st.selectbox("Sélectionnez N", sorted_years)
