@@ -61,9 +61,15 @@ h2 {
 }
 
 [id="1-analyse-client"]{
-    text-align : center;
+    text-align : left;
     background-color : white;
-    font-family : "Montserrat";
+    font-family : "Inter";
+}
+
+[id="1-analyses-temporelles"]{
+    text-align : left;
+    background-color : white;
+    font-family : "Inter";
 }
 
 
