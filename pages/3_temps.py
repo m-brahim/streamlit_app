@@ -11,7 +11,7 @@ from plotly.subplots import make_subplots
 
 
 #config du titre de la page
-st.set_page_config("Suivi temporel des ventes :hourglass_flowing_sand:", page_icon="", layout="wide")
+st.set_page_config("Suivi des ventes de la société", page_icon="", layout="wide")
 
 #charger le fichier CSS
 with open("pages/style.css") as f:
@@ -122,6 +122,13 @@ with col_h3:
     st.header("Visualisations des données :bar_chart: :chart_with_upwards_trend:")
 
 
+col_sh4, col_2, col_3 = st.columns([2, 1, 1])
+
+with col_sh4:
+    #titre
+    st.subheader("1. Analyse client")
+
+
 # tableau
 df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
 
@@ -160,6 +167,13 @@ if selected_country is not None and selected_category is not None and selected_c
 if selection_effectuee:
     st.table(df_filtre[selected_columns_table])
 
+
+
+col_sh5, col_2, col_3 = st.columns([2, 1, 1])
+
+with col_sh5:
+    #titre
+    st.subheader("1. Analyses temporelles")
 
 
 #création de colonnes et attribution de dimensions
