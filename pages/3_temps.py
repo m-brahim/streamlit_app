@@ -103,10 +103,10 @@ if selection_effectuee:
     st.table(df_filtre_styled)
 
 # Trouver l'indice de la plus grande vente
-max_ventes_index = df_filtre['Ventes'].idxmax()
+max_ventes = df_filtre['Ventes'].max()
 
 # Afficher la vente maximale
-max_ventes_value = df_filtre.loc[max_ventes_index, 'Ventes']
+max_ventes_value = df_filtre.loc[max_ventes, 'Ventes']
 st.write(f"La vente maximale pour les sélections faites est de : {max_ventes_value}")
 
 
