@@ -87,6 +87,13 @@ p{
     
 /* graphiques */
 
+/* metric */
+
+[data-testid="stMetric"]{
+    padding : 0px 20px 0px 50px;
+}
+
+        
 /* tableau */
 
 [data-testid="stTableStyledTable"]{
