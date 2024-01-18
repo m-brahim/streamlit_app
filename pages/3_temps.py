@@ -100,7 +100,7 @@ if selection_effectuee:
     styles = ['background: #7FFF7F' if i == max_ventes_index else '' for i in df_filtre.index]
 
     # Appliquer les styles à la colonne 'Ventes'
-    df_filtre_styled = df_filtre.style.apply(lambda x: styles, subset=['Ventes'])
+    df_filtre_styled = df_filtre.style.apply(lambda x: styles, subset=pd.IndexSlice[:, ['Ventes']])
     
     # Afficher le tableau stylé
     st.table(df_filtre_styled)
