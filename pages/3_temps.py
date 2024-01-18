@@ -112,7 +112,7 @@ with col_pie:
     fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
 
     # Ajouter un titre au graphique
-    fig.update_layout(title='Quantités vendues par catégorie'
+    fig.update_layout(title='Quantités vendues par catégorie',
                      title_x = 0.2,
                      title_font=dict(size=20))
 
