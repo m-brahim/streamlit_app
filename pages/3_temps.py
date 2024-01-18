@@ -98,14 +98,15 @@ if selection_effectuee:
 
     # Créer une fonction pour appliquer le style en fonction de l'indice de la plus grande vente
     def highlight_max_ventes(row):
-        styles = ['background: #7FFF7F' if row.name == max_ventes_index else '' for _ in row]
-        return styles
+        style = 'background: #7FFF7F' if row.name == max_ventes_index else ''
+        return [style] * len(row)
 
     # Appliquer les styles à l'ensemble du DataFrame
-    df_filtre_styled = df_filtre.apply(highlight_max_ventes, axis=1).applymap(lambda x: x[0])
+    df_filtre_styled = df_filtre.apply(highlight_max_ventes, axis=1)
 
     # Afficher le tableau stylé
     st.table(df_filtre_styled)
+
 
 
 
