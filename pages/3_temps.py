@@ -36,11 +36,11 @@ sorted_years = sorted(df['Année'].unique())
 sorted_years_2 = sorted(df['Année'].unique())
 
 # Création de colonnes
-col_title, col_2, col_3 = st.columns([3, 1, 1])
+col_1, col_title, col_2 = st.columns([1, 2, 1])
 
 # Une colonne pour le titre & une pour les listes déroulantes
 with col_title:
-    st.title("Suivi temporel des ventes :hourglass_flowing_sand:")
+    st.title("Suivi des ventes de la société")
 
 col_side1, col_side2 = st.columns(2)
 
@@ -115,14 +115,8 @@ style_metric_cards()
 
 #PARTIE RESTITUTION
 
-col_1, col_h3, col_2 = st.columns([1, 3, 1])
 
-with col_h3:
-    #titre
-    st.header("Visualisations des données :bar_chart: :chart_with_upwards_trend:")
-
-
-col_sh4, col_2, col_3 = st.columns([2, 1, 1])
+col_sh4 = st.columns(1)
 
 with col_sh4:
     #titre
