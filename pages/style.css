@@ -77,7 +77,10 @@ em {
         margin-bottom : 10px;
         padding-top : 30px;
 }
-    
+
+p{
+    text-align : center;
+}
     
 /* graphiques */
 
