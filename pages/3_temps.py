@@ -46,6 +46,20 @@ col_side1, col_side2 = st.columns(2)
 
 with st.sidebar:
     st.header("Sélection des années")
+    
+    col_side1, col_side2 = st.columns(2)
+
+    with col_side1:
+        selected_year = st.selectbox("Sélectionnez N", sorted_years)
+        
+    with col_side2:
+        # Vérifier si l'année sélectionnée dans la première liste déroulante est également dans la deuxième liste
+        if selected_year in sorted_years_2:
+            # Supprimer l'année sélectionnée de la deuxième liste déroulante
+            sorted_years_2.remove(selected_year)
+        
+        # Exclure également l'année suivante à la première sélection dans la deuxième liste déroulante
+        selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
 
     st.header("Filtre sur les mois")
     available_months = sorted(df['Mois'].unique())
@@ -165,9 +179,6 @@ with col_txt:
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
 with col_v1:
-
-    selected_year = st.selectbox("Sélectionnez N", sorted_years)
-    
     # Agréger le nombre de clients par mois pour l'année sélectionnée
     monthly_clients_selected_year = filtered_df[filtered_df['Année'] == selected_year].drop_duplicates('ID client').groupby(
         'Mois')['ID client'].count().reset_index()
@@ -215,15 +226,6 @@ fig_orders_evolution = go.Figure()
 # Graphique qui permet d'observer l'évolution du nombre de commandes selon N et N-*
 
 with col_v2:
-    selected_year = st.selectbox("Sélectionnez N", sorted_years)
-    # Vérifier si l'année sélectionnée dans la première liste déroulante est également dans la deuxième liste
-    if selected_year in sorted_years_2:
-        # Supprimer l'année sélectionnée de la deuxième liste déroulante
-        sorted_years_2.remove(selected_year)
-        # Exclure également l'année suivante à la première sélection dans la deuxième liste déroulante
-        selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
-    
-    
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders_selected_year = filtered_df[filtered_df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
