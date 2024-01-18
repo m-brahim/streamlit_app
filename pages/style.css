@@ -27,7 +27,6 @@
     border-color: #354d64;
     text-align: center;
     margin-bottom: 20px;
-    width : 400px;
 }
 
 [class="st-emotion-cache-eczf16 e1nzilvr3"] {
@@ -53,7 +52,7 @@
 /* header */
 
 [id="1-analyse-client"]{
-    text-align : left;
+    text-align : center;
     background-color : white;
     font-family : "Inter";
     padding: 10px 0px 10px 10px;
@@ -61,7 +60,7 @@
 }
 
 [id="2-analyses-temporelles"]{
-    text-align : left;
+    text-align : center;
     background-color : white;
     font-family : "Inter";
     padding: 10px 0px 10px 10px;
