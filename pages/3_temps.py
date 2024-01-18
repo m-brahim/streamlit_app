@@ -97,6 +97,11 @@ if selection_effectuee:
     st.table(df_filtre[selected_columns_table])
 
 
+# Condition pour afficher le tableau uniquement si la sélection a été effectuée
+if selection_effectuee:
+    # Mise en forme conditionnelle pour surligner la meilleure vente
+    df_filtre_styled = df_filtre.style.apply(lambda x: ['background: #7FFF7F' if x.name == x.idxmax() else '' for i in x], axis=None)
+
 
 #2) analyse temporelle
 
