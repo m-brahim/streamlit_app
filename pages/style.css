@@ -115,6 +115,6 @@ td[class^="st-emotion-cache-gdzsw5"] {
 
 /* graphiques */
 
-[class="slicetext"]{
-    font-size : 20px;
-}
+.slicetext {
+            font-size: 20px !important;
+        }
