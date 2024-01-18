@@ -96,7 +96,7 @@ if selected_country is not None and selected_category is not None and selected_c
 if selection_effectuee:
     st.table(df_filtre[selected_columns_table])
 
-col_txt, col_pie, col_sp3, col_sp4 = st.columns([1,1,1,1])
+col_txt, col_pie, col_sp3, col_sp4 = st.columns([0.5,1,0.5,1])
 
 with col_txt:
     st.write("*Graphiques* : ")
@@ -105,7 +105,7 @@ with col_pie:
     filtered_data = df[df['Pays/Région'] == selected_country]
     quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
     
-    colors = ['#2F2E28','#DEAB05', '#DECF05']
+    colors = ['#1616a7','#1c9fb0', '#6874a6']
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
              color_discrete_sequence=colors)
     
