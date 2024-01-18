@@ -115,11 +115,6 @@ with col_pie:
     fig.update_layout(title='Quantités vendues par catégorie',
                      title_x = 0.2,
                      title_font=dict(size=20))
-
-    fig.update_layout(annotations=[dict(textangle=0, showarrow=False,
-                                        xref="paper", yref="paper",
-                                        x=0.5, y=0.5,
-                                        font=dict(size=20, color='white'))])
     
     st.plotly_chart(fig, use_container_width=True)
 
