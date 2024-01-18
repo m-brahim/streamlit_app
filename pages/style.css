@@ -70,10 +70,10 @@
 }
 
 em {
-        text-align : left;
+        text-align : center;
         font-size : 25px;
-        background-color : white;
-        padding : 5px;
+        border-bottom : 2px solid white;
+        padding-bottom : 3px;
         margin-bottom : 10px;
         padding-top : 30px;
         font-weight : bold;
@@ -81,10 +81,9 @@ em {
 }
 
 p{
-    text-align : left;
+    text-align : center;
     margin-top : 30px;
     margin-bottom : 0px;
-    border : 2px solid;
 }
     
 /* graphiques */
