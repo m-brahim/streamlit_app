@@ -134,7 +134,7 @@ with col_mlt:
 col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1, 0.5, 1, 1, 1, 1, 1, 1])
 
 with col_txt:
-    st.write("*Chiffres clés N vs N-* *:")
+    st.write("*Chiffres clés N vs N-* * :")
 
 #calculs
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
@@ -178,7 +178,7 @@ style_metric_cards()
 col_txt, col_v1, col_space, col_v2 = st.columns([1,2,0.5,2])
 
 with col_txt:
-    st.write("*Graphiques*:")
+    st.write("*Graphiques* :")
 
 with col_v1:
     # Agréger le nombre de clients par mois pour l'année sélectionnée
@@ -276,20 +276,19 @@ with col_v2:
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
 
-col_pie, col_sp3, col_sp4 = st.columns([1,1,1])
+col_txt, col_pie, col_sp3, col_sp4 = st.columns([1,1,1,1])
 
 with col_pie:
-    #titre
-    st.subheader("Quantités vendues par catégorie")
-    #calculer les quantités vendues par catégorie pour le pays sélectionné
+    st.write("*Quantités vendues par catégorie*")
+    filtered_data = df[df['Pays/Région'] == selected_country]
     quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
-    #création du graphique en secteur
+    
     colors = ['#2F2E28','#DEAB05', '#DECF05']
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
              color_discrete_sequence=colors)
-    #séparation des morceaux du graphique
+    
     fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
-    #affichage
+
     st.plotly_chart(fig, use_container_width=True)
 
 
