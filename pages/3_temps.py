@@ -276,8 +276,25 @@ with col_v2:
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
 
+col_pie, col_sp3, col_sp4 = st.columns([1,1,1])
 
-col_1, col_csv, col_2 = st.columns([1,2,1])
+with col_pie:
+    #titre
+    st.subheader("Quantités vendues par catégorie")
+    #calculer les quantités vendues par catégorie pour le pays sélectionné
+    quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
+    #création du graphique en secteur
+    colors = ['#2F2E28','#DEAB05', '#DECF05']
+    fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
+             color_discrete_sequence=colors)
+    #séparation des morceaux du graphique
+    fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
+    #affichage
+    st.plotly_chart(fig, use_container_width=True)
 
-with col_csv :
-        new_dfs, code = spreadsheet(url)
+
+
+#col_1, col_csv, col_2 = st.columns([1,2,1])
+
+#with col_csv :
+#        new_dfs, code = spreadsheet(url)
