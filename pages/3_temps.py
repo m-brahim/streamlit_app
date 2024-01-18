@@ -92,10 +92,9 @@ if selected_country is not None and selected_category is not None and selected_c
     selection_effectuee = True
 
 
-# Condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
-    max_ventes = df_filtre['Ventes'].max()
-    df_filtre_styled = df_filtre.style.applymap(lambda x: 'background: #7FFF7F' if x == df_filtre.loc[max_ventes, 'Ventes'] else '')
+    max_ventes_index = df_filtre['Ventes'].idxmax()
+    df_filtre_styled = df_filtre.style.applymap(lambda x: 'background: #7FFF7F' if x == df_filtre.loc[max_ventes_index, 'Ventes'] else '')
     st.table(df_filtre_styled[selected_columns_table])
 
 
