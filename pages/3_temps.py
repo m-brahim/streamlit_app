@@ -111,7 +111,7 @@ col_dd1, cold_dd2, col_sp, col_mlt = st.columns([0.5,0.5,0.5, 1.5])
 with col_dd1:
     selected_year = st.selectbox("Sélectionnez N", sorted_years)
 
-with cold_dd2
+with cold_dd2:
     if selected_year in sorted_years_2:
         sorted_years_2.remove(selected_year)
         selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
