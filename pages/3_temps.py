@@ -124,9 +124,9 @@ with col_h3:
 
 col_sh4, col_2, col_3 = st.columns([2, 1, 1])
 
-with col_sh4:
+with col_h4:
     #titre
-    st.subheader("1. Analyse client")
+    st.header("1. Analyse client")
 
 
 # tableau
