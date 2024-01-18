@@ -99,7 +99,7 @@ if selection_effectuee:
 col_txt, col_pie, col_sp3, col_sp4 = st.columns([1,1,1,1])
 
 with col_txt:
-    st.write("*Quantités vendues par catégorie* : ")
+    st.write("*Graphiques* : ")
 
 with col_pie:
     filtered_data = df[df['Pays/Région'] == selected_country]
@@ -111,8 +111,12 @@ with col_pie:
     
     fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
 
-    st.plotly_chart(fig, use_container_width=True)
+    # Ajouter un titre au graphique
+    fig.update_layout(title='Quantités vendues par catégorie'
+                     title_x = 0.2,
+                     title_font=dict(size=20))
 
+    st.plotly_chart(fig, use_container_width=True)
 
 
 
