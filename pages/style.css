@@ -46,6 +46,7 @@
     background-color : white;
     font-family : "Roboto Condensed";
     padding: 10px 0px 10px 10px;
+    font-weight : 200;
 }
 
 /* header */
@@ -55,13 +56,15 @@
     background-color : white;
     font-family : "Inter";
     padding: 10px 0px 10px 10px;
+    font-weight : 200;
 }
 
 [id="2-analyses-temporelles"]{
     text-align : left;
     background-color : white;
     font-family : "Inter";
-    padding: 10px 0px 10px 10px;    
+    padding: 10px 0px 10px 10px;
+    font-weight : 200;
 }
 
 
