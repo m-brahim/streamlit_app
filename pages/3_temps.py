@@ -79,7 +79,7 @@ with st.sidebar:
 col_h1, col2, col3 = st.columns([1,1,1])
 
 with col_h1:
-    st.subheader("1. Analyse client")
+    st.header("1. Analyse client")
 
 
 # tableau
@@ -136,7 +136,7 @@ col_sh1, col_2, col_3 = st.columns([2, 1, 1])
 
 with col_sh1:
     #titre
-    st.header("2. Chiffres clés")
+    st.subheader("2. Chiffres clés")
 
 
 #création de colonnes identiques
