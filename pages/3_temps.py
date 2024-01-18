@@ -73,52 +73,12 @@ with st.sidebar:
     graph_height = st.slider("Hauteur des graphiques", min_value=300, max_value=1200, value=500)
 
 
+#PARTIE Vis'
 
 
-#PARTIE KPI
+col_h1, col2, col3 = st.columns([1,1,1])
 
-col_1, col_h2, col_2 = st.columns([1, 3, 1])
-
-with col_h2:
-    st.header("Chiffres clés pour l'année courante :mag_right:")
-
-#création de colonnes identiques
-col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1, 1, 1, 1, 1, 1, 1])
-
-#calculs
-num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
-num_orders = len(df[df['Année'] == selected_year]['ID commande'])
-ca_by_year = df[df['Année'] == selected_year]['Ventes'].sum()
-
-#calculs des différences pour comparatif entre N et N-*
-diff_clients = num_clients - df[df['Année'] == selected_comparison_year].drop_duplicates('ID client')['ID client'].count()
-diff_orders = num_orders - len(df[df['Année'] == selected_comparison_year]['ID commande'])
-diff_ca = ca_by_year - df[df['Année'] == selected_comparison_year]['Ventes'].sum()
-
-#conversion des données pour conserver uniquement la partie entière
-diff_clients = int(diff_clients)
-diff_orders = int(diff_orders)
-diff_ca = int(diff_ca)
-
-#affiche le nombre de clients selon l'année
-col_clients.metric(label="Nombre de clients", value=num_clients, delta=diff_clients)
-
-#affiche le nombre de commandes selon l'année + comparatif avec N-*
-col_orders.metric(label="Nombre de commandes", value=num_orders, delta=diff_orders)
-
-#affiche le chiffre d'affaires selon l'année + comparatif avec N-*
-col_ca.metric(label=f"Chiffre d'affaires", value=f"{int(ca_by_year)} €", delta=f"{int(diff_ca)} €")
-
-style_metric_cards()
-
-
-
-#PARTIE RESTITUTION
-
-
-col_sh4, col2, col3 = st.columns([1,1,1])
-
-with col_sh4:
+with col_h1:
     st.subheader("1. Analyse client")
 
 
@@ -162,11 +122,54 @@ if selection_effectuee:
 
 
 
-col_sh5, col_2, col_3 = st.columns([2, 1, 1])
+col_h2, col_2, col_3 = st.columns([2, 1, 1])
 
-with col_sh5:
+with col_h2:
     #titre
-    st.subheader("1. Analyses temporelles")
+    st.header("2. Analyses temporelles")
+
+
+
+#PARTIE KPI
+
+col_sh1, col_2, col_3 = st.columns([2, 1, 1])
+
+with col_sh1:
+    #titre
+    st.header("2. Chiffres clés")
+
+
+#création de colonnes identiques
+col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1, 1, 1, 1, 1, 1, 1])
+
+#calculs
+num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
+num_orders = len(df[df['Année'] == selected_year]['ID commande'])
+ca_by_year = df[df['Année'] == selected_year]['Ventes'].sum()
+
+#calculs des différences pour comparatif entre N et N-*
+diff_clients = num_clients - df[df['Année'] == selected_comparison_year].drop_duplicates('ID client')['ID client'].count()
+diff_orders = num_orders - len(df[df['Année'] == selected_comparison_year]['ID commande'])
+diff_ca = ca_by_year - df[df['Année'] == selected_comparison_year]['Ventes'].sum()
+
+#conversion des données pour conserver uniquement la partie entière
+diff_clients = int(diff_clients)
+diff_orders = int(diff_orders)
+diff_ca = int(diff_ca)
+
+#affiche le nombre de clients selon l'année
+col_clients.metric(label="Nombre de clients", value=num_clients, delta=diff_clients)
+
+#affiche le nombre de commandes selon l'année + comparatif avec N-*
+col_orders.metric(label="Nombre de commandes", value=num_orders, delta=diff_orders)
+
+#affiche le chiffre d'affaires selon l'année + comparatif avec N-*
+col_ca.metric(label=f"Chiffre d'affaires", value=f"{int(ca_by_year)} €", delta=f"{int(diff_ca)} €")
+
+style_metric_cards()
+
+
+
 
 
 #création de colonnes et attribution de dimensions
