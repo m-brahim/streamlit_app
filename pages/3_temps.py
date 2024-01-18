@@ -120,6 +120,8 @@ col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st
 with col_txt:
     st.write("*Chiffres clés N vs N-* *:")
 
+selected_year = st.selectbox("Sélectionnez N", sorted_years)
+selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
 
 #calculs
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
