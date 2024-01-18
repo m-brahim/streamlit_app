@@ -96,12 +96,11 @@ if selected_country is not None and selected_category is not None and selected_c
 if selection_effectuee:
     max_ventes_index = df_filtre['Ventes'].idxmax()
 
-    # Créer une fonction de style personnalisée
-    def highlight_max_ventes(s):
-        return ['background: #7FFF7F' if i == max_ventes_index else '' for i in s.index]
+    # Créer une série de styles pour la colonne 'Ventes'
+    styles = ['background: #7FFF7F' if i == max_ventes_index else '' for i in df_filtre.index]
 
-    # Appliquer la fonction de style à la DataFrame stylée
-    df_filtre_styled = df_filtre.style.apply(highlight_max_ventes, axis=None)
+    # Appliquer les styles à la colonne 'Ventes'
+    df_filtre_styled = df_filtre.style.apply(lambda x: styles, subset=['Ventes'])
     
     # Afficher le tableau stylé
     st.table(df_filtre_styled)
