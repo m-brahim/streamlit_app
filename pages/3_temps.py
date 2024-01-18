@@ -45,21 +45,8 @@ with col_title:
 col_side1, col_side2 = st.columns(2)
 
 with st.sidebar:
-    st.header("Sélection des années")
     
-    col_side1, col_side2 = st.columns(2)
-
-    with col_side1:
-        selected_year = st.selectbox("Sélectionnez N", sorted_years)
-        
-    with col_side2:
-        # Vérifier si l'année sélectionnée dans la première liste déroulante est également dans la deuxième liste
-        if selected_year in sorted_years_2:
-            # Supprimer l'année sélectionnée de la deuxième liste déroulante
-            sorted_years_2.remove(selected_year)
-        
-        # Exclure également l'année suivante à la première sélection dans la deuxième liste déroulante
-        selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
+    
 
     st.header("Filtre sur les mois")
     available_months = sorted(df['Mois'].unique())
@@ -171,12 +158,27 @@ style_metric_cards()
 
 
 #création de colonnes et attribution de dimensions
-col_txt, col_v1, col_space, col_v2 = st.columns([0.5,2,0.5,2])
+col_txt, col_sp1, col_dd1, col_sp2, col_dd2 = st.columns([2,0.5,2,0.5,2])
+
+
 
 with col_txt:
     st.write("*Graphiques*:")
 
+with col_side1:
+    selected_year = st.selectbox("Sélectionnez N", sorted_years)
+        
+with col_side2:
+    # Vérifier si l'année sélectionnée dans la première liste déroulante est également dans la deuxième liste
+    if selected_year in sorted_years_2:
+        # Supprimer l'année sélectionnée de la deuxième liste déroulante
+        sorted_years_2.remove(selected_year)
+        # Exclure également l'année suivante à la première sélection dans la deuxième liste déroulante
+        selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
+
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
+
+col_v1, col_space, col_v2 = st.columns([2,0.5,2])
 
 with col_v1:
     # Agréger le nombre de clients par mois pour l'année sélectionnée
