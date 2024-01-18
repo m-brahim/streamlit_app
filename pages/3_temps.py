@@ -262,12 +262,12 @@ with col_v2:
 
     # Mise en forme
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-                                      xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),
-                                      yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
-                                      title_font=dict(size=20),
-                                      title_x = 0.2
-                                      height=graph_height,
-                                      width=graph_width)
+                                       xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),
+                                       yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
+                                       title_font=dict(size=20),
+                                       title_x = 0.2,
+                                       height=graph_height,
+                                       width=graph_width)
     
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
