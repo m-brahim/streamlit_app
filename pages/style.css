@@ -70,7 +70,7 @@
 }
 
 em {
-        text-align : center;
+        text-align : left;
         font-size : 25px;
         border-bottom : 2px solid white;
         padding-bottom : 3px;
@@ -81,7 +81,7 @@ em {
 }
 
 p{
-    text-align : center;
+    text-align : left;
     margin-top : 30px;
     margin-bottom : 0px;
 }
