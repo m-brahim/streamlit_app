@@ -116,10 +116,9 @@ style_metric_cards()
 #PARTIE RESTITUTION
 
 
-col_sh4 = st.columns(1)
+col_sh4 = st.columns()
 
 with col_sh4:
-    #titre
     st.subheader("1. Analyse client")
 
 
