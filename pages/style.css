@@ -5,7 +5,7 @@
     background-color: #aac0d5;
 }
 
-/* section principale */
+/* body */
 [class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
     background-image: url("https://img.freepik.com/free-photo/abstract-bluish-paint-background-wallpaper_53876-97482.jpg?w=1380&t=st=1704983050~exp=1704983650~hmac=4ee935cabbf6d79ae417ce489e0ac8ebb6cfbf3a0e2805c7513925d5767184cc");
     background-size: cover;
@@ -36,7 +36,7 @@
 [data-testid="stHorizontalBlock"] {}
 
 [class="stHeadingContainer"] {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 /* title */
@@ -67,7 +67,10 @@
     font-weight : 200;
 }
 
-
+p {
+        text-align : center;
+        font-size : 15px;
+}
 
 /* graphiques */
 
