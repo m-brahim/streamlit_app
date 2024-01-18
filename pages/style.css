@@ -33,10 +33,12 @@
     position: relative;
 }
 
-[data-testid="stHorizontalBlock"] {}
+[class="st-emotion-cache-ocqkz7 e1f1d6gn5"] {
+    margin-bottom: 30px;
+}
 
 [class="stHeadingContainer"] {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 /* title */
