@@ -56,7 +56,7 @@
 [id="1-analyse-client"]{
     text-align : center;
     background-color : white;
-    font-family : "Inter";
+    font-family : "Roboto Condensed";
     padding: 10px 0px 10px 10px;
     font-weight : 200;
 }
@@ -64,7 +64,7 @@
 [id="2-analyses-temporelles"]{
     text-align : center;
     background-color : white;
-    font-family : "Inter";
+    font-family : "Roboto Condensed";
     padding: 10px 0px 10px 10px;
     font-weight : 200;
 }
@@ -76,7 +76,7 @@ em {
         margin-bottom : 10px;
         padding-top : 30px;
         font-weight : bold;
-        font-family : "Lato";
+        font-family : "Roboto Condensed";
 }
 
 p{
