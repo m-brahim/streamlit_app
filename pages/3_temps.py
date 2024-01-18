@@ -136,7 +136,7 @@ col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st
 
 
 with col_txt:
-    st.subheader("Chiffres clés N vs N-* : ")
+    st.write("Chiffres clés N vs N-* : ")
 
 #calculs
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
