@@ -45,7 +45,7 @@
 
 [id="8e6af571"]{
     text-align : center;
-    background-color : white;
+    background-color : #aac0d5;
     font-family : "Roboto Condensed";
     padding: 10px 0px 10px 10px;
     font-weight : 200;
@@ -55,7 +55,7 @@
 
 [id="1-analyse-client"]{
     text-align : center;
-    background-color : white;
+    background-color : #aac0d5;
     font-family : "Inter";
     padding: 10px 0px 10px 10px;
     font-weight : 200;
@@ -63,22 +63,24 @@
 
 [id="2-analyses-temporelles"]{
     text-align : center;
-    background-color : white;
+    background-color : #aac0d5;
     font-family : "Inter";
     padding: 10px 0px 10px 10px;
     font-weight : 200;
 }
 
-p {
+em {
         text-align : center;
         font-size : 25px;
-        
+        text-decoration : underline;
+        text-decoration-color : white;
 }
 
 [class="st-emotion-cache-1wmy9hl e1f1d6gn1"]{
     padding-top : 20px;
 }
 
+    
     
 /* graphiques */
 
