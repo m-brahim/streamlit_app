@@ -132,7 +132,7 @@ with col_h2:
 
 #PARTIE KPI
 
-col_sh1, col_2, col_3 = st.columns([2, 1, 1])
+col_sh1, col_2, col_3 = st.columns([1, 1, 1])
 
 with col_sh1:
     #titre
