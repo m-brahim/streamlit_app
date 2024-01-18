@@ -95,12 +95,17 @@ if selected_country is not None and selected_category is not None and selected_c
 # Condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
     max_ventes_index = df_filtre['Ventes'].idxmax()
-    
-    # Appliquer la mise en forme conditionnelle à la DataFrame stylée
-    df_filtre_styled = df_filtre.style.apply(lambda x: ['background: #7FFF7F' if x.name == max_ventes_index and i == 'Ventes' else '' for i in x.index], axis=None)
+
+    # Créer une fonction de style personnalisée
+    def highlight_max_ventes(s):
+        return ['background: #7FFF7F' if i == max_ventes_index else '' for i in s.index]
+
+    # Appliquer la fonction de style à la DataFrame stylée
+    df_filtre_styled = df_filtre.style.apply(highlight_max_ventes, axis=None)
     
     # Afficher le tableau stylé
     st.table(df_filtre_styled)
+
 
 
 
