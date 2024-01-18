@@ -122,11 +122,11 @@ with col_h3:
     st.header("Visualisations des données :bar_chart: :chart_with_upwards_trend:")
 
 
-col_h4, col_2, col_3 = st.columns([2, 1, 1])
+col_sh4, col_2, col_3 = st.columns([2, 1, 1])
 
-with col_h4:
+with col_sh4:
     #titre
-    st.header("1. Analyse client")
+    st.subheader("1. Analyse client")
 
 
 # tableau
