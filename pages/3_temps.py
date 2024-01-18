@@ -169,8 +169,12 @@ style_metric_cards()
 
 
 
+
 #création de colonnes et attribution de dimensions
-col_v1, col_space, col_v2 = st.columns([2,1,2])
+col_txt, col_v1, col_space, col_v2 = st.columns([1,2,1,2])
+
+with col_txt:
+    st.write("*Graphiques*:")
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
