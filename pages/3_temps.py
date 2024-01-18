@@ -121,24 +121,25 @@ with col_pie:
 
 
 
-# Filtrer les données en fonction des sélections faites dans l'analyse client
 filtered_data_products = df_filtre.groupby('Nom du produit')['Quantité'].sum().reset_index()
 top_products = filtered_data_products.sort_values(by='Quantité', ascending=False).head(5)
 
 # Créer un graphique de barres pour le classement des produits les plus achetés
-fig_top_products = px.bar(top_products, x='Nom du produit', y='Quantité', color='Quantité',
-                          labels={'Quantité': 'Quantité achetée'},
-                          color_continuous_scale=px.colors.sequential.Blues)
+fig_top_products = px.bar(top_products, x='Nom du produit', y='Quantité',
+                          labels={'Quantité': 'Quantité totale achetée'},
+                          color='Quantité', color_continuous_scale=px.colors.sequential.Blues)
 
+# Mise en forme du graphique
 fig_top_products.update_layout(title='Classement des 5 produits les plus achetés',
                                xaxis=dict(title='Produit', tickfont=dict(size=15), title_font=dict(size=18)),
-                               yaxis=dict(title='Quantité achetée', tickfont=dict(size=15), title_font=dict(size=18)),
-                               coloraxis_colorbar=dict(title='Quantité achetée'),
+                               yaxis=dict(title='Quantité totale achetée', tickfont=dict(size=15), title_font=dict(size=18)),
+                               coloraxis_colorbar=dict(title='Quantité totale achetée'),
                                title_font=dict(size=20),
                                title_x=0.5,
                                height=graph_height,
                                width=graph_width)
 
+# Affichage du graphique
 st.plotly_chart(fig_top_products, use_container_width=True)
 
 
