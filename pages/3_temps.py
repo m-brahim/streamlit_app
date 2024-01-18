@@ -115,7 +115,9 @@ with col_pie:
     fig.update_layout(title='Quantités vendues par catégorie',
                      title_x = 0.2,
                      title_font=dict(size=20))
-    
+
+    fig.update_layout(plot_bgcolor='transparent', paper_bgcolor='transparent')
+
     st.plotly_chart(fig, use_container_width=True)
 
 
