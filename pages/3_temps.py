@@ -42,12 +42,7 @@ col_1, col_title, col_2 = st.columns([1, 2, 1])
 with col_title:
     st.title("Suivi des ventes de la société")
 
-col_side1, col_side2 = st.columns(2)
-
 with st.sidebar:
-    
-    
-
     st.header("Filtre sur les mois")
     available_months = sorted(df['Mois'].unique())
     selected_months = st.multiselect("", available_months, default=available_months)
@@ -165,10 +160,10 @@ col_txt, col_sp1, col_dd1, col_sp2, col_dd2 = st.columns([2,0.5,2,0.5,2])
 with col_txt:
     st.write("*Graphiques*:")
 
-with col_side1:
+with col_dd1:
     selected_year = st.selectbox("Sélectionnez N", sorted_years)
         
-with col_side2:
+with col_dd2:
     # Vérifier si l'année sélectionnée dans la première liste déroulante est également dans la deuxième liste
     if selected_year in sorted_years_2:
         # Supprimer l'année sélectionnée de la deuxième liste déroulante
