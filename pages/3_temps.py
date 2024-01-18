@@ -132,7 +132,7 @@ with col_h2:
 
 
 #création de colonnes identiques
-col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1, 1, 1, 1, 1, 1, 1, 1])
+col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1, 0.5, 1, 1, 1, 1, 1, 1])
 
 
 with col_txt:
@@ -171,7 +171,7 @@ style_metric_cards()
 
 
 #création de colonnes et attribution de dimensions
-col_txt, col_v1, col_v2 = st.columns([0.5,2,2])
+col_txt, col_v1, col_space, col_v2 = st.columns([0.5,2,0.5,2])
 
 with col_txt:
     st.write("*Graphiques*:")
