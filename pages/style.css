@@ -76,6 +76,8 @@ em {
         padding-bottom : 3px;
         margin-bottom : 10px;
         padding-top : 30px;
+        font-weight : bold;
+        font-family : "Lato";
 }
 
 p{
