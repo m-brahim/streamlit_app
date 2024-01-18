@@ -122,7 +122,7 @@ with col_h3:
     st.header("Visualisations des données :bar_chart: :chart_with_upwards_trend:")
 
 
-col_sh4, col_2, col_3 = st.columns([2, 1, 1])
+col_h4, col_2, col_3 = st.columns([2, 1, 1])
 
 with col_h4:
     #titre
