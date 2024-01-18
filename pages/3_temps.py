@@ -92,29 +92,9 @@ if selected_country is not None and selected_category is not None and selected_c
     selection_effectuee = True
 
 
+# Condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
-    # Identifier l'indice de la meilleure vente pour chaque colonne
-    idxmax_col = df_filtre['Ventes'].idxmax()
-
-    # Appliquer la mise en forme conditionnelle à la DataFrame
-    df_filtre_styled = df_filtre.style.applymap(lambda x: 'background: #7FFF7F' if x == df_filtre.loc[idxmax_col, 'Ventes'] else '')
-    
-    # Afficher le tableau stylé
-    st.table(df_filtre_styled)
-
-# Trouver l'indice de la plus grande vente
-max_ventes = df_filtre['Ventes'].max()
-
-# Afficher la vente maximale
-max_ventes_value = df_filtre.loc[max_ventes, 'Ventes']
-st.write(f"La vente maximale pour les sélections faites est de : {max_ventes_value}")
-
-
-
-
-
-
-
+    st.table(df_filtre[selected_columns_table])
 
 
 
