@@ -43,13 +43,6 @@ with col_title:
     st.title("Suivi des ventes de la société")
 
 with st.sidebar:
-    st.header("Filtre sur les mois")
-    available_months = sorted(df['Mois'].unique())
-    selected_months = st.multiselect("", available_months, default=available_months)
-    
-    # Filtrer le DataFrame en fonction des mois sélectionnés
-    filtered_df = df[df['Mois'].isin(selected_months)]
-
     st.header("Paramètres des graphiques")
     graph_width = st.slider("Largeur des graphiques", min_value=300, max_value=1200, value=700)
     graph_height = st.slider("Hauteur des graphiques", min_value=300, max_value=1200, value=500)
@@ -113,15 +106,22 @@ with col_h2:
     st.header("2. Analyses temporelles")
 
 #création de colonnes et attribution de dimensions
-col_sp1, col_dd1, col_sp2, col_dd2 = st.columns([0.5,2,0.5,2])
+col_dd, col_sp, col_mlt = st.columns([1,1,1])
 
-with col_dd1:
+with col_dd:
     selected_year = st.selectbox("Sélectionnez N", sorted_years)
-        
-with col_dd2:
     if selected_year in sorted_years_2:
         sorted_years_2.remove(selected_year)
         selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
+
+
+with col_mlt:
+    st.header("Filtre sur les mois")
+    available_months = sorted(df['Mois'].unique())
+    selected_months = st.multiselect("", available_months, default=available_months)
+    filtered_df = df[df['Mois'].isin(selected_months)]
+
+
 
 
 
@@ -166,12 +166,14 @@ style_metric_cards()
 
 
 
-with col_txt:
-    st.write("*Graphiques*:")
+
     
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
-col_v1, col_space, col_v2 = st.columns([2,0.5,2])
+col_txt, col_v1, col_space, col_v2 = st.columns([1,2,0.5,2])
+
+with col_txt:
+    st.write("*Graphiques*:")
 
 with col_v1:
     # Agréger le nombre de clients par mois pour l'année sélectionnée
