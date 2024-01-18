@@ -106,7 +106,7 @@ with col_h2:
     st.header("2. Analyses temporelles")
 
 #création de colonnes et attribution de dimensions
-col_dd, col_sp, col_mlt = st.columns([1,1,1])
+col_dd, col_sp, col_mlt = st.columns([0.5,0.5,2])
 
 with col_dd:
     selected_year = st.selectbox("Sélectionnez N", sorted_years)
@@ -116,7 +116,6 @@ with col_dd:
 
 
 with col_mlt:
-    st.header("Filtre sur les mois")
     available_months = sorted(df['Mois'].unique())
     selected_months = st.multiselect("", available_months, default=available_months)
     filtered_df = df[df['Mois'].isin(selected_months)]
