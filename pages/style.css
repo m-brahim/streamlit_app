@@ -45,27 +45,29 @@
 }
 
 
-
+/* titre */
 
 [id="8e6af571"]{
     text-align : center;
     background-color : white;
     font-family : "Roboto Condensed";
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0px 10px 10px;
 }
+
+/* header */
 
 [id="1-analyse-client"]{
     text-align : left;
     background-color : white;
     font-family : "Inter";
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0px 10px 10px;
 }
 
-[id="1-analyses-temporelles"]{
+[id="2-analyses-temporelles"]{
     text-align : left;
     background-color : white;
     font-family : "Inter";
-    padding: 10px 0px 10px 0px;    
+    padding: 10px 0px 10px 10px;    
 }
 
 
