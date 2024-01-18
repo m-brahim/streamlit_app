@@ -215,12 +215,10 @@ fig_orders_evolution = go.Figure()
 # Graphique qui permet d'observer l'évolution du nombre de commandes selon N et N-*
 
 with col_v2:
-
     # Vérifier si l'année sélectionnée dans la première liste déroulante est également dans la deuxième liste
-        if selected_year in sorted_years_2:
-            # Supprimer l'année sélectionnée de la deuxième liste déroulante
-            sorted_years_2.remove(selected_year)
-        
+    if selected_year in sorted_years_2:
+        # Supprimer l'année sélectionnée de la deuxième liste déroulante
+        sorted_years_2.remove(selected_year)
         # Exclure également l'année suivante à la première sélection dans la deuxième liste déroulante
         selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
     
