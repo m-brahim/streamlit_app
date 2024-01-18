@@ -102,10 +102,11 @@ if selection_effectuee:
         return styles
 
     # Appliquer les styles à l'ensemble du DataFrame
-    df_filtre_styled = df_filtre.apply(highlight_max_ventes, axis=1)
+    df_filtre_styled = df_filtre.apply(highlight_max_ventes, axis=1).applymap(lambda x: x[0])
 
     # Afficher le tableau stylé
     st.table(df_filtre_styled)
+
 
 
 
