@@ -73,8 +73,7 @@ em {
         text-align : left;
         font-size : 25px;
         background-color : white;
-        border : 2px solid;
-        padding : 3px;
+        padding : 5px;
         margin-bottom : 10px;
         padding-top : 30px;
         font-weight : bold;
@@ -85,6 +84,7 @@ p{
     text-align : left;
     margin-top : 30px;
     margin-bottom : 0px;
+    border : 2px solid;
 }
     
 /* graphiques */
