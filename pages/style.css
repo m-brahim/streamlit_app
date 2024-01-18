@@ -17,6 +17,7 @@
 }
 
 /* titres */
+
 [class="st-emotion-cache-10trblm e1nzilvr1"] {
     margin-left: 0px;
 }
@@ -43,33 +44,28 @@
     margin-bottom: 10px;
 }
 
-h2 {
-    font-family: Roboto;
-    color: black;
-    padding: 10px 0px 10px 0px;
-    background-color: white;
-}
 
-[data-testid="stTableStyledTable"]{
-    background-color : white;
-}
+
 
 [id="8e6af571"]{
     text-align : center;
     background-color : white;
     font-family : "Roboto Condensed";
+    padding: 10px 0px 10px 0px;
 }
 
 [id="1-analyse-client"]{
     text-align : left;
     background-color : white;
     font-family : "Inter";
+    padding: 10px 0px 10px 0px;
 }
 
 [id="1-analyses-temporelles"]{
     text-align : left;
     background-color : white;
     font-family : "Inter";
+    padding: 10px 0px 10px 0px;    
 }
 
 
@@ -77,6 +73,10 @@ h2 {
 /* graphiques */
 
 /* tableau */
+
+[data-testid="stTableStyledTable"]{
+    background-color : white;
+}
 
 [class^="col_heading level0 col"] {
     font-weight : bold;
