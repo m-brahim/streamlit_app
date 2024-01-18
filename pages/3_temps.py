@@ -62,7 +62,7 @@ with col_h1:
 df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
 
 # Créer des colonnes pour les listes déroulantes
-col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1, 2, 1, 2, 1, 2, 1])
+col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([0.5, 1, 0.5, 1, 0.5, 1, 0.5])
 
 # Liste déroulante pour le pays
 with col_country:
@@ -106,10 +106,12 @@ with col_h2:
     st.header("2. Analyses temporelles")
 
 #création de colonnes et attribution de dimensions
-col_dd, col_sp, col_mlt = st.columns([0.5,0.5,2])
+col_dd1, cold_dd2, col_sp, col_mlt = st.columns([0.5,0.5,0.5, 1.5])
 
-with col_dd:
+with col_dd1:
     selected_year = st.selectbox("Sélectionnez N", sorted_years)
+
+with cold_dd2
     if selected_year in sorted_years_2:
         sorted_years_2.remove(selected_year)
         selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
