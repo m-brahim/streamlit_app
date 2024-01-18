@@ -102,30 +102,20 @@ with col_txt:
     st.write("*Graphiques* : ")
 
 with col_pie:
-    col_pie = st.beta_container()
-
-    filtered_data = df[df['Catégorie'] == selected_country]
+    filtered_data = df[df['Pays/Région'] == selected_country]
     quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
+    
+    colors = ['#1616a7','#1c9fb0', '#6874a6']
+    fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
+             color_discrete_sequence=colors)
+    
+    fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
 
-    colors = ['#1616a7', '#1c9fb0', '#6874a6']
-
-    # Créer un graphique à secteurs avec un fond transparent
-    fig = go.Figure()
-
-    for i in range(len(quantity_by_category)):
-        fig.add_trace(go.Pie(labels=[quantity_by_category['Catégorie'].iloc[i]],
-                             values=[quantity_by_category['Quantité'].iloc[i]],
-                             marker=dict(colors=[colors[i]], line=dict(color='#FFFFFF', width=2)),
-                             hole=0.3,
-                             textinfo='none',
-                             hoverinfo='label+percent'))
-
+    # Ajouter un titre au graphique
     fig.update_layout(title='Quantités vendues par catégorie',
-                      title_x=0.2,
-                      title_font=dict(size=20),
-                      plot_bgcolor='rgba(0,0,0,0)',
-                      paper_bgcolor='rgba(0,0,0,0)')
-
+                     title_x = 0.25,
+                     title_font=dict(size=20))
+    
     st.plotly_chart(fig, use_container_width=True)
 
 
