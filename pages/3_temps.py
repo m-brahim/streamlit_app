@@ -75,6 +75,7 @@ with st.sidebar:
 
 #PARTIE Vis'
 
+#1) analyse client
 
 col_h1, col2, col3 = st.columns([1,1,1])
 
@@ -122,25 +123,20 @@ if selection_effectuee:
 
 
 
+#2) analyse temporelle
+
 col_h2, col_2, col_3 = st.columns([1, 1, 1])
 
 with col_h2:
-    #titre
     st.header("2. Analyses temporelles")
 
 
-
-#PARTIE KPI
-
-col_sh1, col_2, col_3 = st.columns([1, 1, 1])
-
-with col_sh1:
-    #titre
-    st.subheader("2. Chiffres clés")
-
-
 #création de colonnes identiques
-col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1, 1, 1, 1, 1, 1, 1])
+col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1, 1, 1, 1, 1, 1, 1, 1])
+
+
+with col_txt:
+    st.subheader("Chiffres clés N vs N-* : ")
 
 #calculs
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
