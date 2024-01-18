@@ -75,56 +75,6 @@ with st.sidebar:
 
 
 
-
-col_1, col_h1, col_2 = st.columns([1, 3, 1])
-
-with col_h1:
-    st.header("Visualisation des données")
-
-
-# tableau
-df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
-
-# Créer des colonnes pour les listes déroulantes
-col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1, 2, 1, 2, 1, 2, 1])
-
-# Liste déroulante pour le pays
-with col_country:
-    selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None, placeholder="Choisir un pays",)
-
-# Liste déroulante pour la catégorie
-with col_category:
-    selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None, placeholder="Choisir une catégorie",)
-
-# Liste déroulante pour le client
-with col_client:
-    selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None, placeholder="Choisir un client",)
-
-# Sélectionner les colonnes à afficher dans le DataFrame
-selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région', 'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
-
-# Appliquer les filtres
-df_filtre = df_table[(df_table['Pays/Région'] == selected_country) & (df_table['Catégorie'] == selected_category) & (df_table['Nom du client'] == selected_client)]
-
-df_filtre.reset_index(drop=True, inplace=True)
-
-# Définir une variable pour vérifier si les listes déroulantes ont été sélectionnées
-selection_effectuee = False
-
-# Condition pour vérifier si les éléments nécessaires sont sélectionnés
-if selected_country is not None and selected_category is not None and selected_client is not None:
-    selection_effectuee = True
-
-
-# Condition pour afficher le tableau uniquement si la sélection a été effectuée
-if selection_effectuee:
-    st.table(df_filtre[selected_columns_table])
-
-
-
-
-
-
 #PARTIE KPI
 
 col_1, col_h2, col_2 = st.columns([1, 3, 1])
@@ -169,7 +119,47 @@ col_1, col_h3, col_2 = st.columns([1, 3, 1])
 
 with col_h3:
     #titre
-    st.header("Restitution des données :bar_chart: :chart_with_upwards_trend:")
+    st.header("Visualisations des données :bar_chart: :chart_with_upwards_trend:")
+
+
+# tableau
+df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
+
+# Créer des colonnes pour les listes déroulantes
+col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([1, 2, 1, 2, 1, 2, 1])
+
+# Liste déroulante pour le pays
+with col_country:
+    selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None, placeholder="Choisir un pays",)
+
+# Liste déroulante pour la catégorie
+with col_category:
+    selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None, placeholder="Choisir une catégorie",)
+
+# Liste déroulante pour le client
+with col_client:
+    selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None, placeholder="Choisir un client",)
+
+# Sélectionner les colonnes à afficher dans le DataFrame
+selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région', 'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
+
+# Appliquer les filtres
+df_filtre = df_table[(df_table['Pays/Région'] == selected_country) & (df_table['Catégorie'] == selected_category) & (df_table['Nom du client'] == selected_client)]
+
+df_filtre.reset_index(drop=True, inplace=True)
+
+# Définir une variable pour vérifier si les listes déroulantes ont été sélectionnées
+selection_effectuee = False
+
+# Condition pour vérifier si les éléments nécessaires sont sélectionnés
+if selected_country is not None and selected_category is not None and selected_client is not None:
+    selection_effectuee = True
+
+
+# Condition pour afficher le tableau uniquement si la sélection a été effectuée
+if selection_effectuee:
+    st.table(df_filtre[selected_columns_table])
+
 
 
 #création de colonnes et attribution de dimensions
