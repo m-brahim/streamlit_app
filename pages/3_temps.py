@@ -278,8 +278,10 @@ with col_v2:
 
 col_txt, col_pie, col_sp3, col_sp4 = st.columns([1,1,1,1])
 
+with col_txt:
+    st.write("*Quantités vendues par catégorie* : ")
+
 with col_pie:
-    st.write("*Quantités vendues par catégorie*")
     filtered_data = df[df['Pays/Région'] == selected_country]
     quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
     
