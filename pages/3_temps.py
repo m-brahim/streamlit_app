@@ -332,7 +332,15 @@ with col_v2:
     if selected_year is not None and selected_comparison_year is not None:
         fig_orders_evolution = go.Figure()
 
-        # ...
+        # Agréger le nombre de commandes par mois pour l'année sélectionnée
+        monthly_orders_selected_year = filtered_df[filtered_df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
+
+        # Agréger le nombre de commandes par mois pour l'année de comparaison
+        monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
+
+        # Trier les mois en fonction du nombre de commandes décroissant pour les deux années
+        monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=True)
+        monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=True)
 
         # Affiche l'évolution du nombre de commandes pour N-*
         fig_orders_evolution.add_trace(go.Bar(
