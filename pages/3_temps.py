@@ -126,7 +126,7 @@ with col_pie:
                   height=400,
                   width=graph_width)
 
-    if selection_pays:
+    if selection_effectuee:
         st.plotly_chart(fig, use_container_width=True)
 
 
@@ -191,7 +191,7 @@ def plot_top_products_by_country(df, selected_country):
     st.pyplot(fig)
 
 with col_class:
-    if selection_pays:
+    if selection_effectuee:
         plot_top_products_by_country(df, selected_country)
 
 
