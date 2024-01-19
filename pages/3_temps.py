@@ -156,7 +156,7 @@ def plot_top_products_by_country(df, selected_country):
           'font.size': 12,
           'axes.labelsize': 12,
           'xtick.labelsize': 10,
-          'ytick.labelsize': 12}
+          'ytick.labelsize': 10}
 
     plt.rcParams.update(rc)
 
