@@ -144,7 +144,7 @@ def plot_top_products_by_country(df, selected_country):
     # Trier par quantité croissante et sélectionner les 5 premiers produits
     top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
 
-    rc = {'figure.figsize': (8, 10),
+    rc = {'figure.figsize': (8, 6),
           'axes.facecolor': '#eff1f5',
           'axes.edgecolor': '#eff1f5',
           'axes.labelcolor': '#000000',
@@ -161,7 +161,7 @@ def plot_top_products_by_country(df, selected_country):
 
     plt.rcParams.update(rc)
 
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(10, 6))
 
     colors = ['#9999ff', '#4d4dff', '#0000e6', '#000099', '#00004d']
 
