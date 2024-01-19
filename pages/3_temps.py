@@ -170,7 +170,6 @@ def plot_top_products_by_country(df, selected_country):
         plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='white')
 
     # Ajuster le style du graphique
-    ax.set_facecolor('transparent')
     ax.set_ylabel('Produit', color='white')  # Inverser les étiquettes d'axe
     ax.set_xlabel('Quantité achetée', color='white')
     ax.tick_params(axis='x', colors='white')
@@ -185,7 +184,6 @@ def plot_top_products_by_country(df, selected_country):
 
 with col_class:
     plot_top_products_by_country(df, selected_country)
-
 
 
 
