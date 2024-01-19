@@ -186,6 +186,15 @@ def plot_top_products_by_country(df, selected_country):
     st.pyplot(fig)
 
 
+selection_pays = None
+
+if selected_country is not None:
+    selection_pays = True
+
+
+with col_class:
+    if selection_pays:
+        plot_top_products_by_country(df, selected_country)
 
 
 
