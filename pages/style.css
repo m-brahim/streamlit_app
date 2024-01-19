@@ -121,10 +121,12 @@ td[class^="st-emotion-cache-gdzsw5"] {
 
 
 
-div[data-testid="stMetric"] {
+div[data-testid="stMetric"],
+div[data-testid="metric-container"] {
     padding-bottom: 30px;
     padding-left: 20px;
     padding-right: 0px;
     padding-top: 0px;
 }
+
 
