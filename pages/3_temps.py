@@ -242,7 +242,7 @@ diff_orders = int(diff_orders)
 diff_ca = int(diff_ca)
 
 #affiche le nombre de clients selon l'année
-col_clients.metric(label="Clients", value=num_clients, delta=diff_clients)
+col_clients.metric(label="Nombre de clients", value=num_clients, delta=diff_clients)
 
 #affiche le nombre de commandes selon l'année + comparatif avec N-*
 col_orders.metric(label="Nombre de commandes", value=num_orders, delta=diff_orders)
