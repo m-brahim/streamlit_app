@@ -178,7 +178,7 @@ def plot_top_products_by_country(df, selected_country):
     fig.tight_layout()
 
     # Ajouter le titre centré entre les deux sous-graphiques
-    fig.suptitle('Classement par pays des 5 produits les plus achetés', y=1.05, fontsize=16)
+    fig.title('Classement par pays des 5 produits les plus achetés', y=1.05, fontsize=16)
 
     # Afficher le graphique
     st.pyplot(fig)
