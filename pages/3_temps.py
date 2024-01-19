@@ -143,11 +143,11 @@ def plot_top_products_by_country(df, selected_country):
     top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
 
     # Créer le graphique en barres avec matplotlib
-    rc = {'figure.figsize': (8, 6),  # Ajustez la taille du graphique selon vos besoins
-          'axes.facecolor': '#0e1117',
+    rc = {'figure.figsize': (8, 6),
+          'axes.facecolor': 'transparent',
           'axes.edgecolor': '#0e1117',
           'axes.labelcolor': 'white',
-          'figure.facecolor': '#0e1117',
+          'figure.facecolor': 'transparent',
           'patch.edgecolor': '#0e1117',
           'text.color': 'white',
           'xtick.color': 'white',
@@ -155,7 +155,7 @@ def plot_top_products_by_country(df, selected_country):
           'grid.color': 'grey',
           'font.size': 12,
           'axes.labelsize': 12,
-          'xtick.labelsize': 10,  # Ajustez la taille de la légende de l'axe X
+          'xtick.labelsize': 10,
           'ytick.labelsize': 12}
 
     plt.rcParams.update(rc)
@@ -163,34 +163,30 @@ def plot_top_products_by_country(df, selected_country):
     fig, ax = plt.subplots()
 
     # Créer le graphique en barres
-    bars = ax.bar(top_products['Nom du produit'], top_products['Quantité'], color='#1616a7')
+    bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color='#1616a7')  # Utiliser barh pour inverser l'axe
 
-    # Ajouter les valeurs au-dessus des barres
+    # Ajouter les valeurs à droite des barres
     for bar in bars:
-        yval = bar.get_height()
-        plt.text(bar.get_x() + bar.get_width() / 2, yval + 0.1, round(yval, 2), ha='center', va='bottom', color='white')
+        xval = bar.get_width()
+        plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='white')
 
     # Ajuster le style du graphique
-    ax.set_facecolor('#0e1117')
-    ax.set_xlabel('Produit', color='white')
-    ax.set_ylabel('Quantité achetée', color='white')
+    ax.set_facecolor('transparent')
+    ax.set_ylabel('Produit', color='white')  # Inverser les étiquettes d'axe
+    ax.set_xlabel('Quantité achetée', color='white')
     ax.tick_params(axis='x', colors='white')
     ax.tick_params(axis='y', colors='white')
     ax.set_title('Classement par pays des 5 produits les plus achetés', color='white')
 
-    # Définir des étiquettes d'axe X personnalisées pour éviter la superposition
-    ax.set_xticks(top_products['Nom du produit'])
-    ax.set_xticklabels(top_products['Nom du produit'], rotation=45, ha='right')  # Ajustez la rotation selon vos besoins
+    # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
+    fig.tight_layout()
 
     # Afficher le graphique
     st.pyplot(fig)
 
-# Utilisation de la fonction dans une colonne
-with col_class:  # Assurez-vous que col_class est défini dans votre code
-    st.header("Classement par pays des 5 produits les plus achetés")
-
-    # Appel de la fonction avec les données et le pays sélectionné
+with col_class:
     plot_top_products_by_country(df, selected_country)
+
 
 
 
