@@ -178,9 +178,6 @@ def plot_top_products_by_country(df, selected_country):
     # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
     fig.tight_layout()
 
-    # Ajouter le titre centré entre les deux sous-graphiques
-    fig.title('Center Title', y=1.05, fontsize=16)
-
     # Afficher le graphique
     st.pyplot(fig)
 
