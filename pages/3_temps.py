@@ -129,10 +129,6 @@ with col_pie:
     if selection_effectuee:
         st.plotly_chart(fig, use_container_width=True)
 
-
-
-
-
 def plot_top_products_by_country(df, selected_country):
     # Filtrer les données par pays
     filtered_data = df[df['Pays/Région'] == selected_country]
@@ -194,13 +190,6 @@ with col_class:
 
 
 
-
-
-
-
-
-
-
 #2) analyse temporelle
 
 col_h2, col_2, col_3 = st.columns([1, 1, 1])
@@ -212,12 +201,12 @@ with col_h2:
 col_dd1, col_sp1, cold_dd2, col_sp2, col_mlt = st.columns([0.5,0.5,0.5,0.5,2])
 
 with col_dd1:
-    selected_year = st.selectbox("Sélectionnez N", sorted_years)
+    selected_year = st.selectbox("Sélectionnez N", sorted_years, index = None, placeholder="")
 
 with cold_dd2:
     if selected_year in sorted_years_2:
         sorted_years_2.remove(selected_year)
-        selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
+        selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year], index = None, placeholder="")
 
 
 with col_mlt:
@@ -262,16 +251,6 @@ col_ca.metric(label=f"Chiffre d'affaires", value=f"{int(ca_by_year)} €", delta
 style_metric_cards()
 
 
-
-
-
-
-
-
-
-
-
-    
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
 col_txt, col_v1, col_space, col_v2 = st.columns([1,2,0.5,2])
@@ -373,10 +352,6 @@ with col_v2:
     
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
-
-
-
-
 
 
 #col_1, col_csv, col_2 = st.columns([1,2,1])
