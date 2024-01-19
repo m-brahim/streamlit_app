@@ -96,7 +96,7 @@ if selected_country is not None and selected_category is not None and selected_c
 if selection_effectuee:
     st.table(df_filtre[selected_columns_table])
 
-col_txt, col_pie, col_sp3, col_class = st.columns([0.5,2,0.5,2])
+col_txt, col_pie, col_sp3, col_class = st.columns([1.5,2,0.5,2])
 
 with col_txt:
     st.write("*Graphiques* : ")
