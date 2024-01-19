@@ -174,7 +174,7 @@ def plot_top_products_by_country(df, selected_country):
     ax.set_xlabel('Quantité achetée', color='#000000')
     ax.tick_params(axis='x', colors='#000000')
     ax.tick_params(axis='y', colors='#000000')
-    ax.set_title('Classement par pays des 5 produits les plus achetés', color='#000000')
+    ax.set_title('Classement par pays des 5 produits les plus achetés', color='#000000', pad = 20)
 
     # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
     fig.tight_layout()
