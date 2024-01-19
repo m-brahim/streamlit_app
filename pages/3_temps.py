@@ -230,7 +230,7 @@ with col_mlt:
 
 
 #création de colonnes identiques
-col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1.5, 0.5, 1.5, 0.5, 1.5, 0.5, 1.5, 0.5])
+col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1.5, 0.5, 1.25, 0.5, 1.25, 0.5, 1.25, 0.5])
 
 with col_txt:
     st.write("*Chiffres clés N vs N-* * :")
