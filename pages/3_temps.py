@@ -137,7 +137,7 @@ with col_class:
                               labels={'Quantité': 'Quantité achetée', 'Nom du produit': 'Produit'},
                               orientation='h',
                               title='Classement des 5 produits les plus achetés',
-                              color_discrete_sequence=['#4678b9'])
+                              color_discrete_sequence=['#1616a7'])
 
     fig_top_products.update_layout(title='Classement des 5 produits les plus achetés',
                                xaxis=dict(title='Quantité achetée', tickfont=dict(size=12), title_font=dict(size=12)),
