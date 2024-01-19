@@ -131,7 +131,6 @@ with col_pie:
 
 
 
-
 def plot_top_products_by_country(df, selected_country):
     # Filtrer les données par pays
     filtered_data = df[df['Pays/Région'] == selected_country]
@@ -174,13 +173,16 @@ def plot_top_products_by_country(df, selected_country):
     ax.set_xlabel('Quantité achetée', color='#000000')
     ax.tick_params(axis='x', colors='#000000')
     ax.tick_params(axis='y', colors='#000000')
-    ax.set_title('Classement par pays des 5 produits les plus achetés', color='#000000', pad=20, y=1.05)
-
+    
     # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
     fig.tight_layout()
 
+    # Ajouter le titre centré au-dessus du graphique
+    fig.text(0.5, 0.95, 'Classement par pays des 5 produits les plus achetés', fontsize=16, color='#000000', ha='center')
+
     # Afficher le graphique
     st.pyplot(fig)
+
 
 
 selection_pays = None
