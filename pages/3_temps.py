@@ -158,7 +158,7 @@ def plot_top_products_by_country(df, selected_country):
 
     plt.rcParams.update(rc)
 
-    fig, ax = plt.subplots(figsize=(8, 7))
+    fig, ax = plt.subplots(figsize=(8, 6))
 
     # Créer le graphique en barres
     bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color='#1616a7')
@@ -178,7 +178,7 @@ def plot_top_products_by_country(df, selected_country):
     fig.tight_layout()
 
     # Ajouter le titre centré entre les deux sous-graphiques
-    fig.suptitle('Classement par pays des 5 produits les plus achetés', y=1.05, fontsize=12)
+    fig.suptitle('Classement par pays des 5 produits les plus achetés', y=1.05, fontsize=15)
 
     # Afficher le graphique
     st.pyplot(fig)
