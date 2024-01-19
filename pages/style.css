@@ -121,7 +121,7 @@ td[class^="st-emotion-cache-gdzsw5"] {
 
 
 
-div[data-testid="stMetric"] {
+[data-testid="stMetric"] {
     padding-bottom: 30px;
     padding-left: 20px;
     padding-right: 0px;
