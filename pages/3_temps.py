@@ -114,14 +114,14 @@ with col_pie:
     
     fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
 
-    # Ajouter un titre au graphique
     fig.update_layout(title='Quantités vendues par catégorie',
                   title_x=0.25,
                   title_font=dict(size=15),
                   height=400,
                   width=graph_width)
-    
-    st.plotly_chart(fig, use_container_width=True)
+
+    if selection_pays:
+        st.plotly_chart(fig, use_container_width=True)
 
 
 
