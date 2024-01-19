@@ -10,3 +10,4 @@ markdown
 mitosheet
 matplotlib
 seaborn
+numpy
