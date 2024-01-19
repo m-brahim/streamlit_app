@@ -168,7 +168,8 @@ def plot_top_products_by_country(df, selected_country):
     fig, ax = plt.subplots(figsize=(8, 6))
 
     # Utiliser une seule couleur avec un dégradé basé sur les valeurs
-    color = plt.cm.viridis(top_products['Quantité'] / top_products['Quantité'].max())
+    norm = plt.Normalize(top_products['Quantité'].min(), top_products['Quantité'].max())
+    color = plt.cm.Blues(norm(top_products['Quantité']))
 
     # Créer le graphique en barres avec une seule couleur et un dégradé
     bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color=color)
