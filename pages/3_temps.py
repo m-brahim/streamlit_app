@@ -113,8 +113,10 @@ with col_pie:
 
     # Ajouter un titre au graphique
     fig.update_layout(title='Quantités vendues par catégorie',
-                     title_x = 0.25,
-                     title_font=dict(size=20))
+                  title_x=0.25,
+                  title_font=dict(size=15),
+                  height=graph_height,
+                  width=graph_width)
     
     st.plotly_chart(fig, use_container_width=True)
 
