@@ -10,6 +10,7 @@ from mitosheet.streamlit.v1 import spreadsheet
 from plotly.subplots import make_subplots
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 
 
 #config du titre de la page
