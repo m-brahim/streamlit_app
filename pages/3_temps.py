@@ -142,7 +142,7 @@ def plot_top_products_by_country(df, selected_country):
     # Trier par quantité décroissante et sélectionner les 5 premiers produits
     top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
 
-    rc = {'figure.figsize': (5, 10),
+    rc = {'figure.figsize': (5, 8),
           'axes.facecolor': '#eff1f5',
           'axes.edgecolor': '#eff1f5',
           'axes.labelcolor': '#000000',
@@ -152,8 +152,8 @@ def plot_top_products_by_country(df, selected_country):
           'xtick.color': '#000000',
           'ytick.color': '#000000',
           'grid.color': '#000000',
-          'font.size': 14,
-          'axes.labelsize': 14,
+          'font.size': 12,
+          'axes.labelsize': 12,
           'xtick.labelsize': 12,
           'ytick.labelsize': 12}
 
