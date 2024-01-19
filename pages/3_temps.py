@@ -145,8 +145,8 @@ def plot_top_products_by_country(df, selected_country):
     # Grouper par produit et calculer la quantité totale achetée
     top_products = filtered_data.groupby('Nom du produit')['Quantité'].sum().reset_index()
 
-    # Trier par quantité décroissante et sélectionner les 5 premiers produits
-    top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
+    # Trier par quantité croissante et sélectionner les 5 premiers produits
+    top_products = top_products.sort_values(by='Quantité', ascending=True).head(5)
 
     rc = {'figure.figsize': (8, 5),  # Ajustez la hauteur à 5 pouces
           'axes.facecolor': '#eff1f5',
@@ -167,11 +167,11 @@ def plot_top_products_by_country(df, selected_country):
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
-    # Utiliser une colormap pour attribuer des couleurs en fonction des valeurs
-    colors = plt.cm.viridis(np.linspace(0, 1, len(top_products)))
+    # Utiliser une seule couleur avec un dégradé basé sur les valeurs
+    color = plt.cm.viridis(np.linspace(0, 1, len(top_products)))
 
-    # Créer le graphique en barres avec des couleurs basées sur les valeurs
-    bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color=colors)
+    # Créer le graphique en barres avec une seule couleur et un dégradé
+    bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color=color)
 
     # Ajouter les valeurs à droite des barres
     for bar in bars:
@@ -192,6 +192,13 @@ def plot_top_products_by_country(df, selected_country):
 
     # Afficher le graphique
     st.pyplot(fig)
+
+
+selection_pays = None
+
+if selected_country is not None:
+    selection_pays = True
+
 
 with col_class:
     if selection_pays:
