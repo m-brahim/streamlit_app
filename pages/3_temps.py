@@ -163,9 +163,9 @@ def plot_top_products_by_country(df, selected_country):
     fig, ax = plt.subplots(figsize=(8, 6))
 
     # Couleurs pour chaque barre selon le dégradé demandé
-    colors = ['#00004d', '#000099', '#0000e6', '#4d4dff', '#9999ff']
+    colors = ['#9999ff', '#4d4dff', '#0000e6', '#000099', '#00004d']
 
-            
+                
     
     # Créer le graphique en barres
     bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color=colors)
