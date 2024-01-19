@@ -176,14 +176,12 @@ def plot_top_products_by_country(df, selected_country):
     ax.tick_params(axis='y', colors='dark')
     ax.set_title('Classement par pays des 5 produits les plus achetés', color='white')
 
-    # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
-    fig.tight_layout()
-
     # Afficher le graphique
-    st.pyplot(fig)
+    st.pyplot(fig, bbox_inches='tight')
 
 with col_class:
     plot_top_products_by_country(df, selected_country)
+
 
 
 
