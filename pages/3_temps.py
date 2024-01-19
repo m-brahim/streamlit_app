@@ -137,8 +137,13 @@ with col_class:
                               title='Classement des 5 produits les plus achetés',
                               color_discrete_sequence=['#4678b9'])
 
-    # Inverser l'ordre des barres pour afficher les plus grandes quantités en haut
-    fig_top_products.update_layout(barmode='group', yaxis=dict(categoryorder='total ascending'))
+    fig_top_products.update_layout(title='Classement des 5 produits les plus achetés',
+                               xaxis=dict(title='Quantité achetée', tickfont=dict(size=12), title_font=dict(size=12)),
+                               yaxis=dict(title='Produit', tickfont=dict(size=12), title_font=dict(size=12)),
+                               title_font=dict(size=15),
+                               title_x=0.5,
+                               height=graph_height,
+                               width=graph_width)
 
     # Afficher le graphique en barres
     st.plotly_chart(fig_top_products, use_container_width=True)
