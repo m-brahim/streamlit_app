@@ -142,7 +142,7 @@ def plot_top_products_by_country(df, selected_country):
     # Trier par quantité décroissante et sélectionner les 5 premiers produits
     top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
 
-    rc = {'figure.figsize': (5, 8),
+    rc = {'figure.figsize': (5, 5),
           'axes.facecolor': '#eff1f5',
           'axes.edgecolor': '#eff1f5',
           'axes.labelcolor': '#000000',
@@ -159,7 +159,7 @@ def plot_top_products_by_country(df, selected_country):
 
     plt.rcParams.update(rc)
 
-    fig, ax = plt.subplots(figsize=(5, 10))
+    fig, ax = plt.subplots(figsize=(5, 5))
 
     # Créer le graphique en barres
     bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color='#1616a7')
