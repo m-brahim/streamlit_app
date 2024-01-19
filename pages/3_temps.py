@@ -226,12 +226,15 @@ col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st
 with col_txt:
     st.write("*Chiffres clés N vs N-* * :")
 
-#calculs
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
 num_orders = len(df[df['Année'] == selected_year]['ID commande'])
 ca_by_year = df[df['Année'] == selected_year]['Ventes'].sum()
 
 #calculs des différences pour comparatif entre N et N-*
+diff_clients = 0  # Définissez une valeur par défaut à zéro
+diff_orders = 0
+diff_ca = 0
+
 if selected_comparison_year is not None:
     diff_clients = num_clients - df[df['Année'] == selected_comparison_year].drop_duplicates('ID client')['ID client'].count()
     diff_orders = num_orders - len(df[df['Année'] == selected_comparison_year]['ID commande'])
