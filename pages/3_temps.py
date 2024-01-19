@@ -172,9 +172,9 @@ def plot_top_products_by_country(df, selected_country):
 
     # Ajouter les valeurs à droite des barres
     for bar, product_name in zip(bars, top_products['Nom du produit']):
-    xval = bar.get_width()
-    wrapped_text = textwrap.fill(product_name, width=10)  # Ajustez la largeur selon votre préférence
-    plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, wrapped_text, ha='left', va='center', color='#000000')
+        xval = bar.get_width()
+        wrapped_text = textwrap.fill(product_name, width=10)  # Ajustez la largeur selon votre préférence
+        plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, wrapped_text, ha='left', va='center', color='#000000')
     
     # Ajuster le style du graphique
     ax.set_ylabel('Produit', color='#000000')
