@@ -96,7 +96,7 @@ if selected_country is not None and selected_category is not None and selected_c
 if selection_effectuee:
     st.table(df_filtre[selected_columns_table])
 
-col_txt, col_pie, col_sp3, col_class = st.columns([1.5,2,0.5,2])
+col_txt, col_pie, col_sp3, col_class = st.columns([1,2,0.2,2])
 
 with col_txt:
     st.write("*Graphiques* : ")
@@ -115,7 +115,7 @@ with col_pie:
     fig.update_layout(title='Quantités vendues par catégorie',
                   title_x=0.25,
                   title_font=dict(size=15),
-                  height=graph_height,
+                  height=400,
                   width=graph_width)
     
     st.plotly_chart(fig, use_container_width=True)
@@ -144,7 +144,7 @@ with col_class:
                                yaxis=dict(title='Produit', tickfont=dict(size=12), title_font=dict(size=12)),
                                title_font=dict(size=15),
                                title_x=0.25,
-                               height=graph_height,
+                               height=400,
                                width=graph_width)
 
     # Afficher le graphique en barres
