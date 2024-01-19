@@ -276,6 +276,9 @@ style_metric_cards()
 
 col_txt, col_v1, col_space, col_v2 = st.columns([1,2,0.5,2])
 
+selected_year = None
+selected_comparison_year = None
+
 with col_txt:
     st.write("*Graphiques* :")
 
