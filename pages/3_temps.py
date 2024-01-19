@@ -157,6 +157,12 @@ with col_class:
                 xshift=10,  # Ajustez la position horizontale de l'annotation
                 font=dict(size=10))  # Ajustez la taille du texte
 
+    # Ajuster l'espace de la légende de l'axe Y
+    max_length = 20  # Définir la longueur maximale pour revenir à la ligne
+    y_labels = [name if len(name) <= max_length else name[:max_length] + '<br>' + name[max_length:] for name in top_products['Nom du produit']]
+    
+    fig_top_products.update_layout(yaxis=dict(tickmode='array', tickvals=top_products['Nom du produit'], ticktext=y_labels))
+
     # Afficher le graphique en barres
     st.plotly_chart(fig_top_products, use_container_width=True)
 
