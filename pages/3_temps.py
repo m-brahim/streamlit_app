@@ -121,7 +121,6 @@ with col_pie:
     st.plotly_chart(fig, use_container_width=True)
 
 
-
 with col_class:
     # Filtrer les données par pays
     filtered_data = df[df['Pays/Région'] == selected_country]
@@ -139,18 +138,28 @@ with col_class:
                               title='Classement des 5 produits les plus achetés',
                               color_discrete_sequence=['#1616a7'])
 
-    fig_top_products.update_layout(title='Classement des 5 produits les plus achetés',
-                               xaxis=dict(title='Quantité achetée', tickfont=dict(size=12), title_font=dict(size=12)),
-                               yaxis=dict(title='Produit', tickfont=dict(size=12), title_font=dict(size=12)),
-                               title_font=dict(size=15),
-                               title_x=0.25,
-                               height=400,
-                               width=graph_width)
+    fig_top_products.update_layout(title='Classement par pays des 5 produits les plus achetés',
+                                   xaxis=dict(title='Quantité achetée', tickfont=dict(size=12), title_font=dict(size=12)),
+                                   yaxis=dict(title='Produit', tickfont=dict(size=12), title_font=dict(size=12)),
+                                   title_font=dict(size=15),
+                                   title_x=0.25,
+                                   height=400,
+                                   width=graph_width)
+
+    # Ajouter les annotations (valeurs) au-dessus des barres
+    for trace in fig_top_products.data:
+        for i, val in enumerate(trace['x']):
+            fig_top_products.add_annotation(
+                x=val,
+                y=trace['y'][i],
+                text=str(val),
+                showarrow=True,
+                arrowhead=5,
+                ax=0,
+                ay=-30)
 
     # Afficher le graphique en barres
     st.plotly_chart(fig_top_products, use_container_width=True)
-
-
 
 
 
