@@ -152,10 +152,10 @@ def plot_top_products_by_country(df, selected_country):
           'xtick.color': '#000000',
           'ytick.color': '#000000',
           'grid.color': '#000000',
-          'font.size': 12,
-          'axes.labelsize': 12,
-          'xtick.labelsize': 12,
-          'ytick.labelsize': 12}
+          'font.size': 10,
+          'axes.labelsize': 10,
+          'xtick.labelsize': 10,
+          'ytick.labelsize': 10}
 
     plt.rcParams.update(rc)
 
