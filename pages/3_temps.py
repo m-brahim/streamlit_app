@@ -8,6 +8,8 @@ from streamlit_folium import st_folium
 from streamlit_extras.metric_cards import style_metric_cards
 from mitosheet.streamlit.v1 import spreadsheet
 from plotly.subplots import make_subplots
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 #config du titre de la page
@@ -376,7 +378,57 @@ with col_v2:
 
 
 
+def plot_top_products_by_country(df, selected_country):
+    # Filtrer les données par pays
+    filtered_data = df[df['Pays/Région'] == selected_country]
 
+    # Grouper par produit et calculer la quantité totale achetée
+    top_products = filtered_data.groupby('Nom du produit')['Quantité'].sum().reset_index()
+
+    # Trier par quantité décroissante et sélectionner les 5 premiers produits
+    top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
+
+    # Créer le graphique en barres avec matplotlib
+    rc = {'figure.figsize': (10, 6),
+          'axes.facecolor': '#0e1117',
+          'axes.edgecolor': '#0e1117',
+          'axes.labelcolor': 'white',
+          'figure.facecolor': '#0e1117',
+          'patch.edgecolor': '#0e1117',
+          'text.color': 'white',
+          'xtick.color': 'white',
+          'ytick.color': 'white',
+          'grid.color': 'grey',
+          'font.size': 12,
+          'axes.labelsize': 12,
+          'xtick.labelsize': 12,
+          'ytick.labelsize': 12}
+    
+    plt.rcParams.update(rc)
+
+    fig, ax = plt.subplots()
+
+    # Créer le graphique en barres
+    bars = ax.bar(top_products['Nom du produit'], top_products['Quantité'], color='#1616a7')
+
+    # Ajouter les valeurs au-dessus des barres
+    for bar in bars:
+        yval = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width() / 2, yval + 0.1, round(yval, 2), ha='center', va='bottom', color='white')
+
+    # Ajuster le style du graphique
+    ax.set_facecolor('#0e1117')
+    ax.set_xlabel('Produit', color='white')
+    ax.set_ylabel('Quantité achetée', color='white')
+    ax.tick_params(axis='x', colors='white')
+    ax.tick_params(axis='y', colors='white')
+    ax.set_title('Classement par pays des 5 produits les plus achetés', color='white')
+
+    # Afficher le graphique
+    st.pyplot(fig)
+
+# Utilisation de la fonction
+plot_top_products_by_country(df, selected_country)
 
 
 
