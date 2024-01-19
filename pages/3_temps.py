@@ -217,7 +217,7 @@ with col_dd1:
 with cold_dd2:
     if selected_year in sorted_years_2:
         sorted_years_2.remove(selected_year)
-        selected_comparison_year = st.selectbox("Sélectionnez N-*", sorted_years_2, index=None, placeholder="Choisir N-*")
+        selected_comparison_year = st.selectbox("Sélectionnez N-*", sorted_years_2)
 
 
 with col_mlt:
