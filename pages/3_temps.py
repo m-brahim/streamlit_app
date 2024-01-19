@@ -133,11 +133,6 @@ with col_pie:
 
 
 
-
-
-
-
-
 def plot_top_products_by_country(df, selected_country):
     # Filtrer les données par pays
     filtered_data = df[df['Pays/Région'] == selected_country]
@@ -145,8 +140,8 @@ def plot_top_products_by_country(df, selected_country):
     # Grouper par produit et calculer la quantité totale achetée
     top_products = filtered_data.groupby('Nom du produit')['Quantité'].sum().reset_index()
 
-    # Trier par quantité décroissante et sélectionner les 5 premiers produits
-    top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
+    # Trier par quantité croissante et sélectionner les 5 premiers produits
+    top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
 
     rc = {'figure.figsize': (8, 5),  # Ajustez la hauteur à 5 pouces
           'axes.facecolor': '#eff1f5',
@@ -167,8 +162,11 @@ def plot_top_products_by_country(df, selected_country):
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
+    # Couleurs pour chaque barre selon le dégradé demandé
+    colors = ['#006400', '#00FF00', '#FFA500', '#FF4500', '#FFFF00']
+
     # Créer le graphique en barres
-    bars = ax.barh(top_products['Nom du produit'][::-1], top_products['Quantité'][::-1], color='#1616a7')
+    bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color=colors)
 
     # Ajouter les valeurs à droite des barres
     for bar in bars:
@@ -193,6 +191,11 @@ def plot_top_products_by_country(df, selected_country):
 with col_class:
     if selection_pays:
         plot_top_products_by_country(df, selected_country)
+
+
+
+
+
 
 
 
@@ -387,63 +390,9 @@ with col_v2:
 
 
 
-def plot_top_products_by_country(df, selected_country):
-    # Filtrer les données par pays
-    filtered_data = df[df['Pays/Région'] == selected_country]
 
-    # Grouper par produit et calculer la quantité totale achetée
-    top_products = filtered_data.groupby('Nom du produit')['Quantité'].sum().reset_index()
 
-    # Trier par quantité décroissante et sélectionner les 5 premiers produits
-    top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
 
-    # Palette de couleurs personnalisée
-    custom_palette = ['#006400', '#00FF00', '#FFA500', '#FF8C00', '#FFD700']
-
-    rc = {'figure.figsize': (8, 5),  # Ajustez la hauteur à 5 pouces
-          'axes.facecolor': '#eff1f5',
-          'axes.edgecolor': '#eff1f5',
-          'axes.labelcolor': '#000000',
-          'figure.facecolor': '#eff1f5',
-          'patch.edgecolor': '#eff1f5',
-          'text.color': '#000000',
-          'xtick.color': '#000000',
-          'ytick.color': '#000000',
-          'grid.color': '#000000',
-          'font.size': 12,
-          'axes.labelsize': 12,
-          'xtick.labelsize': 10,
-          'ytick.labelsize': 12}
-
-    plt.rcParams.update(rc)
-
-    fig, ax = plt.subplots(figsize=(8, 6))
-
-    # Créer le graphique en barres avec la palette de couleurs personnalisée
-    bars = ax.barh(top_products['Nom du produit'][::-1], top_products['Quantité'][::-1], color=custom_palette)
-
-    # Ajouter les valeurs à droite des barres
-    for bar in bars:
-        xval = bar.get_width()
-        plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='#000000')
-
-    # Ajuster le style du graphique
-    ax.set_ylabel('Produit', color='#000000')
-    ax.set_xlabel('Quantité achetée', color='#000000')
-    ax.tick_params(axis='x', colors='#000000')
-    ax.tick_params(axis='y', colors='#000000')
-
-    # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
-    fig.tight_layout()
-
-    # Ajouter le titre centré entre les deux sous-graphiques
-    fig.suptitle('Classement par pays des 5 produits les plus achetés', y=1.05, fontsize=15)
-
-    # Afficher le graphique
-    plt.show()
-
-# Testez la fonction
-plot_top_products_by_country(df, selected_country)
 
 
 
