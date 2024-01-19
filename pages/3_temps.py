@@ -123,57 +123,86 @@ with col_pie:
     st.plotly_chart(fig, use_container_width=True)
 
 
-with col_class:
+
+
+
+
+
+
+
+
+
+def plot_top_products_by_country(df, selected_country):
     # Filtrer les données par pays
     filtered_data = df[df['Pays/Région'] == selected_country]
 
     # Grouper par produit et calculer la quantité totale achetée
     top_products = filtered_data.groupby('Nom du produit')['Quantité'].sum().reset_index()
 
-    # Trier par quantité croissante et sélectionner les 5 premiers produits
-    top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
+    # Trier par quantité décroissante et sélectionner les 5 premiers produits
+    top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
+
+    # Créer le graphique en barres avec matplotlib
+    rc = {'figure.figsize': (8, 6),  # Ajustez la taille du graphique selon vos besoins
+          'axes.facecolor': '#0e1117',
+          'axes.edgecolor': '#0e1117',
+          'axes.labelcolor': 'white',
+          'figure.facecolor': '#0e1117',
+          'patch.edgecolor': '#0e1117',
+          'text.color': 'white',
+          'xtick.color': 'white',
+          'ytick.color': 'white',
+          'grid.color': 'grey',
+          'font.size': 12,
+          'axes.labelsize': 12,
+          'xtick.labelsize': 10,  # Ajustez la taille de la légende de l'axe X
+          'ytick.labelsize': 12}
+
+    plt.rcParams.update(rc)
+
+    fig, ax = plt.subplots()
 
     # Créer le graphique en barres
-    fig_top_products = px.bar(top_products, x='Quantité', y='Nom du produit',
-                              labels={'Quantité': 'Quantité achetée', 'Nom du produit': 'Produit'},
-                              orientation='h',
-                              title='Classement des 5 produits les plus achetés',
-                              color_discrete_sequence=['#1616a7'],
-                              width=graph_width, height=400)  # Définir la largeur du graphique
+    bars = ax.bar(top_products['Nom du produit'], top_products['Quantité'], color='#1616a7')
 
-    # Ajuster la longueur de la barre
-    fig_top_products.update_traces(marker=dict(line=dict(width=2, color='black')), selector=dict(type='bar'))
-    fig_top_products.update_layout(bargap=0.2)  # Ajuster l'espace entre les barres
+    # Ajouter les valeurs au-dessus des barres
+    for bar in bars:
+        yval = bar.get_height()
+        plt.text(bar.get_x() + bar.get_width() / 2, yval + 0.1, round(yval, 2), ha='center', va='bottom', color='white')
 
-    # Ajuster l'échelle de l'axe X avec un pas de 20
-    fig_top_products.update_layout(xaxis=dict(tickmode='linear', dtick=20))
+    # Ajuster le style du graphique
+    ax.set_facecolor('#0e1117')
+    ax.set_xlabel('Produit', color='white')
+    ax.set_ylabel('Quantité achetée', color='white')
+    ax.tick_params(axis='x', colors='white')
+    ax.tick_params(axis='y', colors='white')
+    ax.set_title('Classement par pays des 5 produits les plus achetés', color='white')
 
-    fig_top_products.update_layout(title='Classement par pays des 5 produits les plus achetés',
-                                   xaxis=dict(title='Quantité achetée', tickfont=dict(size=12), title_font=dict(size=12)),
-                                   yaxis=dict(title='Produit', tickfont=dict(size=12), title_font=dict(size=12),
-                                              categoryorder='total ascending'),  # Ajuster l'ordre des catégories
-                                   title_font=dict(size=15),
-                                   title_x=0.25)
+    # Définir des étiquettes d'axe X personnalisées pour éviter la superposition
+    ax.set_xticks(top_products['Nom du produit'])
+    ax.set_xticklabels(top_products['Nom du produit'], rotation=45, ha='right')  # Ajustez la rotation selon vos besoins
 
-    # Ajouter les annotations (valeurs) sur le côté droit de chaque barre horizontale
-    for trace in fig_top_products.data:
-        for i, val in enumerate(trace['x']):
-            fig_top_products.add_annotation(
-                x=val,
-                y=trace['y'][i],
-                text=str(val),
-                showarrow=False,
-                xshift=10,  # Ajustez la position horizontale de l'annotation
-                font=dict(size=10))  # Ajustez la taille du texte
+    # Afficher le graphique
+    st.pyplot(fig)
 
-    # Ajuster l'espace de la légende de l'axe Y
-    max_length = 20  # Définir la longueur maximale pour revenir à la ligne
-    y_labels = [name if len(name) <= max_length else name[:max_length] + '<br>' + name[max_length:] for name in top_products['Nom du produit']]
-    
-    fig_top_products.update_layout(yaxis=dict(tickmode='array', tickvals=top_products['Nom du produit'], ticktext=y_labels))
+# Utilisation de la fonction dans une colonne
+with col_class:  # Assurez-vous que col_class est défini dans votre code
+    st.header("Classement par pays des 5 produits les plus achetés")
 
-    # Afficher le graphique en barres
-    st.plotly_chart(fig_top_products, use_container_width=True)
+    # Appel de la fonction avec les données et le pays sélectionné
+    plot_top_products_by_country(df, selected_country)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
