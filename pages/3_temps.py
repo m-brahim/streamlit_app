@@ -174,24 +174,16 @@ def plot_top_products_by_country(df, selected_country):
     ax.set_xlabel('Quantité achetée', color='#000000')
     ax.tick_params(axis='x', colors='#000000')
     ax.tick_params(axis='y', colors='#000000')
-    ax.set_title('Classement par pays des 5 produits les plus achetés', color='#000000', pad = 20)
-    ax.set_title(loc='right')
+    ax.set_title('Classement par pays des 5 produits les plus achetés', color='#000000', pad=20)
 
     # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
     fig.tight_layout()
 
+    # Ajouter le titre centré entre les deux sous-graphiques
+    fig.suptitle('Center Title', y=1.05, fontsize=16)
+
     # Afficher le graphique
     st.pyplot(fig)
-
-selection_pays = None
-
-if selected_country is not None:
-    selection_pays = True
-
-
-with col_class:
-    if selection_pays:
-        plot_top_products_by_country(df, selected_country)
 
 
 
