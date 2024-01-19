@@ -11,7 +11,6 @@ from plotly.subplots import make_subplots
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-import textwrap
 
 
 #config du titre de la page
@@ -231,7 +230,7 @@ with col_mlt:
 
 
 #création de colonnes identiques
-col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1.5, 0.5, 1, 1, 1, 1, 1, 1])
+col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1.5, 0.5, 1.5, 0.5, 1.5, 0.5, 1.5, 0.5])
 
 with col_txt:
     st.write("*Chiffres clés N vs N-* * :")
