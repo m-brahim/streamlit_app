@@ -146,17 +146,16 @@ with col_class:
                                    height=400,
                                    width=graph_width)
 
-    # Ajouter les annotations (valeurs) au-dessus des barres
+    # Ajouter les annotations (valeurs) sur le côté droit de chaque barre horizontale
     for trace in fig_top_products.data:
         for i, val in enumerate(trace['x']):
             fig_top_products.add_annotation(
                 x=val,
                 y=trace['y'][i],
                 text=str(val),
-                showarrow=True,
-                arrowhead=5,
-                ax=0,
-                ay=-30)
+                showarrow=False,
+                xshift=10,  # Ajustez la position horizontale de l'annotation
+                font=dict(size=10))  # Ajustez la taille du texte
 
     # Afficher le graphique en barres
     st.plotly_chart(fig_top_products, use_container_width=True)
