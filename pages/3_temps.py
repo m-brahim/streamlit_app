@@ -160,8 +160,11 @@ def plot_top_products_by_country(df, selected_country):
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
-    # Créer le graphique en barres
-    bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color='#1616a7')
+    # Utiliser une colormap pour attribuer des couleurs en fonction des valeurs
+    colors = plt.cm.viridis(np.linspace(0, 1, len(top_products)))
+
+    # Créer le graphique en barres avec des couleurs basées sur les valeurs
+    bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color=colors)
 
     # Ajouter les valeurs à droite des barres
     for bar in bars:
@@ -193,7 +196,6 @@ if selected_country is not None:
 with col_class:
     if selection_pays:
         plot_top_products_by_country(df, selected_country)
-
 
 
 
