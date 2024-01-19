@@ -142,7 +142,7 @@ def plot_top_products_by_country(df, selected_country):
     # Trier par quantité décroissante et sélectionner les 5 premiers produits
     top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
 
-    rc = {'figure.figsize': (8, 6),
+    rc = {'figure.figsize': (8, 5),  # Ajustez la hauteur à 5 pouces
           'axes.facecolor': '#eff1f5',
           'axes.edgecolor': '#eff1f5',
           'axes.labelcolor': '#000000',
@@ -159,7 +159,7 @@ def plot_top_products_by_country(df, selected_country):
 
     plt.rcParams.update(rc)
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(8, 5))  # Ajustez la taille du graphique
 
     # Créer le graphique en barres
     bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color='#1616a7')  # Utiliser barh pour inverser l'axe
@@ -174,7 +174,7 @@ def plot_top_products_by_country(df, selected_country):
     ax.set_xlabel('Quantité achetée', color='#000000')
     ax.tick_params(axis='x', colors='#000000')
     ax.tick_params(axis='y', colors='#000000')
-    ax.set_title('Classement par pays des 5 produits les plus achetés', color='#000000')
+    ax.set_title('Classement par pays des 5 produits les plus achetés', color='#000000', pad=20)  # Utilisez le paramètre pad pour ajuster l'espacement du titre
 
     # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
     fig.tight_layout()
