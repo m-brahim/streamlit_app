@@ -143,11 +143,11 @@ def plot_top_products_by_country(df, selected_country):
     top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
 
     rc = {'figure.figsize': (8, 6),
-          'axes.facecolor': ' #eff1f5',
-          'axes.edgecolor': ' #eff1f5',
+          'axes.facecolor': '#eff1f5',
+          'axes.edgecolor': '#eff1f5',
           'axes.labelcolor': 'white',
-          'figure.facecolor': ' #eff1f5',
-          'patch.edgecolor': ' #eff1f5',
+          'figure.facecolor': '#eff1f5',
+          'patch.edgecolor': '#eff1f5',
           'text.color': 'white',
           'xtick.color': 'white',
           'ytick.color': 'white',
