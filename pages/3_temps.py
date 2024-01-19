@@ -146,7 +146,7 @@ def plot_top_products_by_country(df, selected_country):
     top_products = filtered_data.groupby('Nom du produit')['Quantité'].sum().reset_index()
 
     # Trier par quantité décroissante et sélectionner les 5 premiers produits
-    top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
+    top_products = top_products.sort_values(by='Quantité', ascending=True).head(5)
 
     rc = {'figure.figsize': (8, 5),  # Ajustez la hauteur à 5 pouces
           'axes.facecolor': '#eff1f5',
