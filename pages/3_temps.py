@@ -178,7 +178,7 @@ def plot_top_products_by_country(df, selected_country):
     fig.tight_layout()
 
     # Ajouter le titre centré au-dessus du graphique
-    fig.text(0.5, 0.95, 'Classement par pays des 5 produits les plus achetés', fontsize=16, color='#000000', ha='center')
+    fig.text('Classement par pays des 5 produits les plus achetés', fontsize=16, color='#000000', ha='center')
 
     # Afficher le graphique
     st.pyplot(fig)
