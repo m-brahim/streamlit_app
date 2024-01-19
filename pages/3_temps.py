@@ -96,7 +96,7 @@ if selected_country is not None and selected_category is not None and selected_c
 if selection_effectuee:
     st.table(df_filtre[selected_columns_table])
 
-col_txt, col_pie, col_sp3, col_sp4 = st.columns([0.5,1,0.5,1])
+col_txt, col_pie, col_sp3, col_class = st.columns([0.5,1,0.5,1])
 
 with col_txt:
     st.write("*Graphiques* : ")
@@ -117,6 +117,47 @@ with col_pie:
                      title_font=dict(size=20))
     
     st.plotly_chart(fig, use_container_width=True)
+
+
+
+with col_class:
+    # Filtrer les données par pays
+    filtered_data = df[df['Pays/Région'] == selected_country]
+
+    # Grouper par produit et calculer la quantité totale achetée
+    top_products = filtered_data.groupby('Nom du produit')['Quantité'].sum().reset_index()
+
+    # Trier par quantité décroissante et sélectionner les 5 premiers produits
+    top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
+
+    # Créer le graphique en barres
+    fig_top_products = px.bar(top_products, x='Quantité', y='Nom du produit',
+                              labels={'Quantité': 'Quantité achetée', 'Nom du produit': 'Produit'},
+                              orientation='h',
+                              title='Classement des 5 produits les plus achetés',
+                              color_discrete_sequence=['#4678b9'])
+
+    # Inverser l'ordre des barres pour afficher les plus grandes quantités en haut
+    fig_top_products.update_layout(barmode='group', yaxis=dict(categoryorder='total ascending'))
+
+    # Afficher le graphique en barres
+    st.plotly_chart(fig_top_products, use_container_width=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -305,32 +346,9 @@ with col_v2:
 
 
 
-col_h3, col_2, col_3 = st.columns([1, 1, 1])
 
-with col_h3:
-    st.header("3. Classement des 5 produits les plus achetés")
 
-# Filtrer les données par pays
-filtered_data = df[df['Pays/Région'] == selected_country]
 
-# Grouper par produit et calculer la quantité totale achetée
-top_products = filtered_data.groupby('Nom du produit')['Quantité'].sum().reset_index()
-
-# Trier par quantité décroissante et sélectionner les 5 premiers produits
-top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
-
-# Créer le graphique en barres
-fig_top_products = px.bar(top_products, x='Quantité', y='Nom du produit',
-                          labels={'Quantité': 'Quantité achetée', 'Nom du produit': 'Produit'},
-                          orientation='h',
-                          title='Classement des 5 produits les plus achetés',
-                          color_discrete_sequence=['#4678b9'])
-
-# Inverser l'ordre des barres pour afficher les plus grandes quantités en haut
-fig_top_products.update_layout(barmode='group', yaxis=dict(categoryorder='total ascending'))
-
-# Afficher le graphique en barres
-st.plotly_chart(fig_top_products, use_container_width=True)
 
 
 
