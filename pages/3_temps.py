@@ -94,10 +94,16 @@ selection_effectuee = False
 if selected_country is not None and selected_category is not None and selected_client is not None:
     selection_effectuee = True
 
-
 # Condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
     st.table(df_filtre[selected_columns_table])
+
+
+selection_pays = None
+
+if selected_country is not None:
+    selection_pays = True
+
 
 col_txt, col_pie, col_sp3, col_class = st.columns([1,2,0.2,2])
 
@@ -186,13 +192,6 @@ def plot_top_products_by_country(df, selected_country):
 
     # Afficher le graphique
     st.pyplot(fig)
-
-
-selection_pays = None
-
-if selected_country is not None:
-    selection_pays = True
-
 
 with col_class:
     if selection_pays:
