@@ -140,7 +140,8 @@ with col_class:
 
     fig_top_products.update_layout(title='Classement par pays des 5 produits les plus achetés',
                                    xaxis=dict(title='Quantité achetée', tickfont=dict(size=12), title_font=dict(size=12)),
-                                   yaxis=dict(title='Produit', tickfont=dict(size=12), title_font=dict(size=12)),
+                                   yaxis=dict(title='Produit', tickfont=dict(size=12), title_font=dict(size=12),
+                                              categoryorder='total ascending'),  # Ajuster l'ordre des catégories
                                    title_font=dict(size=15),
                                    title_x=0.25,
                                    height=400,
