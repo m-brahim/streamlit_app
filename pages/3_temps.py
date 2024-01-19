@@ -144,7 +144,7 @@ def plot_top_products_by_country(df, selected_country):
     # Trier par quantité croissante et sélectionner les 5 premiers produits
     top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
 
-    rc = {'figure.figsize': (8, 5),  # Ajustez la hauteur à 5 pouces
+    rc = {'figure.figsize': (8, 10),
           'axes.facecolor': '#eff1f5',
           'axes.edgecolor': '#eff1f5',
           'axes.labelcolor': '#000000',
@@ -156,14 +156,13 @@ def plot_top_products_by_country(df, selected_country):
           'grid.color': '#000000',
           'font.size': 12,
           'axes.labelsize': 12,
-          'xtick.labelsize': 10,
-          'ytick.labelsize': 10}
+          'xtick.labelsize': 12,
+          'ytick.labelsize': 12}
 
     plt.rcParams.update(rc)
 
     fig, ax = plt.subplots(figsize=(8, 6))
 
-    # Couleurs pour chaque barre selon le dégradé demandé
     colors = ['#9999ff', '#4d4dff', '#0000e6', '#000099', '#00004d']
 
     # Créer le graphique en barres
