@@ -141,7 +141,7 @@ with col_class:
                                xaxis=dict(title='Quantité achetée', tickfont=dict(size=12), title_font=dict(size=12)),
                                yaxis=dict(title='Produit', tickfont=dict(size=12), title_font=dict(size=12)),
                                title_font=dict(size=15),
-                               title_x=0.5,
+                               title_x=0.25,
                                height=graph_height,
                                width=graph_width)
 
