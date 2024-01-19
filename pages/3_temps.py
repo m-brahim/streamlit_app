@@ -128,8 +128,8 @@ with col_class:
     # Grouper par produit et calculer la quantité totale achetée
     top_products = filtered_data.groupby('Nom du produit')['Quantité'].sum().reset_index()
 
-    # Trier par quantité décroissante et sélectionner les 5 premiers produits
-    top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
+    # Trier par quantité croissante et sélectionner les 5 premiers produits
+    top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
 
     # Créer le graphique en barres
     fig_top_products = px.bar(top_products, x='Quantité', y='Nom du produit',
