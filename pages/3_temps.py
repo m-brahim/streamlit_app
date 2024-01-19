@@ -143,11 +143,11 @@ def plot_top_products_by_country(df, selected_country):
     top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
 
     rc = {'figure.figsize': (8, 6),
-          'axes.facecolor': '#0e1117',
-          'axes.edgecolor': '#0e1117',
+          'axes.facecolor': ' #eff1f5',
+          'axes.edgecolor': ' #eff1f5',
           'axes.labelcolor': 'white',
-          'figure.facecolor': '#0e1117',
-          'patch.edgecolor': '#0e1117',
+          'figure.facecolor': ' #eff1f5',
+          'patch.edgecolor': ' #eff1f5',
           'text.color': 'white',
           'xtick.color': 'white',
           'ytick.color': 'white',
@@ -170,7 +170,7 @@ def plot_top_products_by_country(df, selected_country):
         plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='white')
 
     # Ajuster le style du graphique
-    ax.set_ylabel('Produit', color='white')  # Inverser les étiquettes d'axe
+    ax.set_ylabel('Produit', color='white')
     ax.set_xlabel('Quantité achetée', color='white')
     ax.tick_params(axis='x', colors='white')
     ax.tick_params(axis='y', colors='white')
