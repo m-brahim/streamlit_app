@@ -142,21 +142,20 @@ def plot_top_products_by_country(df, selected_country):
     # Trier par quantité décroissante et sélectionner les 5 premiers produits
     top_products = top_products.sort_values(by='Quantité', ascending=False).head(5)
 
-    # Créer le graphique en barres avec matplotlib
     rc = {'figure.figsize': (8, 6),
-          'axes.facecolor': 'transparent',
-          'axes.edgecolor': '#0e1117',
-          'axes.labelcolor': 'white',
-          'figure.facecolor': 'transparent',
-          'patch.edgecolor': '#0e1117',
-          'text.color': 'white',
-          'xtick.color': 'white',
-          'ytick.color': 'white',
-          'grid.color': 'grey',
-          'font.size': 12,
-          'axes.labelsize': 12,
-          'xtick.labelsize': 10,
-          'ytick.labelsize': 12}
+      'axes.facecolor': None,  # Utilisez None pour un arrière-plan transparent
+      'axes.edgecolor': '#0e1117',
+      'axes.labelcolor': 'white',
+      'figure.facecolor': None,  # Utilisez None pour un arrière-plan transparent
+      'patch.edgecolor': '#0e1117',
+      'text.color': 'white',
+      'xtick.color': 'white',
+      'ytick.color': 'white',
+      'grid.color': 'grey',
+      'font.size': 12,
+      'axes.labelsize': 12,
+      'xtick.labelsize': 10,
+      'ytick.labelsize': 12}
 
     plt.rcParams.update(rc)
 
