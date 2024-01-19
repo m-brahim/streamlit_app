@@ -161,7 +161,7 @@ def plot_top_products_by_country(df, selected_country):
 
     plt.rcParams.update(rc)
 
-    fig, ax = plt.subplots(figsize=(8, 10))
+    fig, ax = plt.subplots(figsize=(8, 6))
 
     colors = ['#9999ff', '#4d4dff', '#0000e6', '#000099', '#00004d']
 
