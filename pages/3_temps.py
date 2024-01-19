@@ -217,10 +217,6 @@ with col_mlt:
     filtered_df = df[df['Mois'].isin(selected_months)]
 
 
-
-
-
-#création de colonnes identiques
 col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1.5, 0.5, 1.25, 0.5, 1.25, 0.5, 1.25, 0.5])
 
 with col_txt:
@@ -246,7 +242,7 @@ diff_orders = int(diff_orders)
 diff_ca = int(diff_ca)
 
 #affiche le nombre de clients selon l'année
-col_clients.metric(label="Nombre de clients", value=num_clients, delta=diff_clients)
+col_clients.metric(label="Clients", value=num_clients, delta=diff_clients)
 
 #affiche le nombre de commandes selon l'année + comparatif avec N-*
 col_orders.metric(label="Nombre de commandes", value=num_orders, delta=diff_orders)
