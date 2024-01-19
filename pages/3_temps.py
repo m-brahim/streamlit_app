@@ -11,6 +11,7 @@ from plotly.subplots import make_subplots
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+import textwrap
 
 
 #config du titre de la page
