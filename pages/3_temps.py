@@ -145,13 +145,13 @@ def plot_top_products_by_country(df, selected_country):
     rc = {'figure.figsize': (8, 6),
           'axes.facecolor': '#eff1f5',
           'axes.edgecolor': '#eff1f5',
-          'axes.labelcolor': 'dark',
+          'axes.labelcolor': '#000000',
           'figure.facecolor': '#eff1f5',
           'patch.edgecolor': '#eff1f5',
-          'text.color': 'dark',
-          'xtick.color': 'dark',
-          'ytick.color': 'dark',
-          'grid.color': 'dark',
+          'text.color': '#000000',
+          'xtick.color': '#000000',
+          'ytick.color': '#000000',
+          'grid.color': '#000000',
           'font.size': 12,
           'axes.labelsize': 12,
           'xtick.labelsize': 10,
@@ -167,21 +167,23 @@ def plot_top_products_by_country(df, selected_country):
     # Ajouter les valeurs à droite des barres
     for bar in bars:
         xval = bar.get_width()
-        plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='dark')
+        plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='#000000')
 
     # Ajuster le style du graphique
-    ax.set_ylabel('Produit', color='dark')
-    ax.set_xlabel('Quantité achetée', color='dark')
-    ax.tick_params(axis='x', colors='dark')
-    ax.tick_params(axis='y', colors='dark')
+    ax.set_ylabel('Produit', color='#000000')
+    ax.set_xlabel('Quantité achetée', color='#000000')
+    ax.tick_params(axis='x', colors='#000000')
+    ax.tick_params(axis='y', colors='#000000')
     ax.set_title('Classement par pays des 5 produits les plus achetés', color='white')
 
+    # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
+    fig.tight_layout()
+
     # Afficher le graphique
-    st.pyplot(fig, bbox_inches='tight')
+    st.pyplot(fig)
 
 with col_class:
     plot_top_products_by_country(df, selected_country)
-
 
 
 
