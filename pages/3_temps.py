@@ -131,7 +131,7 @@ with col_class:
     # Trier par quantité croissante et sélectionner les 5 premiers produits
     top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
 
-    # Créer le graphique en barres avec une largeur de barre personnalisée
+    # Créer le graphique en barres avec une longueur de barre personnalisée
     fig_top_products = px.bar(top_products, x='Quantité', y='Nom du produit',
                               labels={'Quantité': 'Quantité achetée', 'Nom du produit': 'Produit'},
                               orientation='h',
@@ -139,10 +139,14 @@ with col_class:
                               color_discrete_sequence=['#1616a7'],
                               width=graph_width, height=400)  # Définir la largeur du graphique
 
-    # Ajuster la largeur de la barre
+    # Ajuster la longueur de la barre
     fig_top_products.update_traces(marker=dict(line=dict(width=2, color='black')), selector=dict(type='bar'))
     fig_top_products.update_layout(bargap=0.2)  # Ajuster l'espace entre les barres
-    
+
+    # Ajuster la longueur de la barre
+    bar_length = 0.6  # Définir la longueur de la barre (ajustez selon vos besoins)
+    fig_top_products.update_traces(dict(marker=dict(line=dict(width=bar_length, color='black'))), selector=dict(type='bar'))
+
     fig_top_products.update_layout(title='Classement par pays des 5 produits les plus achetés',
                                    xaxis=dict(title='Quantité achetée', tickfont=dict(size=12), title_font=dict(size=12)),
                                    yaxis=dict(title='Produit', tickfont=dict(size=12), title_font=dict(size=12),
