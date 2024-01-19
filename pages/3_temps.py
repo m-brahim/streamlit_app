@@ -48,6 +48,7 @@ with st.sidebar:
     st.header("Paramètres des graphiques")
     graph_width = st.slider("Largeur des graphiques", min_value=300, max_value=1200, value=700)
     graph_height = st.slider("Hauteur des graphiques", min_value=300, max_value=1200, value=500)
+    graph_height_matplotlib = st.slider("Taille du graphique:", min_value=3, max_value=10, value=6, step=1)
 
 
 #PARTIE Vis'
@@ -159,10 +160,10 @@ def plot_top_products_by_country(df, selected_country):
 
     plt.rcParams.update(rc)
 
-    fig, ax = plt.subplots(figsize=(8, 5))  # Ajustez la taille du graphique
+    fig, ax = plt.subplots(figsize=(8, 5))
 
     # Créer le graphique en barres
-    bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color='#1616a7')  # Utiliser barh pour inverser l'axe
+    bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color='#1616a7')
 
     # Ajouter les valeurs à droite des barres
     for bar in bars:
@@ -174,7 +175,7 @@ def plot_top_products_by_country(df, selected_country):
     ax.set_xlabel('Quantité achetée', color='#000000')
     ax.tick_params(axis='x', colors='#000000')
     ax.tick_params(axis='y', colors='#000000')
-    ax.set_title('Classement par pays des 5 produits les plus achetés', color='#000000', pad=20)  # Utilisez le paramètre pad pour ajuster l'espacement du titre
+    ax.set_title('Classement par pays des 5 produits les plus achetés', color='#000000')
 
     # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
     fig.tight_layout()
@@ -182,8 +183,15 @@ def plot_top_products_by_country(df, selected_country):
     # Afficher le graphique
     st.pyplot(fig)
 
+selection_pays = None
+
+if selected_country is not None:
+    selection_pays = True
+
+
 with col_class:
-    plot_top_products_by_country(df, selected_country)
+    if selection_pays:
+        plot_top_products_by_country(df, selected_country, graph_height_matplotlib)
 
 
 
