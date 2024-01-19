@@ -149,7 +149,7 @@ def plot_top_products_by_country(df, selected_country):
           'figure.facecolor': '#eff1f5',
           'patch.edgecolor': '#eff1f5',
           'text.color': 'dark',
-          'xtick.color': 'dark,
+          'xtick.color': 'dark',
           'ytick.color': 'dark',
           'grid.color': 'dark',
           'font.size': 12,
@@ -167,7 +167,7 @@ def plot_top_products_by_country(df, selected_country):
     # Ajouter les valeurs à droite des barres
     for bar in bars:
         xval = bar.get_width()
-        plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='white')
+        plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='dark')
 
     # Ajuster le style du graphique
     ax.set_ylabel('Produit', color='dark')
