@@ -96,7 +96,7 @@ if selected_country is not None and selected_category is not None and selected_c
 if selection_effectuee:
     st.table(df_filtre[selected_columns_table])
 
-col_txt, col_pie, col_sp3, col_class = st.columns([0.5,1,0.5,1])
+col_txt, col_pie, col_sp3, col_class = st.columns([0.5,2,0.5,2])
 
 with col_txt:
     st.write("*Graphiques* : ")
@@ -190,7 +190,7 @@ with col_mlt:
 
 
 #création de colonnes identiques
-col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1, 0.5, 1, 1, 1, 1, 1, 1])
+col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1.5, 0.5, 1, 1, 1, 1, 1, 1])
 
 with col_txt:
     st.write("*Chiffres clés N vs N-* * :")
@@ -269,9 +269,9 @@ with col_v1:
 
     # Mise en forme
     fig_clients_evolution.update_layout(title=f"Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
-                                       xaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
-                                       yaxis=dict(title='Nombre de clients', tickfont=dict(size=15), title_font=dict(size=18)),
-                                       title_font=dict(size=20),
+                                       xaxis=dict(title='Mois', tickfont=dict(size=12), title_font=dict(size=12)),
+                                       yaxis=dict(title='Nombre de clients', tickfont=dict(size=12), title_font=dict(size=12)),
+                                       title_font=dict(size=15),
                                        title_x = 0.2,
                                        height=graph_height,
                                        width=graph_width)
@@ -324,9 +324,9 @@ with col_v2:
 
     # Mise en forme
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-                                       xaxis=dict(title='Nombre de commandes', tickfont=dict(size=15), title_font=dict(size=18)),
-                                       yaxis=dict(title='Mois', tickfont=dict(size=15), title_font=dict(size=18)),
-                                       title_font=dict(size=20),
+                                       xaxis=dict(title='Nombre de commandes', tickfont=dict(size=12), title_font=dict(size=12)),
+                                       yaxis=dict(title='Mois', tickfont=dict(size=12), title_font=dict(size=12)),
+                                       title_font=dict(size=15),
                                        title_x = 0.2,
                                        height=graph_height,
                                        width=graph_width)
