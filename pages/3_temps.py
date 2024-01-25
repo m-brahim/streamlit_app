@@ -381,7 +381,7 @@ with col_v2:
         name=f"{selected_comparison_year}",
         text=monthly_orders_comparison_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#4678b9')
+        marker=dict(color='#4678b9', line=dict(width=2, color='black')),  # Ajustez la taille des barres ici
     ))
 
     # Affiche l'évolution du nombre de commandes pour N
@@ -391,7 +391,7 @@ with col_v2:
         name=f"{selected_year}",
         text=monthly_orders_selected_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#44566f')
+        marker=dict(color='#44566f', line=dict(width=2, color='black')),  # Ajustez la taille des barres ici
     ))
 
     target_value = 150  # Remplacez cela par la valeur cible souhaitée
