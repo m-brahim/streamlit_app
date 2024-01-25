@@ -374,6 +374,9 @@ with col_v2:
     monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=sorted_months, ordered=True)
     monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values('Mois')
     
+    # Ajustez la taille des barres ici
+    bar_width = 0.6
+
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
         x=monthly_orders_comparison_year['Mois'],
@@ -381,7 +384,8 @@ with col_v2:
         name=f"{selected_comparison_year}",
         text=monthly_orders_comparison_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#4678b9', line=dict(width=2, color='black')),  # Ajustez la taille des barres ici
+        marker=dict(color='#4678b9', line=dict(width=2, color='black')),
+        width=bar_width,
     ))
 
     # Affiche l'évolution du nombre de commandes pour N
@@ -391,7 +395,8 @@ with col_v2:
         name=f"{selected_year}",
         text=monthly_orders_selected_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#44566f', line=dict(width=2, color='black')),  # Ajustez la taille des barres ici
+        marker=dict(color='#44566f', line=dict(width=2, color='black')),
+        width=bar_width,
     ))
 
     target_value = 150  # Remplacez cela par la valeur cible souhaitée
@@ -417,7 +422,6 @@ with col_v2:
 
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
-
 
 
 
