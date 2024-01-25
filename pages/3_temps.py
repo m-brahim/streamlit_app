@@ -34,6 +34,10 @@ df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 df['Année'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.year
 df['Mois'] = pd.to_datetime(df['Date de commande'], format='%d/%m/%Y').dt.month_name()
 
+df = df.sort_values(by=['Année', 'Mois'])
+
+df = df.reset_index(drop=True)
+
 # Tri dans l'ordre des années
 sorted_years = sorted(df['Année'].unique())
 sorted_years_2 = sorted(df['Année'].unique())
@@ -352,10 +356,6 @@ with col_v2:
 
     # Agréger le nombre de commandes par mois pour l'année de comparaison
     monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
-
-    # Trier les mois en fonction du nombre de commandes décroissant pour les deux années
-    monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=True)
-    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=True)
 
     target_value = 300
     fig_orders_evolution.add_trace(go.Scatter(
