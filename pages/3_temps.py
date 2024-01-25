@@ -365,14 +365,12 @@ with col_v2:
             x0=target_value,
             x1=target_value,
             y0=monthly_orders_selected_year['Mois'].min(),
-            y1=monthly_orders_selected_year['Mois'].max(),
-            line=dict(color="red", width=5, dash="dash"),
+            y1=monthly_orders_selected_year['Mois'].max()+1,
+            line=dict(color="red", width=2, dash="dash"),
             xref='x'
         )
     )
 
-    
-    
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
         x=monthly_orders_comparison_year['ID commande'],
