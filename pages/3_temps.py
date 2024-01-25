@@ -181,15 +181,8 @@ def plot_top_products_by_country(df, selected_country):
     # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
     fig.tight_layout()
 
-    target_value = 100  # Vous pouvez ajuster cette valeur en fonction de votre cible
-    fig.add_trace(go.Scatter(x=monthly_orders_comparison_year['Mois'],
-                             y=[target_value] * len(monthly_orders_comparison_year['Mois']),
-                             mode='lines',
-                             name="Target",
-                             line=dict(color='red', dash='dash')))
-
-    # Afficher le graphique
-    st.plotly_chart(fig)
+    # Ajouter le titre centré entre les deux sous-graphiques
+    fig.suptitle('Classement par pays des 5 produits les plus achetés', y=1.05, fontsize=15)
 
     # Afficher le graphique
     st.pyplot(fig)
@@ -381,10 +374,6 @@ with col_v2:
                                        title_x = 0.2,
                                        height=graph_height,
                                        width=graph_width)
-
-    target_value_orders = 500
-    fig_orders_evolution.add_hline(y=target_value_orders, line_dash="dash", line_color="green", name="Target")
-
     
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
