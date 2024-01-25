@@ -363,15 +363,15 @@ with col_v2:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders_selected_year = filtered_df[filtered_df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
-    # Tri des mois dans l'ordre
-    monthly_orders_selected_year['Mois'] = pd.Categorical(monthly_orders_selected_year['Mois'], categories=sorted_months, ordered=True)
+    # Tri des mois dans l'ordre décroissant
+    monthly_orders_selected_year['Mois'] = pd.Categorical(monthly_orders_selected_year['Mois'], categories=sorted_months[::-1], ordered=True)
     monthly_orders_selected_year = monthly_orders_selected_year.sort_values('Mois')
 
     # Agréger le nombre de commandes par mois pour l'année de comparaison
     monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
 
-    # Tri des mois dans l'ordre
-    monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=sorted_months, ordered=True)
+    # Tri des mois dans l'ordre décroissant
+    monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=sorted_months[::-1], ordered=True)
     monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values('Mois')
 
     target_value = 300
