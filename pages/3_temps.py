@@ -134,6 +134,8 @@ with col_pie:
 
 
 def plot_top_products_by_country(df, selected_country):
+    target_value = 30
+    
     # Filtrer les données par pays
     filtered_data = df[df['Pays/Région'] == selected_country]
 
@@ -171,6 +173,8 @@ def plot_top_products_by_country(df, selected_country):
     for bar in bars:
         xval = bar.get_width()
         plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='#000000')
+
+    ax.axvline(target_value, color='red', linestyle='--', linewidth=2, label='Target')
     
     # Ajuster le style du graphique
     ax.set_ylabel('Produit', color='#000000')
