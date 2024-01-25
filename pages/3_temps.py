@@ -366,7 +366,7 @@ with col_v2:
             x1=target_value,
             y0=monthly_orders_selected_year['Mois'].min(),
             y1=monthly_orders_selected_year['Mois'].max(),
-            line=dict(color="red", width=2, dash="dash"),
+            line=dict(color="red", width=5, dash="dash"),
             xref='x'
         )
     )
