@@ -375,9 +375,7 @@ with col_v2:
     monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values('Mois')
     
     # Ajustez la taille des barres ici
-    bar_width = 0.6
-    # Ajustez l'espacement des barres ici
-    bargap = 0.2
+    bar_width = 0.3
 
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
@@ -420,8 +418,7 @@ with col_v2:
                                        title_font=dict(size=15),
                                        title_x=0.2,
                                        height=graph_height,
-                                       width=graph_width,
-                                       bargroupgap=bargap)
+                                       width=graph_width)
 
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
