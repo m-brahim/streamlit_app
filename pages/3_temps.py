@@ -376,10 +376,9 @@ with col_v2:
     
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
-        y=monthly_orders_comparison_year['Mois'],
-        x=monthly_orders_comparison_year['ID commande'],
+        x=monthly_orders_comparison_year['Mois'],
+        y=monthly_orders_comparison_year['ID commande'],
         name=f"{selected_comparison_year}",
-        orientation='h',
         text=monthly_orders_comparison_year['ID commande'],
         textposition='outside',
         marker=dict(color='#4678b9')
@@ -387,34 +386,30 @@ with col_v2:
 
     # Affiche l'évolution du nombre de commandes pour N
     fig_orders_evolution.add_trace(go.Bar(
-        y=monthly_orders_selected_year['Mois'],
-        x=monthly_orders_selected_year['ID commande'],
+        x=monthly_orders_selected_year['Mois'],
+        y=monthly_orders_selected_year['ID commande'],
         name=f"{selected_year}",
-        orientation='h',
         text=monthly_orders_selected_year['ID commande'],
         textposition='outside',
         marker=dict(color='#44566f')
     ))
 
-    # Inversez l'ordre des traces dans la légende
-    fig_orders_evolution.update_layout(legend=dict(traceorder='reversed'))
-
     target_value = 150  # Remplacez cela par la valeur cible souhaitée
     fig_orders_evolution.add_shape(
         go.layout.Shape(
             type="line",
-            x0=target_value,
-            x1=target_value,
-            y0=monthly_orders_comparison_year['Mois'].min(),
-            y1=monthly_orders_comparison_year['Mois'].max(),
+            x0=monthly_orders_comparison_year['Mois'].min(),
+            x1=monthly_orders_comparison_year['Mois'].max(),
+            y0=target_value,
+            y1=target_value,
             line=dict(color="red", width=2, dash="dash"),
         )
     )
 
     # Mise à jour de la mise en forme
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-                                       xaxis=dict(title='Nombre de commandes', tickfont=dict(size=12), title_font=dict(size=12)),
-                                       yaxis=dict(title='Mois', tickfont=dict(size=12), title_font=dict(size=12)),
+                                       xaxis=dict(title='Mois', tickfont=dict(size=12), title_font=dict(size=12)),
+                                       yaxis=dict(title='Nombre de commandes', tickfont=dict(size=12), title_font=dict(size=12)),
                                        title_font=dict(size=15),
                                        title_x=0.2,
                                        height=graph_height,
