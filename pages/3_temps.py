@@ -296,6 +296,18 @@ with col_v1:
     monthly_clients_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].drop_duplicates(
         'ID client').groupby('Mois')['ID client'].count().reset_index()
 
+
+    target_value = 80
+    fig_clients_evolution.add_shape(
+        go.layout.Shape(
+            type="line",
+            x0=target_value,
+            x1=target_value,
+            y0=monthly_clients_selected_year['Mois'].min(),
+            y1=monthly_clients_selected_year['Mois'].max(),
+            line=dict(color="red", width=2, dash="dash"),))
+    
+    
     # Affiche l'évolution du nombre de clients pour N
     fig_clients_evolution = go.Figure()
     fig_clients_evolution.add_trace(go.Scatter(
@@ -305,17 +317,6 @@ with col_v1:
         name=f"{selected_year}",
         line=dict(color='#44566f')
     ))
-
-
-    target_value = 80
-    fig_clients_evolution.add_trace(go.Scatter(
-        x=[target_value] * len(monthly_clients_comparison_year['Mois']),
-        y=monthly_clients_comparison_year['ID Client'],
-        mode='lines',
-        line=dict(color='red'),
-        name='Seuil'
-        ))
-
 
     # Affiche l'évolution du nombre de clients pour N-*
     fig_clients_evolution.add_trace(go.Scatter(
