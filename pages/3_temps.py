@@ -351,7 +351,7 @@ with col_v2:
         y=monthly_orders_comparison_year['Mois'],
         mode='lines',
         line=dict(color='red'),
-        name='Target'
+        name='Seuil'
         ))
 
     
