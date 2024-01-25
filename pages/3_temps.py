@@ -362,8 +362,8 @@ with col_v2:
     fig_orders_evolution.add_shape(
         go.layout.Shape(
             type="line",
-            x0=monthly_orders_selected_year['Mois'].min(),
-            x1=monthly_orders_selected_year['Mois'].max(),
+            x0=monthly_orders_selected_year['ID Client'].min(),
+            x1=monthly_orders_selected_year['ID Client'].max(),
             y0=target_value,
             y1=target_value,
             line=dict(color="red", width=2, dash="dash"),
