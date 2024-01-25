@@ -315,6 +315,18 @@ with col_v1:
         line=dict(color='#4678b9')
     ))
 
+    target_value = 80
+    fig_clients_evolution.add_shape(
+        go.layout.Shape(
+            type="line",
+            x0=monthly_clients_selected_year['Mois'].min(),
+            x1=monthly_clients_selected_year['Mois'].max(),
+            y0=target_value,
+            y1=target_value,
+            line=dict(color="red", width=2, dash="dash"),
+        )
+    )
+    
     # Mise en forme
     fig_clients_evolution.update_layout(title=f"Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
                                        xaxis=dict(title='Mois', tickfont=dict(size=12), title_font=dict(size=12)),
