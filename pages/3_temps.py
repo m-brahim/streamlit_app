@@ -362,40 +362,64 @@ fig_orders_evolution = go.Figure()
 with col_v2:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders_selected_year = filtered_df[filtered_df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
-    
-    # Tri des mois dans l'ordre croissant
-    monthly_orders_selected_year['Mois'] = pd.Categorical(monthly_orders_selected_year['Mois'], categories=sorted_months, ordered=True)
+
+    # Tri des mois dans l'ordre décroissant
+    monthly_orders_selected_year['Mois'] = pd.Categorical(monthly_orders_selected_year['Mois'], categories=sorted_months[::-1], ordered=True)
     monthly_orders_selected_year = monthly_orders_selected_year.sort_values('Mois')
-    
+
     # Agréger le nombre de commandes par mois pour l'année de comparaison
     monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
-    
-    # Tri des mois dans l'ordre croissant
-    monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=sorted_months, ordered=True)
+
+    # Tri des mois dans l'ordre décroissant
+    monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=sorted_months[::-1], ordered=True)
     monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values('Mois')
     
-    # Ajouter une target pour le graphique en barres
+    # Affiche l'évolution du nombre de commandes pour N-*
+    fig_orders_evolution.add_trace(go.Bar(
+        x=monthly_orders_comparison_year['ID commande'],
+        y=monthly_orders_comparison_year['Mois'],
+        name=f"{selected_comparison_year}",
+        orientation='h',
+        text=monthly_orders_comparison_year['ID commande'],
+        textposition='outside',
+        marker=dict(color='#4678b9')
+    ))
+
+    # Affiche l'évolution du nombre de commandes pour N
+    fig_orders_evolution.add_trace(go.Bar(
+        x=monthly_orders_selected_year['ID commande'],
+        y=monthly_orders_selected_year['Mois'],
+        name=f"{selected_year}",
+        orientation='h',
+        text=monthly_orders_selected_year['ID commande'],
+        textposition='outside',
+        marker=dict(color='#44566f')
+    ))
+
+    # Inversez l'ordre des traces dans la légende
+    fig_orders_evolution.update_layout(legend=dict(traceorder='reversed'))
+
     target_value = 150  # Remplacez cela par la valeur cible souhaitée
     fig_orders_evolution.add_shape(
-        go.layout.Shape(
-            type="line",
-            x0=target_value,
-            x1=target_value,
-            y0=monthly_orders_comparison_year['Mois'].min(),
-            y1=monthly_orders_comparison_year['Mois'].max(),
-            line=dict(color="red", width=2, dash="dash"),
-        )
+    go.layout.Shape(
+        type="line",
+        x0=target_value,
+        x1=target_value,
+        y0=monthly_orders_comparison_year['Mois'].min(),
+        y1=monthly_orders_comparison_year['Mois'].max(),
+        line=dict(color="red", width=2, dash="dash"),
     )
-    
+    )
+
     # Mise à jour de la mise en forme
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-                                       yaxis=dict(title='Nombre de commandes', tickfont=dict(size=12), title_font=dict(size=12)),
-                                       xaxis=dict(title='Mois', tickfont=dict(size=12), title_font=dict(size=12)),
-                                       title_font=dict(size=15),
-                                       title_x=0.2,
-                                       height=graph_height,
-                                       width=graph_width)
-    
+                                   xaxis=dict(title='Nombre de commandes', tickfont=dict(size=12), title_font=dict(size=12)),
+                                   yaxis=dict(title='Mois', tickfont=dict(size=12), title_font=dict(size=12)),
+                                   title_font=dict(size=15),
+                                   title_x=0.2,
+                                   height=graph_height,
+                                   width=graph_width)
+
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
