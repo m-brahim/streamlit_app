@@ -324,7 +324,7 @@ with col_v1:
             y0=target_value,
             y1=target_value,
             line=dict(color="red", width=2, dash="dash"),
-            name="Seuil"
+            name='Seuil'
         )
     )
     
