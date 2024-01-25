@@ -396,9 +396,6 @@ with col_v2:
         marker=dict(color='#44566f')
     ))
 
-    # Inversez l'ordre des traces dans la légende
-    fig_orders_evolution.update_layout(legend=dict(traceorder='reversed'))
-
     target_value = 150  # Remplacez cela par la valeur cible souhaitée
     fig_orders_evolution.add_shape(
     go.layout.Shape(
