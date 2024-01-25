@@ -418,7 +418,8 @@ with col_v2:
                                        title_font=dict(size=15),
                                        title_x=0.2,
                                        height=graph_height,
-                                       width=graph_width)
+                                       width=graph_width,
+                                       bargap=0.2)
 
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
