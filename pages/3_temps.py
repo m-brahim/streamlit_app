@@ -373,16 +373,6 @@ with col_v2:
     # Tri des mois dans l'ordre décroissant
     monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=sorted_months[::-1], ordered=True)
     monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values('Mois')
-
-    target_value = 300
-    fig_orders_evolution.add_trace(go.Scatter(
-        x=[target_value] * len(monthly_orders_comparison_year['Mois']),
-        y=monthly_orders_comparison_year['Mois'],
-        mode='lines',
-        line=dict(color='red'),
-        name='Seuil'
-        ))
-
     
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
@@ -409,15 +399,27 @@ with col_v2:
     # Inversez l'ordre des traces dans la légende
     fig_orders_evolution.update_layout(legend=dict(traceorder='reversed'))
 
-    # Mise en forme
+    target_value = 150  # Remplacez cela par la valeur cible souhaitée
+    fig_orders_evolution.add_shape(
+    go.layout.Shape(
+        type="line",
+        x0=target_value,
+        x1=target_value,
+        y0=monthly_orders_comparison_year['Mois'].min(),
+        y1=monthly_orders_comparison_year['Mois'].max(),
+        line=dict(color="red", width=2, dash="dash"),
+    )
+    )
+
+    # Mise à jour de la mise en forme
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-                                       xaxis=dict(title='Nombre de commandes', tickfont=dict(size=12), title_font=dict(size=12)),
-                                       yaxis=dict(title='Mois', tickfont=dict(size=12), title_font=dict(size=12)),
-                                       title_font=dict(size=15),
-                                       title_x = 0.2,
-                                       height=graph_height,
-                                       width=graph_width)
-    
+                                   xaxis=dict(title='Nombre de commandes', tickfont=dict(size=12), title_font=dict(size=12)),
+                                   yaxis=dict(title='Mois', tickfont=dict(size=12), title_font=dict(size=12)),
+                                   title_font=dict(size=15),
+                                   title_x=0.2,
+                                   height=graph_height,
+                                   width=graph_width)
+
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
