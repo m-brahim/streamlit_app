@@ -415,13 +415,13 @@ with col_v2:
 
     # Mise à jour de la mise en forme
     fig_orders_evolution.update_layout(barmode='group', title=f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}",
-                                       xaxis=dict(title='Mois', tickfont=dict(size=12), title_font=dict(size=12)),
-                                       yaxis=dict(title='Nombre de commandes', tickfont=dict(size=12), title_font=dict(size=12)),
+                                       xaxis=dict(title='Nombre de commandes', tickfont=dict(size=12), title_font=dict(size=12)),
+                                       yaxis=dict(title='Mois', tickfont=dict(size=12), title_font=dict(size=12)),
                                        title_font=dict(size=15),
                                        title_x=0.2,
                                        height=graph_height,
-                                       width=500,
-                                       bargap=bargap)  # Ajuster l'espacement des barres ici
+                                       width=graph_width,
+                                       bargroupgap=bargap)
 
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
