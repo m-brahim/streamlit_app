@@ -341,12 +341,12 @@ with col_v2:
     monthly_orders_selected_year = monthly_orders_selected_year.sort_values(by='ID commande', ascending=True)
     monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=True)
 
-    target_value = 100  # Remplacez cela par la valeur cible souhaitée
+    target_value = 300
     fig_orders_evolution.add_trace(go.Scatter(
         x=[target_value] * len(monthly_orders_comparison_year['Mois']),
         y=monthly_orders_comparison_year['Mois'],
         mode='lines',
-        line=dict(color='red', dash='dash'),
+        line=dict(color='red'),
         name='Target'
         ))
 
