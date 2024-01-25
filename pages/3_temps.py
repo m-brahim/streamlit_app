@@ -184,6 +184,9 @@ def plot_top_products_by_country(df, selected_country):
     # Ajouter le titre centré entre les deux sous-graphiques
     fig.suptitle('Classement par pays des 5 produits les plus achetés', y=1.05, fontsize=15)
 
+    target_value = 100
+    fig.add_hline(y=target_value, line_dash="dash", line_color="red", name="Target")
+
     # Afficher le graphique
     st.pyplot(fig)
 
