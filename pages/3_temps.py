@@ -367,8 +367,10 @@ with col_v2:
             y0=monthly_orders_selected_year['Mois'].min(),
             y1=monthly_orders_selected_year['Mois'].max(),
             line=dict(color="red", width=2, dash="dash"),
+            xref='x'
         )
     )
+
     
     
     # Affiche l'évolution du nombre de commandes pour N-*
