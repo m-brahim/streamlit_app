@@ -294,11 +294,20 @@ with col_txt:
 with col_v1:
     # Agréger le nombre de clients par mois pour l'année sélectionnée
     monthly_clients_selected_year = filtered_df[filtered_df['Année'] == selected_year].drop_duplicates('ID client').groupby(
-        'Mois')['ID client'].count().reset_index()
+    'Mois')['ID client'].count().reset_index()
+
+    # Tri des mois dans l'ordre
+    sorted_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    monthly_clients_selected_year['Mois'] = pd.Categorical(monthly_clients_selected_year['Mois'], categories=sorted_months, ordered=True)
+    monthly_clients_selected_year = monthly_clients_selected_year.sort_values('Mois')
 
     # Agréger le nombre de clients par mois pour l'année de comparaison
     monthly_clients_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].drop_duplicates(
-        'ID client').groupby('Mois')['ID client'].count().reset_index()
+    'ID client').groupby('Mois')['ID client'].count().reset_index()
+
+    # Tri des mois dans l'ordre
+    monthly_clients_comparison_year['Mois'] = pd.Categorical(monthly_clients_comparison_year['Mois'], categories=sorted_months, ordered=True)
+    monthly_clients_comparison_year = monthly_clients_comparison_year.sort_values('Mois')
 
     # Affiche l'évolution du nombre de clients pour N
     fig_clients_evolution = go.Figure()
@@ -354,8 +363,16 @@ with col_v2:
     # Agréger le nombre de commandes par mois pour l'année sélectionnée
     monthly_orders_selected_year = filtered_df[filtered_df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
+    # Tri des mois dans l'ordre
+    monthly_orders_selected_year['Mois'] = pd.Categorical(monthly_orders_selected_year['Mois'], categories=sorted_months, ordered=True)
+    monthly_orders_selected_year = monthly_orders_selected_year.sort_values('Mois')
+
     # Agréger le nombre de commandes par mois pour l'année de comparaison
     monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
+
+    # Tri des mois dans l'ordre
+    monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=sorted_months, ordered=True)
+    monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values('Mois')
 
     target_value = 300
     fig_orders_evolution.add_trace(go.Scatter(
