@@ -359,17 +359,12 @@ with col_v2:
     monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values(by='ID commande', ascending=True)
 
     target_value = 300
-    fig_orders_evolution.add_shape(
-        go.layout.Shape(
-            type="line",
-            x0=target_value,
-            x1=target_value,
-            y0=monthly_orders_selected_year['ID Client'].min(),
-            y1=monthly_orders_selected_year['ID Client'].max(),
-            line=dict(color="red", width=2, dash="dash"),
-            xref='x'
-        )
-    )
+    fig_orders_evolution.add_trace(go.Scatter(
+        x=[target_value, target_value],
+        y=[monthly_orders_selected_year['Mois'].min(), monthly_orders_selected_year['Mois'].max() + 1],
+        mode='lines',
+        line=dict(color="red", width=2, dash="dash"),
+    ))
 
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
