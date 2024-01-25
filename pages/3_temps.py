@@ -376,8 +376,8 @@ with col_v2:
     
     # Affiche l'évolution du nombre de commandes pour N-*
     fig_orders_evolution.add_trace(go.Bar(
-        y=monthly_orders_comparison_year['Mois'],
         x=monthly_orders_comparison_year['ID commande'],
+        y=monthly_orders_comparison_year['Mois'],
         name=f"{selected_comparison_year}",
         orientation='h',
         text=monthly_orders_comparison_year['ID commande'],
@@ -387,8 +387,8 @@ with col_v2:
 
     # Affiche l'évolution du nombre de commandes pour N
     fig_orders_evolution.add_trace(go.Bar(
-        y=monthly_orders_selected_year['Mois'],
         x=monthly_orders_selected_year['ID commande'],
+        y=monthly_orders_selected_year['Mois'],
         name=f"{selected_year}",
         orientation='h',
         text=monthly_orders_selected_year['ID commande'],
