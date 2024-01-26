@@ -398,7 +398,7 @@ with col_v2:
     
     ax.bar(bar_positions_selected_year, monthly_orders_selected_year['ID commande'], width=bar_width, label=f"{selected_year}", color='#44566f')
     ax.bar(bar_positions_comparison_year, monthly_orders_comparison_year['ID commande'], width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
-    ax.axhline(y=target_value, color='red', linestyle='--', label='Target')
+    ax.axhline(y=target_value, color='red', linestyle='--', label='Seuil')
     
     # Ajuster la mise en page
     ax.set_title("Évolution du nombre de commandes")
