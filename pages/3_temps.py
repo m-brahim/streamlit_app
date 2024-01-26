@@ -408,11 +408,11 @@ with col_v2:
     
     # Ajouter des étiquettes de valeurs au-dessus des barres
     for bar, value_selected, value_comparison in zip(bars_selected_year, monthly_orders_selected_year['ID commande'], monthly_orders_comparison_year['ID commande']):
-    xval_selected = bar.get_x() + bar_width / 2
-    xval_comparison = bar.get_x() + bar_width / 2 - 0.45
+        xval_selected = bar.get_x() + bar_width / 2
+        xval_comparison = bar.get_x() + bar_width / 2 - 0.45
     
-    ax.text(xval_selected, value_selected + 0.2, str(value_selected), ha='center', va='bottom')
-    ax.text(xval_comparison, value_comparison + 0.2, str(value_comparison), ha='center', va='bottom')
+        ax.text(xval_selected, value_selected + 0.2, str(value_selected), ha='center', va='bottom')
+        ax.text(xval_comparison, value_comparison + 0.2, str(value_comparison), ha='center', va='bottom')
 
     
     # Ajuster la mise en page
