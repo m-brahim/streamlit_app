@@ -133,10 +133,6 @@ with col_pie:
     if selection_effectuee:
         st.plotly_chart(fig, use_container_width=True)
 
-
-
-
-
 def plot_top_products_by_country(df, selected_country):
     target_value = 30
     
@@ -199,16 +195,6 @@ with col_class:
     if selection_effectuee:
         plot_top_products_by_country(df, selected_country)
 
-
-
-
-
-
-
-
-
-
-
 #2) analyse temporelle
 
 col_h2, col_2, col_3 = st.columns([1, 1, 1])
@@ -227,19 +213,10 @@ with cold_dd2:
         sorted_years_2.remove(selected_year)
         selected_comparison_year = st.selectbox("Sélectionnez N-*", [year for year in sorted_years_2 if year < selected_year])
 
-
-
-
-
-
 with col_mlt:
     available_months = sorted(df['Mois'].unique())
     selected_months = st.multiselect("", available_months, default=available_months)
     filtered_df = df[df['Mois'].isin(selected_months)]
-
-
-
-
 
 #création de colonnes identiques
 col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1.5, 0.5, 1.25, 0.5, 1.25, 0.5, 1.25, 0.5])
@@ -273,17 +250,6 @@ col_ca.metric(label=f"Chiffre d'affaires", value=f"{int(ca_by_year)} €", delta
 
 style_metric_cards()
 
-
-
-
-
-
-
-
-
-
-
-    
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
 col_txt, col_v1, col_space, col_v2 = st.columns([1,2,0.5,2])
@@ -431,50 +397,7 @@ with col_v2:
 
 
 
-monthly_orders_selected_year = filtered_df[filtered_df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
-# Tri des mois dans l'ordre croissant
-monthly_orders_selected_year['Mois'] = pd.Categorical(monthly_orders_selected_year['Mois'], categories=sorted_months, ordered=True)
-monthly_orders_selected_year = monthly_orders_selected_year.sort_values('Mois')
-
-# Agréger le nombre de commandes par mois pour l'année de comparaison
-monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
-
-# Tri des mois dans l'ordre croissant
-monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=sorted_months, ordered=True)
-monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values('Mois')
-
-# Créer le graphique à barres avec Matplotlib
-bar_width = 0.3
-fig, ax = plt.subplots(figsize=(10, 6))
-
-bars1 = ax.bar(monthly_orders_comparison_year['Mois'], monthly_orders_comparison_year['ID commande'], width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
-bars2 = ax.bar(monthly_orders_selected_year['Mois'], monthly_orders_selected_year['ID commande'], width=bar_width, label=f"{selected_year}", color='#44566f')
-
-# Ligne de la valeur cible
-target_value = 150
-ax.axhline(target_value, color='red', linestyle='--', linewidth=2, label='Valeur cible')
-
-# Étiquettes et légendes
-ax.set_xlabel('Mois')
-ax.set_ylabel('Nombre de commandes')
-ax.set_title(f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}")
-ax.legend()
-
-# Affichage du texte au-dessus des barres
-def autolabel(bars):
-    for bar in bars:
-        height = bar.get_height()
-        ax.annotate('{}'.format(height),
-                    xy=(bar.get_x() + bar.get_width() / 2, height),
-                    xytext=(0, 3),  # 3 points de décalage vers le haut
-                    textcoords="offset points",
-                    ha='center', va='bottom')
-
-autolabel(bars1)
-autolabel(bars2)
-
-plt.show()
 
 
 
