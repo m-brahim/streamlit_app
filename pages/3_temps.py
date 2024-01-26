@@ -426,52 +426,30 @@ with col_v2:
 
 
 
-    # Données pour l'année sélectionnée
-    x_selected_year = monthly_orders_selected_year['Mois']
-    y_selected_year = monthly_orders_selected_year['ID commande']
 
-    # Données pour l'année de comparaison
-    x_comparison_year = monthly_orders_comparison_year['Mois']
-    y_comparison_year = monthly_orders_comparison_year['ID commande']
 
-    # Création du graphique à barres
-    bar_width = 0.35
-    fig, ax = plt.subplots(figsize=(10, 6))
-    
-    bars1 = ax.bar(x_selected_year, y_selected_year, width=bar_width, label=selected_year, color='#44566f')
-    bars2 = ax.bar(x_comparison_year, y_comparison_year, width=bar_width, label=selected_comparison_year, color='#4678b9')
 
-    # Ligne de la valeur cible
-    target_value = 150
-    ax.axhline(target_value, color='red', linestyle='--', linewidth=2, label='Valeur cible')
 
-    # Étiquettes et légendes
-    ax.set_xlabel('Mois')
-    ax.set_ylabel('Nombre de commandes')
-    ax.set_title(f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}")
-    ax.legend()
 
-    # Affichage du texte au-dessus des barres
-    def autolabel(bars):
-        for bar in bars:
-            height = bar.get_height()
-            ax.annotate('{}'.format(height),
-            xy=(bar.get_x() + bar.get_width() / 2, height),
-            xytext=(0, 3),  # 3 points de décalage vers le haut
-            textcoords="offset points",
-            ha='center', va='bottom')
+monthly_orders_selected_year = filtered_df[filtered_df['Année'] == selected_year].groupby('Mois')['ID commande'].count().reset_index()
 
-    autolabel(bars1)
-    autolabel(bars2)
+# Tri des mois dans l'ordre croissant
+monthly_orders_selected_year['Mois'] = pd.Categorical(monthly_orders_selected_year['Mois'], categories=sorted_months, ordered=True)
+monthly_orders_selected_year = monthly_orders_selected_year.sort_values('Mois')
 
-    plt.show()
+# Agréger le nombre de commandes par mois pour l'année de comparaison
+monthly_orders_comparison_year = filtered_df[filtered_df['Année'] == selected_comparison_year].groupby('Mois')['ID commande'].count().reset_index()
 
-# Création du graphique à barres
-bar_width = 0.35
+# Tri des mois dans l'ordre croissant
+monthly_orders_comparison_year['Mois'] = pd.Categorical(monthly_orders_comparison_year['Mois'], categories=sorted_months, ordered=True)
+monthly_orders_comparison_year = monthly_orders_comparison_year.sort_values('Mois')
+
+# Créer le graphique à barres avec Matplotlib
+bar_width = 0.3
 fig, ax = plt.subplots(figsize=(10, 6))
 
-bars1 = ax.bar(x_selected_year, y_selected_year, width=bar_width, label=f"{selected_year}", color='#44566f')
-bars2 = ax.bar(x_comparison_year, y_comparison_year, width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
+bars1 = ax.bar(monthly_orders_comparison_year['Mois'], monthly_orders_comparison_year['ID commande'], width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
+bars2 = ax.bar(monthly_orders_selected_year['Mois'], monthly_orders_selected_year['ID commande'], width=bar_width, label=f"{selected_year}", color='#44566f')
 
 # Ligne de la valeur cible
 target_value = 150
@@ -497,6 +475,48 @@ autolabel(bars1)
 autolabel(bars2)
 
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #col_1, col_csv, col_2 = st.columns([1,2,1])
