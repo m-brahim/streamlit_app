@@ -386,9 +386,6 @@ with col_v2:
                                        height=graph_height,
                                        width=graph_width)
 
-    # Affichage
-    st.plotly_chart(fig_orders_evolution, use_container_width=True)
-
     # Créer une figure et un sous-plot
     fig, ax = plt.subplots(figsize=(12, 6))
     
@@ -412,7 +409,6 @@ with col_v2:
     
     # Afficher le graphique
     st.pyplot(fig)
-
 
 
 
