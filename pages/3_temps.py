@@ -424,45 +424,47 @@ with col_v2:
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
 
-# Données pour l'année sélectionnée
-x_selected_year = monthly_orders_selected_year['Mois']
-y_selected_year = monthly_orders_selected_year['ID commande']
 
-# Données pour l'année de comparaison
-x_comparison_year = monthly_orders_comparison_year['Mois']
-y_comparison_year = monthly_orders_comparison_year['ID commande']
 
-# Création du graphique à barres
-bar_width = 0.35
-fig, ax = plt.subplots(figsize=(10, 6))
+    # Données pour l'année sélectionnée
+    x_selected_year = monthly_orders_selected_year['Mois']
+    y_selected_year = monthly_orders_selected_year['ID commande']
 
-bars1 = ax.bar(x_selected_year, y_selected_year, width=bar_width, label=selected_year, color='#44566f')
-bars2 = ax.bar(x_comparison_year, y_comparison_year, width=bar_width, label=selected_comparison_year, color='#4678b9')
+    # Données pour l'année de comparaison
+    x_comparison_year = monthly_orders_comparison_year['Mois']
+    y_comparison_year = monthly_orders_comparison_year['ID commande']
 
-# Ligne de la valeur cible
-target_value = 150
-ax.axhline(target_value, color='red', linestyle='--', linewidth=2, label='Valeur cible')
+    # Création du graphique à barres
+    bar_width = 0.35
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
+    bars1 = ax.bar(x_selected_year, y_selected_year, width=bar_width, label=selected_year, color='#44566f')
+    bars2 = ax.bar(x_comparison_year, y_comparison_year, width=bar_width, label=selected_comparison_year, color='#4678b9')
 
-# Étiquettes et légendes
-ax.set_xlabel('Mois')
-ax.set_ylabel('Nombre de commandes')
-ax.set_title(f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}")
-ax.legend()
+    # Ligne de la valeur cible
+    target_value = 150
+    ax.axhline(target_value, color='red', linestyle='--', linewidth=2, label='Valeur cible')
 
-# Affichage du texte au-dessus des barres
-def autolabel(bars):
-    for bar in bars:
-        height = bar.get_height()
-        ax.annotate('{}'.format(height),
-                    xy=(bar.get_x() + bar.get_width() / 2, height),
-                    xytext=(0, 3),  # 3 points de décalage vers le haut
-                    textcoords="offset points",
-                    ha='center', va='bottom')
+    # Étiquettes et légendes
+    ax.set_xlabel('Mois')
+    ax.set_ylabel('Nombre de commandes')
+    ax.set_title(f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}")
+    ax.legend()
 
-autolabel(bars1)
-autolabel(bars2)
+    # Affichage du texte au-dessus des barres
+    def autolabel(bars):
+        for bar in bars:
+            height = bar.get_height()
+            ax.annotate('{}'.format(height),
+            xy=(bar.get_x() + bar.get_width() / 2, height),
+            xytext=(0, 3),  # 3 points de décalage vers le haut
+            textcoords="offset points",
+            ha='center', va='bottom')
 
-plt.show()
+    autolabel(bars1)
+    autolabel(bars2)
+
+    plt.show()
 
 
 
