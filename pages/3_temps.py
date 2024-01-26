@@ -408,8 +408,8 @@ with col_v2:
     
     # Ajouter des étiquettes de valeurs au-dessus des barres
     for x, value, comp_value in zip(bar_positions_selected_year, monthly_orders_selected_year['ID commande'], monthly_orders_comparison_year['ID commande']):
-    ax.text(x + bar_width / 2, value + 0.2, str(value), ha='center', va='bottom')
-    ax.text(x + bar_width / 2 - 0.45, comp_value + 0.2, str(comp_value), ha='center', va='bottom')  # Ajustement de la position pour l'année de comparaison
+        ax.text(x + bar_width / 2, value + 0.2, str(value), ha='center', va='bottom')
+        ax.text(x + bar_width / 2 - 0.45, comp_value + 0.2, str(comp_value), ha='center', va='bottom')  # Ajustement de la position pour l'année de comparaison
 
     
     # Ajuster la mise en page
