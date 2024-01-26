@@ -391,17 +391,17 @@ with col_v2:
 
     # Créer une figure et un sous-plot
     fig, ax = plt.subplots(figsize=(12, 6))
-    
+
     # Graphique de l'évolution du nombre de commandes
     bar_width = 0.4
     bar_positions_selected_year = np.arange(len(monthly_orders_selected_year['Mois']))
     bar_positions_comparison_year = bar_positions_selected_year - 0.45
     
     # Barres pour l'année sélectionnée
-    ax.bar(bar_positions_selected_year, monthly_orders_selected_year['ID commande'], width=bar_width, label=f"{selected_year}", color='#44566f')
+    bars_selected_year = ax.bar(bar_positions_selected_year, monthly_orders_selected_year['ID commande'], width=bar_width, label=f"{selected_year}", color='#44566f')
     
     # Barres pour l'année de comparaison
-    ax.bar(bar_positions_comparison_year, monthly_orders_comparison_year['ID commande'], width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
+    bars_comparison_year = ax.bar(bar_positions_comparison_year, monthly_orders_comparison_year['ID commande'], width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
     
     # Ligne de seuil
     ax.axhline(y=target_value, color='red', linestyle='--', label='Seuil')
@@ -410,10 +410,9 @@ with col_v2:
     for bar, value_selected, value_comparison in zip(bars_selected_year, monthly_orders_selected_year['ID commande'], monthly_orders_comparison_year['ID commande']):
         xval_selected = bar.get_x() + bar_width / 2
         xval_comparison = bar.get_x() + bar_width / 2 - 0.45
-    
+        
         ax.text(xval_selected, value_selected + 0.2, str(value_selected), ha='center', va='bottom')
         ax.text(xval_comparison, value_comparison + 0.2, str(value_comparison), ha='center', va='bottom')
-
     
     # Ajuster la mise en page
     ax.set_title("Évolution du nombre de commandes")
