@@ -407,9 +407,12 @@ with col_v2:
     ax.axhline(y=target_value, color='red', linestyle='--', label='Seuil')
     
     # Ajouter des étiquettes de valeurs au-dessus des barres
-    for x, value, comp_value in zip(bar_positions_selected_year, monthly_orders_selected_year['ID commande'], monthly_orders_comparison_year['ID commande']):
-        ax.text(x + bar_width / 2, value + 0.2, str(value), ha='center', va='bottom')
-        ax.text(x + bar_width / 2 - 0.45, comp_value + 0.2, str(comp_value), ha='center', va='bottom')  # Ajustement de la position pour l'année de comparaison
+    for bar, value_selected, value_comparison in zip(bars_selected_year, monthly_orders_selected_year['ID commande'], monthly_orders_comparison_year['ID commande']):
+    xval_selected = bar.get_x() + bar_width / 2
+    xval_comparison = bar.get_x() + bar_width / 2 - 0.45
+    
+    ax.text(xval_selected, value_selected + 0.2, str(value_selected), ha='center', va='bottom')
+    ax.text(xval_comparison, value_comparison + 0.2, str(value_comparison), ha='center', va='bottom')
 
     
     # Ajuster la mise en page
