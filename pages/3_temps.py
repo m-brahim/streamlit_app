@@ -392,7 +392,7 @@ with col_v2:
     fig, ax = plt.subplots(figsize=(12, 6))
 
     # Graphique de l'évolution du nombre de commandes
-    bar_width = 0.3
+    bar_width = 0.4
     bar_positions_selected_year = np.arange(len(monthly_orders_selected_year['Mois']))
     bar_positions_comparison_year = bar_positions_selected_year - bar_width
     
