@@ -389,18 +389,24 @@ with col_v2:
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
-    fig, ax = plt.subplots(figsize=(10, 6))
-
+    # Créer une figure et un sous-plot
+    fig, ax = plt.subplots(figsize=(12, 6))
+    
     # Graphique de l'évolution du nombre de commandes
     bar_width = 0.4
-    ax.bar(monthly_orders_comparison_year['Mois'], monthly_orders_comparison_year['ID commande'], width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
-    ax.bar(monthly_orders_selected_year['Mois'], monthly_orders_selected_year['ID commande'], width=bar_width, label=f"{selected_year}", color='#44566f')
+    bar_positions_selected_year = np.arange(len(monthly_orders_selected_year['Mois']))
+    bar_positions_comparison_year = np.arange(len(monthly_orders_comparison_year['Mois'])) + bar_width + 0.2
+    
+    ax.bar(bar_positions_selected_year, monthly_orders_selected_year['ID commande'], width=bar_width, label=f"{selected_year}", color='#44566f')
+    ax.bar(bar_positions_comparison_year, monthly_orders_comparison_year['ID commande'], width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
     ax.axhline(y=target_value, color='red', linestyle='--', label='Target')
     
     # Ajuster la mise en page
     ax.set_title("Évolution du nombre de commandes")
     ax.set_xlabel("Mois")
     ax.set_ylabel("Nombre de commandes")
+    ax.set_xticks(bar_positions_selected_year + bar_width / 2)
+    ax.set_xticklabels(monthly_orders_selected_year['Mois'], rotation=45, ha='right')  # Rotation des étiquettes
     ax.legend()
     plt.tight_layout()
     
