@@ -394,18 +394,20 @@ with col_v2:
 
 
 
-fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
+# Créer une figure et un sous-plot
+fig, ax = plt.subplots(figsize=(10, 6))
 
 # Graphique de l'évolution du nombre de commandes
-ax2.bar(monthly_orders_comparison_year['Mois'], monthly_orders_comparison_year['ID commande'], width=0.4, label=f"{selected_comparison_year}", color='#4678b9')
-ax2.bar(monthly_orders_selected_year['Mois'], monthly_orders_selected_year['ID commande'], width=0.4, label=f"{selected_year}", color='#44566f')
-ax2.axhline(y=target_value, color='red', linestyle='--', label='Target')
-ax2.set_title("Évolution du nombre de commandes")
-ax2.set_xlabel("Mois")
-ax2.set_ylabel("Nombre de commandes")
-ax2.legend()
+bar_width = 0.4
+ax.bar(monthly_orders_comparison_year['Mois'], monthly_orders_comparison_year['ID commande'], width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
+ax.bar(monthly_orders_selected_year['Mois'], monthly_orders_selected_year['ID commande'], width=bar_width, label=f"{selected_year}", color='#44566f')
+ax.axhline(y=target_value, color='red', linestyle='--', label='Target')
 
 # Ajuster la mise en page
+ax.set_title("Évolution du nombre de commandes")
+ax.set_xlabel("Mois")
+ax.set_ylabel("Nombre de commandes")
+ax.legend()
 plt.tight_layout()
 
 # Afficher le graphique
