@@ -394,7 +394,7 @@ with col_v2:
     # Graphique de l'évolution du nombre de commandes
     bar_width = 0.4
     bar_positions_selected_year = np.arange(len(monthly_orders_selected_year['Mois']))
-    bar_positions_comparison_year = bar_positions_selected_year - 0.5
+    bar_positions_comparison_year = bar_positions_selected_year - 0.4
     
     ax.bar(bar_positions_selected_year, monthly_orders_selected_year['ID commande'], width=bar_width, label=f"{selected_year}", color='#44566f')
     ax.bar(bar_positions_comparison_year, monthly_orders_comparison_year['ID commande'], width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
