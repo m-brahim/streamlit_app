@@ -466,6 +466,37 @@ with col_v2:
 
     plt.show()
 
+# Création du graphique à barres
+bar_width = 0.35
+fig, ax = plt.subplots(figsize=(10, 6))
+
+bars1 = ax.bar(x_selected_year, y_selected_year, width=bar_width, label=f"{selected_year}", color='#44566f')
+bars2 = ax.bar(x_comparison_year, y_comparison_year, width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
+
+# Ligne de la valeur cible
+target_value = 150
+ax.axhline(target_value, color='red', linestyle='--', linewidth=2, label='Valeur cible')
+
+# Étiquettes et légendes
+ax.set_xlabel('Mois')
+ax.set_ylabel('Nombre de commandes')
+ax.set_title(f"Évolution du nombre de commandes en {selected_year} et {selected_comparison_year}")
+ax.legend()
+
+# Affichage du texte au-dessus des barres
+def autolabel(bars):
+    for bar in bars:
+        height = bar.get_height()
+        ax.annotate('{}'.format(height),
+                    xy=(bar.get_x() + bar.get_width() / 2, height),
+                    xytext=(0, 3),  # 3 points de décalage vers le haut
+                    textcoords="offset points",
+                    ha='center', va='bottom')
+
+autolabel(bars1)
+autolabel(bars2)
+
+plt.show()
 
 
 #col_1, col_csv, col_2 = st.columns([1,2,1])
