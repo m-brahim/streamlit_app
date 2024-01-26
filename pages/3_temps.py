@@ -389,16 +389,29 @@ with col_v2:
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
+    # Créer une figure et un sous-plot
     fig, ax = plt.subplots(figsize=(12, 6))
-
+    
     # Graphique de l'évolution du nombre de commandes
     bar_width = 0.4
     bar_positions_selected_year = np.arange(len(monthly_orders_selected_year['Mois']))
     bar_positions_comparison_year = bar_positions_selected_year - 0.45
     
+    # Barres pour l'année sélectionnée
     ax.bar(bar_positions_selected_year, monthly_orders_selected_year['ID commande'], width=bar_width, label=f"{selected_year}", color='#44566f')
+    
+    # Barres pour l'année de comparaison
     ax.bar(bar_positions_comparison_year, monthly_orders_comparison_year['ID commande'], width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
+    
+    # Ligne de seuil
     ax.axhline(y=target_value, color='red', linestyle='--', label='Seuil')
+    
+    # Ajouter des étiquettes de valeurs au-dessus des barres
+    for x, value in zip(bar_positions_selected_year, monthly_orders_selected_year['ID commande']):
+        ax.text(x + bar_width / 2, value + 0.2, str(value), ha='center', va='bottom')
+    
+    for x, value in zip(bar_positions_comparison_year, monthly_orders_comparison_year['ID commande']):
+        ax.text(x + bar_width / 2, value + 0.2, str(value), ha='center', va='bottom')
     
     # Ajuster la mise en page
     ax.set_title("Évolution du nombre de commandes")
