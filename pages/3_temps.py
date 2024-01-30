@@ -427,7 +427,7 @@ with col_class:
     fig.update_layout(title='Quantités vendues par catégorie',
                       title_x=0.25,
                       title_font=dict(size=15),
-                      width=500)
+                      width=300)
 
     chart_container = st.container()
     
