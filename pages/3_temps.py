@@ -373,11 +373,9 @@ if selected_pays is not None :
     selection = True
 
 
-              
+data_f = df[df['Pays/Région'] == selected_pays]
 
 col_class, col_space, col_map = st.columns([1,0.2,3])
-
-
 
 def plot_top_products_by_country(df, selected_pays):
     target_value = 30
@@ -464,7 +462,6 @@ with col_map:
 col_pie, col_space = st.columns([1, 1])
 
 with col_pie:
-    data_f = df[df['Pays/Région'] == selected_pays]
     quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
     
     colors = ['#1616a7','#1c9fb0', '#6874a6']
