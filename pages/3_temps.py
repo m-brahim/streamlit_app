@@ -425,8 +425,8 @@ with col_class :
     fig.update_layout(title='Quantités vendues par catégorie',
                       title_x=0.25,
                       title_font=dict(size=15),
-                      height=400,
-                      width=600)
+                      height=350,
+                      width=800)
     
     if selection :
         st.plotly_chart(fig, use_container_width=True)
