@@ -405,7 +405,7 @@ def plot_top_products_by_country(df, selected_pays):
 
     plt.rcParams.update(rc)
 
-    fig, ax = plt.subplots(figsize=(5, 4))
+    fig, ax = plt.subplots(figsize=(8, 4))
 
     colors = ['#9999ff', '#4d4dff', '#0000e6', '#000099', '#00004d']
 
@@ -454,7 +454,7 @@ with col_map:
                   icon=client_icon).add_to(my_map)
     
     #affichage de la carte
-    st_folium(my_map, width=1000, height=500)
+    st_folium(my_map, width=1000, height=400)
 
 
 
