@@ -309,42 +309,7 @@ with col_v2:
     # Affichage
     st.plotly_chart(fig_orders_evolution, use_container_width=True)
 
-    # Créer une figure et un sous-plot
-    fig, ax = plt.subplots(figsize=(12, 6))
-
-    # Graphique de l'évolution du nombre de commandes
-    bar_width = 0.4
-    bar_positions_selected_year = np.arange(len(monthly_orders_selected_year['Mois']))
-    bar_positions_comparison_year = bar_positions_selected_year - 0.45
-    
-    # Barres pour l'année sélectionnée
-    bars_selected_year = ax.bar(bar_positions_selected_year, monthly_orders_selected_year['ID commande'], width=bar_width, label=f"{selected_year}", color='#44566f')
-    
-    # Barres pour l'année de comparaison
-    bars_comparison_year = ax.bar(bar_positions_comparison_year, monthly_orders_comparison_year['ID commande'], width=bar_width, label=f"{selected_comparison_year}", color='#4678b9')
-    
-    # Ligne de seuil
-    ax.axhline(y=target_value, color='red', linestyle='--', label='Seuil')
-    
-    # Ajouter des étiquettes de valeurs au-dessus des barres
-    for bar, value_selected, value_comparison in zip(bars_selected_year, monthly_orders_selected_year['ID commande'], monthly_orders_comparison_year['ID commande']):
-        xval_selected = bar.get_x() + bar_width / 2
-        xval_comparison = bar.get_x() + bar_width / 2 - 0.45
-        
-        ax.text(xval_selected, value_selected + 0.2, str(value_selected), ha='center', va='bottom')
-        ax.text(xval_comparison, value_comparison + 0.2, str(value_comparison), ha='center', va='bottom')
-    
-    # Ajuster la mise en page
-    ax.set_title("Évolution du nombre de commandes")
-    ax.set_xlabel("Mois")
-    ax.set_ylabel("Nombre de commandes")
-    ax.set_xticks(bar_positions_selected_year + bar_width / 2)
-    ax.set_xticklabels(monthly_orders_selected_year['Mois'], rotation=45, ha='right')  # Rotation des étiquettes
-    ax.legend()
-    plt.tight_layout()
-    
-    # Afficher le graphique
-    st.pyplot(fig)
+   
 
 
 
