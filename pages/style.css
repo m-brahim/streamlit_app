@@ -135,7 +135,29 @@ td[class^="st-emotion-cache-gdzsw5"] {
 
 
 
+/* Style pour la table de Streamlit */
+div[data-testid="stTable"] {
+    border-collapse: collapse;
+    width: 100%;
+}
 
+/* Style pour les cellules du tableau */
+div[data-testid="stTable"] td, div[data-testid="stTable"] th {
+    border: 2px solid #44566f; /* Couleur du trait de bordure des cellules */
+    padding: 8px; /* Espace à l'intérieur des cellules */
+    text-align: left;
+}
+
+/* Style pour la première ligne (header) du tableau */
+div[data-testid="stTable"] th {
+    background-color: #f2f2f2; /* Couleur de fond du header */
+    font-weight: bold;
+}
+
+/* Style pour les lignes impaires du tableau */
+div[data-testid="stTable"] tr:nth-child(odd) {
+    background-color: #f9f9f9; /* Couleur de fond des lignes impaires */
+}
 
 
 
