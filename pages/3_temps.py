@@ -439,7 +439,7 @@ with col_pie:
     fig.update_layout(title='Quantités vendues par catégorie',
                   title_x=0.25,
                   title_font=dict(size=15),
-                  height=378,
+                  height=350,
                   width=500)
 
     if selection :
