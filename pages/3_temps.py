@@ -337,14 +337,15 @@ selection = False
 if selected_pays is not None :
     selection = True
 
+
+data_f = df[df['Pays/Région'] == selected_pays]
+
 # Colonne pour le classement par pays des 5 produits les plus achetés
 col_class, col_space, col_map = st.columns([1, 0.1, 1])
 
 with col_class:
     if selection:
         target_value = 30
-
-        data_f = df[df['Pays/Région'] == selected_pays]
 
         # Grouper par produit et calculer la quantité totale achetée
         top_products = data_f.groupby('Nom du produit')['Quantité'].sum().reset_index()
