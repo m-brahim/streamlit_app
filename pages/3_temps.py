@@ -364,7 +364,7 @@ col_space, col_country, col_space = st.columns([0.5, 1, 0.5])
 
 # Liste déroulante pour le pays
 with col_country:
-    selected_pays = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None, placeholder="Choisir un pays",)
+    selected_pays = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None)
 
 
               
