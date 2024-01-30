@@ -454,12 +454,12 @@ with col_map:
                   icon=client_icon).add_to(my_map)
     
     #affichage de la carte
-    st_folium(my_map, width=500, height=graph_height)
+    st_folium(my_map, width=500, height=500)
 
 
 
 
-col_pie, col_space = st.columns([1, 1])
+col_pie, col_space = st.columns([0.5, 1])
 
 with col_pie:
     quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
