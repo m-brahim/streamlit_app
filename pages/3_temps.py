@@ -375,26 +375,9 @@ if selected_pays is not None :
 
               
 
-col_pie, col_class, col_map = st.columns([1,1,1.5])
+col_class, col_space, col_map = st.columns([1,0.2,3])
 
-with col_pie:
-    data_f = df[df['Pays/Région'] == selected_pays]
-    quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
-    
-    colors = ['#1616a7','#1c9fb0', '#6874a6']
-    fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
-             color_discrete_sequence=colors)
-    
-    fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
 
-    fig.update_layout(title='Quantités vendues par catégorie',
-                  title_x=0.25,
-                  title_font=dict(size=15),
-                  height=378,
-                  width=500)
-
-    if selection :
-        st.plotly_chart(fig, use_container_width=True)
 
 def plot_top_products_by_country(df, selected_pays):
     target_value = 30
@@ -478,9 +461,26 @@ with col_map:
 
 
 
+col_pie, col_space = st.columns([1, 1])
 
+with col_pie:
+    data_f = df[df['Pays/Région'] == selected_pays]
+    quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
+    
+    colors = ['#1616a7','#1c9fb0', '#6874a6']
+    fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
+             color_discrete_sequence=colors)
+    
+    fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
 
+    fig.update_layout(title='Quantités vendues par catégorie',
+                  title_x=0.25,
+                  title_font=dict(size=15),
+                  height=378,
+                  width=500)
 
+    if selection :
+        st.plotly_chart(fig, use_container_width=True)
 
 
 
