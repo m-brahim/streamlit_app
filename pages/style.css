@@ -132,11 +132,12 @@ td[class^="st-emotion-cache-gdzsw5"] {
 
 
 
-#map_div.custom-style {
+#map_div {
     height: 500px !important;
     width: 800px !important;
+    position: relative !important;
+    outline: none !important;
 }
-
 
 
 
