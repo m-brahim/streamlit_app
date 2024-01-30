@@ -375,7 +375,7 @@ if selected_pays is not None :
 
 data_f = df[df['Pays/Région'] == selected_pays]
 
-col_class, col_space, col_map = st.columns([2,0.2,2])
+col_class, col_space, col_map = st.columns([1,0.2,1])
 
 def plot_top_products_by_country(df, selected_pays):
     target_value = 30
