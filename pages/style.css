@@ -122,19 +122,15 @@ td[class^="st-emotion-cache-gdzsw5"] {
             font-size: 20px !important;
         }
 
-
-
 [class="plot-container plotly"]{
     border: solid;
     border-color: #354d64;
     border-width : 3px;
 }
 
-
-
-map_div [style^="height: 400px"]{
-    height: 500px !important;}
-
+#map_div[style*="height: 400px"] {
+    height: 500px !important;
+    width: 800px !important;
 
 
 /* Style pour la table de Streamlit */
