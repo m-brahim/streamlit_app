@@ -38,20 +38,19 @@ df = df.sort_values(by=['Année', 'Mois'])
 
 df = df.reset_index(drop=True)
 
-# Tri dans l'ordre des années
+#tri dans l'ordre des années
 sorted_years = sorted(df['Année'].unique())
 sorted_years_2 = sorted(df['Année'].unique())
 
-# Création de colonnes
+#création de colonnes
 col_1, col_title, col_2 = st.columns([1, 2, 1])
 
-# Une colonne pour le titre & une pour les listes déroulantes
+#une colonne pour le titre & une pour les listes déroulantes
 with col_title:
     st.title("Suivi des ventes de la société")
 
 with st.sidebar:
     st.header("Paramètres des graphiques")
-    graph_width = st.slider("Largeur des graphiques", min_value=300, max_value=1200, value=700)
     graph_height = st.slider("Hauteur des graphiques", min_value=300, max_value=1200, value=500)
 
 
@@ -66,39 +65,41 @@ with col_h1:
 
 
 # tableau
+
+#collecte des données
 df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
 
-# Créer des colonnes pour les listes déroulantes
+#créer des colonnes pour les listes déroulantes
 col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([0.5, 1, 0.5, 1, 0.5, 1, 0.5])
 
-# Liste déroulante pour le pays
+#liste déroulante pour le pays
 with col_country:
     selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None, placeholder="Choisir un pays",)
 
-# Liste déroulante pour la catégorie
+#liste déroulante pour la catégorie
 with col_category:
     selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None, placeholder="Choisir une catégorie",)
 
-# Liste déroulante pour le client
+#liste déroulante pour le client
 with col_client:
     selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None, placeholder="Choisir un client",)
 
-# Sélectionner les colonnes à afficher dans le DataFrame
+#sélectionner les colonnes à afficher dans le DataFrame
 selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région', 'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
 
-# Appliquer les filtres
+#appliquer les filtres
 df_filtre = df_table[(df_table['Pays/Région'] == selected_country) & (df_table['Catégorie'] == selected_category) & (df_table['Nom du client'] == selected_client)]
 
 df_filtre.reset_index(drop=True, inplace=True)
 
-# Définir une variable pour vérifier si les listes déroulantes ont été sélectionnées
+#définir une variable pour vérifier si les listes déroulantes ont été sélectionnées
 selection_effectuee = False
 
-# Condition pour vérifier si les éléments nécessaires sont sélectionnés
+#condition pour vérifier si les éléments nécessaires sont sélectionnés
 if selected_country is not None and selected_category is not None and selected_client is not None:
     selection_effectuee = True
 
-# Condition pour afficher le tableau uniquement si la sélection a été effectuée
+#condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
     st.table(df_filtre[selected_columns_table])
 
@@ -359,25 +360,26 @@ with col_h3:
     st.header("3. Analyses géographiques")
 
 
-
-col_space, col_country, col_space = st.columns([0.5, 1, 0.5])
+col_country, col_space = st.columns([0.5, 1])
 
 # Liste déroulante pour le pays
 with col_country:
     selected_pays = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None)
 
 
+selection = False
+
+if selected_pays is not None :
+    selection = True
+
+
               
 
-
-col_txt, col_pie, col_sp3, col_class = st.columns([1,2,0.2,2])
-
-with col_txt:
-    st.write("*Graphiques* : ")
+col_pie, col_sp3, col_class = st.columns([1,2,0.2,2])
 
 with col_pie:
-    filtered_data = df[df['Pays/Région'] == selected_pays]
-    quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
+    data_f = df[df['Pays/Région'] == selected_pays]
+    quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
     
     colors = ['#1616a7','#1c9fb0', '#6874a6']
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
@@ -391,17 +393,16 @@ with col_pie:
                   height=378,
                   width=graph_width)
 
-    if selection_effectuee:
+    if selection :
         st.plotly_chart(fig, use_container_width=True)
 
 def plot_top_products_by_country(df, selected_pays):
     target_value = 30
     
-    # Filtrer les données par pays
-    filtered_data = df[df['Pays/Région'] == selected_pays]
+    data_f = df[df['Pays/Région'] == selected_pays]
 
     # Grouper par produit et calculer la quantité totale achetée
-    top_products = filtered_data.groupby('Nom du produit')['Quantité'].sum().reset_index()
+    top_products = data_f.groupby('Nom du produit')['Quantité'].sum().reset_index()
 
     # Trier par quantité croissante et sélectionner les 5 premiers produits
     top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
@@ -427,57 +428,28 @@ def plot_top_products_by_country(df, selected_pays):
 
     colors = ['#9999ff', '#4d4dff', '#0000e6', '#000099', '#00004d']
 
-    # Créer le graphique en barres
     bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color=colors)
 
-    # Ajouter les valeurs à droite des barres
     for bar in bars:
         xval = bar.get_width()
         plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='#000000')
 
     ax.axvline(target_value, color='red', linestyle='--', linewidth=2, label='Target')
     
-    # Ajuster le style du graphique
     ax.set_ylabel('Produit', color='#000000')
     ax.set_xlabel('Quantité achetée', color='#000000')
     ax.tick_params(axis='x', colors='#000000')
     ax.tick_params(axis='y', colors='#000000')
 
-    # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
     fig.tight_layout()
 
-    # Ajouter le titre centré entre les deux sous-graphiques
     fig.suptitle('Classement par pays des 5 produits les plus achetés', y=1.05, fontsize=15)
 
-    # Afficher le graphique
     st.pyplot(fig)
 
 with col_class:
-    if selection_effectuee:
+    if selection :
         plot_top_products_by_country(df, selected_pays)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
