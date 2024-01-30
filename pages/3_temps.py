@@ -375,7 +375,7 @@ if selected_pays is not None :
 
               
 
-col_pie, col_sp3, col_class = st.columns([1,2,0.2,2])
+col_pie, col_sp3, col_class = st.columns([1,0.5,1])
 
 with col_pie:
     data_f = df[df['Pays/Région'] == selected_pays]
