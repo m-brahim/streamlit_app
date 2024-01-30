@@ -413,23 +413,23 @@ with col_map:
 
 
 
-
-quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
+with col_class :
+    quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
+        
+    colors = ['#1616a7','#1c9fb0', '#6874a6']
+    fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
+                 color_discrete_sequence=colors)
+        
+    fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
     
-colors = ['#1616a7','#1c9fb0', '#6874a6']
-fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
-             color_discrete_sequence=colors)
+    fig.update_layout(title='Quantités vendues par catégorie',
+                      title_x=0.25,
+                      title_font=dict(size=15),
+                      height=400,
+                      width=600)
     
-fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
-
-fig.update_layout(title='Quantités vendues par catégorie',
-                  title_x=0.25,
-                  title_font=dict(size=15),
-                  height=400,
-                  width=600)
-
-if selection :
-    st.plotly_chart(fig, use_container_width=True)
+    if selection :
+        st.plotly_chart(fig, use_container_width=True)
 
 
 
