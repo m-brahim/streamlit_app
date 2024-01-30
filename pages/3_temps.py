@@ -364,7 +364,7 @@ col_country, col_space = st.columns([0.5, 1])
 
 # Liste déroulante pour le pays
 with col_country:
-    selected_pays = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=0)
+    selected_pays = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None)
 
 
 selection = False
@@ -445,15 +445,15 @@ client_icon = folium.CustomIcon(icon_image=icon_path, icon_size=(30, 30))
 
 #affiche une carte qui indique le nombre de clients par pays
 with col_map:
-    #définition d'une localisation initiale
-    my_map = folium.Map(location=[merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], zoom_start=5)
-    
-    #ajoutez un seul marqueur pour représenter le pays avec le nombre de clients dans l'infobulle
-    folium.Marker([merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], 
-                  popup=f"Nombre de clients: {num_clients}", 
-                  icon=client_icon).add_to(my_map)
-
     if selection :
+        #définition d'une localisation initiale
+        my_map = folium.Map(location=[merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], zoom_start=5)
+    
+        #ajoutez un seul marqueur pour représenter le pays avec le nombre de clients dans l'infobulle
+        folium.Marker([merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], 
+                      popup=f"Nombre de clients: {num_clients}", 
+                      icon=client_icon).add_to(my_map)
+
         st_folium(my_map, width=800, height=400)
 
 
