@@ -131,7 +131,9 @@ td[class^="st-emotion-cache-gdzsw5"] {
 }
 
 
-[id="parent"]{
+[class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"]{
+    width : 700px;
+    height : 500px;
     border: solid;
     border-color: #354d64;
     border-width : 3px;
