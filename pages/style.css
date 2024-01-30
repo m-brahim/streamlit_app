@@ -1,20 +1,5 @@
 /* style.css */
 
-/* en tête de la page */
-[data-testid="stHeader"] {
-    background-color: #aac0d5;
-}
-
-/* body */
-[class="main st-emotion-cache-uf99v8 ea3mdgi3"] {
-    background-image: url("https://images.pexels.com/photos/15848898/pexels-photo-15848898/free-photo-of-blue-gradient-background.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-    background-size: cover;
-}
-
-/* barre latérale */
-[data-testid="stSidebarContent"] {
-    background-color: #7b98b7;
-}
 
 /* titres */
 
