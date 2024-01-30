@@ -114,3 +114,10 @@ td[class^="st-emotion-cache-gdzsw5"] {
 .slicetext {
             font-size: 20px !important;
         }
+
+
+
+[class="user-select-none svg-container"]{
+    border: solid;
+    border-color: #354d64;
+}
