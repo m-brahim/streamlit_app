@@ -379,9 +379,11 @@ with col_class:
 
         # Mettre en forme le layout
         fig.update_layout(
-            title='Classement par pays des 5 produits les plus achetés',
+            title='Classement des 5 produits les plus achetés',
             yaxis=dict(title='Produit'),
             xaxis=dict(title='Quantité achetée'),
+            title_x=0.25,
+            title_font=dict(size=15),
             height=400,
             width=800,
         )
