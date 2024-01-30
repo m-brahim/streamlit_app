@@ -415,10 +415,10 @@ with col_map:
 
 
 
-with col_class :
+with col_class:
     quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
         
-    colors = ['#1616a7','#1c9fb0', '#6874a6']
+    colors = ['#1616a7', '#1c9fb0', '#6874a6']
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
                  color_discrete_sequence=colors)
         
@@ -427,12 +427,12 @@ with col_class :
     fig.update_layout(title='Quantités vendues par catégorie',
                       title_x=0.25,
                       title_font=dict(size=15),
-                      height=350,
                       width=800)
-    
-    if selection :
-        st.plotly_chart(fig, use_container_width=True)
 
+    chart_container = st.container()
+    
+    if selection:
+        chart_container.plotly_chart(fig, use_container_width=True, height=350)
 
 
 
