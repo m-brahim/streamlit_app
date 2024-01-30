@@ -148,16 +148,6 @@ div[data-testid="stTable"] td, div[data-testid="stTable"] th {
     text-align: left;
 }
 
-/* Style pour la première ligne (header) du tableau */
-div[data-testid="stTable"] th {
-    background-color: #f2f2f2; /* Couleur de fond du header */
-    font-weight: bold;
-}
-
-/* Style pour les lignes impaires du tableau */
-div[data-testid="stTable"] tr:nth-child(odd) {
-    background-color: #f9f9f9; /* Couleur de fond des lignes impaires */
-}
 
 
 
