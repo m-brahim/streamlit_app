@@ -443,6 +443,8 @@ merged_data = pd.merge(data_f, clients_by_country, how='left', on='Pays/Région'
 icon_path = 'pages/Kiloutou_logo.jpg'
 client_icon = folium.CustomIcon(icon_image=icon_path, icon_size=(30, 30))
 
+num_clients = data_f['ID client'].nunique()
+
 #affiche une carte qui indique le nombre de clients par pays
 with col_map:
     #définition d'une localisation initiale
