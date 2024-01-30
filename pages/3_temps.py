@@ -459,7 +459,7 @@ with col_map:
 
 
 
-col_pie, col_space = st.columns([1, 1])
+col_pie, col_space, col_visu = st.columns([1, 0.2, 1])
 
 with col_pie:
     quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
