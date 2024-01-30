@@ -337,61 +337,57 @@ selection = False
 if selected_pays is not None :
     selection = True
 
+# Colonne pour le classement par pays des 5 produits les plus achetés
+col_class, col_space, col_map = st.columns([1, 0.1, 1])
 
-data_f = df[df['Pays/Région'] == selected_pays]
+with col_class:
+    if selection:
+        target_value = 30
 
-col_class, col_space, col_map = st.columns([1,0.1,1])
+        data_f = df[df['Pays/Région'] == selected_pays]
 
-def plot_top_products_by_country(df, selected_pays):
-    target_value = 30
-    
-    data_f = df[df['Pays/Région'] == selected_pays]
+        # Grouper par produit et calculer la quantité totale achetée
+        top_products = data_f.groupby('Nom du produit')['Quantité'].sum().reset_index()
 
-    # Grouper par produit et calculer la quantité totale achetée
-    top_products = data_f.groupby('Nom du produit')['Quantité'].sum().reset_index()
+        # Trier par quantité croissante et sélectionner les 5 premiers produits
+        top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
 
-    # Trier par quantité croissante et sélectionner les 5 premiers produits
-    top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
+        colors = ['#9999ff', '#4d4dff', '#0000e6', '#000099', '#00004d']
 
-    rc = {'figure.figsize': (8, 6),
-          'axes.facecolor': '#eff1f5',
-          'axes.edgecolor': '#eff1f5',
-          'axes.labelcolor': '#000000',
-          'figure.facecolor': '#eff1f5',
-          'patch.edgecolor': '#eff1f5',
-          'text.color': '#000000',
-          'xtick.color': '#000000',
-          'ytick.color': '#000000',
-          'grid.color': '#000000',
-          'font.size': 12,
-          'axes.labelsize': 12,
-          'xtick.labelsize': 12,
-          'ytick.labelsize': 12}
+        fig = go.Figure()
 
-    plt.rcParams.update(rc)
+        # Ajouter les barres horizontales
+        fig.add_trace(go.Bar(
+            y=top_products['Nom du produit'],
+            x=top_products['Quantité'],
+            orientation='h',
+            marker=dict(color=colors),
+            text=top_products['Quantité'],
+            textposition='outside',
+        ))
 
-    fig, ax = plt.subplots(figsize=(7, 4))
+        # Ajouter la ligne rouge pour la cible
+        fig.add_shape(
+            go.layout.Shape(
+                type='line',
+                x0=target_value,
+                x1=target_value,
+                y0=0,
+                y1=len(top_products),
+                line=dict(color='red', dash='dash', width=2),
+            )
+        )
 
-    colors = ['#9999ff', '#4d4dff', '#0000e6', '#000099', '#00004d']
+        # Mettre en forme le layout
+        fig.update_layout(
+            title='Classement par pays des 5 produits les plus achetés',
+            yaxis=dict(title='Produit'),
+            xaxis=dict(title='Quantité achetée'),
+            height=400,
+            width=800,
+        )
 
-    bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color=colors)
-
-    for bar in bars:
-        xval = bar.get_width()
-        plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='#000000')
-
-    ax.axvline(target_value, color='red', linestyle='--', linewidth=2, label='Target')
-    
-    ax.set_ylabel('Produit', color='#000000')
-    ax.set_xlabel('Quantité achetée', color='#000000')
-    ax.tick_params(axis='x', colors='#000000')
-    ax.tick_params(axis='y', colors='#000000')
-
-    fig.tight_layout()
-
-    fig.suptitle('Classement par pays des 5 produits les plus achetés', y=1.05, fontsize=15)
-
-    st.pyplot(fig)
+        st.plotly_chart(fig, use_container_width=True)
 
 with col_class:
     if selection :
@@ -439,7 +435,7 @@ with col_pie:
     fig.update_layout(title='Quantités vendues par catégorie',
                   title_x=0.25,
                   title_font=dict(size=15),
-                  height=350,
+                  height=graph_height,
                   width=500)
 
     if selection :
