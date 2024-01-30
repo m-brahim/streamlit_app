@@ -132,8 +132,8 @@ td[class^="st-emotion-cache-gdzsw5"] {
 
 
 #map_div {
-    height: 500px;
-    width: 800px;
+    height: 500px !important;
+    width: 800px !important;
 }
 
 
