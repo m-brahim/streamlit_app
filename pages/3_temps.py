@@ -375,7 +375,7 @@ if selected_pays is not None :
 
               
 
-col_pie, col_sp3, col_class = st.columns([1,0.5,1])
+col_pie, col_sp1, col_class, col_sp2, col_map = st.columns([1,0.2,1,0.2,1])
 
 with col_pie:
     data_f = df[df['Pays/Région'] == selected_pays]
@@ -450,6 +450,42 @@ def plot_top_products_by_country(df, selected_pays):
 with col_class:
     if selection :
         plot_top_products_by_country(df, selected_pays)
+
+
+#agréger le nombre de clients par pays
+clients_by_country = df.drop_duplicates(subset=['ID client', 'Pays/Région']).groupby('Pays/Région')['ID client'].count().reset_index()
+
+#fusionner les données agrégées avec les données filtrées
+merged_data = pd.merge(data_f, clients_by_country, how='left', on='Pays/Région')
+
+#icône personnalisée pour représenter un client (ici l'exemple c'est Kiloutou)
+icon_path = 'pages/Kiloutou_logo.jpg'
+client_icon = folium.CustomIcon(icon_image=icon_path, icon_size=(30, 30))
+
+#affiche une carte qui indique le nombre de clients par pays
+with col_map:
+    #titre
+    st.subheader("Nombre de clients par pays")
+    #définition d'une localisation initiale
+    my_map = folium.Map(location=[merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], zoom_start=5)
+    
+    #ajoutez un seul marqueur pour représenter le pays avec le nombre de clients dans l'infobulle
+    folium.Marker([merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], 
+                  popup=f"Nombre de clients: {num_clients}", 
+                  icon=client_icon).add_to(my_map)
+    
+    #affichage de la carte
+    st_folium(my_map, width=1000, height=graph_height)
+
+
+
+
+
+
+
+
+
+
 
 
 
