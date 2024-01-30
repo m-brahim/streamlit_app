@@ -109,91 +109,10 @@ if selected_country is not None:
     selection_pays = True
 
 
-col_txt, col_pie, col_sp3, col_class = st.columns([1,2,0.2,2])
 
-with col_txt:
-    st.write("*Graphiques* : ")
 
-with col_pie:
-    filtered_data = df[df['Pays/Région'] == selected_country]
-    quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
-    
-    colors = ['#1616a7','#1c9fb0', '#6874a6']
-    fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
-             color_discrete_sequence=colors)
-    
-    fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
 
-    fig.update_layout(title='Quantités vendues par catégorie',
-                  title_x=0.25,
-                  title_font=dict(size=15),
-                  height=378,
-                  width=graph_width)
 
-    if selection_effectuee:
-        st.plotly_chart(fig, use_container_width=True)
-
-def plot_top_products_by_country(df, selected_country):
-    target_value = 30
-    
-    # Filtrer les données par pays
-    filtered_data = df[df['Pays/Région'] == selected_country]
-
-    # Grouper par produit et calculer la quantité totale achetée
-    top_products = filtered_data.groupby('Nom du produit')['Quantité'].sum().reset_index()
-
-    # Trier par quantité croissante et sélectionner les 5 premiers produits
-    top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
-
-    rc = {'figure.figsize': (8, 6),
-          'axes.facecolor': '#eff1f5',
-          'axes.edgecolor': '#eff1f5',
-          'axes.labelcolor': '#000000',
-          'figure.facecolor': '#eff1f5',
-          'patch.edgecolor': '#eff1f5',
-          'text.color': '#000000',
-          'xtick.color': '#000000',
-          'ytick.color': '#000000',
-          'grid.color': '#000000',
-          'font.size': 12,
-          'axes.labelsize': 12,
-          'xtick.labelsize': 12,
-          'ytick.labelsize': 12}
-
-    plt.rcParams.update(rc)
-
-    fig, ax = plt.subplots(figsize=(9, 6))
-
-    colors = ['#9999ff', '#4d4dff', '#0000e6', '#000099', '#00004d']
-
-    # Créer le graphique en barres
-    bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color=colors)
-
-    # Ajouter les valeurs à droite des barres
-    for bar in bars:
-        xval = bar.get_width()
-        plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='#000000')
-
-    ax.axvline(target_value, color='red', linestyle='--', linewidth=2, label='Target')
-    
-    # Ajuster le style du graphique
-    ax.set_ylabel('Produit', color='#000000')
-    ax.set_xlabel('Quantité achetée', color='#000000')
-    ax.tick_params(axis='x', colors='#000000')
-    ax.tick_params(axis='y', colors='#000000')
-
-    # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
-    fig.tight_layout()
-
-    # Ajouter le titre centré entre les deux sous-graphiques
-    fig.suptitle('Classement par pays des 5 produits les plus achetés', y=1.05, fontsize=15)
-
-    # Afficher le graphique
-    st.pyplot(fig)
-
-with col_class:
-    if selection_effectuee:
-        plot_top_products_by_country(df, selected_country)
 
 #2) analyse temporelle
 
@@ -434,7 +353,108 @@ with col_v2:
 
 
 
+col_h3, col2, col3 = st.columns([1,1,1])
 
+with col_h3:
+    st.header("3. Analyses géographiques)
+
+
+
+col_space, col_country, col_space = st.columns([0.5, 1, 0.5])
+
+# Liste déroulante pour le pays
+with col_country:
+    selected_pays = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None, placeholder="Choisir un pays",)
+
+
+              
+
+
+col_txt, col_pie, col_sp3, col_class = st.columns([1,2,0.2,2])
+
+with col_txt:
+    st.write("*Graphiques* : ")
+
+with col_pie:
+    filtered_data = df[df['Pays/Région'] == selected_pays]
+    quantity_by_category = filtered_data.groupby('Catégorie')['Quantité'].sum().reset_index()
+    
+    colors = ['#1616a7','#1c9fb0', '#6874a6']
+    fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
+             color_discrete_sequence=colors)
+    
+    fig.update_traces(marker=dict(line=dict(color='#FFFFFF', width=2)))
+
+    fig.update_layout(title='Quantités vendues par catégorie',
+                  title_x=0.25,
+                  title_font=dict(size=15),
+                  height=378,
+                  width=graph_width)
+
+    if selection_effectuee:
+        st.plotly_chart(fig, use_container_width=True)
+
+def plot_top_products_by_country(df, selected_pays):
+    target_value = 30
+    
+    # Filtrer les données par pays
+    filtered_data = df[df['Pays/Région'] == selected_pays]
+
+    # Grouper par produit et calculer la quantité totale achetée
+    top_products = filtered_data.groupby('Nom du produit')['Quantité'].sum().reset_index()
+
+    # Trier par quantité croissante et sélectionner les 5 premiers produits
+    top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
+
+    rc = {'figure.figsize': (8, 6),
+          'axes.facecolor': '#eff1f5',
+          'axes.edgecolor': '#eff1f5',
+          'axes.labelcolor': '#000000',
+          'figure.facecolor': '#eff1f5',
+          'patch.edgecolor': '#eff1f5',
+          'text.color': '#000000',
+          'xtick.color': '#000000',
+          'ytick.color': '#000000',
+          'grid.color': '#000000',
+          'font.size': 12,
+          'axes.labelsize': 12,
+          'xtick.labelsize': 12,
+          'ytick.labelsize': 12}
+
+    plt.rcParams.update(rc)
+
+    fig, ax = plt.subplots(figsize=(9, 6))
+
+    colors = ['#9999ff', '#4d4dff', '#0000e6', '#000099', '#00004d']
+
+    # Créer le graphique en barres
+    bars = ax.barh(top_products['Nom du produit'], top_products['Quantité'], color=colors)
+
+    # Ajouter les valeurs à droite des barres
+    for bar in bars:
+        xval = bar.get_width()
+        plt.text(xval + 0.1, bar.get_y() + bar.get_height() / 2, round(xval, 2), ha='left', va='center', color='#000000')
+
+    ax.axvline(target_value, color='red', linestyle='--', linewidth=2, label='Target')
+    
+    # Ajuster le style du graphique
+    ax.set_ylabel('Produit', color='#000000')
+    ax.set_xlabel('Quantité achetée', color='#000000')
+    ax.tick_params(axis='x', colors='#000000')
+    ax.tick_params(axis='y', colors='#000000')
+
+    # Ajuster automatiquement la mise en page pour éviter la superposition des étiquettes
+    fig.tight_layout()
+
+    # Ajouter le titre centré entre les deux sous-graphiques
+    fig.suptitle('Classement par pays des 5 produits les plus achetés', y=1.05, fontsize=15)
+
+    # Afficher le graphique
+    st.pyplot(fig)
+
+with col_class:
+    if selection_effectuee:
+        plot_top_products_by_country(df, selected_pays)
 
 
 
