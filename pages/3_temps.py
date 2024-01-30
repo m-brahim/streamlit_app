@@ -429,8 +429,8 @@ with col_pie:
     fig.update_layout(title='Quantités vendues par catégorie',
                   title_x=0.25,
                   title_font=dict(size=15),
-                  height=graph_height,
-                  width=500)
+                  height=400,
+                  width=600)
 
     if selection :
         st.plotly_chart(fig, use_container_width=True)
