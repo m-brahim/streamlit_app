@@ -375,7 +375,7 @@ if selected_pays is not None :
 
 data_f = df[df['Pays/Région'] == selected_pays]
 
-col_class, col_space, col_map = st.columns([1,0.2,1])
+col_class, col_space, col_map = st.columns([1,0.1,1])
 
 def plot_top_products_by_country(df, selected_pays):
     target_value = 30
@@ -447,14 +447,14 @@ client_icon = folium.CustomIcon(icon_image=icon_path, icon_size=(30, 30))
 with col_map:
     if selection :
         #définition d'une localisation initiale
-        my_map = folium.Map(location=[merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], zoom_start=6)
+        my_map = folium.Map(location=[merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], zoom_start=5)
     
         #ajoutez un seul marqueur pour représenter le pays avec le nombre de clients dans l'infobulle
         folium.Marker([merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], 
                       popup=f"Nombre de clients: {num_clients}", 
                       icon=client_icon).add_to(my_map)
 
-        st_folium(my_map, width=800, height=400)
+        st_folium(my_map, width=700, height=400)
 
 
 
