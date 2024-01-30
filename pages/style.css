@@ -124,15 +124,7 @@ td[class^="st-emotion-cache-gdzsw5"] {
 }
 
 
-
-[class="float-container single"]{
-    border: solid;
-    border-color: #354d64;
-    border-width : 3px;
-}
-
-
-[class="float-child"]{
+[id="parent"]{
     border: solid;
     border-color: #354d64;
     border-width : 3px;
