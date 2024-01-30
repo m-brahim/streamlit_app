@@ -375,7 +375,7 @@ if selected_pays is not None :
 
               
 
-col_pie, col_class, col_map = st.columns([1,1,2])
+col_pie, col_class, col_map = st.columns([1,1,1.5])
 
 with col_pie:
     data_f = df[df['Pays/Région'] == selected_pays]
@@ -473,7 +473,7 @@ with col_map:
                   icon=client_icon).add_to(my_map)
     
     #affichage de la carte
-    st_folium(my_map, width=1000, height=graph_height)
+    st_folium(my_map, width=800, height=graph_height)
 
 
 
