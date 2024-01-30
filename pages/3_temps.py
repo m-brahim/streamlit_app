@@ -464,8 +464,6 @@ client_icon = folium.CustomIcon(icon_image=icon_path, icon_size=(30, 30))
 
 #affiche une carte qui indique le nombre de clients par pays
 with col_map:
-    #titre
-    st.subheader("Nombre de clients par pays")
     #définition d'une localisation initiale
     my_map = folium.Map(location=[merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], zoom_start=5)
     
