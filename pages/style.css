@@ -69,6 +69,16 @@
     font-weight : 200;
 }
 
+
+[id="3-analyses-geographiques"]{
+    text-align : center;
+    background-color : white;
+    font-family : "Roboto Condensed";
+    padding: 10px 0px 10px 10px;
+    font-weight : 200;
+}
+
+
 em {
         font-size : 25px;
         border-bottom : 2px solid white;
