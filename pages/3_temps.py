@@ -452,9 +452,9 @@ with col_map:
     folium.Marker([merged_data['Latitude'].iloc[0], merged_data['Longitude'].iloc[0]], 
                   popup=f"Nombre de clients: {num_clients}", 
                   icon=client_icon).add_to(my_map)
-    
-    #affichage de la carte
-    st_folium(my_map, width=1000, height=400)
+
+    if selection :
+        st_folium(my_map, width=1000, height=400)
 
 
 
