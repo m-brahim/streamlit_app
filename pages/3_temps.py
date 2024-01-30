@@ -454,7 +454,7 @@ with col_map:
                   icon=client_icon).add_to(my_map)
 
     if selection :
-        st_folium(my_map, width=900, height=400)
+        st_folium(my_map, width=900, height=500)
 
 
 
