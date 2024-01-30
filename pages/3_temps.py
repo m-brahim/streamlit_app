@@ -19,6 +19,12 @@ st.set_page_config("Suivi des ventes de la société", page_icon="", layout="wid
 #collecte des données
 url = "Exemple - Hypermarché_Achats.csv"
 
+#charger le fichier CSS
+with open("pages/style.css") as f:
+    css_code = f.read()
+
+st.markdown(f"<style>{css_code}</style>", unsafe_allow_html=True)
+
 #modif sur colonne Ventes
 df = pd.read_csv(url, delimiter=";")
 df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
