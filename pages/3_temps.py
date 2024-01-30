@@ -432,7 +432,7 @@ with col_class:
     chart_container = st.container()
     
     if selection:
-        chart_container.plotly_chart(fig, use_container_width=True, height=350)
+        chart_container.plotly_chart(fig, use_container_width=True, height=200)
 
 
 
