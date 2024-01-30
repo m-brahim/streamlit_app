@@ -132,11 +132,8 @@ td[class^="st-emotion-cache-gdzsw5"] {
 
 
 
-[class^="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"]{
-    height: 500px !important;
-    width: 800px !important;
-}
-
+map_div [style^="height: 400px"]{
+    height: 500px !important;}
 
 
 
