@@ -454,7 +454,7 @@ with col_map:
                   icon=client_icon).add_to(my_map)
     
     #affichage de la carte
-    st_folium(my_map, width=500, height=500)
+    st_folium(my_map, width=1000, height=500)
 
 
 
