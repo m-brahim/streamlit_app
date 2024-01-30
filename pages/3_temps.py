@@ -375,7 +375,7 @@ if selected_pays is not None :
 
 data_f = df[df['Pays/Région'] == selected_pays]
 
-col_class, col_space, col_map = st.columns([1,0.2,3])
+col_class, col_space, col_map = st.columns([1,0.2,2])
 
 def plot_top_products_by_country(df, selected_pays):
     target_value = 30
@@ -454,7 +454,7 @@ with col_map:
                   icon=client_icon).add_to(my_map)
     
     #affichage de la carte
-    st_folium(my_map, width=800, height=graph_height)
+    st_folium(my_map, width=500, height=graph_height)
 
 
 
