@@ -433,7 +433,8 @@ with col_class :
 
 
 
-
+st.write(data_f['Quantité'].mean())
+st.write(len(data_f))
 
 
 
