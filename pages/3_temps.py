@@ -373,7 +373,7 @@ with col_class:
                 x1=target_value,
                 y0=0,
                 y1=len(top_products),
-                line=dict(color='red', dash='dash', width=2),
+                line=dict(color='black', dash='dash', width=3),
             )
         )
 
