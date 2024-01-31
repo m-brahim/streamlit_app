@@ -349,9 +349,7 @@ with col_class:
         # Trier par quantité croissante et sélectionner les 5 premiers produits
         top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
 
-        total_quantity = data_f['Quantité'].sum()
-
-        target_value = total_quantity / len(data_f)
+        target_value = data_f['Quantité'].mean()
         
         colors = ['#faf1b7', '#f7e888', '#ffdd1a', '#ffd54d', '#fcc200']
 
