@@ -339,7 +339,7 @@ if selected_pays is not None:
 data_f = df[df['Pays/Région'] == selected_pays]
 
 # Colonne pour le classement par pays des 5 produits les plus achetés
-col_class, col_space, col_map = st.columns([1, 0.1, 1])
+col_class, col_space, col_map = st.columns([2, 1, 3])
 
 with col_class:
     if selection:
@@ -411,7 +411,7 @@ with col_map:
                       popup=f"Nombre de clients: {num_clients}",
                       icon=client_icon).add_to(my_map)
 
-        st_folium(my_map, width=800, height=700)
+        st_folium(my_map, width=1000, height=400)
 
 
 with col_class :
@@ -431,13 +431,6 @@ with col_class :
     
     if selection :
         st.plotly_chart(fig, use_container_width=True)
-
-
-left, right = st.columns(2)
-with left:
-    m2 = folium.Map(location=[39.949610, -75.150282], zoom_start=16)
-    folium.Marker([39.949610, -75.150282], popup="Liberty Bell", tooltip="Liberty Bell").add_to(m2)
-    st_data = st_folium(m2)
 
 
 
