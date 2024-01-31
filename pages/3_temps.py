@@ -270,7 +270,7 @@ with col_v2:
         name=f"{selected_comparison_year}",
         text=monthly_orders_comparison_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#4678b9', line=dict(width=2, color='black')),
+        marker=dict(color='#f7e98e', line=dict(width=2, color='black')),
         width=bar_width,
     ))
 
@@ -281,7 +281,7 @@ with col_v2:
         name=f"{selected_year}",
         text=monthly_orders_selected_year['ID commande'],
         textposition='outside',
-        marker=dict(color='#44566f', line=dict(width=2, color='black')),
+        marker=dict(color='#fcc200', line=dict(width=2, color='black')),
         width=bar_width,
     ))
 
@@ -293,7 +293,7 @@ with col_v2:
             x1=monthly_orders_comparison_year['Mois'].max(),
             y0=target_value,
             y1=target_value,
-            line=dict(color="red", width=2, dash="dash"),
+            line=dict(color="black", width=2, dash="dash"),
         )
     )
 
