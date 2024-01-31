@@ -103,7 +103,7 @@ if selected_country is not None and selected_category is not None and selected_c
 # condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
     # Afficher le DataFrame avec AgGrid
-    AgGrid(df_filtre[selected_columns_table], theme='light', gridOptions={'enableSorting': True, 'enableFilter': True})
+    AgGrid(df_filtre[selected_columns_table], theme='streamlit', gridOptions={'enableSorting': True, 'enableFilter': True})
 
 
 
