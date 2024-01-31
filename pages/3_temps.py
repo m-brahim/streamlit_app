@@ -433,9 +433,11 @@ with col_class :
         st.plotly_chart(fig, use_container_width=True)
 
 
-m2 = folium.Map(location=[39.949610, -75.150282], zoom_start=16)
-folium.Marker([39.949610, -75.150282], popup="Liberty Bell", tooltip="Liberty Bell").add_to(m2)
-st_data = st_folium(m2, width=725, height = 800)
+left, right = st.columns(2)
+with left:
+    m2 = folium.Map(location=[39.949610, -75.150282], zoom_start=16)
+    folium.Marker([39.949610, -75.150282], popup="Liberty Bell", tooltip="Liberty Bell").add_to(m2)
+    st_data = st_folium(m2)
 
 
 
