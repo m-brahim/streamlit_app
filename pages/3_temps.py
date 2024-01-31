@@ -339,7 +339,7 @@ if selected_pays is not None:
 data_f = df[df['Pays/Région'] == selected_pays]
 
 # Colonne pour le classement par pays des 5 produits les plus achetés
-col_class, col_space, col_map = st.columns([2, 1, 3])
+col_class, col_space, col_map = st.columns([2, 0.5, 3])
 
 with col_class:
     if selection:
