@@ -211,7 +211,7 @@ with col_v1:
         y=monthly_clients_comparison_year['ID client'],
         mode='lines',
         name=f"{selected_comparison_year}",
-        line=dict(color='#4678b9')
+        line=dict(color='#66ccff')
     ))
 
     target_value = 80
