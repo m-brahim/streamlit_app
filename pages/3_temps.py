@@ -101,10 +101,10 @@ if selected_country is not None and selected_category is not None and selected_c
 # Condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
     # Trouver l'indice de la cellule avec la quantité la plus grande
-    max_quantity_index = df_filtre['Quantité'].idxmax()
+    max_quantity_index = df_filtre['Ventes'].idxmax()
 
     # Créer une copie du DataFrame pour ajouter des styles
-    styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: yellow' if row.name == max_quantity_index else '' for _ in row], axis=1)
+    styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_quantity_index else '' for _ in row], axis=1)
 
     # Afficher le tableau avec les styles
     st.table(styled_df)
