@@ -100,19 +100,10 @@ selection_effectuee = False
 if selected_country is not None and selected_category is not None and selected_client is not None:
     selection_effectuee = True
 
-#condition pour afficher le tableau uniquement si la sélection a été effectuée
+# condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
-    # Trouver l'indice de la cellule contenant la plus grande quantité vendue pour chaque client
-    idx_max_quantity = df_filtre.groupby('Nom du client')['Quantité'].idxmax()
-
-    # Créer une copie du DataFrame pour éviter de modifier l'original
-    df_styled = df_filtre.copy()
-
-    # Appliquer le style conditionnel pour surligner la cellule contenant la plus grande quantité
-    df_styled.loc[:, selected_columns_table] = df_styled.loc[:, selected_columns_table].apply(lambda x: ['background-color: yellow' if x == df_styled.loc[idx_max_quantity, 'Quantité'].values[0] else '' for _ in x])
-
-    # Afficher le DataFrame stylé
-    st.dataframe(df_styled[selected_columns_table].style, unsafe_allow_html=True)
+    # Afficher le DataFrame avec AgGrid
+    AgGrid(df_filtre[selected_columns_table], theme='light', gridOptions={'enableSorting': True, 'enableFilter': True})
 
 
 
