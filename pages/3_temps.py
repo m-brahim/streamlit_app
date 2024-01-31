@@ -343,7 +343,7 @@ col_map, col_sp, col_class = st.columns([2, 0.5, 2])
 
 with col_class:
     if selection:
-        target_value = (data_f['Quantité'].sum()) / len(data_f)
+        target_value = data_f['Quantité'].sum() / len(top_products)
 
         # Grouper par produit et calculer la quantité totale achetée
         top_products = data_f.groupby('Nom du produit')['Quantité'].sum().reset_index()
