@@ -141,12 +141,6 @@ div[data-testid="stTable"] td, div[data-testid="stTable"] th {
 }
 
         
-div[data-testid="stMetric"], 
-        div[data-testid="metric-container"] {
-            background-color: #FFF;
-            border: 1px solid #CCC;
-            padding: 5% 5% 5% 10%;
-            border-radius: 5px;
-            border-left: 0.5rem solid #fcc200 !important;
-            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.st-emotion-cache-uf99v8.ea3mdgi3 > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi2 > div > div > div > div:nth-child(7) > div:nth-child(3) > div > div > div > div > div {
+    border-left-color: #fcc200 !important;
 }
