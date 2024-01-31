@@ -100,13 +100,23 @@ if selected_country is not None and selected_category is not None and selected_c
 
 # Condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
+    # Assurez-vous que la colonne 'Ventes' contient uniquement des chaînes de caractères
+    df['Ventes'] = df['Ventes'].astype(str)
+
+    # Appliquer la modification sur la colonne 'Ventes'
     df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
+
+    # Convertir la colonne 'Ventes' en type numérique
     df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
-    # Trouver l'indice de la cellule avec la quantité la plus grande
-    max_quantity_index = df_filtre['Ventes'].idxmax()
+
+    # Réappliquer les filtres après la modification de la colonne 'Ventes'
+    df_filtre = df[(df['Pays/Région'] == selected_country) & (df['Catégorie'] == selected_category) & (df['Nom du client'] == selected_client)]
+
+    # Trouver l'indice de la cellule avec la vente la plus élevée
+    max_sales_index = df_filtre['Ventes'].idxmax()
 
     # Créer une copie du DataFrame pour ajouter des styles
-    styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_quantity_index else '' for _ in row], axis=1)
+    styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
 
     # Afficher le tableau avec les styles
     st.table(styled_df)
