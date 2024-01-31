@@ -202,9 +202,9 @@ with col_v1:
         y=monthly_clients_selected_year['ID client'],
         mode='lines',
         name=f"{selected_year}",
-        line=dict(color='#44566f')
+        line=dict(color='#d08011')
     ))
-
+     
     # Affiche l'évolution du nombre de clients pour N-*
     fig_clients_evolution.add_trace(go.Scatter(
         x=monthly_clients_comparison_year['Mois'],
