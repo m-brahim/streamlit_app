@@ -100,6 +100,8 @@ if selected_country is not None and selected_category is not None and selected_c
 
 # Condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
+    df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
+    df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
     # Trouver l'indice de la cellule avec la quantité la plus grande
     max_quantity_index = df_filtre['Ventes'].idxmax()
 
