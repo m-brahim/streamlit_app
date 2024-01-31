@@ -433,7 +433,7 @@ with col_class :
 
 
 
-st.write(data_f['Quantité'].sum())
+st.write(df['Pays/Région'].value_counts())
 st.write(len(data_f))
 
 
