@@ -415,12 +415,12 @@ with col_map:
         st.markdown("""
         <style>
             #map_div {
-                height: 500px !important;
+                height: 400px !important;
             }
         </style>
         """, unsafe_allow_html=True)
 
-        st_folium(my_map, width=800, height=500)
+        st_folium(my_map, width=800, height=400)
 
 
 
