@@ -202,7 +202,7 @@ with col_v1:
         y=monthly_clients_selected_year['ID client'],
         mode='lines',
         name=f"{selected_year}",
-        line=dict(color='#d08011')
+        line=dict(color='#fcc200')
     ))
      
     # Affiche l'évolution du nombre de clients pour N-*
@@ -211,7 +211,7 @@ with col_v1:
         y=monthly_clients_comparison_year['ID client'],
         mode='lines',
         name=f"{selected_comparison_year}",
-        line=dict(color='#66ccff')
+        line=dict(color='#9b870c')
     ))
 
     target_value = 80
@@ -222,7 +222,7 @@ with col_v1:
             x1=monthly_clients_selected_year['Mois'].max(),
             y0=target_value,
             y1=target_value,
-            line=dict(color="red", width=2, dash="dash"),
+            line=dict(color="black", width=2, dash="dash"),
         )
     )
     
@@ -365,7 +365,6 @@ with col_class:
             textposition='outside',
         ))
 
-        # Ajouter la ligne rouge pour la cible
         fig.add_shape(
             go.layout.Shape(
                 type='line',
@@ -373,11 +372,10 @@ with col_class:
                 x1=target_value,
                 y0=0,
                 y1=len(top_products),
-                line=dict(color='black', dash='dash', width=3),
+                line=dict(color='black', dash='dash', width=2),
             )
         )
 
-        # Mettre en forme le layout
         fig.update_layout(
             title='Classement des 5 produits les plus achetés',
             yaxis=dict(title='Produit'),
