@@ -433,7 +433,7 @@ with col_class :
 
 
 
-st.write(df['Quantité'].sum())
+st.write(data_f['Quantité'].sum())
 st.write(len(data_f))
 
 
