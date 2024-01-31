@@ -351,7 +351,7 @@ with col_class:
         # Trier par quantité croissante et sélectionner les 5 premiers produits
         top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
 
-        colors = ['#ffd699', '#ffad33', '#e68a00', '#cc6600', '#cc6600']
+        colors = ['#faf1b7', '#f7e888', '#ffdd1a', '#e8be4a', '#cb9c1a]
 
         fig = go.Figure()
 
