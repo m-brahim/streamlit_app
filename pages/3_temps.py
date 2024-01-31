@@ -99,19 +99,19 @@ selection_effectuee = False
 if selected_country is not None and selected_category is not None and selected_client is not None:
     selection_effectuee = True
 
+#condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
-    # Trouver l'index de la ligne avec la vente la plus élevée
-    index_max_vente = df_filtre['Ventes'].idxmax()
+    # Trouver l'indice de la cellule contenant la plus grande quantité vendue pour chaque client
+    idx_max_quantity = df_filtre.groupby('Nom du client')['Quantité'].idxmax()
 
-    # Générer le HTML pour le tableau avec la mise en forme conditionnelle
-    table_html = '<table style="border-collapse: collapse; width: 100%;">'
-    for idx, row in df_filtre[selected_columns_table].iterrows():
-        row_html = f'<tr>{"".join(f"<td style=\'background: green;\'>' if idx == index_max_vente and col == \'Ventes\' else f"<td>{val}</td>" for col, val in row.items())}</tr>'
-        table_html += row_html
-    table_html += '</table>'
+    # Créer une copie du DataFrame pour éviter de modifier l'original
+    df_styled = df_filtre.copy()
 
-    # Afficher le tableau stylisé
-    st.markdown(table_html, unsafe_allow_html=True)
+    # Appliquer le style conditionnel pour surligner la cellule contenant la plus grande quantité
+    df_styled.loc[idx_max_quantity, 'Quantité'] = 'background-color: green'
+
+    # Afficher le tableau avec le style conditionnel
+    st.table(df_styled[selected_columns_table].style.apply(lambda x: ['' for _ in x], subset=['Quantité']))
 
 
 
