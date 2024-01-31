@@ -100,11 +100,9 @@ selection_effectuee = False
 if selected_country is not None and selected_category is not None and selected_client is not None:
     selection_effectuee = True
 
-# condition pour afficher le tableau uniquement si la sélection a été effectuée
+#condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
-    # Afficher le DataFrame avec AgGrid
-    AgGrid(df)
-
+    st.table(df_filtre[selected_columns_table]) 
 
 
 
