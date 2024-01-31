@@ -355,7 +355,6 @@ with col_class:
 
         fig = go.Figure()
 
-        # Ajouter les barres horizontales
         fig.add_trace(go.Bar(
             y=top_products['Nom du produit'],
             x=top_products['Quantité'],
@@ -378,14 +377,14 @@ with col_class:
 
         fig.update_layout(
             title='Classement des 5 produits les plus achetés',
-            yaxis=dict(title='Produit', tickfont=dict(size=12)),
-            xaxis=dict(title='Quantité achetée', tickfont=dict(size=12)),
+            yaxis=dict(title='Produit', tickfont=dict(size=12, weight='bold')),
+            xaxis=dict(title='Quantité achetée', tickfont=dict(size=12, weight='bold')),
             title_x=0.25,
-            title_font=dict(size=15),
+            title_font=dict(size=15, weight='bold'),
             height=400,
             width=800,
         )
-
+        
         st.plotly_chart(fig, use_container_width=True)
 
 # agréger le nombre de clients par pays
