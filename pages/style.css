@@ -141,7 +141,7 @@ div[data-testid="stTable"] td, div[data-testid="stTable"] th {
 }
 
         
-#root .metric-item {
-    border-left-color: #fcc200 !important;
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.st-emotion-cache-uf99v8.ea3mdgi3 > div.block-container.st-emotion-cache-z5fcl4.ea3mdgi2 > div > div > div > div:nth-child(7) > div:nth-child(3) > div > div > div > div > div {
+    border-left-color: #NOM_DE_LA_NOUVELLE_COULEUR !important;
 }
 
