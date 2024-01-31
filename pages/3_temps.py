@@ -433,7 +433,7 @@ with col_class :
 
 
 
-st.write(df['Pays/Région'].value_counts())
+st.write(df[df['Pays/Région'] == 'France'])
 st.write(len(data_f))
 
 
