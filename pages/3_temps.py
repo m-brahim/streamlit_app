@@ -329,7 +329,7 @@ col_country, col_space = st.columns([0.5, 1])
 
 # Liste déroulante pour le pays
 with col_country:
-    selected_pays = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None, placeholder=" ")
+    selected_pays = st.selectbox('Sélectionnez le pays', df['Pays/Région'].unique(), index=None, placeholder=" ")
 
 selection = False
 
@@ -339,7 +339,7 @@ if selected_pays is not None:
 data_f = df[df['Pays/Région'] == selected_pays]
 
 # Colonne pour le classement par pays des 5 produits les plus achetés
-col_map, col_sp, col_class = st.columns([2, 0.5, 2])
+col_map, col_sp, col_class = st.columns([3, 1, 2])
 
 with col_class:
     if selection:
