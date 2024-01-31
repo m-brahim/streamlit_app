@@ -99,20 +99,19 @@ selection_effectuee = False
 if selected_country is not None and selected_category is not None and selected_client is not None:
     selection_effectuee = True
 
-#condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
     # Trouver l'index de la ligne avec la vente la plus élevée
     index_max_vente = df_filtre['Ventes'].idxmax()
 
-    # Appliquer la mise en forme conditionnelle pour surligner la ligne avec la vente la plus élevée
-    df_styled = df_filtre[selected_columns_table].style.apply(
-        lambda x: ['background: #fcc200' if x.name == index_max_vente else '' for i in x],
-        axis=1
-    )
+    # Générer le HTML pour le tableau avec la mise en forme conditionnelle
+    table_html = f'<table style="border-collapse: collapse; width: 100%;">'
+    for idx, row in df_filtre[selected_columns_table].iterrows():
+        row_html = f'<tr>{"".join(f"<td style=\'{"background: green;" if idx == index_max_vente and col == "Ventes" else ""}\'>{val}</td>" for col, val in row.items())}</tr>'
+        table_html += row_html
+    table_html += '</table>'
 
     # Afficher le tableau stylisé
-    st.table(df_styled)
-
+    st.markdown(table_html, unsafe_allow_html=True)
 
 
 
