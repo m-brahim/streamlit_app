@@ -141,5 +141,7 @@ div[data-testid="stTable"] td, div[data-testid="stTable"] th {
 }
 
 
-
+div[data-testid="stMetric"], div[data-testid="metric-container"] {
+    border-left-color : #fcc200;
+}
     
