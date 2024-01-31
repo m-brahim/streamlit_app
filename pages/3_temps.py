@@ -432,7 +432,7 @@ with col_class :
 
 
 dframe = df[df['Pays/Région'] == selected_pays]
-st.write(dframe[Quantité].sum())
+st.write(dframe['Quantité'].sum())
 st.write(len(data_f))
 
 
