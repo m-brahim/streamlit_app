@@ -101,13 +101,18 @@ if selected_country is not None and selected_category is not None and selected_c
 
 #condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
+    # Trouver l'index de la ligne avec la vente la plus élevée
+    index_max_vente = df_filtre['Ventes'].idxmax()
+
+    # Appliquer la mise en forme conditionnelle pour surligner la ligne avec la vente la plus élevée
+    df_styled = df_filtre[selected_columns_table].style.apply(
+        lambda x: ['background: #fcc200' if x.name == index_max_vente else '' for i in x],
+        axis=1
+    )
+    
     st.table(df_filtre[selected_columns_table])
 
 
-selection_pays = None
-
-if selected_country is not None:
-    selection_pays = True
 
 
 
