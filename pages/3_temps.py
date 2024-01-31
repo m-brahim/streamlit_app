@@ -435,7 +435,7 @@ with col_class :
 
 m2 = folium.Map(location=[39.949610, -75.150282], zoom_start=16)
 folium.Marker([39.949610, -75.150282], popup="Liberty Bell", tooltip="Liberty Bell").add_to(m2)
-st_data = st_folium(m2, width=725)
+st_folium(m2, width=725)
 
 
 
