@@ -83,9 +83,7 @@ p{
         
 /* tableau */
 
-[data-testid="stTableStyledTable"]{
-    background-color : white;
-}
+
 
 [class^="col_heading level0 col"] {
     font-weight : bold;
