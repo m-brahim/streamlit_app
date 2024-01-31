@@ -107,7 +107,7 @@ if selection_effectuee:
     styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: yellow' if row.name == max_quantity_index else '' for _ in row], axis=1)
 
     # Afficher le tableau avec les styles
-    st.table(styled_df, height=500)
+    st.table(styled_df)
 
 
 
