@@ -108,10 +108,11 @@ if selection_effectuee:
     df_styled = df_filtre.copy()
 
     # Appliquer le style conditionnel pour surligner la cellule contenant la plus grande quantité
-    df_styled.loc[:, selected_columns_table] = df_styled.loc[:, selected_columns_table].applymap(lambda x: 'background-color: yellow' if x == df_styled.loc[idx_max_quantity, 'Quantité'].values[0] else '')
+    df_styled.loc[:, selected_columns_table] = df_styled.loc[:, selected_columns_table].apply(lambda x: ['background-color: yellow' if x == df_styled.loc[idx_max_quantity, 'Quantité'].values[0] else '' for _ in x])
 
-    # Afficher le tableau avec le style conditionnel
-    st.table(df_styled[selected_columns_table], unsafe_allow_html=True)
+    # Afficher le DataFrame stylé
+    st.dataframe(df_styled[selected_columns_table].style, unsafe_allow_html=True)
+
 
 
 
