@@ -11,8 +11,6 @@ from plotly.subplots import make_subplots
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-from st_aggrid import AgGrid
-
 
 #config du titre de la page
 st.set_page_config("Suivi des ventes de la société", page_icon="", layout="wide")
@@ -106,10 +104,7 @@ if selection_effectuee:
     max_quantity_index = df_filtre['Quantité'].idxmax()
 
     # Créer une copie du DataFrame pour ajouter des styles
-    styled_df = df_filtre[selected_columns_table].style
-
-    # Appliquer un style conditionnel pour surligner la cellule avec la quantité la plus grande
-    styled_df.apply(lambda row: ['background: yellow' if row.name == max_quantity_index else '' for _ in row], axis=1)
+    styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: yellow' if row.name == max_quantity_index else '' for _ in row], axis=1)
 
     # Afficher le tableau avec les styles
     st.dataframe(styled_df, height=500)
