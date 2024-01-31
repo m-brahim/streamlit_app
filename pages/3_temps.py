@@ -351,7 +351,7 @@ with col_class:
         # Trier par quantité croissante et sélectionner les 5 premiers produits
         top_products = top_products.sort_values(by='Quantité', ascending=True).tail(5)
 
-        colors = ['#faf1b7', '#f7e888', '#ffdd1a', '#e8be4a', '#cb9c1a']
+        colors = ['#faf1b7', '#f7e888', '#ffdd1a', '#ffd54d', '#fcc200']
 
         fig = go.Figure()
 
@@ -417,7 +417,7 @@ with col_map:
 with col_class :
     quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
         
-    colors = ['#e5b73b', '#ffe033', '#f7e98e']
+    colors = ['#fcc200', '#ffe033', '#f7e98e']
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
                  color_discrete_sequence=colors)
         
