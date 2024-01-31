@@ -105,12 +105,13 @@ if selection_effectuee:
     index_max_vente = df_filtre['Ventes'].idxmax()
 
     # Appliquer la mise en forme conditionnelle pour surligner la ligne avec la vente la plus élevée
-    df_styled = df_filtre[selected_columns_table].style.apply(
+    styled_df = df_filtre[selected_columns_table].style.apply(
         lambda x: ['background: #fcc200' if x.name == index_max_vente else '' for i in x],
         axis=1
     )
-    
-    st.table(df_filtre[selected_columns_table])
+
+    # Afficher le tableau stylisé
+    st.dataframe(styled_df, unsafe_allow_html=True)
 
 
 
