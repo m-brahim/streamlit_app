@@ -411,18 +411,8 @@ with col_map:
                       popup=f"Nombre de clients: {num_clients}",
                       icon=client_icon).add_to(my_map)
 
-        # Ajuster la hauteur de la carte Folium pour occuper tout l'espace disponible
-        height = 500
-        st_folium(my_map, width=800, height=height)
+        st_folium(my_map, width=800, height=500)
 
-        # Ajouter du CSS pour régler la hauteur du div avec l'id "map_div"
-        st.markdown(f"""
-        <style>
-            div#map_div {{
-                height: {height}px !important;
-            }}
-        </style>
-        """, unsafe_allow_html=True)
 
 
 with col_class :
