@@ -411,6 +411,15 @@ with col_map:
                       popup=f"Nombre de clients: {num_clients}",
                       icon=client_icon).add_to(my_map)
 
+        # Utiliser le style pour définir la hauteur du div avec l'id "map_div"
+        st.markdown("""
+        <style>
+            #map_div {
+                height: 500px !important;
+            }
+        </style>
+        """, unsafe_allow_html=True)
+
         st_folium(my_map, width=800, height=500)
 
 
