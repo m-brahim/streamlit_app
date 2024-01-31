@@ -104,15 +104,14 @@ if selection_effectuee:
     index_max_vente = df_filtre['Ventes'].idxmax()
 
     # Générer le HTML pour le tableau avec la mise en forme conditionnelle
-    table_html = f'<table style="border-collapse: collapse; width: 100%;">'
+    table_html = '<table style="border-collapse: collapse; width: 100%;">'
     for idx, row in df_filtre[selected_columns_table].iterrows():
-        row_html = f'<tr>{"".join(f"<td style=\'{"background: green;" if idx == index_max_vente and col == "Ventes" else ""}\'>{val}</td>" for col, val in row.items())}</tr>'
+        row_html = f'<tr>{"".join(f"<td style=\'background: green;\'>' if idx == index_max_vente and col == \'Ventes\' else f"<td>{val}</td>" for col, val in row.items())}</tr>'
         table_html += row_html
     table_html += '</table>'
 
     # Afficher le tableau stylisé
     st.markdown(table_html, unsafe_allow_html=True)
-
 
 
 
