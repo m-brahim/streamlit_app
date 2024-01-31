@@ -118,6 +118,12 @@ if selection_effectuee:
     # Créer une copie du DataFrame pour ajouter des styles
     styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
 
+    # Appliquer un style pour surligner la zone d'index en vert
+    styled_df.set_table_styles([
+        {'selector': 'thead tr th.col_heading',
+         'props': 'background-color: green; color: white;'}
+    ])
+
     # Afficher le tableau avec les styles
     st.table(styled_df)
 
