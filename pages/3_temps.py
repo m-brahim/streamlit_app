@@ -417,7 +417,7 @@ with col_map:
 with col_class :
     quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
         
-    colors = ['#ff9933', '#ffcc00', '#ffff00']
+    colors = ['#ff8000', '#ffcc00', '#e6e600']
     fig = px.pie(quantity_by_category, values='Quantité', names='Catégorie',
                  color_discrete_sequence=colors)
         
