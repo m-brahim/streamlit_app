@@ -42,7 +42,7 @@ sorted_years = sorted(df['Année'].unique())
 sorted_years_2 = sorted(df['Année'].unique())
 
 #création de colonnes
-col_1, col_title, col_2 = st.columns([1, 2, 1])
+col_title, col_space, col_logo = st.columns([2, 1, 0.5])
 
 #une colonne pour le titre & une pour les listes déroulantes
 with col_title:
@@ -465,4 +465,4 @@ with col_class :
 
 
 
-new_dfs, code = spreadsheet(url)
+#new_dfs, code = spreadsheet(url)
