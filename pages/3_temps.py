@@ -50,7 +50,7 @@ with col_title:
 
 with col_logo:
     logo = "pages/Kiloutou_logo.jpg"
-    st.image(logo, width=200)
+    st.image(logo, width=50)
 
 
 with st.sidebar:
