@@ -65,52 +65,49 @@ with col_h1:
 
 # tableau
 
-#collecte des données
+# Collecte des données
 df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
 
-#créer des colonnes pour les listes déroulantes
+# Créer des colonnes pour les listes déroulantes
 col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([0.5, 1, 0.5, 1, 0.5, 1, 0.5])
 
-#liste déroulante pour le pays
+# Liste déroulante pour le pays
 with col_country:
     selected_country = st.selectbox('Sélectionnez le pays', df_table['Pays/Région'].unique(), index=None, placeholder="Choisir un pays",)
 
-#liste déroulante pour la catégorie
+# Liste déroulante pour la catégorie
 with col_category:
     selected_category = st.selectbox('Sélectionnez la catégorie', df_table['Catégorie'].unique(), index=None, placeholder="Choisir une catégorie",)
 
-#liste déroulante pour le client
+# Liste déroulante pour le client
 with col_client:
     selected_client = st.selectbox('Sélectionnez le client', df_table['Nom du client'].unique(), index=None, placeholder="Choisir un client",)
 
-#sélectionner les colonnes à afficher dans le DataFrame
+# Sélectionner les colonnes à afficher dans le DataFrame
 selected_columns_table = ['Catégorie', 'Date de commande', 'ID client', 'Nom du client', 'Nom du produit', 'Pays/Région', 'Segment', 'Statut des expéditions', 'Ville', 'Quantité', 'Remise', 'Ventes']
 
-#appliquer les filtres
+# Appliquer les filtres
 df_filtre = df_table[(df_table['Pays/Région'] == selected_country) & (df_table['Catégorie'] == selected_category) & (df_table['Nom du client'] == selected_client)]
 
 df_filtre.reset_index(drop=True, inplace=True)
 
-#définir une variable pour vérifier si les listes déroulantes ont été sélectionnées
+# Définir une variable pour vérifier si les listes déroulantes ont été sélectionnées
 selection_effectuee = False
 
-#condition pour vérifier si les éléments nécessaires sont sélectionnés
+# Condition pour vérifier si les éléments nécessaires sont sélectionnés
 if selected_country is not None and selected_category is not None and selected_client is not None:
     selection_effectuee = True
 
 # Condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
     # Assurez-vous que la colonne 'Ventes' contient uniquement des chaînes de caractères
-    df['Ventes'] = df['Ventes'].astype(str)
+    df_filtre['Ventes'] = df_filtre['Ventes'].astype(str)
 
     # Appliquer la modification sur la colonne 'Ventes'
-    df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
+    df_filtre['Ventes'] = df_filtre['Ventes'].str.replace('[^\d]', '', regex=True)
 
     # Convertir la colonne 'Ventes' en type numérique
-    df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
-
-    # Réappliquer les filtres après la modification de la colonne 'Ventes'
-    df_filtre = df[(df['Pays/Région'] == selected_country) & (df['Catégorie'] == selected_category) & (df['Nom du client'] == selected_client)]
+    df_filtre['Ventes'] = pd.to_numeric(df_filtre['Ventes'], errors='coerce', downcast='integer')
 
     # Trouver l'indice de la cellule avec la vente la plus élevée
     max_sales_index = df_filtre['Ventes'].idxmax()
@@ -118,9 +115,16 @@ if selection_effectuee:
     # Créer une copie du DataFrame pour ajouter des styles
     styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
 
+    # Injecter le CSS pour cacher la colonne index
+    hide_index_css = """
+                <style>
+                th {display:none !important}
+                </style>
+                """
+    st.markdown(hide_index_css, unsafe_allow_html=True)
+
     # Afficher le tableau avec les styles
     st.table(styled_df)
-
 
 
 
