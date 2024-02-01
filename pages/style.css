@@ -45,10 +45,9 @@
 
 /* img */
 
-[data-testid="stFullScreenFrame"] {
-    width: 73px !important;  /* Définir la largeur souhaitée */
+.st-emotion-cache-1mkvjbz {
+    width: 73px !important;
 }
-
 
 
 
