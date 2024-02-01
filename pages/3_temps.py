@@ -119,7 +119,7 @@ if selection_effectuee:
     styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
 
     # Afficher le tableau avec les styles
-    st.write(styler.to_html(), unsafe_allow_html=True)
+    st.write(styled_df.to_html(), unsafe_allow_html=True)
 
 
 
