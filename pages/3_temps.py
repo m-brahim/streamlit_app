@@ -53,10 +53,6 @@ with st.sidebar:
     graph_height = st.slider("Hauteur des graphiques", min_value=300, max_value=1200, value=500)
 
 
-
-
-
-
 #PARTIE Vis'
 
 #1) analyse client
@@ -65,9 +61,6 @@ col_h1, col2, col3 = st.columns([1,1,1])
 
 with col_h1:
     st.header("1. Analyse client")
-
-
-
 
 
 # tableau
@@ -123,13 +116,10 @@ if selection_effectuee:
     max_sales_index = df_filtre['Ventes'].idxmax()
 
     # Créer une copie du DataFrame pour ajouter des styles
-    styled_df = df_filtre[selected_columns_table].style.hide_index().apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
+    styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
 
     # Afficher le tableau avec les styles
-    st.table(styled_df)
-
-
-
+    st.write(styled_df.to_html(index=False), unsafe_allow_html=True)
 
 
 
