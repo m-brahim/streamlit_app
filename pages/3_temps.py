@@ -123,7 +123,7 @@ if selection_effectuee:
     max_sales_index = df_filtre['Ventes'].idxmax()
 
     # Créer une copie du DataFrame pour ajouter des styles
-    styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
+    styled_df = df_filtre[selected_columns_table].reset_index(drop=True).style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
 
     # Afficher le tableau avec les styles
     st.table(styled_df)
