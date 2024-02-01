@@ -43,6 +43,17 @@
 
 
 
+/* img */
+
+[data-testid="stFullScreenFrame"] {
+    width: 73px !important;  /* Définir la largeur souhaitée */
+}
+
+
+
+
+
+
 
     
 /* header */
