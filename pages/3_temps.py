@@ -124,18 +124,18 @@ if selection_effectuee:
         columnwidth=[120, 120, 80, 180, 180, 100, 80, 120, 100, 80, 80, 100],
         header=dict(
             values=selected_columns_table,
-            font=dict(size=12, color='white'),
+            font=dict(size=14, color='white'),
             fill_color='#264653',
             line_color='rgba(255,255,255,0.2)',
-            align=['left', 'center'],
-            height=20
+            align=['center'],
+            height=30
         ),
         cells=dict(
             values=[df_filtre[K].tolist() for K in selected_columns_table],
             font=dict(size=12),
-            align=['left', 'center'],
+            align=['center'],
             line_color='rgba(255,255,255,0.2)',
-            height=20))
+            height=30))
     ])
 
     fig.update_layout(title_text="Current Table Title", title_font_color='#264653', title_x=0,
