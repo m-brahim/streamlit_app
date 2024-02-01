@@ -115,9 +115,16 @@ if selection_effectuee:
     # Créer une copie du DataFrame pour ajouter des styles
     styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
 
+    # Injecter le CSS pour cacher la colonne index
+    hide_index_css = """
+                <style>
+                .dataframe th:first-child, .dataframe td:first-child {display:none !important}
+                </style>
+                """
+    st.markdown(hide_index_css, unsafe_allow_html=True)
+
     # Afficher le tableau avec les styles
     st.table(styled_df)
-
 
 
 
