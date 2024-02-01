@@ -126,7 +126,7 @@ if selection_effectuee:
             values=selected_columns_table,
             font=dict(size=14, color='white'),
             fill_color='#264653',
-            line_color='rgba(255,255,255,0.2)',
+            line_color='rgba(255,255,255,0.2)',  # Ajout de la couleur des grilles
             align=['center'],
             height=30
         ),
@@ -134,15 +134,14 @@ if selection_effectuee:
             values=[df_filtre[K].tolist() for K in selected_columns_table],
             font=dict(size=14),
             align=['center'],
-            line_color='rgba(255,255,255,0.2)',
+            line_color='rgba(255,255,255,0.2)',  # Ajout de la couleur des grilles
             fill_color='#f3f2f2',
             height=30))
-    ])
+    )])
 
     fig.update_layout(height=480)
 
     st.plotly_chart(fig, use_container_width=True)
-
 
 
 
