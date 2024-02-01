@@ -138,8 +138,7 @@ if selection_effectuee:
             height=30))
     ])
 
-    fig.update_layout(title_text="Current Table Title", title_font_color='#264653', title_x=0,
-                      margin=dict(l=0, r=10, b=10, t=30), height=480)
+    fig.update_layout(height=480)
 
     st.plotly_chart(fig, use_container_width=True)
 
