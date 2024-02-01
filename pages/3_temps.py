@@ -109,18 +109,6 @@ if selection_effectuee:
     # Convertir la colonne 'Ventes' en type numérique
     df_filtre['Ventes'] = pd.to_numeric(df_filtre['Ventes'], errors='coerce', downcast='integer')
 
-    # Trouver l'indice de la cellule avec la vente la plus élevée
-    max_sales_index = df_filtre['Ventes'].idxmax()
-
-    # Créer une copie du DataFrame pour ajouter des styles
-    styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
-
-    # Afficher le tableau avec les styles
-    st.table(styled_df)
-
-    # Calculer la hauteur en fonction du nombre de lignes dans le DataFrame filtré
-    table_height = min(len(df_filtre) * 30 + 60, 480)  # Limite la hauteur à 480 pixels
-
     # Afficher un graphique (vous pouvez ajuster le style selon vos préférences)
     fig = go.Figure(data=[go.Table(
         columnorder=list(range(len(selected_columns_table))),
@@ -142,7 +130,7 @@ if selection_effectuee:
             height=30))
     ])
 
-    fig.update_layout(height=table_height)
+    fig.update_layout(height=480)
 
     st.plotly_chart(fig, use_container_width=True)
 
