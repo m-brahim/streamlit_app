@@ -21,7 +21,9 @@
 }
 
 
-
+[class="st-emotion-cache-1kyxreq e115fcil2"]{
+    width : 80px !important;
+}
 
 
 
@@ -119,8 +121,8 @@ div[data-testid="stTable"] {
 
 /* Style pour les cellules du tableau */
 div[data-testid="stTable"] td, div[data-testid="stTable"] th {
-    border: 2px solid #44566f; /* Couleur du trait de bordure des cellules */
-    padding: 8px; /* Espace à l'intérieur des cellules */
+    border: 2px solid #44566f;
+    padding: 8px;
     text-align: left;
 }
 
