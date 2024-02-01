@@ -44,7 +44,8 @@
 
 [id="1-analyse-client"]{
     text-align : left;
-    background-color : white;
+    background-color : #fcc200;
+    opacity : 0.5;
     font-family : "Roboto Condensed";
     padding: 10px 0px 10px 10px;
     font-weight : 200;
