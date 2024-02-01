@@ -355,10 +355,7 @@ with col_v2:
 
 
 
-col_h3, col2, col3 = st.columns([1,1,1])
-
-with col_h3:
-    st.header("3. Analyses géographiques")
+st.header("3. Analyses géographiques")
 
 
 col_country, col_space = st.columns([0.5, 1])
