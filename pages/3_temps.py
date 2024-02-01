@@ -129,10 +129,8 @@ if selection_effectuee:
             fill_color='#f3f2f2',
             height=30))
     ])
-
-    table_height = min(len(df_filtre) * 30 + 60, 480)
     
-    fig.update_layout(height=table_height)
+    fig.update_layout(height=480)
 
     st.plotly_chart(fig, use_container_width=True)
 
