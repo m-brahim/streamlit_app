@@ -121,7 +121,7 @@ if selection_effectuee:
     # Afficher un graphique (vous pouvez ajuster le style selon vos préférences)
     fig = go.Figure(data=[go.Table(
         columnorder=list(range(len(selected_columns_table))),
-        columnwidth=[120, 120, 80, 180, 180, 100, 80, 120, 100, 80, 80, 100],
+        columnwidth=[120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120],
         header=dict(
             values=selected_columns_table,
             font=dict(size=14, color='white'),
@@ -132,7 +132,7 @@ if selection_effectuee:
         ),
         cells=dict(
             values=[df_filtre[K].tolist() for K in selected_columns_table],
-            font=dict(size=12),
+            font=dict(size=14),
             align=['center'],
             line_color='rgba(255,255,255,0.2)',
             height=30))
