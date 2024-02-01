@@ -7,13 +7,6 @@
     margin-left: 0px;
 }
 
-[class="st-emotion-cache-1629p8f e1nzilvr2"] {
-    border: solid;
-    border-color: #354d64;
-    text-align: center;
-    margin-bottom: 20px;
-    background-color : white;
-}
 
 [class="st-emotion-cache-eczf16 e1nzilvr3"] {
     position: relative;
@@ -35,8 +28,7 @@
 /* title */
 
 [id="8e6af571"]{
-    text-align : center;
-    background-color : white;
+    text-align : left;
     font-family : "Roboto Condensed";
     padding: 10px 0px 10px 10px;
     font-weight : 200;
@@ -166,5 +158,21 @@ div[data-testid="stTable"] td, div[data-testid="stTable"] th {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
     
