@@ -155,10 +155,8 @@ if selection_effectuee:
 
 #2) analyse temporelle
 
-col_h2, col_2, col_3 = st.columns([1, 1, 1])
 
-with col_h2:
-    st.header("2. Analyses temporelles")
+st.header("2. Analyses temporelles")
 
 #création de colonnes et attribution de dimensions
 col_dd1, col_sp1, cold_dd2, col_sp2, col_mlt = st.columns([0.5,0.5,0.5,0.5,2])
