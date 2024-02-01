@@ -116,7 +116,7 @@ if selection_effectuee:
         header=dict(
             values=selected_columns_table,
             font=dict(size=14, color='white'),
-            fill_color='#264653',
+            fill_color='#fcc200',
             line_color='#000000',
             align=['center'],
             height=30
@@ -130,9 +130,24 @@ if selection_effectuee:
             height=30))
     ])
 
-    fig.update_layout(height=480)
+    table_height = min(len(df_filtre) * 30 + 60, 480)
+    
+    fig.update_layout(height=table_height)
 
     st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #2) analyse temporelle
