@@ -118,6 +118,9 @@ if selection_effectuee:
     # Afficher le tableau avec les styles
     st.table(styled_df)
 
+    # Calculer la hauteur en fonction du nombre de lignes dans le DataFrame filtré
+    table_height = min(len(df_filtre) * 30 + 60, 480)  # Limite la hauteur à 480 pixels
+
     # Afficher un graphique (vous pouvez ajuster le style selon vos préférences)
     fig = go.Figure(data=[go.Table(
         columnorder=list(range(len(selected_columns_table))),
@@ -139,10 +142,9 @@ if selection_effectuee:
             height=30))
     ])
 
-    fig.update_layout(height=480)
+    fig.update_layout(height=table_height)
 
     st.plotly_chart(fig, use_container_width=True)
-
 
 
 #2) analyse temporelle
