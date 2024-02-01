@@ -135,6 +135,7 @@ if selection_effectuee:
             font=dict(size=14),
             align=['center'],
             line_color='rgba(255,255,255,0.2)',
+            fill_color='#f3f2f2',
             height=30))
     ])
 
