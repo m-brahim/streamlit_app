@@ -113,14 +113,20 @@ if selection_effectuee:
     df_filtre = df[(df['Pays/Région'] == selected_country) & (df['Catégorie'] == selected_category) & (df['Nom du client'] == selected_client)]
 
     # Créer une copie du DataFrame pour ajouter des styles
-    styled_df = df_filtre[selected_columns_table].style
+    styled_df = df_filtre[selected_columns_table].copy()
     
     # Trouver l'indice de la cellule avec la vente la plus élevée
     max_sales_index = df_filtre['Ventes'].idxmax()
     
-    # Appliquer le style à la fois sur les lignes et les colonnes
-    styled_df = styled_df.apply(lambda row: ['background: green; color: white' if row.name == max_sales_index else '' for _ in row], axis=1)
-
+    # Ajouter une colonne temporaire pour l'index
+    styled_df['temp_index'] = styled_df.index
+    
+    # Appliquer le style à l'ensemble de la ligne ayant la plus grande vente
+    styled_df = styled_df.apply(lambda row: ['background: green; color: white' if row['temp_index'] == max_sales_index else '' for _ in row], axis=1)
+    
+    # Supprimer la colonne temporaire
+    styled_df.drop('temp_index', axis=1, inplace=True)
+    
     # Afficher le tableau avec les styles
     st.table(styled_df)
 
