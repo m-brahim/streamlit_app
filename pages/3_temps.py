@@ -120,10 +120,10 @@ if selection_effectuee:
 
     # Afficher un graphique (vous pouvez ajuster le style selon vos préférences)
     fig = go.Figure(data=[go.Table(
-        columnorder=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-        columnwidth=[30, 10, 10, 10, 10, 15, 15, 15, 15, 15],
+        columnorder=list(range(len(selected_columns_table))),
+        columnwidth=[30, 120, 80, 180, 180, 100, 80, 120, 100, 80, 80, 80],
         header=dict(
-            values=list(df_filtre.columns),
+            values=selected_columns_table,
             font=dict(size=12, color='white'),
             fill_color='#264653',
             line_color='rgba(255,255,255,0.2)',
@@ -131,14 +131,14 @@ if selection_effectuee:
             height=20
         ),
         cells=dict(
-            values=[df_filtre[K].tolist() for K in df_filtre.columns],
+            values=[df_filtre[K].tolist() for K in selected_columns_table],
             font=dict(size=12),
             align=['left', 'center'],
             line_color='rgba(255,255,255,0.2)',
             height=20))
     ])
 
-    fig.update_layout(title_text="Current Waiting Handovers", title_font_color='#264653', title_x=0,
+    fig.update_layout(title_text="Current Table Title", title_font_color='#264653', title_x=0,
                       margin=dict(l=0, r=10, b=10, t=30), height=480)
 
     st.plotly_chart(fig, use_container_width=True)
