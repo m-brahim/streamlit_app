@@ -158,11 +158,7 @@ div[data-testid="stTable"] td, div[data-testid="stTable"] th {
             font-size: 20px !important;
         }
 
-[class="plot-container plotly"]{
-    border: solid;
-    border-color: #354d64;
-    border-width : 3px;
-}
+
 
 [class="user-select-none svg-container"]{
     background-color : black;
