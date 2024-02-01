@@ -115,9 +115,14 @@ if selection_effectuee:
     # Trouver l'indice de la cellule avec la vente la plus élevée
     max_sales_index = df_filtre['Ventes'].idxmax()
 
-    # Créer une copie du DataFrame pour ajouter des styles
     styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
 
+    # Appliquer la couleur sur la colonne des index
+    styled_df.set_table_styles([
+        {'selector': 'thead th', 'props': [('background-color', 'green'), ('color', 'white')]},  # Couleur de l'en-tête
+        {'selector': 'td.col0', 'props': [('background-color', 'green'), ('color', 'white')]},  # Couleur de la colonne des index
+    ])
+    
     # Afficher le tableau avec les styles
     st.table(styled_df)
 
