@@ -119,9 +119,8 @@ if selection_effectuee:
     max_sales_index = df_filtre['Ventes'].idxmax()
     
     # Appliquer le style à la fois sur les lignes et les colonnes
-    styled_df.applymap(lambda val: 'background: green; color: white' if val == df_filtre['Ventes'].max() else '', subset=pd.IndexSlice[[max_sales_index], :])
-    styled_df.applymap(lambda val: 'background: green; color: white' if val == df_filtre['Ventes'].max() else '', subset=pd.IndexSlice[:, ['Ventes']])
-    
+    styled_df = styled_df.apply(lambda row: ['background: green; color: white' if row.name == max_sales_index else '' for _ in row], axis=1)
+
     # Afficher le tableau avec les styles
     st.table(styled_df)
 
