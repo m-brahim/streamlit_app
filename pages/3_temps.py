@@ -115,16 +115,8 @@ if selection_effectuee:
     # Créer une copie du DataFrame pour ajouter des styles
     styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
 
-    hide_elements_css = """
-                <style>
-                .blank.st-emotion-cache-a51556.e1q9reml1,
-                th.scope-row.st-emotion-cache-a51556.e1q9reml1 {display:none !important}
-                </style>
-                """
-    st.markdown(hide_elements_css, unsafe_allow_html=True)
-
     # Afficher le tableau avec les styles
-    st.table(styled_df)
+    st.dataframe(styled_df, hide_index = True)
 
 
 
