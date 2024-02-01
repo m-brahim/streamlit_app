@@ -42,7 +42,7 @@ sorted_years = sorted(df['Année'].unique())
 sorted_years_2 = sorted(df['Année'].unique())
 
 #création de colonnes
-col_title, col_space, col_logo = st.columns([2, 1, 0.5])
+col_title, col_logo = st.columns([3, 0.5])
 
 #une colonne pour le titre & une pour les listes déroulantes
 
@@ -64,10 +64,8 @@ with st.sidebar:
 
 #1) analyse client
 
-col_h1, col2, col3 = st.columns([1,1,1])
 
-with col_h1:
-    st.header("1. Analyse client")
+st.header("1. Analyse client")
 
 
 # tableau
