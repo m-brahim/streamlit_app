@@ -101,16 +101,16 @@ if selected_country is not None and selected_category is not None and selected_c
 # Condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
     # Assurez-vous que la colonne 'Ventes' contient uniquement des chaînes de caractères
-    df['Ventes'] = df['Ventes'].astype(str)
+    df_table['Ventes'] = df_table['Ventes'].astype(str)
 
     # Appliquer la modification sur la colonne 'Ventes'
-    df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
+    df_table['Ventes'] = df_table['Ventes'].str.replace('[^\d]', '', regex=True)
 
     # Convertir la colonne 'Ventes' en type numérique
-    df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
+    df_table['Ventes'] = pd.to_numeric(df_table['Ventes'], errors='coerce', downcast='integer')
 
     # Réappliquer les filtres après la modification de la colonne 'Ventes'
-    df_filtre = df[(df['Pays/Région'] == selected_country) & (df['Catégorie'] == selected_category) & (df['Nom du client'] == selected_client)]
+    df_filtre = df_table[(df_table['Pays/Région'] == selected_country) & (df_table['Catégorie'] == selected_category) & (df_table['Nom du client'] == selected_client)]
 
     # Trouver l'indice de la cellule avec la vente la plus élevée
     max_sales_index = df_filtre['Ventes'].idxmax()
