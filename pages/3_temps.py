@@ -47,10 +47,9 @@ col_title, col_space, col_logo = st.columns([2, 1, 0.5])
 #une colonne pour le titre & une pour les listes déroulantes
 with col_title:
     st.title("Suivi des ventes de la société")
-
-with col_logo:
     logo = "pages/Kiloutou_logo.jpg"
-    st.image(logo, width=779, height=50)
+    st.image(logo)
+    
 
 
 with st.sidebar:
