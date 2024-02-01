@@ -48,6 +48,11 @@ col_title, col_space, col_logo = st.columns([2, 1, 0.5])
 with col_title:
     st.title("Suivi des ventes de la société")
 
+with col_logo:
+    logo = "pages/Kiloutou_logo.jpg"
+    st.image(logo, width=200)
+
+
 with st.sidebar:
     st.header("Paramètres des graphiques")
     graph_height = st.slider("Hauteur des graphiques", min_value=300, max_value=1200, value=500)
