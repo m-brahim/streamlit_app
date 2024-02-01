@@ -130,7 +130,7 @@ if selection_effectuee:
             height=30))
     ])
     
-    fig.update_layout(height=480)
+    fig.update_layout(height=600)
 
     st.plotly_chart(fig, use_container_width=True)
 
