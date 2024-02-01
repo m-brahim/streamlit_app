@@ -136,7 +136,7 @@ if selection_effectuee:
             align=['left', 'center'],
             line_color='rgba(255,255,255,0.2)',
             height=20))
-    )])
+    ])
 
     fig.update_layout(title_text="Current Waiting Handovers", title_font_color='#264653', title_x=0,
                       margin=dict(l=0, r=10, b=10, t=30), height=480)
