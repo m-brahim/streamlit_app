@@ -468,8 +468,7 @@ with col_class :
 
 
 
+col_1, col_csv, col_2 = st.columns([1,2,1])
 
-#col_1, col_csv, col_2 = st.columns([1,2,1])
-
-#with col_csv :
-#        new_dfs, code = spreadsheet(url)
+with col_csv :
+        new_dfs, code = spreadsheet(url)
