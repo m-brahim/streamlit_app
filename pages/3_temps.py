@@ -128,7 +128,7 @@ if selection_effectuee:
             fill_color='#264653',
             line_color='#000000',
             align=['center'],
-            height=20
+            height=30
         ),
         cells=dict(
             values=[df_filtre[K].tolist() for K in selected_columns_table],
