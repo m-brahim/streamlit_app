@@ -112,18 +112,15 @@ if selection_effectuee:
     # Réappliquer les filtres après la modification de la colonne 'Ventes'
     df_filtre = df[(df['Pays/Région'] == selected_country) & (df['Catégorie'] == selected_category) & (df['Nom du client'] == selected_client)]
 
-    styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
-
-    # Trouver l'indice de la cellule avec la vente la plus élevée pour la colonne des index
+    # Créer une copie du DataFrame pour ajouter des styles
+    styled_df = df_filtre[selected_columns_table].style
+    
+    # Trouver l'indice de la cellule avec la vente la plus élevée
     max_sales_index = df_filtre['Ventes'].idxmax()
     
-    # Trouver la position de l'index dans le DataFrame stylé
-    index_position = styled_df.data.index.get_loc(max_sales_index)
-    
-    # Appliquer la couleur sur la colonne des index
-    styled_df.set_table_styles([
-    {'selector': f'th#{styled_df.data.index.name}_row{index_position}', 'props': [('background-color', 'green'), ('color', 'white')]}
-    ])
+    # Appliquer le style à la fois sur les lignes et les colonnes
+    styled_df.applymap(lambda val: 'background: green; color: white' if val == df_filtre['Ventes'].max() else '', subset=pd.IndexSlice[[max_sales_index], :])
+    styled_df.applymap(lambda val: 'background: green; color: white' if val == df_filtre['Ventes'].max() else '', subset=pd.IndexSlice[:, ['Ventes']])
     
     # Afficher le tableau avec les styles
     st.table(styled_df)
