@@ -66,7 +66,7 @@ with col_h1:
 # tableau
 
 #collecte des données
-df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
+df_table = pd.DataFrame(url)
 
 #créer des colonnes pour les listes déroulantes
 col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([0.5, 1, 0.5, 1, 0.5, 1, 0.5])
