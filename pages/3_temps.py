@@ -137,7 +137,7 @@ if selection_effectuee:
             line_color='rgba(255,255,255,0.2)',  # Ajout de la couleur des grilles
             fill_color='#f3f2f2',
             height=30))
-    )])
+    ])
 
     fig.update_layout(height=480)
 
