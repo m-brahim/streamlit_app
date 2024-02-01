@@ -34,7 +34,7 @@
     background : rgb(252,194,0,0.3);
     font-family : "Roboto Condensed";
     padding: 10px 0px 10px 10px;
-    font-weight : 200;
+    font-weight : 200 bold;
 }
 
 
@@ -48,7 +48,7 @@
     background : rgb(252,194,0,0.3);
     font-family : "Roboto Condensed";
     padding: 10px 0px 10px 10px;
-    font-weight : 200;
+    font-weight : 200 bold;
 }
 
 [id="2-analyses-temporelles"]{
@@ -56,7 +56,7 @@
     background : rgb(252,194,0,0.3);
     font-family : "Roboto Condensed";
     padding: 10px 0px 10px 10px;
-    font-weight : 200;
+    font-weight : 200 bold;
 }
 
 
@@ -65,7 +65,7 @@
     background : rgb(252, 194, 0,0.3);
     font-family : "Roboto Condensed";
     padding: 10px 0px 10px 10px;
-    font-weight : 200;
+    font-weight : 200 bold;
 }
 
 
