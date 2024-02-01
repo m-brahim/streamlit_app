@@ -66,7 +66,7 @@ with col_h1:
 # tableau
 
 #collecte des données
-df_table = pd.DataFrame(url)
+df_table = pd.read_csv(url, delimiter=";").reset_index(drop=True)
 
 #créer des colonnes pour les listes déroulantes
 col_space, col_country, col_space, col_category, col_space, col_client, col_space = st.columns([0.5, 1, 0.5, 1, 0.5, 1, 0.5])
@@ -101,25 +101,25 @@ if selected_country is not None and selected_category is not None and selected_c
 # Condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
     # Assurez-vous que la colonne 'Ventes' contient uniquement des chaînes de caractères
-    df_table['Ventes'] = df_table['Ventes'].astype(str)
+    df['Ventes'] = df['Ventes'].astype(str)
 
     # Appliquer la modification sur la colonne 'Ventes'
-    df_table['Ventes'] = df_table['Ventes'].str.replace('[^\d]', '', regex=True)
+    df['Ventes'] = df['Ventes'].str.replace('[^\d]', '', regex=True)
 
     # Convertir la colonne 'Ventes' en type numérique
-    df_table['Ventes'] = pd.to_numeric(df_table['Ventes'], errors='coerce', downcast='integer')
+    df['Ventes'] = pd.to_numeric(df['Ventes'], errors='coerce', downcast='integer')
 
     # Réappliquer les filtres après la modification de la colonne 'Ventes'
-    df_filtre = df_table[(df_table['Pays/Région'] == selected_country) & (df_table['Catégorie'] == selected_category) & (df_table['Nom du client'] == selected_client)]
+    df_filtre = df[(df['Pays/Région'] == selected_country) & (df['Catégorie'] == selected_category) & (df['Nom du client'] == selected_client)]
 
     # Trouver l'indice de la cellule avec la vente la plus élevée
     max_sales_index = df_filtre['Ventes'].idxmax()
 
     # Créer une copie du DataFrame pour ajouter des styles
-    styled_df = df_filtre[selected_columns_table].style.hide_index()
+    styled_df = df_filtre[selected_columns_table].style.apply(lambda row: ['background: green' if row.name == max_sales_index else '' for _ in row], axis=1)
 
     # Afficher le tableau avec les styles
-    st.write(styled_df.to_html(), unsafe_allow_html=True)
+    st.table(styled_df)
 
 
 
