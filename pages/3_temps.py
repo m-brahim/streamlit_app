@@ -118,7 +118,7 @@ if selection_effectuee:
     # Injecter le CSS pour cacher la colonne index
     hide_index_css = """
                 <style>
-                .dataframe th:first-child, .dataframe td:first-child {display:none !important}
+                th {display:none !important}
                 </style>
                 """
     st.markdown(hide_index_css, unsafe_allow_html=True)
