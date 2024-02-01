@@ -1,7 +1,7 @@
 /* style.css */
 
 
-/* titres */
+/* config */
 
 [class="st-emotion-cache-10trblm e1nzilvr1"] {
     margin-left: 0px;
@@ -27,6 +27,11 @@
     margin-bottom: 10px;
 }
 
+
+
+
+
+
 /* title */
 
 [id="8e6af571"]{
@@ -37,6 +42,10 @@
     font-weight : 200;
 }
 
+
+
+
+    
 /* header */
 
 [id="1-analyse-client"]{
@@ -65,6 +74,13 @@
 }
 
 
+
+
+
+    
+/* texte */
+
+    
 em {
         font-size : 25px;
         border-bottom : 2px solid black;
@@ -80,10 +96,13 @@ p{
     margin-top : 30px;
     margin-bottom : 0px;
 }
+
+
+
+
+        
         
 /* tableau */
-
-
 
 [class^="col_heading level0 col"] {
     font-weight : bold;
@@ -100,12 +119,37 @@ td[class^="st-emotion-cache-gdzsw5"] {
     text-align: center !important;
 }
 
+/* Style pour la table de Streamlit */
+div[data-testid="stTable"] {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Style pour les cellules du tableau */
+div[data-testid="stTable"] td, div[data-testid="stTable"] th {
+    border: 2px solid #44566f; /* Couleur du trait de bordure des cellules */
+    padding: 8px; /* Espace à l'intérieur des cellules */
+    text-align: left;
+}
+
+
+        
 /* multi select */
 
 [class="st-av st-d6 st-ax st-d2 st-az st-b0 st-bt st-d7 st-d8 st-bd st-be st-bf st-bg st-d9 st-da st-db st-dc st-an st-ao st-ap st-aq st-b1 st-dd st-de st-df st-b7 st-dg st-dh st-ca st-di st-dj st-dk st-d4 st-dl st-c7  st-dm"]{
     background-color: #fcc200;
 }
 
+
+
+
+/* metric */
+
+.withScreencast .main [data-testid="stMetric"] {
+    border-left-color: #fcc200 !important;
+}
+
+        
 
 
 /* graphiques */
@@ -125,22 +169,6 @@ td[class^="st-emotion-cache-gdzsw5"] {
 }
 
 
-/* Style pour la table de Streamlit */
-div[data-testid="stTable"] {
-    border-collapse: collapse;
-    width: 100%;
-}
 
-/* Style pour les cellules du tableau */
-div[data-testid="stTable"] td, div[data-testid="stTable"] th {
-    border: 2px solid #44566f; /* Couleur du trait de bordure des cellules */
-    padding: 8px; /* Espace à l'intérieur des cellules */
-    text-align: left;
-}
-
-        
-.withScreencast .main [data-testid="stMetric"] {
-    border-left-color: #fcc200 !important;
-}
 
     
