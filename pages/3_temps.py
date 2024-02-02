@@ -414,7 +414,7 @@ with col_class:
             xaxis=dict(title='Quantité achetée', tickfont=dict(size=12)),
             title_x=0.25,
             title_font=dict(size=15),
-            height=400,
+            height=500,
             width=800,
         )
         
@@ -456,7 +456,7 @@ with col_pie :
     fig.update_layout(title='Quantités vendues par catégorie',
                       title_x=0.25,
                       title_font=dict(size=15),
-                      height=350,
+                      height=400,
                       width=800)
     
     if selection :
