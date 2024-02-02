@@ -444,7 +444,7 @@ with col_map:
         st_folium(my_map, width=800, height=400)
 
 
-with pie :
+with col_pie :
     quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
         
     colors = ['#fcc200', '#ffe033', '#f7e98e']
