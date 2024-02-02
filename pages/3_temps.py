@@ -372,7 +372,7 @@ if selected_pays is not None:
 data_f = df[df['Pays/Région'] == selected_pays]
 
 # Colonne pour le classement par pays des 5 produits les plus achetés
-col_map, col_sp, col_class = st.columns([2, 0.5, 2])
+col_map, col_class, col_pie = st.columns([1.5, 1, 1])
 
 with col_class:
     if selection:
@@ -441,10 +441,10 @@ with col_map:
                       popup=f"Nombre de clients: {num_clients}",
                       icon=client_icon).add_to(my_map)
 
-        st_folium(my_map, width=1000, height=400)
+        st_folium(my_map, width=800, height=400)
 
 
-with col_class :
+with pie :
     quantity_by_category = data_f.groupby('Catégorie')['Quantité'].sum().reset_index()
         
     colors = ['#fcc200', '#ffe033', '#f7e98e']
