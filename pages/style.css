@@ -186,7 +186,9 @@ div[data-testid="stTable"] td, div[data-testid="stTable"] th {
 }
 
 
-
+[class="float-child"]{
+    width : 800px !important;
+}
 
 
 
