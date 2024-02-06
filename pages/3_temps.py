@@ -172,13 +172,17 @@ if selection_effectuee:
             title={'text': "Pourcentages de remise accordée"},
             gauge={'axis': {'range': [0, 100]},
                    'steps': [
-                       {'range': [0, 25], 'color': "red", 'label': '0-25%'},
-                       {'range': [25, 50], 'color': "orange", 'label': '25-50%'},
-                       {'range': [50, 75], 'color': "yellow", 'label': '50-75%'},
-                       {'range': [75, 100], 'color': "green", 'label': '75-100%'}],
-                   'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_remises_client}
+                       {'range': [0, 25], 'color': "red"},
+                       {'range': [25, 50], 'color': "orange"},
+                       {'range': [50, 75], 'color': "yellow"},
+                       {'range': [75, 100], 'color': "green"}],
+                   'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_remises_client},
                    }
         ))
+
+        # Modifier les étiquettes des ranges de la jauge en pourcentage
+        for step in fig_gauge['data'][0]['gauge']['steps']:
+            step['label'] = f"{step['range'][0]}-{step['range'][1]}%"
 
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
