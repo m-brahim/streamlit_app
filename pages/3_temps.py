@@ -275,31 +275,6 @@ with col_v1:
             line=dict(color="black", width=2, dash="dash"),
         )
     )
-
-
-    # Ajoute du texte au-dessus de chaque marqueur pour N
-    for i, txt in enumerate(monthly_clients_selected_year['ID client']):
-        fig_clients_evolution.add_annotation(
-            x=monthly_clients_selected_year['Mois'][i],
-            y=txt,
-            text=str(txt),
-            showarrow=False,
-            font=dict(size=10),
-            yshift=10
-        )
-    
-    # Ajoute du texte au-dessus de chaque marqueur pour N-*
-    for i, txt in enumerate(monthly_clients_comparison_year['ID client']):
-        fig_clients_evolution.add_annotation(
-            x=monthly_clients_comparison_year['Mois'][i],
-            y=txt,
-            text=str(txt),
-            showarrow=False,
-            font=dict(size=10),
-            yshift=10
-        )
-
-    fig_clients_evolution.update_traces(textposition="top center")
     
     # Mise en forme
     fig_clients_evolution.update_layout(title=f"Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
