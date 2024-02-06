@@ -148,30 +148,33 @@ if selection_effectuee:
     ])
     
     fig.update_layout(height=600)
-
+    
     st.plotly_chart(fig, use_container_width=True)
 
-    df_filtre['Remise'] = df_filtre['Remise'].str.replace('[^\d.]', '', regex=True).astype(float)
-    df_filtre['Remise_en_pourcentage'] = (df_filtre['Remise'] / df_filtre['Ventes']) * 100
+col_gauge1, col_gauge2, col_gauge3 = st.columns([1,1,1])
 
-    # Création d'une jauge dynamique avec Plotly
-    fig_gauge = go.Figure(go.Indicator(
-        mode = "gauge+number",
-        value = df_filtre['Remise_en_pourcentage'].iloc[0],
-        domain = {'x': [0, 1], 'y': [0, 1]},
-        title = {'text': "Pourcentages de remise accordée"},
-        gauge = {'axis': {'range': [None, 100]},
-                 'steps' : [
-                     {'range': [0, 25], 'color': "red"},
-                     {'range': [25, 50], 'color': "orange"},
-                     {'range': [50, 75], 'color': "yellow"},
-                     {'range': [75, 100], 'color': "green"}],
-                 'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': df_filtre['Remise_en_pourcentage'].iloc[0]}
-                }
-    ))
+    with col_gauge1:
+        df_filtre['Remise'] = df_filtre['Remise'].str.replace('[^\d.]', '', regex=True).astype(float)
+        df_filtre['Remise_en_pourcentage'] = (df_filtre['Remise'] / df_filtre['Ventes']) * 100
     
-    # Affichage de la jauge sous le tableau existant
-    st.plotly_chart(fig_gauge, use_container_width=True)
+        # Création d'une jauge dynamique avec Plotly
+        fig_gauge = go.Figure(go.Indicator(
+            mode = "gauge+number",
+            value = df_filtre['Remise_en_pourcentage'].iloc[0],
+            domain = {'x': [0, 1], 'y': [0, 1]},
+            title = {'text': "Pourcentages de remise accordée"},
+            gauge = {'axis': {'range': [None, 100]},
+                     'steps' : [
+                         {'range': [0, 25], 'color': "red"},
+                         {'range': [25, 50], 'color': "orange"},
+                         {'range': [50, 75], 'color': "yellow"},
+                         {'range': [75, 100], 'color': "green"}],
+                     'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': df_filtre['Remise_en_pourcentage'].iloc[0]}
+                    }
+        ))
+        
+        # Affichage de la jauge sous le tableau existant
+        st.plotly_chart(fig_gauge, use_container_width=True)
 
 
 
