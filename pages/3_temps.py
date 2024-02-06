@@ -167,15 +167,15 @@ if selection_effectuee:
         fig_gauge = go.Figure(go.Indicator(
             mode="gauge+number",
             value=somme_remises_client,
-            number={'suffix': '%'},
+            number={'suffix': '%'},  # Ajouter le symbole de pourcentage
             domain={'x': [0, 1], 'y': [0, 1]},
             title={'text': "Pourcentages de remise accordée"},
             gauge={'axis': {'range': [0, 100]},
                    'steps': [
-                       {'range': [0, 25], 'color': "red"},
-                       {'range': [25, 50], 'color': "orange"},
-                       {'range': [50, 75], 'color': "yellow"},
-                       {'range': [75, 100], 'color': "green"}],
+                       {'range': [0, 25], 'color': "red", 'label': '0-25%'},
+                       {'range': [25, 50], 'color': "orange", 'label': '25-50%'},
+                       {'range': [50, 75], 'color': "yellow", 'label': '50-75%'},
+                       {'range': [75, 100], 'color': "green", 'label': '75-100%'}],
                    'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_remises_client}
                    }
         ))
