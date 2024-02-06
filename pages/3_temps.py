@@ -185,31 +185,14 @@ if selection_effectuee:
             height=200,
             font=dict(size=16),
             margin=dict(l=10, r=10, t=50, b=10, pad=8),
+            x=0.5,
+            y=0.5,
         )
         
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
         
         
-    with col_gauge2:
-        somme_quantites_client = df_filtre['Quantité'].sum()
-
-        fig_bullet = go.Figure(go.Indicator(
-            mode="number+gauge+delta",
-            value=somme_quantites_client,
-            gauge={'shape': 'bullet'},
-            delta={'reference': 300},  # Remplacez 300 par la référence souhaitée
-            domain={'x': [0, 1], 'y': [0, 1]},
-            title={'text': "Somme des quantités achetées"},
-        ))
-
-        fig_bullet.update_layout(
-            width=600, height=250,
-            margin=dict(l=10, r=10, t=10, b=10, pad=8),
-        )
-
-        # Affichage de l'indicateur bullet sous le tableau existant
-        st.plotly_chart(fig_bullet, use_container_width=True)
 
 
 
