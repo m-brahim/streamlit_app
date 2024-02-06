@@ -158,9 +158,11 @@ if selection_effectuee:
         df_filtre['Remise'] = df_filtre['Remise'].str.replace('[^\d.]', '', regex=True).astype(float)
         df_filtre['Remise_en_pourcentage'] = (df_filtre['Remise'] / df_filtre['Ventes']) * 100
 
-        # Calcul de la somme des remises accordées à un client en pourcentage
-        somme_remises_client = df_filtre['Remise_en_pourcentage'].sum()
-        st.write(somme_remises_client)
+        # Calcul de la somme des remises accordées à un client
+        somme_remises_client = df_filtre['Remise'].sum()
+
+        # Affichage de la somme des remises accordées à un client
+        st.write(f"Total des remises accordées au client : {somme_remises_client:.2f}%")
 
         # Création d'une jauge dynamique avec Plotly
         fig_gauge = go.Figure(go.Indicator(
