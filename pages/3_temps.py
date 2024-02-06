@@ -142,7 +142,7 @@ if selection_effectuee:
     
     st.plotly_chart(fig, use_container_width=True)
 
-col_gauge1, col_sp1, col_gauge2, col_sp2, col_gauge3 = st.columns([1,0.5,1,0.5,1])
+col_gauge1, col_sp1, col_gauge2, col_sp2, col_gauge3 = st.columns([1,0.2,1,0.2,1])
 
 if selection_effectuee:
     with col_gauge1:
