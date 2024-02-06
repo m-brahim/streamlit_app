@@ -155,6 +155,7 @@ col_gauge1, col_gauge2, col_gauge3 = st.columns([1,1,1])
 
 if selection_effectuee:
     with col_gauge1:
+        # Remplacer la colonne 'Remise' par les valeurs numériques uniquement
         df_filtre['Remise'] = df_filtre['Remise'].str.replace('[^\d.]', '', regex=True).astype(float)
 
         # Calcul de la somme des remises accordées à un client
@@ -182,7 +183,8 @@ if selection_effectuee:
 
         # Modifier les étiquettes des ranges de la jauge en pourcentage
         for step in fig_gauge['data'][0]['gauge']['steps']:
-            step['range'] = [f"{step['range'][0]}%", f"{step['range'][1]}%"]
+            # Utiliser .loc pour affecter les valeurs directement à votre DataFrame
+            df_filtre.loc[:, 'Range'] = [f"{step['range'][0]}%", f"{step['range'][1]}%"]
 
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
