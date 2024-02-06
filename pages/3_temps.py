@@ -230,12 +230,12 @@ if selection_effectuee:
                 number={'suffix': '€'},
                 domain={'x': [0, 1], 'y': [0, 1]},
                 title={'text': "Montant global des ventes"},
-                gauge={'axis': {'range': [0, 100]},
+                gauge={'axis': {'range': [0, 8000]},
                        'steps': [
-                           {'range': [0, 25], 'color': "#faf1b7"},
-                           {'range': [25, 50], 'color': "#f7e888"},
-                           {'range': [50, 75], 'color': "#ffd54d"},
-                           {'range': [75, 100], 'color': "#fcc200"}],
+                           {'range': [0, 2000], 'color': "#faf1b7"},
+                           {'range': [2000, 4000], 'color': "#f7e888"},
+                           {'range': [4000, 6000], 'color': "#ffd54d"},
+                           {'range': [6000, 8000], 'color': "#fcc200"}],
                        'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_ventes_client}
                        }
             ))
