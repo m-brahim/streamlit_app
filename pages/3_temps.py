@@ -57,7 +57,7 @@ with col_logo:
     st.image(logo, width=73)
 
 with st.sidebar:
-    selected = option_menu("Main Menu", ["Home", 'Upload', 'Tasks', 'Settings'], 
+    selected = option_menu("Main Menu", ["Accueil", 'Import', 'Tâches', 'Paramètres'], 
         icons=['house', 'cloud-upload', "list-task", 'gear'], menu_icon="cast", default_index=0)
     styles={
         "container": {"padding": "0!important", "background-color": "#fafafa"},
