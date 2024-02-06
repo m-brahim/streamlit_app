@@ -182,7 +182,7 @@ if selection_effectuee:
 
         # Modifier les étiquettes des ranges de la jauge en pourcentage
         for step in fig_gauge['data'][0]['gauge']['steps']:
-            step['label'] = f"{step['range'][0]}-{step['range'][1]}%"
+            step['range'] = [f"{step['range'][0]}%", f"{step['range'][1]}%"]
 
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
