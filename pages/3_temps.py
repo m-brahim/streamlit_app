@@ -161,7 +161,7 @@ if selection_effectuee:
             number={'suffix': '%'},
             domain={'x': [0, 1], 'y': [0, 1]},
             title={'text': "Total des remises accordées"},
-            gauge={'axis': {'range': [0, 100]},
+            gauge={'axis': {'range': [0, 200]},
                    'steps': [
                        {'range': [0, 50], 'color': "#faf1b7"},
                        {'range': [50, 100], 'color': "#f7e888"},
