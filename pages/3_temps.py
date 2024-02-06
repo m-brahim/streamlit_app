@@ -155,7 +155,6 @@ col_gauge1, col_gauge2, col_gauge3 = st.columns([1,1,1])
 
 if selection_effectuee:
     with col_gauge1:
-        # Remplacer la colonne 'Remise' par les valeurs numériques uniquement
         df_filtre['Remise'] = df_filtre['Remise'].str.replace('[^\d.]', '', regex=True).astype(float)
 
         # Calcul de la somme des remises accordées à un client
@@ -168,23 +167,18 @@ if selection_effectuee:
         fig_gauge = go.Figure(go.Indicator(
             mode="gauge+number",
             value=somme_remises_client,
-            number={'suffix': '%'},  # Ajouter le symbole de pourcentage
+            number={'suffix': '%'},
             domain={'x': [0, 1], 'y': [0, 1]},
             title={'text': "Pourcentages de remise accordée"},
             gauge={'axis': {'range': [0, 100]},
                    'steps': [
-                       {'range': [0, 25], 'color': "red"},
-                       {'range': [25, 50], 'color': "orange"},
-                       {'range': [50, 75], 'color': "yellow"},
-                       {'range': [75, 100], 'color': "green"}],
-                   'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_remises_client},
+                       {'range': [0, 25], 'color': "red", 'name': '0-25%'},
+                       {'range': [25, 50], 'color': "orange", 'name': '25-50%'},
+                       {'range': [50, 75], 'color': "yellow", 'name': '50-75%'},
+                       {'range': [75, 100], 'color': "green", 'name': '75-100%'}],
+                   'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_remises_client}
                    }
         ))
-
-        # Modifier les étiquettes des ranges de la jauge en pourcentage
-        for step in fig_gauge['data'][0]['gauge']['steps']:
-            # Utiliser .loc pour affecter les valeurs directement à votre DataFrame
-            df_filtre.loc[:, 'Range'] = [f"{step['range'][0]}%", f"{step['range'][1]}%"]
 
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
