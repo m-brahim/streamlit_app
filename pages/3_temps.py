@@ -183,7 +183,7 @@ if selection_effectuee:
 
         fig_gauge.update_layout(
             height=200,
-            margin=dict(l=10, r=10, t=50, b=10, pad=20),
+            margin=dict(l=10, r=10, t=50, b=10, pad=50),
             font=dict(size=16)
         )
         
