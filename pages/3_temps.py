@@ -117,15 +117,6 @@ if selected_country is not None and selected_category is not None and selected_c
 
 # Condition pour afficher le tableau uniquement si la sélection a été effectuée
 if selection_effectuee:
-    # Assurez-vous que la colonne 'Ventes' contient uniquement des chaînes de caractères
-    df_filtre['Ventes'] = df_filtre['Ventes'].astype(str)
-
-    # Appliquer la modification sur la colonne 'Ventes'
-    df_filtre['Ventes'] = df_filtre['Ventes'].str.replace('[^\d]', '', regex=True)
-
-    # Convertir la colonne 'Ventes' en type numérique
-    df_filtre['Ventes'] = pd.to_numeric(df_filtre['Ventes'], errors='coerce', downcast='integer')
-
     # Afficher un graphique (vous pouvez ajuster le style selon vos préférences)
     fig = go.Figure(data=[go.Table(
         columnorder=list(range(len(selected_columns_table))),
@@ -221,7 +212,42 @@ if selection_effectuee:
             st.plotly_chart(fig_gauge, use_container_width=True)
         
 
+        with col_gauge3:
+            df_filtre['Ventes'] = df_filtre['Ventes'].astype(str)
 
+            # Appliquer la modification sur la colonne 'Ventes'
+            df_filtre['Ventes'] = df_filtre['Ventes'].str.replace('[^\d]', '', regex=True)
+        
+            # Convertir la colonne 'Ventes' en type numérique
+            df_filtre['Ventes'] = pd.to_numeric(df_filtre['Ventes'], errors='coerce', downcast='integer')
+            
+            somme_ventes_client = df_filtre['Ventes'].sum()
+
+            # Création d'une jauge dynamique avec Plotly
+            fig_gauge = go.Figure(go.Indicator(
+                mode="gauge+number",
+                value=somme_ventes_client,
+                number={'suffix': '€'}
+                domain={'x': [0, 1], 'y': [0, 1]},
+                title={'text': "Montant global des ventes"},
+                gauge={'axis': {'range': [0, 100]},
+                       'steps': [
+                           {'range': [0, 25], 'color': "#faf1b7"},
+                           {'range': [25, 50], 'color': "#f7e888"},
+                           {'range': [50, 75], 'color': "#ffd54d"},
+                           {'range': [75, 100], 'color': "#fcc200"}],
+                       'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_ventes_client}
+                       }
+            ))
+    
+            fig_gauge.update_layout(
+                height=200,
+                font=dict(size=16),
+                margin=dict(l=10, r=10, t=50, b=10, pad=8),
+            )
+            
+            # Affichage de la jauge sous le tableau existant
+            st.plotly_chart(fig_gauge, use_container_width=True)
 
 
 
