@@ -278,7 +278,7 @@ with col_v1:
                                        yaxis=dict(title='Nombre de clients', tickfont=dict(size=12), title_font=dict(size=12)),
                                        title_font=dict(size=15),
                                        title_x = 0.2,
-                                       height=graph_height,
+                                       height=500,
                                        width=500)
     
     # Affichage
@@ -349,7 +349,7 @@ with col_v2:
                                        yaxis=dict(title='Mois', tickfont=dict(size=12), title_font=dict(size=12)),
                                        title_font=dict(size=15),
                                        title_x=0.2,
-                                       height=graph_height,
+                                       height=500,
                                        width=500)
 
     # Affichage
