@@ -299,7 +299,7 @@ with col_v1:
             yshift=10
         )
 
-    fig_clients_evolution.update_traces(textposition="center")
+    fig_clients_evolution.update_traces(textposition="top center")
     
     # Mise en forme
     fig_clients_evolution.update_layout(title=f"Évolution du nombre de clients en {selected_year} et {selected_comparison_year}",
