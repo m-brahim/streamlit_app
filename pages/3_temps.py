@@ -189,18 +189,18 @@ if selection_effectuee:
         
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
-
-
+        
+        
     with col_gauge2:
         # Calcul de la somme des quantités achetées par le client
-        somme_quantites_client = df_filtre['Quantite'].sum()
+        somme_quantites_client = df_filtre['Quantité'].sum()
 
         # Création d'un bullet gauge horizontal avec Plotly
         fig_bullet = go.Figure(go.Indicator(
             mode="number+gauge",
             value=somme_quantites_client,
             domain={'x': [0, 1], 'y': [0, 1]},
-            title={'text': "Somme des quantités achetées"},
+            title={'text': "Quantités vendues"},
             gauge={'axis': {'range': [0, somme_quantites_client * 1.2]},  # Pour ajuster la plage de la jauge
                    'bar': {'color': "#29b6f6"},
                    'steps': [{'range': [0, somme_quantites_client], 'color': "#81d4fa"}],
@@ -210,7 +210,7 @@ if selection_effectuee:
         fig_bullet.update_layout(
             height=100,  # Ajustement de la hauteur
             margin=dict(l=10, r=10, t=10, b=10, pad=8),
-            font=dict(size=12),  # Ajustement de la taille de la police
+            font=dict(size=12),
         )
 
         # Affichage du bullet gauge sous le tableau existant
