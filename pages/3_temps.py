@@ -167,9 +167,9 @@ if selection_effectuee:
         fig_gauge = go.Figure(go.Indicator(
             mode="gauge+number",
             value=somme_remises_client,
-            number={'suffix': '%'}, "font.size": 12,
+            number={'suffix': '%'},
             domain={'x': [0, 1], 'y': [0, 1]},
-            title={'text': "Pourcentages de remise accordée"}, "font": {"size": 16},
+            title={'text': "Pourcentages de remise accordée"},
             gauge={'axis': {'range': [0, 100]},
                    'steps': [
                        {'range': [0, 25], 'color': "#faf1b7"},
@@ -184,6 +184,7 @@ if selection_effectuee:
         fig_gauge.update_layout(
             height=200,
             margin=dict(l=10, r=10, t=50, b=10, pad=8),
+            font=dict(size=16)
         )
         
         # Affichage de la jauge sous le tableau existant
