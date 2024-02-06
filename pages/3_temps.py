@@ -177,7 +177,8 @@ if selection_effectuee:
                        {'range': [50, 75], 'color': "#ffd54d"},
                        {'range': [75, 100], 'color': "#fcc200"}],
                    'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_remises_client}
-                   }
+                   },
+            layout={'height': 200, 'width': 200}
         ))
 
         # Affichage de la jauge sous le tableau existant
