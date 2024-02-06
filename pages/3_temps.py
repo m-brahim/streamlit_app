@@ -227,7 +227,7 @@ if selection_effectuee:
             fig_gauge = go.Figure(go.Indicator(
                 mode="gauge+number",
                 value=somme_ventes_client,
-                number={'suffix': '€'}
+                number={'suffix': '€'},
                 domain={'x': [0, 1], 'y': [0, 1]},
                 title={'text': "Montant global des ventes"},
                 gauge={'axis': {'range': [0, 100]},
