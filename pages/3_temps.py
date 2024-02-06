@@ -248,7 +248,7 @@ with col_v1:
     fig_clients_evolution.add_trace(go.Scatter(
         x=monthly_clients_selected_year['Mois'],
         y=monthly_clients_selected_year['ID client'],
-        mode='lines',
+        mode='lines+markers',
         name=f"{selected_year}",
         line=dict(color='#fcc200'),
         marker=dict(symbol='circle', size=8, color='#fcc200')
@@ -258,7 +258,7 @@ with col_v1:
     fig_clients_evolution.add_trace(go.Scatter(
         x=monthly_clients_comparison_year['Mois'],
         y=monthly_clients_comparison_year['ID client'],
-        mode='lines',
+        mode='lines+markers',
         name=f"{selected_comparison_year}",
         line=dict(color='#9b870c'),
         marker=dict(symbol='circle', size=8, color='#9b870c')
