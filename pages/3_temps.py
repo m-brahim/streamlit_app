@@ -161,15 +161,12 @@ if selection_effectuee:
         # Calcul de la somme des remises accordées à un client
         somme_remises_client = df_filtre['Remise'].sum()
 
-        # Affichage de la somme des remises accordées à un client
-        st.write(f"Total des remises accordées au client : {somme_remises_client:.2f}%")
-
         # Création d'une jauge dynamique avec Plotly
         fig_gauge = go.Figure(go.Indicator(
             mode = "gauge+number",
             value = df_filtre['Remise_en_pourcentage'].iloc[0],
             domain = {'x': [0, 1], 'y': [0, 1]},
-            title = {'text': "Pourcentages de remise accordée"},
+            title = {'text': f"Pourcentages de remise accordée<br><span style='font-size:0.8em;color:gray'>Total des remises : {somme_remises_client:.2f}%</span>"},
             gauge = {'axis': {'range': [None, 100]},
                      'steps' : [
                          {'range': [0, 25], 'color': "red"},
@@ -182,7 +179,6 @@ if selection_effectuee:
 
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
-
 
 
 
