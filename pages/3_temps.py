@@ -157,7 +157,13 @@ if selection_effectuee:
     with col_gauge1:
         df_filtre['Remise'] = df_filtre['Remise'].str.replace('[^\d.]', '', regex=True).astype(float)
         df_filtre['Remise_en_pourcentage'] = (df_filtre['Remise'] / df_filtre['Ventes']) * 100
-    
+
+        # Calcul de la somme des remises accordées à un client
+        somme_remises_client = df_filtre['Remise'].sum()
+
+        # Affichage de la somme des remises accordées à un client
+        st.write(f"Total des remises accordées au client : {somme_remises_client:.2f}%")
+
         # Création d'une jauge dynamique avec Plotly
         fig_gauge = go.Figure(go.Indicator(
             mode = "gauge+number",
@@ -173,7 +179,7 @@ if selection_effectuee:
                      'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': df_filtre['Remise_en_pourcentage'].iloc[0]}
                     }
         ))
-        
+
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
 
