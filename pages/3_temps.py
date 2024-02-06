@@ -160,13 +160,13 @@ if selection_effectuee:
             value=somme_remises_client,
             number={'suffix': '%'},
             domain={'x': [0, 1], 'y': [0, 1]},
-            title={'text': "Pourcentages de remise accordée"},
+            title={'text': "Total des remises accordées"},
             gauge={'axis': {'range': [0, 100]},
                    'steps': [
-                       {'range': [0, 25], 'color': "#faf1b7"},
-                       {'range': [25, 50], 'color': "#f7e888"},
-                       {'range': [50, 75], 'color': "#ffd54d"},
-                       {'range': [75, 100], 'color': "#fcc200"}],
+                       {'range': [0, 50], 'color': "#faf1b7"},
+                       {'range': [50, 100], 'color': "#f7e888"},
+                       {'range': [100, 150], 'color': "#ffd54d"},
+                       {'range': [150, 200], 'color': "#fcc200"}],
                    'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_remises_client}
                    }
         ))
@@ -190,7 +190,7 @@ if selection_effectuee:
                 mode="gauge+number",
                 value=somme_quantites_client,
                 domain={'x': [0, 1], 'y': [0, 1]},
-                title={'text': "Quantités vendues"},
+                title={'text': "Total des quantités vendues"},
                 gauge={'axis': {'range': [0, 100]},
                        'steps': [
                            {'range': [0, 25], 'color': "#faf1b7"},
