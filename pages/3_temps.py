@@ -172,10 +172,10 @@ if selection_effectuee:
             title={'text': "Pourcentages de remise accordée"},
             gauge={'axis': {'range': [0, 100]},
                    'steps': [
-                       {'range': [0, 25], 'color': "#fcc200"},
-                       {'range': [25, 50], 'color': "#ffd54d"},
-                       {'range': [50, 75], 'color': "#f7e888"},
-                       {'range': [75, 100], 'color': "#faf1b7"}],
+                       {'range': [0, 25], 'color': "#faf1b7"},
+                       {'range': [25, 50], 'color': "#f7e888"},
+                       {'range': [50, 75], 'color': "#ffd54d"},
+                       {'range': [75, 100], 'color': "#fcc200"}],
                    'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_remises_client}
                    }
         ))
