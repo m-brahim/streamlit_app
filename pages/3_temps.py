@@ -66,11 +66,7 @@ with st.sidebar:
         "nav-link-selected": {"background-color": "green"},
     }
     selected
-    if st.session_state.get('switch_button', False):
-        st.session_state['menu_option'] = (st.session_state.get('menu_option', 0) + 1) % 4
-        manual_select = st.session_state['menu_option']
-    else:
-        manual_select = None
+
     
 
 
