@@ -185,8 +185,6 @@ if selection_effectuee:
             height=200,
             font=dict(size=16),
             margin=dict(l=10, r=10, t=50, b=10, pad=8),
-            x=0.5,
-            y=0.5,
         )
         
         # Affichage de la jauge sous le tableau existant
