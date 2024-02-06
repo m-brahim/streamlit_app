@@ -172,17 +172,16 @@ if selection_effectuee:
             title={'text': "Pourcentages de remise accordée"},
             gauge={'axis': {'range': [0, 100]},
                    'steps': [
-                       {'range': [0, 25], 'color': "red", 'name': '0-25%'},
-                       {'range': [25, 50], 'color': "orange", 'name': '25-50%'},
-                       {'range': [50, 75], 'color': "yellow", 'name': '50-75%'},
-                       {'range': [75, 100], 'color': "green", 'name': '75-100%'}],
+                       {'range': [0, 25], 'color': "#fcc200"},
+                       {'range': [25, 50], 'color': "#ffd54d"},
+                       {'range': [50, 75], 'color': "#f7e888"},
+                       {'range': [75, 100], 'color': "#faf1b7"}],
                    'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_remises_client}
                    }
         ))
 
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
-
 
 
 
