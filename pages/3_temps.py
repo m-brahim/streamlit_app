@@ -160,12 +160,14 @@ if selection_effectuee:
         # Calcul de la somme des remises accordées à un client
         somme_remises_client = df_filtre['Remise'].sum()
 
+        # Formater la valeur de la jauge pour inclure le symbole de pourcentage
         valeur_jauge_formatee = f"{somme_remises_client:.2f}%"
 
         # Création d'une jauge dynamique avec Plotly
         fig_gauge = go.Figure(go.Indicator(
             mode="gauge+number",
-            value=valeur_jauge_formatee,
+            value=somme_remises_client,
+            number={'suffix': '%'},
             domain={'x': [0, 1], 'y': [0, 1]},
             title={'text': "Pourcentages de remise accordée"},
             gauge={'axis': {'range': [0, 100]},
@@ -180,6 +182,7 @@ if selection_effectuee:
 
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
+
 
 
 
