@@ -157,16 +157,16 @@ if selection_effectuee:
     # Création d'une jauge dynamique avec Plotly
     fig_gauge = go.Figure(go.Indicator(
         mode = "gauge+number",
-        value = df_filtre['Remise_en_pourcentage'].iloc[0],  # Valeur initiale pour la jauge
+        value = df_filtre['Remise_en_pourcentage'].iloc[0],
         domain = {'x': [0, 1], 'y': [0, 1]},
-        title = {'text': "Niveau de remise en %"},
+        title = {'text': "Pourcentages de remise accordée"},
         gauge = {'axis': {'range': [None, 100]},
                  'steps' : [
-                     {'range': [0, 25], 'color': "lightgray"},
-                     {'range': [25, 50], 'color': "gray"},
-                     {'range': [50, 75], 'color': "darkgray"},
-                     {'range': [75, 100], 'color': "black"}],
-                 'threshold' : {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': df_filtre['Remise_en_pourcentage'].iloc[0]}
+                     {'range': [0, 25], 'color': "red"},
+                     {'range': [25, 50], 'color': "orange"},
+                     {'range': [50, 75], 'color': "yellow"},
+                     {'range': [75, 100], 'color': "green"}],
+                 'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': df_filtre['Remise_en_pourcentage'].iloc[0]}
                 }
     ))
     
