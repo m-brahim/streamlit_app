@@ -251,7 +251,7 @@ with col_v1:
         mode='lines',
         name=f"{selected_year}",
         line=dict(color='#fcc200'),
-        markers=True
+        marker=True
     ))
      
     # Affiche l'évolution du nombre de clients pour N-*
@@ -261,7 +261,7 @@ with col_v1:
         mode='lines',
         name=f"{selected_comparison_year}",
         line=dict(color='#9b870c'),
-        markers=True
+        marker=True
     ))
 
     target_value = 80
