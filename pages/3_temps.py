@@ -151,7 +151,27 @@ if selection_effectuee:
 
     st.plotly_chart(fig, use_container_width=True)
 
+    df_filtre['Remise'] = df_filtre['Remise'].str.replace('[^\d.]', '', regex=True).astype(float)
+    df_filtre['Remise_en_pourcentage'] = (df_filtre['Remise'] / df_filtre['Ventes']) * 100
 
+    # Création d'une jauge dynamique avec Plotly
+    fig_gauge = go.Figure(go.Indicator(
+        mode = "gauge+number",
+        value = df_filtre['Remise_en_pourcentage'].iloc[0],  # Valeur initiale pour la jauge
+        domain = {'x': [0, 1], 'y': [0, 1]},
+        title = {'text': "Niveau de remise en %"},
+        gauge = {'axis': {'range': [None, 100]},
+                 'steps' : [
+                     {'range': [0, 25], 'color': "lightgray"},
+                     {'range': [25, 50], 'color': "gray"},
+                     {'range': [50, 75], 'color': "darkgray"},
+                     {'range': [75, 100], 'color': "black"}],
+                 'threshold' : {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': df_filtre['Remise_en_pourcentage'].iloc[0]}
+                }
+    ))
+    
+    # Affichage de la jauge sous le tableau existant
+    st.plotly_chart(fig_gauge, use_container_width=True)
 
 
 
