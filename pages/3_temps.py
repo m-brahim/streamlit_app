@@ -158,27 +158,28 @@ if selection_effectuee:
         df_filtre['Remise'] = df_filtre['Remise'].str.replace('[^\d.]', '', regex=True).astype(float)
         df_filtre['Remise_en_pourcentage'] = (df_filtre['Remise'] / df_filtre['Ventes']) * 100
 
-        # Calcul de la somme des remises accordées à un client
-        somme_remises_client = df_filtre['Remise'].sum()
+        # Calcul de la somme des remises accordées à un client en pourcentage
+        somme_remises_client = df_filtre['Remise_en_pourcentage'].sum()
 
         # Création d'une jauge dynamique avec Plotly
         fig_gauge = go.Figure(go.Indicator(
-            mode = "gauge+number",
-            value = df_filtre['Remise_en_pourcentage'].iloc[0],
-            domain = {'x': [0, 1], 'y': [0, 1]},
-            title = {'text': f"Pourcentages de remise accordée<br><span style='font-size:0.8em;color:gray'>Total des remises : {somme_remises_client:.2f}%</span>"},
-            gauge = {'axis': {'range': [None, 100]},
-                     'steps' : [
-                         {'range': [0, 25], 'color': "red"},
-                         {'range': [25, 50], 'color': "orange"},
-                         {'range': [50, 75], 'color': "yellow"},
-                         {'range': [75, 100], 'color': "green"}],
-                     'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': df_filtre['Remise_en_pourcentage'].iloc[0]}
-                    }
+            mode="gauge+number",
+            value=somme_remises_client,
+            domain={'x': [0, 1], 'y': [0, 1]},
+            title={'text': "Pourcentages de remise accordée"},
+            gauge={'axis': {'range': [0, 100]},
+                   'steps': [
+                       {'range': [0, 25], 'color': "red"},
+                       {'range': [25, 50], 'color': "orange"},
+                       {'range': [50, 75], 'color': "yellow"},
+                       {'range': [75, 100], 'color': "green"}],
+                   'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_remises_client}
+                   }
         ))
 
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
+
 
 
 
