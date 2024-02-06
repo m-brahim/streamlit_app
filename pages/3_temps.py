@@ -167,9 +167,9 @@ if selection_effectuee:
         fig_gauge = go.Figure(go.Indicator(
             mode="gauge+number",
             value=somme_remises_client,
-            number={'suffix': '%'},
+            number={'suffix': '%'}, "font.size": 12,
             domain={'x': [0, 1], 'y': [0, 1]},
-            title={'text': "Pourcentages de remise accordée"},
+            title={'text': "Pourcentages de remise accordée"}, "font": {"size": 16},
             gauge={'axis': {'range': [0, 100]},
                    'steps': [
                        {'range': [0, 25], 'color': "#faf1b7"},
@@ -177,10 +177,15 @@ if selection_effectuee:
                        {'range': [50, 75], 'color': "#ffd54d"},
                        {'range': [75, 100], 'color': "#fcc200"}],
                    'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_remises_client}
-                   },
-            layout={'height': 200, 'width': 200}
+                   }
         ))
 
+
+        fig_gauge.update_layout(
+            height=200,
+            margin=dict(l=10, r=10, t=50, b=10, pad=8),
+        )
+        
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
 
