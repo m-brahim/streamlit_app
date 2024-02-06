@@ -65,6 +65,7 @@ with st.sidebar:
         "icon": {"color": "black", "font-size": "16px"}, 
         "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#f7e98e"},
         "nav-link-selected": {"background-color": "#f7e98e"},
+        "nav-link.active" : {"color": "black"}
     }
 )
     
