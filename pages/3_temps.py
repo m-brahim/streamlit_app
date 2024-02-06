@@ -161,9 +161,6 @@ if selection_effectuee:
         # Calcul de la somme des remises accordées à un client
         somme_remises_client = df_filtre['Remise'].sum()
 
-        # Affichage de la somme des remises accordées à un client
-        st.write(f"Total des remises accordées au client : {somme_remises_client:.2f}%")
-
         # Création d'une jauge dynamique avec Plotly
         fig_gauge = go.Figure(go.Indicator(
             mode="gauge+number",
