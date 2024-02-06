@@ -192,30 +192,25 @@ if selection_effectuee:
         
         
     with col_gauge2:
-        # Calcul de la somme des quantités achetées par le client
         somme_quantites_client = df_filtre['Quantité'].sum()
 
-        # Création d'un bullet gauge horizontal avec Plotly
         fig_bullet = go.Figure(go.Indicator(
-            mode="number+gauge",
+            mode="number+gauge+delta",
             value=somme_quantites_client,
+            gauge={'shape': 'bullet'},
+            delta={'reference': 300},  # Remplacez 300 par la référence souhaitée
             domain={'x': [0, 1], 'y': [0, 1]},
-            title={'text': "Quantités vendues"},
-            gauge={'axis': {'range': [0, somme_quantites_client * 1.2]},  # Pour ajuster la plage de la jauge
-                   'bar': {'color': "#29b6f6"},
-                   'steps': [{'range': [0, somme_quantites_client], 'color': "#81d4fa"}],
-                   }
+            title={'text': "Somme des quantités achetées"},
         ))
 
         fig_bullet.update_layout(
-            height=100,  # Ajustement de la hauteur
+            width=600, height=250,
             margin=dict(l=10, r=10, t=10, b=10, pad=8),
-            font=dict(size=12),
         )
 
-        # Affichage du bullet gauge sous le tableau existant
+        # Affichage de l'indicateur bullet sous le tableau existant
         st.plotly_chart(fig_bullet, use_container_width=True)
-        
+
 
 
 
