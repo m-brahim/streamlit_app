@@ -192,33 +192,33 @@ if selection_effectuee:
         
 
         with col_gauge2:
-        somme_quantites_client = df_filtre['Quantité'].sum()
+            somme_quantites_client = df_filtre['Quantité'].sum()
 
-        # Création d'une jauge dynamique avec Plotly
-        fig_gauge = go.Figure(go.Indicator(
-            mode="gauge+number",
-            value=somme_quantites_client,
-            domain={'x': [0, 1], 'y': [0, 1]},
-            title={'text': "Quantités vendues"},
-            gauge={'axis': {'range': [0, 100]},
-                   'steps': [
-                       {'range': [0, 25], 'color': "#faf1b7"},
-                       {'range': [25, 50], 'color': "#f7e888"},
-                       {'range': [50, 75], 'color': "#ffd54d"},
-                       {'range': [75, 100], 'color': "#fcc200"}],
-                   'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_quantites_client}
-                   }
-        ))
-
-
-        fig_gauge.update_layout(
-            height=200,
-            font=dict(size=16),
-            margin=dict(l=10, r=10, t=50, b=10, pad=8),
-        )
-        
-        # Affichage de la jauge sous le tableau existant
-        st.plotly_chart(fig_gauge, use_container_width=True)
+            # Création d'une jauge dynamique avec Plotly
+            fig_gauge = go.Figure(go.Indicator(
+                mode="gauge+number",
+                value=somme_quantites_client,
+                domain={'x': [0, 1], 'y': [0, 1]},
+                title={'text': "Quantités vendues"},
+                gauge={'axis': {'range': [0, 100]},
+                       'steps': [
+                           {'range': [0, 25], 'color': "#faf1b7"},
+                           {'range': [25, 50], 'color': "#f7e888"},
+                           {'range': [50, 75], 'color': "#ffd54d"},
+                           {'range': [75, 100], 'color': "#fcc200"}],
+                       'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_quantites_client}
+                       }
+            ))
+    
+    
+            fig_gauge.update_layout(
+                height=200,
+                font=dict(size=16),
+                margin=dict(l=10, r=10, t=50, b=10, pad=8),
+            )
+            
+            # Affichage de la jauge sous le tableau existant
+            st.plotly_chart(fig_gauge, use_container_width=True)
         
 
 
