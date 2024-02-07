@@ -584,7 +584,7 @@ with col_map:
                       popup=f"Nombre de clients: {num_clients}",
                       icon=client_icon).add_to(my_map)
 
-        st_folium(my_map, width=800, height=550)
+        st_folium(my_map, width=800, height=400)
 
 
 with col_pie :
