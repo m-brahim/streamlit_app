@@ -154,6 +154,9 @@ if selection_effectuee:
         # Formater la valeur de la jauge pour inclure le symbole de pourcentage
         valeur_jauge_formatee = f"{somme_remises_client:.2f}%"
 
+        # Déterminer la couleur de la jauge en fonction de la valeur de somme_remises_client
+        couleur_jauge = "#ff0000" if somme_remises_client < 50 else "#00ff00"
+
         # Création d'une jauge dynamique avec Plotly
         fig_gauge = go.Figure(go.Indicator(
             mode="gauge+number",
@@ -171,15 +174,19 @@ if selection_effectuee:
                    }
         ))
 
+        fig_gauge.update_traces(marker=dict(color=couleur_jauge))  # Changer la couleur de la jauge
 
         fig_gauge.update_layout(
             height=200,
             font=dict(size=16),
             margin=dict(l=10, r=10, t=50, b=10, pad=8),
         )
-        
+
         # Affichage de la jauge sous le tableau existant
         st.plotly_chart(fig_gauge, use_container_width=True)
+
+
+
         
 
         with col_gauge2:
@@ -190,7 +197,7 @@ if selection_effectuee:
                 mode="gauge+number",
                 value=somme_quantites_client,
                 domain={'x': [0, 1], 'y': [0, 1]},
-                title={'text': "Total des quantités vendues"},
+                title={'text': "Nombre d'articles vendues"},
                 gauge={'axis': {'range': [0, 100]},
                        'steps': [
                            {'range': [0, 25], 'color': "#faf1b7"},
