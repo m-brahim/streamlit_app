@@ -178,7 +178,7 @@ if selection_effectuee:
                    }
         ))
 
-        fig_gauge.update_traces(marker=dict(color=couleur_jauge))
+        fig_gauge.update_traces(gauge=dict(bar=dict(color=couleur_jauge)))
 
         fig_gauge.update_layout(
             height=200,
