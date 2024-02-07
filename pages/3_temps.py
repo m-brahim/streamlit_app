@@ -595,7 +595,7 @@ merged_data = pd.merge(data_f, clients_by_country, how='left', on='Pays/Région'
 
 # icône personnalisée pour représenter un client (ici l'exemple c'est Kiloutou)
 icon_path = 'pages/Kiloutou_logo.jpg'
-client_icon = folium.CustomIcon(icon_image=icon_path, icon_size=(30, 30))
+client_icon = folium.CustomIcon(icon_image=icon_path, icon_size=(20, 20))
 
 if selection:
     # définition d'une localisation initiale
