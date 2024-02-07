@@ -557,8 +557,7 @@ with col_class:
             title_x=0.25,
             title_font=dict(size=15),
             height=400,
-            width=400,
-            margin=dict(l=10, r=10, t=50, b=10, pad=8)
+            width=400
         )
         
         st.plotly_chart(fig, use_container_width=True)
@@ -577,9 +576,7 @@ with col_pie :
                       title_x=0.25,
                       title_font=dict(size=15),
                       height=400,
-                      width=400,
-                      margin=dict(l=10, r=10, t=50, b=10, pad=8)
-
+                      width=400
     )
     
     if selection :
