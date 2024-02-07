@@ -155,10 +155,10 @@ if selection_effectuee:
         valeur_jauge_formatee = f"{somme_remises_client:.2f}%"
 
         # Déterminer la couleur de la jauge en fonction de la valeur de somme_remises_client
-        couleur_jauge = "#ff0000" 
+        couleur_jauge = "red" 
         
-        if somme_remises_client < 50 :
-            couleur_jauge = "#00ff00"
+        if somme_remises_client > 50 :
+            couleur_jauge = "green"
             
 
         # Création d'une jauge dynamique avec Plotly
