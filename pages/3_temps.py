@@ -315,10 +315,7 @@ with col_mlt:
     filtered_df = df[df['Mois'].isin(selected_months)]
 
 #création de colonnes identiques
-col_txt, col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([1.5, 0.5, 1.25, 0.5, 1.25, 0.5, 1.25, 0.5])
-
-with col_txt:
-    st.write("*Chiffres clés N vs N-* * :")
+col_sp1, col_clients, col_sp2, col_orders, col_sp3, col_ca, col_sp4= st.columns([0.5, 1.25, 0.5, 1.25, 0.5, 1.25, 0.5])
 
 #calculs
 num_clients = df[df['Année'] == selected_year].drop_duplicates('ID client')['ID client'].count()
@@ -348,10 +345,7 @@ style_metric_cards()
 
 #graphique qui permet d'observer l'évolution du nombre de clients selon N et N-*
 
-col_txt, col_v1, col_space, col_v2 = st.columns([1,2,0.5,2])
-
-with col_txt:
-    st.write("*Graphiques* :")
+col_v1, col_space, col_v2 = st.columns([2,0.5,2])
 
 with col_v1:
     # Agréger le nombre de clients par mois pour l'année sélectionnée
