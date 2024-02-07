@@ -578,7 +578,7 @@ with col_pie :
                       title_font=dict(size=15),
                       height=300,
                       width=300,
-                      margin=dict(t=20, b=50, l=20)
+                      margin=dict(t=20, b=50, l=50)
 
     )
     
