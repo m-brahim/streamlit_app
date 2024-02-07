@@ -142,6 +142,10 @@ if selection_effectuee:
     
     st.plotly_chart(fig, use_container_width=True)
 
+
+
+
+
 col_gauge1, col_gauge2, col_gauge3 = st.columns([1,1,1])
 
 if selection_effectuee:
@@ -154,7 +158,6 @@ if selection_effectuee:
         # Formater la valeur de la jauge pour inclure le symbole de pourcentage
         valeur_jauge_formatee = f"{somme_remises_client:.2f}%"
 
-        # Déterminer la couleur de la jauge en fonction de la valeur de somme_remises_client
         couleur_jauge = "red" 
         
         if somme_remises_client > 50 :
@@ -196,6 +199,12 @@ if selection_effectuee:
         with col_gauge2:
             somme_quantites_client = df_filtre['Quantité'].sum()
 
+            couleur_jauge = "red" 
+        
+            if somme_quantites_client > 20 :
+                couleur_jauge = "green"
+
+            
             # Création d'une jauge dynamique avec Plotly
             fig_gauge = go.Figure(go.Indicator(
                 mode="gauge+number",
@@ -211,7 +220,9 @@ if selection_effectuee:
                        'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_quantites_client}
                        }
             ))
+
     
+            fig_gauge.update_traces(gauge=dict(bar=dict(color=couleur_jauge)))
     
             fig_gauge.update_layout(
                 height=200,
@@ -221,6 +232,10 @@ if selection_effectuee:
             
             # Affichage de la jauge sous le tableau existant
             st.plotly_chart(fig_gauge, use_container_width=True)
+
+
+
+
         
 
         with col_gauge3:
@@ -233,6 +248,12 @@ if selection_effectuee:
             df_filtre['Ventes'] = pd.to_numeric(df_filtre['Ventes'], errors='coerce', downcast='integer')
             
             somme_ventes_client = df_filtre['Ventes'].sum()
+
+            couleur_jauge = "red" 
+        
+            if somme_ventes_client > 2000 :
+                couleur_jauge = "green"
+            
 
             # Création d'une jauge dynamique avec Plotly
             fig_gauge = go.Figure(go.Indicator(
@@ -250,7 +271,9 @@ if selection_effectuee:
                        'threshold': {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': somme_ventes_client}
                        }
             ))
-    
+
+            fig_gauge.update_traces(gauge=dict(bar=dict(color=couleur_jauge)))
+            
             fig_gauge.update_layout(
                 height=200,
                 font=dict(size=16),
