@@ -606,7 +606,7 @@ if selection:
                   popup=f"Nombre de clients: {num_clients}",
                   icon=client_icon).add_to(my_map)
 
-    st_folium(my_map, width=800, height=400)
+    st_folium(my_map, width=1410, height=400)
 
 
 
