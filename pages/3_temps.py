@@ -155,7 +155,11 @@ if selection_effectuee:
         valeur_jauge_formatee = f"{somme_remises_client:.2f}%"
 
         # Déterminer la couleur de la jauge en fonction de la valeur de somme_remises_client
-        couleur_jauge = "#ff0000" if somme_remises_client < 50 else "#00ff00"
+        couleur_jauge = "#ff0000" 
+        
+        if somme_remises_client < 50 :
+            couleur_jauge = "#00ff00"
+            
 
         # Création d'une jauge dynamique avec Plotly
         fig_gauge = go.Figure(go.Indicator(
@@ -174,7 +178,7 @@ if selection_effectuee:
                    }
         ))
 
-        fig_gauge.update_traces(marker=dict(color=couleur_jauge))  # Changer la couleur de la jauge
+        fig_gauge.update_traces(marker=dict(color=couleur_jauge))
 
         fig_gauge.update_layout(
             height=200,
