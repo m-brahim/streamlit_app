@@ -552,12 +552,12 @@ with col_class:
 
         fig.update_layout(
             title='Classement des 5 produits les plus achetés',
-            yaxis=dict(title='Produit', tickfont=dict(size=10)),
-            xaxis=dict(title='Quantité achetée', tickfont=dict(size=10)),
+            yaxis=dict(title='Produit', tickfont=dict(size=12)),
+            xaxis=dict(title='Quantité achetée', tickfont=dict(size=12)),
             title_x=0.25,
             title_font=dict(size=15),
             height=400,
-            width=800,
+            width=600,
             margin=dict(t=50),
         )
         
