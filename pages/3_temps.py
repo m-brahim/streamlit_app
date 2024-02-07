@@ -556,9 +556,9 @@ with col_class:
             xaxis=dict(title='Quantité achetée', tickfont=dict(size=12)),
             title_x=0.25,
             title_font=dict(size=15),
-            height=500,
+            height=400,
             width=800,
-            margin=dict(l=10, r=10, t=50, b=10, pad=8),
+            margin=dict(l=0, r=0, t=50, b=10, pad=0),
         )
         
         st.plotly_chart(fig, use_container_width=True)
