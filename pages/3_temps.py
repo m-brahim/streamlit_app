@@ -558,7 +558,7 @@ with col_class:
             title_font=dict(size=15),
             height=400,
             width=400,
-            margin=dict(t=20, b=50)
+            margin=dict(b=50)
         )
         
         st.plotly_chart(fig, use_container_width=True)
@@ -576,9 +576,9 @@ with col_pie :
     fig.update_layout(title='Quantités vendues par catégorie',
                       title_x=0.25,
                       title_font=dict(size=15),
-                      height=400,
-                      width=400,
-                      margin=dict(t=20, b=50)
+                      height=300,
+                      width=300,
+                      margin=dict(b=50)
 
     )
     
