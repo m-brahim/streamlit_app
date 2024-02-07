@@ -558,7 +558,7 @@ with col_class:
             title_font=dict(size=15),
             height=400,
             width=800,
-            margin=dict(l=0, r=20, t=50, b=10, pad=0),
+            margin=dict(l=0, r=20, t=50, b=0, pad=20),
         )
         
         st.plotly_chart(fig, use_container_width=True)
